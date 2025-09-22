@@ -1,0 +1,60 @@
+% EEM441_minimal.tex — clean, balanced example
+\documentclass[11pt]{SEEELab} % or rename class to SEEELab and use that
+
+% Course/banner info
+\coursecode{EEM441}
+\semester{Semester I (2025/2026)}
+\experimenttitle{DC Motor / PID Control}
+
+% Header logo (single combined)
+\lablogo{Figures/Logo_USM_SEEE.png} % comment out if file not available
+
+\begin{document}
+\makelabtitle
+\makemargintoc
+
+% -------- Margin blocks (lists) --------
+\begin{ObjectivesList}
+  \item To study open-loop speed control of a DC motor.
+  \item To study closed-loop control using:
+    \begin{AlphaList}
+      \item P Controller
+      \item PD Controller
+      \item PI Controller
+      \item PID Controller
+    \end{AlphaList}
+\end{ObjectivesList}
+
+\begin{ApparatusList}
+  \item Controller kit
+  \item Oscilloscope
+  \item BNC cables
+  \item Multimeter
+\end{ApparatusList}
+
+
+% ------------- Body -------------
+\section{Introduction}
+This manual outlines the setup and measurement steps for DC motor speed control.
+We will compare open- and closed-loop responses and tune PID gains.
+
+\section{Methodology}
+\subsection{Open-Loop Test}
+Measure supply rails, connect the motor, and record steady-state speed.
+
+\subsection{Closed-Loop Test}
+Tune $K_p$, $K_i$, and $K_d$ to minimize error:
+\[
+u(t) = K_p e(t) + K_i \int_0^t e(\tau)\,d\tau + K_d \frac{de(t)}{dt}.
+\]
+
+\appendix
+\section*{Appendix}
+\begin{lstlisting}
+// Example PID loop
+error = ref - speed;
+u = Kp*error + Ki*I + Kd*(error - error_prev);
+apply(u);
+\end{lstlisting}
+
+\end{document}

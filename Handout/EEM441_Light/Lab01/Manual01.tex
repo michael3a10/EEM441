@@ -80,6 +80,8 @@
 
 \usepackage{enumitem}
 \usepackage{caption}
+
+\DeclareCaptionFormat{ontop}{#1#2#3}
 %----------------------------------------------------------------------------------------
 
 \begin{document}
@@ -124,8 +126,8 @@ This experiment focuses on the study of DC motors and the implementation of PID 
                   itemsep=.20em, topsep=.15em, parsep=0pt]
     \item To study the Open-Loop Speed Control of a DC Motor.
     \item To study the Closed-Loop Speed Control using:
-    \begin{enumerate}[label=\Alph*), leftmargin=1.4em, labelsep=.35em,
-                      itemsep=.15em, topsep=.08em, parsep=0pt]
+    \begin{enumerate}[label=\Alph*), widest=D, leftmargin=*, labelsep=.4em,
+                  itemsep=.15em, topsep=.08em, parsep=0pt]
       \item P Controller
       \item PD Controller
       \item PI Controller
@@ -148,17 +150,28 @@ This experiment focuses on the study of DC motors and the implementation of PID 
     \item Switch on supply and measure all constant voltages and calibrate variable voltages in terms of voltages and angles in degrees.
     \item Disconnect all cable wires from the hardware module.
     \item Make circuitry as shown in Figure \ref{openloop} for the implementation of open-loop speed control of a DC motor.
-    \begin{center}
-    \begin{minipage}{0.9\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{OpenLoopMotorControl}
-      \captionof{figure}{Circuit diagram for open-loop speed control of a DC motor.}
-      \label{openloop}
-    \end{minipage}
-  \end{center}
-    \item
+    \item Connect \textbf{\emph{Output A}} of the motor plant to channel 2 of the oscilloscope.
 \end{enumerate}
-
+        {%
+        \floatsetup[figure]{ % float  for figures
+            capposition=below,% <<<<<
+            margins=centering,%
+            floatwidth=\textwidth%
+        }
+        \captionsetup[figure]{% Local captions style
+            format=ontop,% use this style
+            singlelinecheck=false,%
+            justification=centering,
+            aboveskip=3pt,%
+            belowskip=3pt,%
+            font=footnotesize%
+        }
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{OpenLoopMotorControl.png}
+            %\caption{This caption is centered and placed on top the figure.}
+            \label{openloop}
+        \end{figure}
 \appendix % From here onwards, chapters are numbered with letters, as is the appendix convention
 
 \section{Appendix}

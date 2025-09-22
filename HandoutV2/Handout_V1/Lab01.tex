@@ -1,69 +1,40 @@
-\documentclass{SEEELab_V1}
+\documentclass[11pt,twoside]{SEEELab_V1}
 
-% --- assets ---
-\lablogo{Logo_USM_SEEE}
-\coursebadge{EEM441_badge}
+% ---- Metadata ----
+\labtitle{Experiment 1 --- DC Motor / PID Control}
+\labsubtitle{} % leave empty to hide line
+\labauthor{Farhan Aizuddin}
+\labdate{September 18, 2025}
+\coursecode{EEM441}
+\semester{Semester I (2025/2026)}
+\lablogo{Figures/Logo_USM_SEEE.png} % (optional)
 
-% --- sizes you liked ---
-\SETLogoHeight{20mm}
-\SETBadgeHeight{30mm}
-\SETBadgeInset{4}
-\SETLogoShift{25}
-
-% --- date box (with Group at top) ---
-\Group{1}
-\StartDate{1~Oct~2025}
-\SubmissionDate{15~Oct~2025}
-\SETDateBoxWidth{65mm}
-\SETDateBoxFont{\sffamily\normalsize}
-\UseDateBoxPalette{USMTealAccent} % or leave the default
-
-% --- title position (keep your current choice) ---
-\SETTitleXShift{0mm}
-\SETTitleYShift{10mm}
-
-% --- abstract right trim to align with the title’s right edge ---
-\SETAbstractRightTrim{12mm} % tweak visually
-
-% --- margin TOC (under date box) ---
-\SETMarginTOCWidth{24mm}
-\SETMarginTOCXOffset{-18}   % nudge further into margin
-\SETMarginTOCAfterDate{8}   % drop it a bit lower
-\SEEEDebugTOCOn             % show magenta crosshair while tuning
-
-% --- side boxes content (appears under the TOC) ---
-\Objectives{%
-  \begin{enumerate}\itemsep3pt
-    \item Study the open-loop speed control of a DC motor.
-    \item Study the closed-loop P/PD/PI/PID control.
-  \end{enumerate}}
-\Apparatus{%
-  \begin{enumerate}\itemsep3pt
-    \item Controller kit
-    \item Cathode ray oscilloscope
-    \item BNC connectors with cords
-    \item Multimeter
-  \end{enumerate}}
+\graphicspath{{Figures/}}
 
 \begin{document}
+\makelabtitle
+\makemargintoc
 
-% title (NOT a heading)
-\Experiment{1}{DC Motor / PID Control}
-
-% abstract
-\begin{SEEEAbstract}
-Your abstract goes here. A few sentences summarising aims, method, and
-findings. The text wraps naturally and the “Abstract” label is centred.
-\end{SEEEAbstract}
-
-% margin TOC overlay (no printed "Contents" title)
-\tableofcontents
-
-% real headings start here (no chapter numbers anywhere)
 \section{Introduction}
-Some text…
+This experiment covers the basics of DC motor and PID control.
 
-\subsection{Background}
-More text…
+\section{Methodology}
+\subsection{Open-Loop Speed Control of a DC Motor}
+\begin{enumerate}
+  \item Switch on supply and measure all constant voltages and calibrate variable voltages in terms of voltages and angles in degrees.
+  \item Disconnect all cable wires from the hardware module.
+  \item Make circuitry as shown in Fig.~\ref{fig:openloop} for the implementation of open-loop speed control of a DC motor.
+  \item Connect Output A of the motor plant to channel 2 of the oscilloscope.
+\end{enumerate}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.9\linewidth]{OpenLoopMotorControl.png}
+  \caption{Open-loop speed control setup.\label{fig:openloop}}
+\end{figure}
+
+\appendix
+\section{Appendix}
+Additional reference material.
 
 \end{document}

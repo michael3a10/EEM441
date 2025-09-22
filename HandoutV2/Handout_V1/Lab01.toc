@@ -1,2 +1,4 @@
-\contentsline {section}{\numberline {1}Introduction}{1}{}%
-\contentsline {subsection}{\numberline {1.1}Background}{1}{}%
+\contentsline {section}{\numberline {0.1}Introduction}{1}{}%
+\contentsline {section}{\numberline {0.2}Methodology}{1}{}%
+\contentsline {subsection}{Open-Loop Speed Control of a DC Motor}{1}{}%
+\contentsline {section}{\numberline {.1}Appendix}{1}{}%

@@ -1,0 +1,69 @@
+\documentclass{SEEELab_V1}
+
+% --- assets ---
+\lablogo{Logo_USM_SEEE}
+\coursebadge{EEM441_badge}
+
+% --- sizes you liked ---
+\SETLogoHeight{20mm}
+\SETBadgeHeight{30mm}
+\SETBadgeInset{4}
+\SETLogoShift{25}
+
+% --- date box (with Group at top) ---
+\Group{1}
+\StartDate{1~Oct~2025}
+\SubmissionDate{15~Oct~2025}
+\SETDateBoxWidth{65mm}
+\SETDateBoxFont{\sffamily\normalsize}
+\UseDateBoxPalette{USMTealAccent} % or leave the default
+
+% --- title position (keep your current choice) ---
+\SETTitleXShift{0mm}
+\SETTitleYShift{10mm}
+
+% --- abstract right trim to align with the title’s right edge ---
+\SETAbstractRightTrim{12mm} % tweak visually
+
+% --- margin TOC (under date box) ---
+\SETMarginTOCWidth{24mm}
+\SETMarginTOCXOffset{-18}   % nudge further into margin
+\SETMarginTOCAfterDate{8}   % drop it a bit lower
+\SEEEDebugTOCOn             % show magenta crosshair while tuning
+
+% --- side boxes content (appears under the TOC) ---
+\Objectives{%
+  \begin{enumerate}\itemsep3pt
+    \item Study the open-loop speed control of a DC motor.
+    \item Study the closed-loop P/PD/PI/PID control.
+  \end{enumerate}}
+\Apparatus{%
+  \begin{enumerate}\itemsep3pt
+    \item Controller kit
+    \item Cathode ray oscilloscope
+    \item BNC connectors with cords
+    \item Multimeter
+  \end{enumerate}}
+
+\begin{document}
+
+% title (NOT a heading)
+\Experiment{1}{DC Motor / PID Control}
+
+% abstract
+\begin{SEEEAbstract}
+Your abstract goes here. A few sentences summarising aims, method, and
+findings. The text wraps naturally and the “Abstract” label is centred.
+\end{SEEEAbstract}
+
+% margin TOC overlay (no printed "Contents" title)
+\tableofcontents
+
+% real headings start here (no chapter numbers anywhere)
+\section{Introduction}
+Some text…
+
+\subsection{Background}
+More text…
+
+\end{document}

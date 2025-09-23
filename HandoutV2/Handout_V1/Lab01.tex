@@ -1,40 +1,46 @@
 \documentclass[11pt,twoside]{SEEELab_V1}
 
 % ---- Metadata ----
-\labtitle{Experiment 1 --- DC Motor / PID Control}
-\labsubtitle{} % leave empty to hide line
+\labtitle{Experiment 1 — DC Motor / PID Control}
+\labsubtitle{Speed control in open- and closed-loop}
 \labauthor{Farhan Aizuddin}
 \labdate{September 18, 2025}
 \coursecode{EEM441}
 \semester{Semester I (2025/2026)}
-\lablogo{Figures/Logo_USM_SEEE.png} % (optional)
+% Provide a path or comment the next line if not available
+\lablogo{Figures/Logo_USM_SEEE.png}
 
 \graphicspath{{Figures/}}
 
 \begin{document}
 \makelabtitle
+
+% \SEEEDebugTOCOn % (optional) draw a frame around the margin ToC
 \makemargintoc
 
 \section{Introduction}
-This experiment covers the basics of DC motor and PID control.
+This experiment covers the basics of DC motor actuation and PID control. You will measure motor speed under open-loop and compare with closed-loop P/PI/PD/PID controllers.
+
+\subsection{Learning Outcomes}
+After completing this lab, you should be able to: (i) acquire motor speed data, (ii) design a basic PID controller, and (iii) interpret step responses.
 
 \section{Methodology}
 \subsection{Open-Loop Speed Control of a DC Motor}
 \begin{enumerate}
-  \item Switch on supply and measure all constant voltages and calibrate variable voltages in terms of voltages and angles in degrees.
-  \item Disconnect all cable wires from the hardware module.
-  \item Make circuitry as shown in Fig.~\ref{fig:openloop} for the implementation of open-loop speed control of a DC motor.
-  \item Connect Output A of the motor plant to channel 2 of the oscilloscope.
+  \item Switch on supply and measure reference voltages; calibrate variable voltages.
+  \item Disconnect the feedback path and drive the motor with a fixed duty cycle.
+  \item Record RPM vs.\ duty cycle and note steady-state behavior.
 \end{enumerate}
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.9\linewidth]{OpenLoopMotorControl.png}
-  \caption{Open-loop speed control setup.\label{fig:openloop}}
-\end{figure}
+\subsection{Closed-Loop Control}
+\begin{enumerate}
+  \item Connect the speed sensor (Hall/encoder) to the controller input.
+  \item Tune controllers: P, PD, PI, and PID. Record overshoot, rise time, and settling time.
+\end{enumerate}
 
-\appendix
-\section{Appendix}
-Additional reference material.
+\section{Results and Discussion}
+Present plots of speed vs.\ time for each controller. Discuss stability margins and noise sensitivity.
 
+\section{Conclusion}
+Summarize key observations and recommended PID gains for the motor used.
 \end{document}

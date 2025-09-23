@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{SEEELab_V1}[2025/09/22 v1.7 SEEELab layout]
+\ProvidesClass{SEEELab_V1}[2025/09/23 v1.4 SEEELab layout with margin ToC]
 
 % ===== Base class =====
 \LoadClass[11pt,a4paper,twoside,openany]{memoir}
@@ -7,115 +7,166 @@
 % ===== Packages =====
 \RequirePackage{graphicx}
 \RequirePackage{xcolor}
+\RequirePackage{calc}
 \RequirePackage{tikz}
 \usetikzlibrary{calc,positioning}
-\RequirePackage{enumitem}
 \RequirePackage{etoolbox}
+\RequirePackage{ifoddpage}   % for outer margin placement
+\RequirePackage{marginnote}  % better margin notes
+\RequirePackage{titletoc}    % compact contents printing
+\RequirePackage{hyperref}
 
-% ----- Safe default colors (avoid "undefined color" errors) -----
-\definecolor{USMTeal}{HTML}{14737E}
-\definecolor{USMPurple}{HTML}{5C2D91}
-\definecolor{USMGray}{gray}{0.25}
+% ===== Colors (safe defaults) =====
+\definecolor{USMTeal}{HTML}{006E6D}
+\definecolor{USMPurple}{HTML}{6A1B9A}
+\definecolor{LightGray}{gray}{0.35}
 
-% ===== Internal storage for metadata =====
-\makeatletter
-\newcommand\@labtitle{}
-\newcommand\@labsubtitle{}
-\newcommand\@labauthor{}
-\newcommand\@labdate{\today}
-\newcommand\@coursecode{}
-\newcommand\@semester{}
-\newcommand\@lablogo{Figures/Logo_USM_SEEE} % path to logo image (optional)
-\makeatother
+% Avoid marginnote warnings with footnotes, etc.
+\renewcommand*{\marginfont}{\footnotesize}
 
-% ===== Public setters =====
-\newcommand{\labtitle}[1]{\makeatletter\gdef\@labtitle{#1}\makeatother}
-\newcommand{\labsubtitle}[1]{\makeatletter\gdef\@labsubtitle{#1}\makeatother}
-\newcommand{\labauthor}[1]{\makeatletter\gdef\@labauthor{#1}\makeatother}
-\newcommand{\labdate}[1]{\makeatletter\gdef\@labdate{#1}\makeatother}
-\newcommand{\coursecode}[1]{\makeatletter\gdef\@coursecode{#1}\makeatother}
-\newcommand{\semester}[1]{\makeatletter\gdef\@semester{#1}\makeatother}
-\newcommand{\lablogo}[1]{\makeatletter\gdef\@lablogo{#1}\makeatother}
+% ===== Metadata Macros =====
+\newcommand*{\labtitle}[1]{\def\seee@labtitle{#1}}
+\newcommand*{\labsubtitle}[1]{\def\seee@labsubtitle{#1}}
+\newcommand*{\labauthor}[1]{\def\seee@labauthor{#1}}
+\newcommand*{\labdate}[1]{\def\seee@labdate{#1}}
+\newcommand*{\coursecode}[1]{\def\seee@coursecode{#1}}
+\newcommand*{\semester}[1]{\def\seee@semester{#1}}
+\newcommand*{\lablogo}[1]{\def\seee@lablogo{#1}}
 
-% ===== Page style: show SECTION in headers (not Chapter) =====
-\makepagestyle{labmanual}
-\makepsmarks{labmanual}{%
-  \nouppercaseheads
-  \createmark{chapter}{both}{nonumber}{}{}% suppress chapter mark
-  \createmark{section}{both}{shownumber}{}{\,}% use section titles
+% Defaults so nothing is undefined
+\labtitle{Untitled Experiment}
+\labsubtitle{}
+\labauthor{}
+\labdate{\today}
+\coursecode{}
+\semester{}
+\lablogo{}
+
+% ===== Page Geometry (memoir) =====
+\setlrmarginsandblock{*}{35mm}{*}
+\setulmarginsandblock{30mm}{*}{*}
+\checkandfixthelayout
+
+% Page style: page number bottom center, clean headers
+\makepagestyle{seee}
+\makeoddfoot{seee}{}{{\small\thepage}}{}
+\makeevenfoot{seee}{}{{\small\thepage}}{}
+\makeoddhead{seee}{}{}{}
+\makeevenhead{seee}{}{}{}
+\makeheadrule{seee}{\textwidth}{0pt}
+\pagestyle{seee}
+\aliaspagestyle{chapter}{seee}
+
+% ===== Margin ToC (kaohandt-inspired) =====
+% Debug switch
+\newif\ifSEEEDebugTOC
+\newcommand{\SEEEDebugTOCOn}{\SEEEDebugTOCtrue}
+\newcommand{\SEEEDebugTOCOff}{\SEEEDebugTOCfalse}
+
+% Width of margin ToC box = memoir's \marginparwidth unless overridden
+\newlength{\seee@margintocwidth}
+\AtBeginDocument{\setlength{\seee@margintocwidth}{\marginparwidth}}
+
+% Compact entry styles
+\titlecontents{section}
+  [0pt]
+  {\small}
+  {\contentslabel{1.25em}}
+  {}
+  {\hfill\contentspage}
+  [1pt]
+
+\titlecontents{subsection}
+  [1.25em]
+  {\small}
+  {\contentslabel{1.25em}}
+  {}
+  {\hfill\contentspage}
+  [0pt]
+
+% Start collecting contents from the beginning
+\AtBeginDocument{\startcontents}
+
+% Helper: place content in the OUTER margin (right on odd, left on even)
+\newcommand{\seee@outermarginnote}[1]{%
+  \checkoddpage
+  \ifoddpage
+    \normalmarginpar
+  \else
+    \reversemarginpar
+  \fi
+  \marginnote{#1}[-\baselineskip]%
 }
-\makeevenhead{labmanual}{\small\leftmark}{}{\small\thepage}
-\makeoddhead {labmanual}{\small\rightmark}{}{\small\thepage}
-\makeevenfoot{labmanual}{}{}{}%
-\makeoddfoot {labmanual}{}{}{}%
-\pagestyle{labmanual}
-\aliaspagestyle{chapter}{labmanual}
-\aliaspagestyle{plain}{labmanual}
 
-% Marking
-\makeatletter
-\renewcommand*{\sectionmark}[1]{\markboth{\thesection\ #1}{\thesection\ #1}}
-\makeatother
+% Framed box only when debug is ON
+\newcommand{\seee@maybe@frame}[1]{%
+  \ifSEEEDebugTOC
+    \fboxrule=.3pt \fboxsep=4pt \fbox{#1}%
+  \else
+    #1%
+  \fi
+}
 
-\setsecnumdepth{section}
-
-% ===== Simple ToC helper =====
+% Public macro: print a margin ToC where called
 \newcommand{\makemargintoc}{%
   \begingroup
-  \setcounter{tocdepth}{1}% sections only
-  \renewcommand{\contentsname}{}%
-  \tableofcontents*%
+    \setcounter{tocdepth}{2}% show through subsections
+    \seee@outermarginnote{\seee@maybe@frame{%
+      \begin{minipage}{\seee@margintocwidth}
+        \raggedright
+        {\bfseries\footnotesize\textcolor{USMTeal}{Contents}}\par\vspace{.35\baselineskip}
+        \printcontents{}{1}{}{}% use \titlecontents definitions
+      \end{minipage}%
+    }}%
   \endgroup
 }
 
-% ===== Helpers (robust emptiness tests; defined with @ letter) =====
-\makeatletter
-\newcommand{\SEEE@maybe@logo}{%
-  \ifx\@lablogo\@empty\else
-    \vspace*{0.5ex}%
-    \includegraphics[height=14mm]{\@lablogo}\par
-    \vspace{0.5ex}%
-  \fi
+% ===== Title Block =====
+\newlength\seee@titleleft
+\setlength\seee@titleleft{0.64\textwidth}
+
+\newcommand*{\makelabtitle}{%
+  \thispagestyle{empty}%
+  \vspace*{6mm}%
+  \noindent
+  \begin{minipage}[t]{\seee@titleleft}
+    {\Large\bfseries \seee@labtitle}\par
+    \ifstrempty{\seee@labsubtitle}{}{%
+      \vspace{1mm}{\large\itshape \seee@labsubtitle}\par}%
+    \vspace{4mm}
+    {\normalsize \textbf{Course:}~\seee@coursecode\quad
+                 \textbf{Semester:}~\seee@semester}\par
+    \vspace{2mm}
+    {\normalsize \textbf{Author:}~\seee@labauthor}\par
+    {\normalsize \textbf{Date:}~\seee@labdate}\par
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{\textwidth-\seee@titleleft-1em}
+    \raggedleft
+    \ifstrempty{\seee@lablogo}{}{%
+      \includegraphics[width=0.95\linewidth]{\seee@lablogo}}%
+  \end{minipage}
+  \par\vspace{4mm}\noindent\color{USMTeal}\rule{\textwidth}{.8pt}\color{black}%
+  \vspace{0.5\baselineskip}%
 }
-\newcommand{\SEEE@maybe@subtitle}{%
-  \ifx\@labsubtitle\@empty\else
-    {\large \@labsubtitle\par}%
-  \fi
+
+% ===== Sectioning look =====
+\setsecnumdepth{subsection}
+\maxtocdepth{subsection}
+\setsecheadstyle{\bfseries\Large}
+\setsubsecheadstyle{\bfseries\large}
+\setsubsubsecheadstyle{\bfseries}
+
+% ===== Lists (simple helpers) =====
+\newenvironment{ObjectivesList}{\begin{itemize}}{\end{itemize}}
+\newenvironment{ApparatusList}{\begin{itemize}}{\end{itemize}}
+
+% ===== Hyperref defaults =====
+\hypersetup{
+  colorlinks=true,
+  linkcolor=USMTeal,
+  urlcolor=USMTeal,
+  citecolor=USMTeal,
+  pdfauthor={\seee@labauthor},
+  pdftitle={\seee@labtitle}
 }
-\makeatother
-
-% ===== Simple, centered title block =====
-% IMPORTANT: define while @ is a letter so tokens like \@labtitle are correct.
-\makeatletter
-\newcommand{\makelabtitle}{%
-  \thispagestyle{labmanual}%
-  \begin{center}
-    \begingroup\setlength{\parskip}{2pt}% tighter
-      \SEEE@maybe@logo
-      {\Large\bfseries \@labtitle\par}
-      \SEEE@maybe@subtitle
-      \vspace{0.6ex}
-      {\normalsize \@labauthor\par}
-      {\small \@labdate\par}
-      \vspace{0.6ex}
-      {\normalsize \@coursecode\par}
-      {\small \@semester\par}
-    \endgroup
-  \end{center}
-  \vspace{1.2ex}
-}
-\makeatother
-
-% ===== Lists =====
-\newlist{AlphaList}{enumerate}{1}
-\setlist[AlphaList,1]{label=\Alph*), leftmargin=1.6em, itemsep=.15em, topsep=.3em}
-
-% ===== Section heading look =====
-\setsecheadstyle{\Large\bfseries}
-\setsubsecheadstyle{\large\bfseries}
-\setsubsubsecheadstyle{\normalsize\bfseries}
-
-% ===== Microtype (if available) =====
-\IfFileExists{microtype.sty}{\RequirePackage[protrusion=true,expansion=true]{microtype}}{}
-
-% ===== End of class =====

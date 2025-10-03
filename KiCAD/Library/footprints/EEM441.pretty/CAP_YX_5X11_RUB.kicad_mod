@@ -1,0 +1,238 @@
+(footprint "CAP_YX_5X11_RUB"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "50YXF1MEFC5X11 ")
+	(property "Reference" "REF**"
+		(at 1 0 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "5633c7ef-24cb-4017-9733-afbfe3e064e1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "CAP_YX_5X11_RUB"
+		(at 1 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "ddec86e8-157a-4a20-bf90-836bbbb5e816")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f0a02554-dfab-42fd-b0bd-dd882feca307")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "509865a5-38b8-40e8-bfd9-2c1ac6d88c1d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -3.2799 0)
+		(end -2.0099 0)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "cd58bd8b-5cf1-4607-9ebf-22d6a985182d")
+	)
+	(fp_line
+		(start -2.6449 -0.635)
+		(end -2.6449 0.635)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "76d23b0b-4d2a-498c-85ab-595df46030ad")
+	)
+	(fp_circle
+		(center 1 0)
+		(end 3.8829 0)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "7fe9939b-f964-40df-b534-4fecfb52d82f")
+	)
+	(fp_line
+		(start -2.0099 -1.239371)
+		(end -0.239371 -3.0099)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "4f78eef9-0e63-4d03-bcd0-e5da33e726dc")
+	)
+	(fp_line
+		(start -2.0099 1.239371)
+		(end -2.0099 -1.239371)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "3e6b1cef-04b8-45ba-bc33-37654055c0d0")
+	)
+	(fp_line
+		(start -0.239371 -3.0099)
+		(end 2.239371 -3.0099)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "cdf7cb83-af14-46b6-9587-5203053c3371")
+	)
+	(fp_line
+		(start -0.239371 3.0099)
+		(end -2.0099 1.239371)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "96c0fb41-1571-4e42-87cb-a63610670f78")
+	)
+	(fp_line
+		(start 2.239371 -3.0099)
+		(end 4.0099 -1.239371)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "a9f17b54-3ab0-4b6f-8a04-27a4661bec55")
+	)
+	(fp_line
+		(start 2.239371 3.0099)
+		(end -0.239371 3.0099)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "a20b4dc4-7bea-422c-8f38-8c71a85d150e")
+	)
+	(fp_line
+		(start 4.0099 -1.239371)
+		(end 4.0099 1.239371)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "e1eda418-0551-45f7-aa20-3fcde7afff8e")
+	)
+	(fp_line
+		(start 4.0099 1.239371)
+		(end 2.239371 3.0099)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "2fdc0316-3217-4bff-bb28-56e2abe51ce7")
+	)
+	(fp_line
+		(start -3.2799 0)
+		(end -2.0099 0)
+		(stroke
+			(width 0.0254)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5c1cc794-3ed1-43fc-ae9a-499fefd3a21f")
+	)
+	(fp_line
+		(start -2.6449 -0.635)
+		(end -2.6449 0.635)
+		(stroke
+			(width 0.0254)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "4414809f-b2e8-413d-a66f-ddb7005843e6")
+	)
+	(fp_circle
+		(center 1 0)
+		(end 3.7559 0)
+		(stroke
+			(width 0.0254)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "6fbf89ec-e02e-4d67-a5a7-bc367478c05a")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 1 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "cc3865a6-9be3-4b8d-9c11-579dfce0140b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 0)
+		(size 1.27 1.27)
+		(drill 0.762)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "93350d29-c2da-44b2-9fb7-e910d73b08d6")
+	)
+	(pad "2" thru_hole circle
+		(at 2 0)
+		(size 1.27 1.27)
+		(drill 0.762)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "fb83d0d6-8d14-406d-9b9b-578e0d654705")
+	)
+	(embedded_fonts no)
+	(model "G:/Github/EEM441/KiCAD/Library/3dmodels/EEM441.3dshapes/CAP_YX_5X11_RUB.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

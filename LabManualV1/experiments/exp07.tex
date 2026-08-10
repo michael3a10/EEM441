@@ -1,0 +1,184 @@
+% ============================================================
+%  Experiment 7 --- DC Motor Speed Measurement
+% ============================================================
+\experimentheader{7}{DC Motor Speed Measurement}{Instrumentation --- Measuring the Speed of a DC Motor Using a Computer}
+
+\begin{objectives}
+\begin{enumerate}
+  \item To understand the methods of acquiring measurements automatically with the aid of a computer.
+  \item To become familiar with the data-acquisition (DAQ) environment.
+  \item To become familiar with signal conditioning in a computer-based data-acquisition system.
+  \item To design and build a signal-conditioning circuit whose parameters are justified by a measurement, rather than assumed.
+  \item To implement a computer-based measurement system for the rotational speed of a DC motor.
+\end{enumerate}
+\end{objectives}
+
+\begin{equipment}
+\begin{itemize}
+  \item DC motor trainer with a 12-slot wheel encoder
+  \item Digital storage oscilloscope (DSO)
+  \item Components for the student-designed filter and signal-conditioning circuit (op-amps, resistors, capacitors)
+  \item ADAM-3968 wiring terminal board
+  \item PCIE-1816 multifunction DAQ card, installed in the host PC
+  \item PC with a C/C++ or Python development environment
+\end{itemize}
+\end{equipment}
+
+\begin{introduction}
+In most measurement processes it is often necessary to acquire data automatically, without a human operator. A computer-based instrument has several advantages over conventional measuring instruments: it can acquire measurements quickly and accurately, sustain real-time control, and operate for extended periods with consistent precision.
+
+A computer-based measurement system typically contains the following elements (Figure~\ref{fig:exp7-daq-overview}): a transducer, a signal-conditioning stage, data-acquisition hardware, analysis hardware, and software running on the host PC.
+
+\textbf{Signal conditioning} means manipulating an analogue signal so that it meets the requirements of the next processing stage --- most commonly, so that it is suitable for an analogue-to-digital converter. Signal conditioning can include amplification, filtering, range matching, and isolation.
+
+\textbf{Filtering} is the most common signal-conditioning function: frequencies that do not carry valid data are attenuated. In this experiment the encoder produces a pulse train whose useful frequency content is bounded, and any filter used ahead of the DAQ card should be designed --- not assumed --- around that bound.
+
+\textbf{Amplification} increases the resolution of the input signal and improves its signal-to-noise ratio.
+
+\textbf{Isolation} allows a signal to pass from its source to the measurement device without a direct physical (galvanic) connection, protecting sensitive equipment from the signal source and vice versa.
+
+\textbf{The Sallen--Key topology} is a widely used active-filter structure, valued for its simplicity: it realises a two-pole (12\,dB/octave) low-pass, high-pass, or band-pass response using a single op-amp configured as a near-unity-gain voltage-controlled voltage source (VCVS), together with two resistors and two capacitors that set the cutoff frequency and $Q$.
+\end{introduction}
+
+\begin{boxedfigure}
+\centering
+\begin{tikzpicture}[node distance=8mm and 10mm]
+  \node[block] (trans) {Transducer};
+  \node[block, right=of trans] (cond) {Signal\\Conditioning};
+  \node[block, right=of cond] (daq) {Data\\Acquisition};
+  \node[block, below=8mm of cond] (sw) {Software};
+  \node[block, right=of sw] (pc) {Personal\\Computer};
+
+  \draw[arr] (trans) -- (cond);
+  \draw[arr] (cond) -- (daq);
+  \draw[arr] (daq.south) |- (pc.north);
+  \draw[arr] (sw) -- (pc);
+\end{tikzpicture}
+\captionof{figure}{Computer-based measurement system: transducer, signal conditioning, DAQ hardware, and analysis software.}
+\label{fig:exp7-daq-overview}
+\end{boxedfigure}
+
+\begin{procedure}
+
+\textbf{Activity 1 --- Characterising the encoder signal and designing the filter}\vspace{2pt}
+
+\textit{Objective: measure the encoder's pulse characteristics and design a signal-conditioning filter around the measured cutoff frequency, rather than an assumed one.}
+
+\begin{enumerate}
+  \item Wire the DC motor trainer so that the 12-slot wheel encoder's output is available at a test point, and connect this test point to the oscilloscope.
+  \item Run the motor across its usable speed range and observe the encoder pulse train on the oscilloscope. Each revolution produces 12 pulses (one per slot).
+  \item At a representative operating speed, measure the pulse period and estimate the corresponding fundamental frequency and its dominant harmonics directly from the oscilloscope trace.
+  \item From this measurement, determine a suitable cutoff frequency for an anti-aliasing / noise-rejection low-pass filter: the cutoff must pass the pulse's fundamental frequency (across the motor's full speed range) while rejecting high-frequency switching noise.
+  \item \textbf{Design task:} using the Sallen--Key topology introduced above, design a second-order active low-pass filter with the cutoff frequency determined in step 4. Select a topology (unity-gain or gain-set), calculate resistor and capacitor values, and justify your component choices in your report.
+  \item Build and test the filter on its own (e.g.\ with a function generator) to verify its measured cutoff frequency and roll-off match your design before connecting it to the encoder signal.
+  \item \textbf{Design task:} design the remaining signal-conditioning stage needed to present the filtered encoder pulses to the PCIE-1816's digital input with valid logic levels (buffering, level-shifting, or pulse-shaping as required). Justify your design choices.
+\end{enumerate}
+
+\begin{needsupdate}
+The filter and signal-conditioning circuit are student design deliverables: there is no fixed cutoff frequency or component value specified here. Document your oscilloscope measurements, design calculations, and any deviation between the designed and measured filter response in your report.
+\end{needsupdate}
+
+\textbf{Activity 2 --- Interfacing to the DAQ hardware}\vspace{2pt}
+
+\textit{Objective: connect the conditioned encoder signal to the PC via the ADAM-3968 and PCIE-1816.}
+
+\begin{enumerate}
+  \item Connect the output of your signal-conditioning circuit to a digital input (or counter/timer input, if using the PCIE-1816's onboard counter) on the ADAM-3968 terminal board.
+  \item Connect the ADAM-3968 to the PCIE-1816 DAQ card installed in the host PC via the supplied cable.
+  \item Verify the wiring using the DAQ card's bundled configuration/monitoring utility before writing any code, to confirm the expected pulses are being registered.
+\end{enumerate}
+
+\begin{boxedfigure}
+\centering
+\resizebox{0.98\linewidth}{!}{%
+\begin{tikzpicture}[node distance=12mm and 16mm]
+  \node[block, minimum width=2.6cm] (trainer) {DC Motor\\Trainer};
+  \node[block, right=of trainer, minimum width=2.8cm] (filt) {Filter \&\\Signal Cond.\\\scriptsize(student design)};
+  \node[block, right=of filt, minimum width=2.4cm] (adam) {ADAM-3968};
+  \node[block, right=of adam, minimum width=2.6cm] (pcie) {PCIE-1816};
+  \node[block, right=of pcie, minimum width=2.4cm] (pc) {PC\\\scriptsize C/C++/Python GUI};
+
+  \draw[arr] (trainer) -- (filt) node[midway, above, font=\tiny] {encoder pulses};
+  \draw[arr] (filt) -- (adam);
+  \draw[arr] (adam) -- (pcie);
+  \draw[arr] (pcie) -- (pc);
+\end{tikzpicture}
+}
+\captionof{figure}{Signal path from the DC motor trainer to the host PC.}
+\label{fig:exp7-signalpath}
+\end{boxedfigure}
+
+\textbf{Activity 3 --- Speed measurement software}\vspace{2pt}
+
+\textit{Objective: implement software to compute and display motor speed in real time.}
+
+The rotational speed can be found from the pulse period, using the number of pulses produced per revolution (12, for this encoder):
+\[
+\text{Period} = \frac{t_{\text{stop}} - t_{\text{start}}}{\text{CLK\_TCK}}, \qquad
+\omega = \frac{2\pi}{12 \times \text{Period}} \ \left[\text{rad/s}\right]
+\]
+where $t_{\text{start}}$ and $t_{\text{stop}}$ mark successive encoder edges and $\text{CLK\_TCK}$ is the counter's clock tick rate.
+
+\begin{boxedfigure}
+\centering
+\begin{tikzpicture}[node distance=7mm and 10mm]
+  \node[startstop] (start) {Start};
+  \node[block, below=of start] (init) {Initialise DAQ card};
+  \node[block, below=of init] (read) {Acquire encoder pulse timing};
+  \node[block, below=of read] (calc) {Compute period and $\omega$ (rad/s)};
+  \node[block, below=of calc] (disp) {Display / log result};
+  \node[decision, below=of disp, minimum width=2.6cm] (dec) {End of\\measurement?};
+  \node[startstop, below=of dec] (end) {End};
+
+  \draw[arr] (start) -- (init);
+  \draw[arr] (init) -- (read);
+  \draw[arr] (read) -- (calc);
+  \draw[arr] (calc) -- (disp);
+  \draw[arr] (disp) -- (dec);
+  \draw[arr] (dec) -- (end) node[midway, right, font=\small] {Yes};
+  \draw[arr] (dec.east) -- ++(2.4,0) |- (read.east) node[pos=0.25, above, font=\small] {No};
+\end{tikzpicture}
+\captionof{figure}{Measurement loop for the speed-acquisition software.}
+\label{fig:exp7-flowchart}
+\end{boxedfigure}
+
+\begin{enumerate}
+  \item In C, C++, or Python, write a program that:
+  \begin{itemize}
+    \item initialises the PCIE-1816 (via the vendor driver / SDK, or the DAQ card's counter API),
+    \item times successive encoder pulses (or reads the onboard counter) to obtain the pulse period,
+    \item computes the rotational speed in rad/s (or rpm) using the relation above, and
+    \item displays the running value in a simple GUI, updating in real time.
+  \end{itemize}
+  \item Interface your filter/conditioning circuit, the ADAM-3968, and the PCIE-1816 together and perform measurements across a range of motor input voltages. Compare your computed speed against a direct oscilloscope measurement of the encoder period at the same operating point.
+  \item Tabulate your results (Table~\ref{tab:exp7-results}).
+  \item Plot computed speed (from your software) against the oscilloscope-measured speed.
+  \item Discuss and comment on your results, including any discrepancy between the two measurement methods and possible causes (filter phase delay, counting resolution, etc.).
+\end{enumerate}
+
+\begin{boxedtable}
+\centering
+\begin{tabular}{lccc}
+\toprule
+& \multicolumn{3}{c}{Input voltage} \\
+\cmidrule(lr){2-4}
+& \# 1 & \# 2 & \# 3 \\
+\midrule
+Speed (rad/s) --- computer & & & \\
+Speed (rad/s) --- oscilloscope & & & \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Computed vs.\ oscilloscope-measured motor speed.}
+\label{tab:exp7-results}
+\end{boxedtable}
+
+\end{procedure}
+
+\begin{reportq}
+\begin{enumerate}
+  \item Present your oscilloscope measurements of the encoder pulse and your resulting filter design (topology, calculations, and component values), together with the measured response of the built filter.
+  \item Present your design of the signal-conditioning stage between the filter and the PCIE-1816 digital input, with justification.
+  \item Compare your software-computed speed with the oscilloscope-measured speed across your tested operating points, and discuss the sources of any discrepancy.
+  \item What is the theoretical maximum measurable speed of this system, given the encoder resolution (12 slots/revolution) and your software's timing resolution?
+\end{enumerate}
+\end{reportq}

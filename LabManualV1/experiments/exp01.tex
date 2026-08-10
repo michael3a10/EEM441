@@ -1,0 +1,159 @@
+% ============================================================
+%  Experiment 1 --- DC Motor / PID Control (Speed)
+% ============================================================
+\experimentheader{1}{DC Motor Speed Control}{DC Motor / PID Control --- Speed}
+
+\begin{objectives}
+\begin{enumerate}
+  \item To study the open-loop speed control of a DC motor.
+  \item To study closed-loop speed control using P, PD, PI, and PID controllers.
+\end{enumerate}
+\end{objectives}
+
+\begin{equipment}
+\begin{itemize}
+  \item Controller kit
+  \item Cathode ray oscilloscope
+  \item BNC connectors with leads
+  \item Multimeter
+\end{itemize}
+\end{equipment}
+
+\begin{procedure}
+
+\textbf{(a) Open-loop control of DC motor}
+
+\begin{enumerate}
+  \item Switch on the supply and measure all constant voltages; calibrate variable voltages in terms of voltage and angle (degrees).
+  \item Disconnect all cable wires from the hardware module.
+  \item Wire the circuit shown in Figure~\ref{fig:exp1-openloop} for open-loop control.
+\end{enumerate}
+
+\begin{boxedfigure}
+\centering
+\begin{tikzpicture}[node distance=8mm and 10mm]
+  \node[io] (vin) {$V_{in}$};
+  \node[block, right=of vin] (plant) {Motor\\Plant};
+  \node[block, right=of plant] (fvc) {Frequency to\\Voltage Controller};
+  \node[block, right=of fvc, minimum width=3cm] (scope) {Oscilloscope};
+
+  \draw[arr] (vin) -- (plant);
+  \draw[arr] (plant) -- (fvc) node[midway, above, font=\scriptsize] {Ch-2};
+  \draw[arr] (fvc) -- (scope) node[midway, above, font=\scriptsize] {Ch-1};
+
+  % feedback line from plant output up and into scope Ch-1
+  \draw[arr] (plant.north) -- ++(0,0.9) -| (scope.north);
+\end{tikzpicture}
+\captionof{figure}{Open-loop control of motor speed.}
+\label{fig:exp1-openloop}
+\end{boxedfigure}
+
+\begin{enumerate}[resume]
+  \item Connect \textit{Output A} of the motor plant to Channel 2 of the oscilloscope.
+  \item Connect \textit{Adjust A} of the motor plant to \textit{Input A} (speed control of the plant) and to Channel 1 of the oscilloscope (only positive voltages are considered).
+  \item Turn ON the power switch.
+  \item Slowly turn potentiometer-A clockwise ($0$ to $+50$) and anti-clockwise ($0$ to $-50$). Observe and describe the motor operation.
+  \item Disconnect \textit{Adjust A} and connect the motor \textit{Input A} to \textit{Adjust B} (only positive voltages are considered).
+  \item Vary supply B from $30^\circ$ to $270^\circ$ in steps of $30^\circ$ and study the variation in reference speed (voltage) and output speed (voltage). Plot the error curve.
+  \item Comment on your observations and results.
+\end{enumerate}
+
+\begin{boxedtable}
+\centering
+\begin{tabular}{ccccc}
+\toprule
+Position & $V_{in}$ (Channel I) & $V_{out}$ (Channel II) & Error ($V_{out}-V_{in}$) & Remarks \\
+\midrule
+$+270$ & & & & \\
+$+240$ & & & & \\
+$+210$ & & & & \\
+$+180$ & & & & \\
+$+150$ & & & & \\
+$+120$ & & & & \\
+$+90$  & & & & \\
+$+60$  & & & & \\
+$+30$  & & & & \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Open-loop speed response.}
+\end{boxedtable}
+
+\textbf{(b) Closed-loop control of speed of DC motor}
+
+\textit{(i) Using P-controller with feedback through optical encoder}\vspace{2pt}
+
+\begin{enumerate}
+  \item Select the P-controller by setting PROP on the controller (DIP switch 1) to ON.
+  \item Connect \textit{Adjust B} of the plant to the input of the PID controller.
+  \item Connect \textit{Output A} of the plant to the controller feedback.
+  \item Connect the controller output to \textit{Input A} of the plant.
+  \item Turn potentiometer-B of the motor plant to a middle position (e.g.\ $+180$).
+  \item Adjust trimmer $R_{p2}$ (varies $K_p$) to obtain an optimum response (minimum steady-state error).
+  \item Turn potentiometer-B to vary the speed of the motor. Record the input and output voltages for various positions in tabular form.
+\end{enumerate}
+
+\textit{(ii) Speed control with PI-controller}\vspace{2pt}
+
+\begin{enumerate}
+  \item On the PID controller card, set trimmers $R_p$ and $R_d$ to minimum (counter-clockwise) while $R_i$ is set to maximum (clockwise).
+  \item Select the PI-controller by setting PROP and INTG to ON.
+  \item Slowly vary trimmer $R_i$ to obtain an optimum output response (minimum steady-state error). If gain is insufficient (or overshoots), adjust $R_{p2}$.
+  \item Turn potentiometer-B to vary the speed of the motor. Record the input and output voltages for various positions (Table~\ref{tab:exp1-closed}). Repeat step 3 if necessary to fine-tune the response.
+  \item Compare the experimental results for the P-controller and the PI-controller.
+\end{enumerate}
+
+\textit{(iii) Speed control with PD-controller}\vspace{2pt}
+
+\begin{enumerate}
+  \item Switch on the supply and measure all constant voltages; calibrate variable voltages in terms of voltage and angle.
+  \item On the PID controller card, set trimmers $R_p$ and $R_d$ to minimum (counter-clockwise) while $R_i$ is set to maximum (clockwise).
+  \item Select the PD-controller by setting PROP and DIFF to ON; all other switches OFF.
+  \item Vary supply B from $30^\circ$ to $270^\circ$ in steps of $30^\circ$ and study the variation in reference speed ($V_{in}$) and output speed ($V_o$). Plot the error curve.
+  \item Study the effect of varying $R_d$ on the output.
+\end{enumerate}
+
+\textit{(iv) Speed control with PID-controller}\vspace{2pt}
+
+\begin{enumerate}
+  \item Adjust potentiometer-B to $2\,\text{V}$ (around $+180^\circ$).
+  \item Set trimmer $R_{p2}$ to minimum to reduce the damping ratio.
+  \item Set trimmer $R_i$ to minimum. The output should start to vibrate.
+  \item Slightly increase $R_i$ until the system starts oscillating between two points (pure oscillation).
+  \item Slightly increase $R_{p2}$ to bring the system to a damped condition; it should oscillate for a few cycles.
+  \item Apply a small force to hold the motor (the oscilloscope will show the motor output drop to 0\,V); observe and describe the response when the force is released.
+  \item Select the PID-controller by setting PROP, INTG, and DIFF to ON.
+  \item Slowly vary $R_d$ to obtain the optimum response.
+  \item Compare its operation with the P, PI, and PD controllers under disturbance.
+  \item As before, take observations by varying the applied voltage.
+\end{enumerate}
+
+\begin{boxedtable}
+\centering
+\begin{tabular}{ccccc}
+\toprule
+Position & $V_{in}$ (Channel I) & $V_{out}$ (Channel II) & Error ($V_{out}-V_{in}$) & Remarks \\
+\midrule
+$+270$ & & & & \\
+$+240$ & & & & \\
+$+210$ & & & & \\
+$+180$ & & & & \\
+$+150$ & & & & \\
+$+120$ & & & & \\
+$+90$  & & & & \\
+$+60$  & & & & \\
+$+30$  & & & & \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Closed-loop speed response.}
+\label{tab:exp1-closed}
+\end{boxedtable}
+
+\end{procedure}
+
+\begin{reportq}
+\begin{enumerate}
+  \item Compare the performance of P, PI, PD, and PID controllers.
+  \item What will happen if all types of controllers are connected in series?
+  \item What are the different types of encoders? Explain the working principle of an optical encoder with the help of suitable diagrams.
+\end{enumerate}
+\end{reportq}

@@ -1,0 +1,402 @@
+% ============================================================
+%  Experiment 5 --- Interfacing LCD to Altera DE2 Board
+% ============================================================
+\experimentheader{5}{LCD Interfacing}{Interfacing LCD to Altera DE2 Board}
+
+\begin{objectives}
+\begin{enumerate}
+  \item To use Verilog code as a design entry method in Altera Quartus II Software.
+  \item To interface an LCD module to the Altera DE2 board.
+\end{enumerate}
+\end{objectives}
+
+\begin{equipment}
+\begin{itemize}
+  \item Altera Quartus II software
+  \item Altera DE2 board
+\end{itemize}
+\end{equipment}
+
+\begin{introduction}
+In recent years, LCDs have largely replaced simple LED displays: they can show numbers, characters, and graphics, and are relatively easy to program. Table~\ref{tab:exp5-pins-lcd} lists the LCD pins relevant to programming.
+
+The \textit{enable} (E) pin is used by the LCD to latch the information presented on its data pins: a high-to-low transition on E must be applied for the LCD to latch the data, and this pulse must be at least 450\,ns wide. The required timing is shown in Figure~\ref{fig:exp5-timing}.
+
+Two important internal registers are selected via the RS pin. When $\text{RS}=0$, the \textit{instruction/command} register is selected, allowing commands to be sent to the LCD (Table~\ref{tab:exp5-commands} lists the available command codes). When $\text{RS}=1$, the \textit{data} register is selected, allowing ASCII character data to be written for display, sent through data pins D0--D7.
+
+It is good practice to check the busy flag before writing to the LCD: with $\text{RS}=0$ and $\text{R}/\overline{\text{W}}=1$, the busy flag appears on D7. While D7\,=\,1 the LCD is busy with internal operations and will not accept new data; once D7\,=\,0, the LCD is ready to receive the next byte.
+\end{introduction}
+
+\begin{boxedtable}
+\centering
+\begin{tabular}{clcl}
+\toprule
+Pin & Symbol & I/O & Description \\
+\midrule
+1  & $V_{ss}$ & --- & Ground \\
+2  & $V_{cc}$ & --- & $+5\,\text{V}$ power supply \\
+3  & $V_{ee}$ & --- & Power supply to control contrast \\
+4  & RS   & I   & $\text{RS}=0$: command register; $\text{RS}=1$: data register \\
+5  & R/$\overline{\text{W}}$ & I & $0$: write; $1$: read \\
+6  & E    & I/O & Enable (latches data on high-to-low transition) \\
+7  & DB0  & I/O & \multirow{8}{*}{8-bit data bus} \\
+8  & DB1  & I/O & \\
+9  & DB2  & I/O & \\
+10 & DB3  & I/O & \\
+11 & DB4  & I/O & \\
+12 & DB5  & I/O & \\
+13 & DB6  & I/O & \\
+14 & DB7  & I/O & \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Pin description for the LCD module.}
+\label{tab:exp5-pins-lcd}
+\end{boxedtable}
+
+\begin{boxedfigure}
+\centering
+\resizebox{0.98\linewidth}{!}{%
+\begin{tikzpicture}[
+  x=1.05cm, y=0.9cm,
+  sig/.style={very thick, draw=inkblack},
+  lbl/.style={font=\small\plexmedium, anchor=east},
+]
+  % row y-positions
+  \def\yD{6}\def\yE{4}\def\yRW{2}\def\yRS{0}
+
+  \node[lbl] at (-0.3,\yD)  {D0--D7};
+  \node[lbl] at (-0.3,\yE)  {E};
+  \node[lbl] at (-0.3,\yRW) {R/$\overline{\text{W}}$};
+  \node[lbl] at (-0.3,\yRS) {RS};
+
+  % D0-D7 line: low, then hexagon "Data" pulse, then low
+  \draw[sig] (0,\yD) -- (3.4,\yD);
+  \draw[sig] (3.4,\yD) -- (3.8,\yD+0.4) -- (7.6,\yD+0.4) -- (8.0,\yD) -- (7.6,\yD-0.4) -- (3.8,\yD-0.4) -- cycle;
+  \node[font=\small] at (5.7,\yD) {Data};
+  \draw[sig] (8.0,\yD) -- (11,\yD);
+  % tD arrow
+  \draw[<->, thin] (3.4,\yD-0.9) -- (4.6,\yD-0.9);
+  \node[font=\scriptsize] at (4.0,\yD-1.25) {$t_D$};
+  \draw[dotted] (3.4,\yD-1.4) -- (3.4,\yE+0.55);
+  \draw[dotted] (4.6,\yD-1.4) -- (4.6,\yE+0.55);
+
+  % E line: low, high pulse, low
+  \draw[sig] (0,\yE) -- (3.4,\yE) -- (3.4,\yE+0.55) -- (7.6,\yE+0.55) -- (7.6,\yE) -- (11,\yE);
+  \draw[dotted] (7.6,\yE+0.9) -- (7.6,\yRW-0.55);
+
+  % R/W line: low pulse near start (setup), then returns; tAS / tAH markers
+  \draw[sig] (0,\yRW) -- (2.9,\yRW) -- (2.9,\yRW+0.5) -- (3.9,\yRW+0.5) -- (3.9,\yRW) -- (7.1,\yRW) -- (7.1,\yRW+0.5) -- (8.1,\yRW+0.5) -- (8.1,\yRW) -- (11,\yRW);
+  \draw[<->, thin] (2.9,\yRW-0.35) -- (3.4,\yRW-0.35);
+  \node[font=\scriptsize] at (3.15,\yRW-0.62) {$t_{AS}$};
+  \draw[<->, thin] (7.6,\yRW-0.35) -- (8.1,\yRW-0.35);
+  \node[font=\scriptsize] at (7.85,\yRW-0.62) {$t_{AH}$};
+
+  % RS line: low, then step high covering the enable pulse, then low
+  \draw[sig] (0,\yRS) -- (3.4,\yRS) -- (3.4,\yRS+0.55) -- (7.6,\yRS+0.55) -- (7.6,\yRS) -- (11,\yRS);
+\end{tikzpicture}
+}
+
+\vspace{4pt}
+\footnotesize
+$t_D$ = data output delay time \\
+$t_{AS}$ = setup time prior to E (going high) for RS and R/$\overline{\text{W}}$, minimum 140\,ns \\
+$t_{AH}$ = hold time after E falls, for RS and R/$\overline{\text{W}}$, minimum 10\,ns \\
+\textit{Note: a read operation requires an L-to-H pulse on the E pin.}
+\normalsize
+\captionof{figure}{LCD write-cycle timing diagram.}
+\label{fig:exp5-timing}
+\end{boxedfigure}
+
+\begin{boxedtable}
+\centering
+\begin{tabular}{cl}
+\toprule
+Code (hex) & Command to LCD instruction register \\
+\midrule
+1  & Clear display screen \\
+2  & Return home \\
+4  & Decrement cursor (shift cursor left) \\
+6  & Increment cursor (shift cursor right) \\
+5  & Shift display right \\
+7  & Shift display left \\
+8  & Display off, cursor off \\
+A  & Display off, cursor on \\
+C  & Display on, cursor off \\
+E  & Display on, cursor blinking \\
+F  & Display on, cursor blinking \\
+10 & Shift cursor position left \\
+14 & Shift cursor position right \\
+18 & Shift entire display left \\
+1C & Shift entire display right \\
+80 & Force cursor to beginning of line 1 \\
+C0 & Force cursor to beginning of line 2 \\
+38 & 2 lines, $5\times7$ dot matrix \\
+\bottomrule
+\end{tabular}
+\captionof{table}{LCD command codes.}
+\label{tab:exp5-commands}
+\end{boxedtable}
+
+\begin{procedure}
+
+\textbf{Activity 1 --- Displaying lookup-table data on the LCD}\vspace{2pt}
+
+\textit{Objective: display fixed text, stored in a lookup table, on the LCD.}
+
+\begin{enumerate}
+  \item Open Quartus II.
+  \item Write the Verilog modules given in Listing~\ref{lst:exp5-lcdt} (\texttt{lcd\_t}) and Listing~\ref{lst:exp5-lcdctrl} (\texttt{LCD\_Controller}) to send commands and data to the LCD.
+  \item \texttt{lcd\_t} uses a lookup table (LUT) to store the sequence of commands and characters to send to the LCD.
+  \item Create a reusable symbol for each module, as in Experiment 3.
+  \item Draw the schematic in Figure~\ref{fig:exp5-schematic}, connecting \texttt{lcd\_t}'s outputs to \texttt{LCD\_Controller}'s inputs, and \texttt{LCD\_Controller}'s outputs to the LCD interface pins.
+  \item Assign pin numbers as shown in Table~\ref{tab:exp5-pinassign}.
+  \item Download the program to the Altera DE2 board.
+  \item Discuss the result based on your observation of the LCD.
+\end{enumerate}
+
+\begin{boxedfigure}
+\centering
+\resizebox{0.98\linewidth}{!}{%
+\begin{tikzpicture}[node distance=14mm and 18mm]
+  \node[io] (clk) {CLK};
+  \node[io, below=6mm of clk] (rst) {RST};
+  \node[block, right=of clk, minimum width=3cm, minimum height=2.6cm, yshift=-8mm] (lcdt) {lcd\_t\\[2pt]\scriptsize CLK, RST $\to$\\ mLCD\_DATA,\\ mLCD\_RS, mLCD\_Start};
+  \node[block, right=42mm of lcdt, minimum width=3.2cm, minimum height=2.8cm] (lcdc) {LCD\_Controller\\[2pt]\scriptsize iDATA, iRS, iStart $\to$\\ LCD\_DATA, LCD\_RW,\\ LCD\_EN, LCD\_RS, LCD\_POW};
+  \node[io, right=of lcdc, yshift=10mm] (lcddata) {LCD\_DATA[7:0]};
+  \node[io, right=of lcdc, yshift=2mm] (lcden) {LCD\_EN};
+  \node[io, right=of lcdc, yshift=-6mm] (lcdrs) {LCD\_RS};
+  \node[io, right=of lcdc, yshift=-14mm] (lcdpow) {LCD\_POW};
+
+  \draw[arr] (clk) -- (lcdt);
+  \draw[arr] (rst) -- (lcdt);
+  \draw[arr] (lcdt) -- (lcdc) node[midway, above, font=\tiny] {mLCD\_DATA, mLCD\_RS, mLCD\_Start};
+  \draw[arr] (lcdc.east) ++(0,10mm) -- (lcddata);
+  \draw[arr] (lcdc.east) ++(0,2mm) -- (lcden);
+  \draw[arr] (lcdc.east) ++(0,-6mm) -- (lcdrs);
+  \draw[arr] (lcdc.east) ++(0,-14mm) -- (lcdpow);
+\end{tikzpicture}
+}
+\captionof{figure}{Schematic diagram for the LCD interface: \texttt{lcd\_t} (lookup-table sequencer) feeding \texttt{LCD\_Controller} (bus-timing controller).}
+\label{fig:exp5-schematic}
+\end{boxedfigure}
+
+\begin{boxedtable}
+\centering
+\begin{tabular}{clcl}
+\toprule
+\# & Node name & Direction & Location \\
+\midrule
+1  & LCD\_DATA[7] & Output & PIN\_H3 \\
+2  & LCD\_DATA[6] & Output & PIN\_H4 \\
+3  & LCD\_DATA[5] & Output & PIN\_J3 \\
+4  & LCD\_DATA[4] & Output & PIN\_J4 \\
+5  & LCD\_DATA[3] & Output & PIN\_H2 \\
+6  & LCD\_DATA[2] & Output & PIN\_H1 \\
+7  & LCD\_DATA[1] & Output & PIN\_J2 \\
+8  & LCD\_DATA[0] & Output & PIN\_J1 \\
+9  & LCD\_EN      & Output & PIN\_K3 \\
+10 & LCD\_POW     & Output & PIN\_L4 \\
+11 & LCD\_RS      & Output & PIN\_K1 \\
+12 & LCD\_RW      & Output & PIN\_K4 \\
+13 & CLK          & Input  & PIN\_N2 \\
+14 & RST          & Input  & PIN\_G26 \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Pin assignment for the LCD interface.}
+\label{tab:exp5-pinassign}
+\end{boxedtable}
+
+\begin{codepanel}{lcd\_t.v --- Appendix 1: lookup-table sequencer}
+\begin{minted}{verilog}
+module lcd_t (
+    // Host side
+    CLK, RST, mLCD_Done,
+    mLCD_DATA, mLCD_RS, mLCD_Start
+);
+  // Host side
+  input  CLK, RST, mLCD_Done;
+  // Internal wires/registers
+  output [7:0] mLCD_DATA;
+  output mLCD_RS, mLCD_Start;
+  reg  [5:0] LUT_INDEX;
+  reg  [8:0] LUT_DATA;
+  reg  [5:0] mLCD_ST;
+  reg  [17:0] mDLY;
+  reg  mLCD_Start;
+  reg  [7:0] mLCD_DATA;
+  reg  mLCD_RS;
+  wire mLCD_Done;
+
+  parameter LCD_INITIAL = 0;
+  parameter LCD_LINE1   = 5;
+  parameter LCD_CH_LINE = LCD_LINE1 + 16;
+  parameter LCD_LINE2   = LCD_LINE1 + 16 + 1;
+  parameter LUT_SIZE    = LCD_LINE1 + 32 + 1;
+
+  // Sequencing state machine: send one LUT entry, wait for
+  // LCD_Controller to finish (mLCD_Done), pause, then advance.
+  always @(posedge CLK or negedge RST)
+  begin
+    if (!RST)
+    begin
+      LUT_INDEX  <= 0;
+      mLCD_ST    <= 0;
+      mDLY       <= 0;
+      mLCD_Start <= 0;
+      mLCD_DATA  <= 0;
+      mLCD_RS    <= 0;
+    end
+    else if (LUT_INDEX < LUT_SIZE)
+    begin
+      case (mLCD_ST)
+        0: begin
+          mLCD_DATA  <= LUT_DATA[7:0];
+          mLCD_RS    <= LUT_DATA[8];
+          mLCD_Start <= 1;
+          mLCD_ST    <= 1;
+        end
+        1: if (mLCD_Done) begin
+          mLCD_Start <= 0;
+          mLCD_ST    <= 2;
+        end
+        2: if (mDLY < 18'h3FFFE)
+             mDLY <= mDLY + 1;
+           else begin
+             mDLY    <= 0;
+             mLCD_ST <= 3;
+           end
+        3: begin
+          LUT_INDEX <= LUT_INDEX + 1;
+          mLCD_ST   <= 0;
+        end
+      endcase
+    end
+  end
+
+  // Lookup table: LCD_INITIAL entries are setup commands
+  // (function set, display on, clear, entry mode, home);
+  // LCD_LINE1 / LCD_LINE2 entries are ASCII characters for
+  // each line, with the MSB (bit 8) marking RS = 1 (data).
+  always
+  begin
+    case (LUT_INDEX)
+      LCD_INITIAL+0: LUT_DATA <= 9'h038;  // function set
+      LCD_INITIAL+1: LUT_DATA <= 9'h00C;  // display on
+      LCD_INITIAL+2: LUT_DATA <= 9'h001;  // clear display
+      LCD_INITIAL+3: LUT_DATA <= 9'h006;  // entry mode set
+      LCD_INITIAL+4: LUT_DATA <= 9'h080;  // cursor home, line 1
+      // Line 1: "Welcome to the "
+      LCD_LINE1+0:  LUT_DATA <= 9'h120;
+      LCD_LINE1+1:  LUT_DATA <= 9'h157;
+      LCD_LINE1+2:  LUT_DATA <= 9'h165;
+      // ... remaining characters follow the same pattern ...
+      LCD_LINE1+15: LUT_DATA <= 9'h120;
+      LCD_CH_LINE:  LUT_DATA <= 9'h0C0;   // move to line 2
+      // Line 2: "    EEM 441 Lab "
+      LCD_LINE2+0:  LUT_DATA <= 9'h120;
+      LCD_LINE2+4:  LUT_DATA <= 9'h145;
+      // ... remaining characters follow the same pattern ...
+      LCD_LINE2+15: LUT_DATA <= 9'h120;
+      default:      LUT_DATA <= 9'h000;
+    endcase
+  end
+endmodule
+\end{minted}
+\end{codepanel}
+\vspace{-4pt}
+\begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp5-lcdt}: \texttt{lcd\_t.v} --- lookup-table LCD message sequencer.\end{center}
+
+\begin{codepanel}{LCD\_Controller.v --- Appendix 2: bus-timing controller}
+\begin{minted}{verilog}
+module LCD_Controller (
+    // Host side
+    iDATA, iRS, iStart, oDone, CLK, RST,
+    // LCD interface
+    LCD_DATA, LCD_RW, LCD_EN, LCD_RS, LCD_POW
+);
+  parameter CLK_Divide = 16;
+
+  // Host side
+  input  [7:0] iDATA;
+  input  iRS, iStart;
+  input  CLK, RST;
+  output reg oDone;
+
+  // LCD interface
+  output [7:0] LCD_DATA;
+  output reg LCD_EN;
+  output LCD_RW;
+  output LCD_RS;
+  output LCD_POW;
+
+  // Internal registers
+  reg [4:0] Cont;
+  reg [1:0] ST;
+  reg preStart, mStart;
+
+  // Write-only interface: bypass iRS straight to LCD_RS
+  assign LCD_DATA = iDATA;
+  assign LCD_RW   = 1'b0;
+  assign LCD_RS   = iRS;
+  assign LCD_POW  = 1'b1;
+
+  always @(posedge CLK or negedge RST)
+  begin
+    if (!RST)
+    begin
+      oDone    <= 1'b0;
+      LCD_EN   <= 1'b0;
+      preStart <= 1'b0;
+      mStart   <= 1'b0;
+      Cont     <= 0;
+      ST       <= 0;
+    end
+    else
+    begin
+      // Rising-edge detect on iStart
+      preStart <= iStart;
+      if ({preStart, iStart} == 2'b01)
+      begin
+        mStart <= 1'b1;
+        oDone  <= 1'b0;
+      end
+
+      if (mStart)
+      begin
+        case (ST)
+          0: ST <= 1;                 // wait setup
+          1: begin
+            LCD_EN <= 1'b1;           // raise enable
+            ST     <= 2;
+          end
+          2: if (Cont < CLK_Divide)   // hold enable pulse width
+               Cont <= Cont + 1;
+             else
+               ST <= 3;
+          3: begin
+            LCD_EN <= 1'b0;           // drop enable: latches data
+            mStart <= 1'b0;
+            oDone  <= 1'b1;
+            Cont   <= 0;
+            ST     <= 0;
+          end
+        endcase
+      end
+    end
+  end
+endmodule
+\end{minted}
+\end{codepanel}
+\vspace{-4pt}
+\begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp5-lcdctrl}: \texttt{LCD\_Controller.v} --- generates the LCD enable-pulse timing.\end{center}
+
+\textbf{Activity 2 --- Displaying DIP switch input on the LCD}\vspace{2pt}
+
+\textit{Objective: display the live 8-bit DIP switch configuration on the LCD.}
+
+\begin{enumerate}
+  \item Write Verilog code that reads the 8-bit DIP switch configuration and displays it on the LCD (e.g.\ if switch 1 is turned on, the LCD should display \texttt{1} in the corresponding position).
+  \item Print and submit the Verilog code and simulation result.
+\end{enumerate}
+
+\end{procedure}

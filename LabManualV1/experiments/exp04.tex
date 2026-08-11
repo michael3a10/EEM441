@@ -1,7 +1,7 @@
 % ============================================================
 %  Experiment 4 --- Interfacing FPGA to DIP Switch and Seven Segment
 % ============================================================
-\experimentheader{4}{DIP Switch \& 7-Segment}{Interfacing FPGA to DIP Switch and Seven Segment}
+\experimentheader{4}{DIP Switch \& 7-Segment}{Interfacing FPGA to DIP Switch and Seven Segment}{FPGA Lab}
 
 \begin{objectives}
 \begin{enumerate}
@@ -40,8 +40,8 @@ Seven-segment displays are widely used to show numbers. The DE2 board provides e
   \item Discuss your result based on the observed LED output display.
 \end{enumerate}
 
-\begin{codepanel}{seven.v --- frequency divider}
-\begin{minted}{verilog}
+\begin{codepanel}{seven.v --- frequency divider}{verilogstyle}
+\begin{lstlisting}
 module seven(q, clk);
   output [15:0] q;
   input clk;
@@ -52,13 +52,13 @@ module seven(q, clk);
     q = (q + 1) % 65536;
   end
 endmodule
-\end{minted}
+\end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
 \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp4-seven}: \texttt{seven.v} --- 16-bit frequency divider.\end{center}
 
-\begin{codepanel}{led.v --- 4-bit counter}
-\begin{minted}{verilog}
+\begin{codepanel}{led.v --- 4-bit counter}{verilogstyle}
+\begin{lstlisting}
 module led(x, clk);
   input clk;
   output [3:0] x;
@@ -69,7 +69,7 @@ module led(x, clk);
     x = (x + 1) % 16;
   end
 endmodule
-\end{minted}
+\end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
 \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp4-led}: \texttt{led.v} --- 4-bit binary counter.\end{center}

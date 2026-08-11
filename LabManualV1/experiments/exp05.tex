@@ -1,7 +1,7 @@
 % ============================================================
 %  Experiment 5 --- Interfacing LCD to Altera DE2 Board
 % ============================================================
-\experimentheader{5}{LCD Interfacing}{Interfacing LCD to Altera DE2 Board}
+\experimentheader{5}{LCD Interfacing}{Interfacing LCD to Altera DE2 Board}{FPGA Lab}
 
 \begin{objectives}
 \begin{enumerate}
@@ -206,8 +206,8 @@ C0 & Force cursor to beginning of line 2 \\
 \label{tab:exp5-pinassign}
 \end{boxedtable}
 
-\begin{codepanel}{lcd\_t.v --- Appendix 1: lookup-table sequencer}
-\begin{minted}{verilog}
+\begin{codepanel}{lcd\_t.v --- Appendix 1: lookup-table sequencer}{verilogstyle}
+\begin{lstlisting}
 module lcd_t (
     // Host side
     CLK, RST, mLCD_Done,
@@ -301,13 +301,13 @@ module lcd_t (
     endcase
   end
 endmodule
-\end{minted}
+\end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
 \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp5-lcdt}: \texttt{lcd\_t.v} --- lookup-table LCD message sequencer.\end{center}
 
-\begin{codepanel}{LCD\_Controller.v --- Appendix 2: bus-timing controller}
-\begin{minted}{verilog}
+\begin{codepanel}{LCD\_Controller.v --- Appendix 2: bus-timing controller}{verilogstyle}
+\begin{lstlisting}
 module LCD_Controller (
     // Host side
     iDATA, iRS, iStart, oDone, CLK, RST,
@@ -385,7 +385,7 @@ module LCD_Controller (
     end
   end
 endmodule
-\end{minted}
+\end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
 \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp5-lcdctrl}: \texttt{LCD\_Controller.v} --- generates the LCD enable-pulse timing.\end{center}

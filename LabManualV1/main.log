@@ -1,19 +1,19 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  11 AUG 2026 08:31
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  11 AUG 2026 15:24
  restricted system commands enabled.
  file:line:error style messages enabled.
-**g:/Github/EEM441/LabManualV1/EEM441
-(g:/Github/EEM441/LabManualV1/EEM441.tex
+**c:/Users/micha/Documents/GitHub/EEM441/LabManualV1/main
+(c:/Users/micha/Documents/GitHub/EEM441/LabManualV1/main.tex
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-07-20>
 Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended 
 collection.
-luaotfload | conf : Root cache directory is "C:/Users/Farhan Aizuddin/AppData/Lo
-cal/MiKTeX/luatex-cache/generic/names".
+luaotfload | conf : Root cache directory is "C:/Users/micha/AppData/Local/MiKTeX
+/luatex-cache/generic/names".
 luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-res
-olved path "C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/luatex/lu
-aotfload/fontloader-2023-12-28.lua".
+olved path "C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/f
+ontloader-2023-12-28.lua".
 Lua-only attribute luaotfload@noligature = 1
 luaotfload | init : Context OpenType loader version 3.134
 Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
@@ -21,8 +21,8 @@ Inserting `luaotfload.node_processor' in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "C:/Users/Farhan Aizuddin/AppData/Lo
-cal/MiKTeX/luatex-cache/generic/names".
+luaotfload | conf : Root cache directory is "C:/Users/micha/AppData/Local/MiKTeX
+/luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
 Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
@@ -40,16 +40,13 @@ Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
-Inserting `tracingstacklevels' in `input_level_string'.
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/base/article
-.cls"
+Inserting `tracingstacklevels' in `input_level_string'. (C:/Users/micha/AppData
+/Local/Programs/MiKTeX/tex/latex/base/article.cls
 Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.
-clo"
-File: size11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
-luaotfload | db : Font names database loaded from C:/Users/Farhan Aizuddin/AppDa
-ta/Local/MiKTeX/luatex-cache/generic/names/luaotfload-names.luc.gz)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/base/size12.clo
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+luaotfload | db : Font names database loaded from C:/Users/micha/AppData/Local/M
+iKTeX/luatex-cache/generic/names/luaotfload-names.luc.gz)
 \c@part=\count274
 \c@section=\count275
 \c@subsection=\count276
@@ -61,17 +58,16 @@ ta/Local/MiKTeX/luatex-cache/generic/names/luaotfload-names.luc.gz)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen149
-) (./preamble.tex
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fon
-tspec.sty"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/x
-parse/xparse.sty"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/exp
-l3.sty"
+)
+(./preamble.tex
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.sty
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
+e.sty
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty
 Package: expl3 2026-07-20 L3 programming layer (loader) 
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3
-backend-luatex.def"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lua
+tex.def
 File: l3backend-luatex.def 2026-07-20 L3 backend support: PDF output (LuaTeX)
 \l__color_backend_stack_int=\count282
 Inserting `l3color' in `luaotfload.parse_color'.))
@@ -79,8 +75,8 @@ Package: xparse 2025-10-09 L3 Experimental document command parser
 )
 Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
 Lua module: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fon
-tspec-luatex.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec-luate
+x.sty
 Package: fontspec-luatex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaT
 eX
 \l__fontspec_script_int=\count283
@@ -97,32 +93,27 @@ eX
 \l__fontspec_tmpa_dim=\dimen150
 \l__fontspec_tmpb_dim=\dimen151
 \l__fontspec_tmpc_dim=\dimen152
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc
-.sty"
+ (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fon
-tspec.cfg")))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math
-/unicode-math.sty"
+) (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.cfg
+)))
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th.sty
 Package: unicode-math 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math
-/unicode-math-luatex.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-luatex.sty
 Package: unicode-math-luatex 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaL
 aTeX
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/l
-3keys2e/l3keys2e.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/l3keys2e/l3k
+eys2e.sty
 Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/base/fix-cm.
-sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/base/fix-cm.sty
 Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1enc.
-def"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 LaTeX Encoding Info:    Redeclaring text command \capitalcedilla (encoding TS1)
@@ -380,30 +371,24 @@ put line 193.
 LaTeX Encoding Info:    Redeclaring text symbol \textdiv (encoding TS1) on inpu
 t line 194.
 ))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsm
-ath.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2026/05/19 v2.18d AMS math features
 \@mathmargin=\skip51
 
 For additional information on amsmath, use the `?' option.
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amst
-ext.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsg
-en.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen153
 ))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsb
-sy.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen154
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amso
-pn.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count294
@@ -454,13 +439,12 @@ LaTeX Info: Redefining \Relbar on input line 970.
 LaTeX Info: Redefining \[ on input line 2965.
 LaTeX Info: Redefining \] on input line 2966.
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/lualatex/lualatex-
-math/lualatex-math.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/lualatex/lualatex-math/lualat
+ex-math.sty
 Package: lualatex-math 2022/01/01 v1.12 Patches for mathematics typesetting wit
 h LuaLaTeX
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/eto
-olbox.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count306
 )
@@ -471,8 +455,8 @@ th LuaLaTeX)
 \l__um_primecount_int=\count309
 \g__um_primekern_muskip=\muskip18
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math
-/unicode-math-table.tex")))
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-table.tex)))
 
 Package fontspec Info: 
 (fontspec)             Font family 'IBMPlexSans(0)' created for font
@@ -571,27 +555,27 @@ ript=latn;language=dflt;"
 ode;script=latn;language=dflt;"
 
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/jetbrainsmon
-o-otf/JetBrainsMono.fontspec")
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/jetbrainsmono-otf/JetBr
+ainsMono.fontspec)
 
 Package fontspec Info: 
-(fontspec)             JetBrainsMono-Regular scale = 0.9381771102530582.
-
-
-Package fontspec Info: 
-(fontspec)             JetBrainsMono-Regular scale = 0.9381771102530582.
+(fontspec)             JetBrainsMono-Regular scale = 0.93817898501638.
 
 
 Package fontspec Info: 
-(fontspec)             JetBrainsMono-Bold scale = 0.9381771102530582.
+(fontspec)             JetBrainsMono-Regular scale = 0.93817898501638.
 
 
 Package fontspec Info: 
-(fontspec)             JetBrainsMono-Italic scale = 0.9381771102530582.
+(fontspec)             JetBrainsMono-Bold scale = 0.93817898501638.
 
 
 Package fontspec Info: 
-(fontspec)             JetBrainsMono-BoldItalic scale = 0.9381771102530582.
+(fontspec)             JetBrainsMono-Italic scale = 0.93817898501638.
+
+
+Package fontspec Info: 
+(fontspec)             JetBrainsMono-BoldItalic scale = 0.93817898501638.
 
 
 Package fontspec Info: 
@@ -610,40 +594,40 @@ Space,Path
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.9381771102530582]"[fonts/JetBrainsMono/JetBrains
-Mono-Regular.ttf]:mode=node;script=latn;language=dflt;-calt;"
+(fontspec)             <->s*[0.93817898501638]"[fonts/JetBrainsMono/JetBrainsMo
+no-Regular.ttf]:mode=node;script=latn;language=dflt;-calt;"
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9381771102530582]"[fonts/JetBrainsMono/JetBrains
-Mono-Bold.ttf]:mode=node;script=latn;language=dflt;-calt;"
+(fontspec)             <->s*[0.93817898501638]"[fonts/JetBrainsMono/JetBrainsMo
+no-Bold.ttf]:mode=node;script=latn;language=dflt;-calt;"
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[0.9381771102530582]"[fonts/JetBrainsMono/JetBrains
-Mono-Italic.ttf]:mode=node;script=latn;language=dflt;-calt;"
+(fontspec)             <->s*[0.93817898501638]"[fonts/JetBrainsMono/JetBrainsMo
+no-Italic.ttf]:mode=node;script=latn;language=dflt;-calt;"
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.:
-(fontspec)             <->s*[0.9381771102530582]"[fonts/JetBrainsMono/JetBrains
-Mono-BoldItalic.ttf]:mode=node;script=latn;language=dflt;-calt;"
+(fontspec)             <->s*[0.93817898501638]"[fonts/JetBrainsMono/JetBrainsMo
+no-BoldItalic.ttf]:mode=node;script=latn;language=dflt;-calt;"
 
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/jetbrainsmon
-o-otf/JetBrainsMono.fontspec")
-
-Package fontspec Info: 
-(fontspec)             JetBrainsMono-Regular scale = 0.9381771102530582.
-
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/jetbrainsmono-otf/JetBr
+ainsMono.fontspec)
 
 Package fontspec Info: 
-(fontspec)             JetBrainsMono-Regular scale = 0.9381771102530582.
+(fontspec)             JetBrainsMono-Regular scale = 0.93817898501638.
 
 
 Package fontspec Info: 
-(fontspec)             JetBrainsMono-Bold scale = 0.9381771102530582.
+(fontspec)             JetBrainsMono-Regular scale = 0.93817898501638.
 
 
 Package fontspec Info: 
-(fontspec)             JetBrainsMono-Italic scale = 0.9381771102530582.
+(fontspec)             JetBrainsMono-Bold scale = 0.93817898501638.
 
 
 Package fontspec Info: 
-(fontspec)             JetBrainsMono-BoldItalic scale = 0.9381771102530582.
+(fontspec)             JetBrainsMono-Italic scale = 0.93817898501638.
+
+
+Package fontspec Info: 
+(fontspec)             JetBrainsMono-BoldItalic scale = 0.93817898501638.
 
 
 Package fontspec Info: 
@@ -660,17 +644,17 @@ Package fontspec Info:
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.9381771102530582]"[fonts/JetBrainsMono/JetBrains
-Mono-Regular.ttf]:mode=base;script=latn;language=dflt;-calt;"
+(fontspec)             <->s*[0.93817898501638]"[fonts/JetBrainsMono/JetBrainsMo
+no-Regular.ttf]:mode=base;script=latn;language=dflt;-calt;"
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9381771102530582]"[fonts/JetBrainsMono/JetBrains
-Mono-Bold.ttf]:mode=base;script=latn;language=dflt;-calt;"
+(fontspec)             <->s*[0.93817898501638]"[fonts/JetBrainsMono/JetBrainsMo
+no-Bold.ttf]:mode=base;script=latn;language=dflt;-calt;"
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[0.9381771102530582]"[fonts/JetBrainsMono/JetBrains
-Mono-Italic.ttf]:mode=base;script=latn;language=dflt;-calt;"
+(fontspec)             <->s*[0.93817898501638]"[fonts/JetBrainsMono/JetBrainsMo
+no-Italic.ttf]:mode=base;script=latn;language=dflt;-calt;"
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.:
-(fontspec)             <->s*[0.9381771102530582]"[fonts/JetBrainsMono/JetBrains
-Mono-BoldItalic.ttf]:mode=base;script=latn;language=dflt;-calt;"
+(fontspec)             <->s*[0.93817898501638]"[fonts/JetBrainsMono/JetBrainsMo
+no-BoldItalic.ttf]:mode=base;script=latn;language=dflt;-calt;"
 
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/cmtt/m/n --> TU/JetBrainsMono(1)/m/n on input line 
@@ -698,20 +682,20 @@ Package fontspec Info:
 (fontspec)             Font family 'STIXTwoMath-Regular(1)' created for font
 (fontspec)             'STIXTwoMath-Regular' with options
 (fontspec)             [Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCap
-sFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.84375-9.3075,Font=STI
-XTwoMath-Regular,Style=MathScript},{Size=-6.84375,Font=STIXTwoMath-Regular,Styl
-e=MathScriptScript}},RawFeature={mathfontdimen=xetex},Path={fonts/STIX2/},Exten
-sion={.ttf}].
+sFont={},Script=Math,SizeFeatures={{Size=10.2-},{Size=7.5-10.2,Font=STIXTwoMath
+-Regular,Style=MathScript},{Size=-7.5,Font=STIXTwoMath-Regular,Style=MathScript
+Script}},RawFeature={mathfontdimen=xetex},Path={fonts/STIX2/},Extension={.ttf}]
+.
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <9.3075->"[fonts/STIX2/STIXTwoMath-Regular.ttf]:mode=bas
-e;script=math;language=dflt;mathfontdimen=xetex;"<6.84375-9.3075>"[fonts/STIX2/
-STIXTwoMath-Regular.ttf]:mode=base;script=math;language=dflt;mathfontdimen=xete
-x;+ssty=0;"<-6.84375>"[fonts/STIX2/STIXTwoMath-Regular.ttf]:mode=base;script=ma
-th;language=dflt;mathfontdimen=xetex;+ssty=1;"
+(fontspec)             <10.2->"[fonts/STIX2/STIXTwoMath-Regular.ttf]:mode=base;
+script=math;language=dflt;mathfontdimen=xetex;"<7.5-10.2>"[fonts/STIX2/STIXTwoM
+ath-Regular.ttf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;+ssty=
+0;"<-7.5>"[fonts/STIX2/STIXTwoMath-Regular.ttf]:mode=base;script=math;language=
+dflt;mathfontdimen=xetex;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
 (Font)              `operators' in the math version `normal' on input line 48.
@@ -728,21 +712,21 @@ Package fontspec Info:
 (fontspec)             Font family 'STIXTwoMath-Regular(2)' created for font
 (fontspec)             'STIXTwoMath-Regular' with options
 (fontspec)             [Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCap
-sFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.84375-9.3075,Font=STI
-XTwoMath-Regular,Style=MathScript},{Size=-6.84375,Font=STIXTwoMath-Regular,Styl
-e=MathScriptScript}},RawFeature={mathfontdimen=xetex},Path={fonts/STIX2/},Exten
-sion={.ttf},RawFeature={mathfontdimen=tex2}].
+sFont={},Script=Math,SizeFeatures={{Size=10.2-},{Size=7.5-10.2,Font=STIXTwoMath
+-Regular,Style=MathScript},{Size=-7.5,Font=STIXTwoMath-Regular,Style=MathScript
+Script}},RawFeature={mathfontdimen=xetex},Path={fonts/STIX2/},Extension={.ttf},
+RawFeature={mathfontdimen=tex2}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <9.3075->"[fonts/STIX2/STIXTwoMath-Regular.ttf]:mode=bas
-e;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;"<6.84375-9.
-3075>"[fonts/STIX2/STIXTwoMath-Regular.ttf]:mode=base;script=math;language=dflt
-;mathfontdimen=xetex;mathfontdimen=tex2;+ssty=0;"<-6.84375>"[fonts/STIX2/STIXTw
-oMath-Regular.ttf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;math
-fontdimen=tex2;+ssty=1;"
+(fontspec)             <10.2->"[fonts/STIX2/STIXTwoMath-Regular.ttf]:mode=base;
+script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;"<7.5-10.2>"[f
+onts/STIX2/STIXTwoMath-Regular.ttf]:mode=base;script=math;language=dflt;mathfon
+tdimen=xetex;mathfontdimen=tex2;+ssty=0;"<-7.5>"[fonts/STIX2/STIXTwoMath-Regula
+r.ttf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=te
+x2;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
 (Font)              `symbols' in the math version `normal' on input line 48.
@@ -759,21 +743,21 @@ Package fontspec Info:
 (fontspec)             Font family 'STIXTwoMath-Regular(3)' created for font
 (fontspec)             'STIXTwoMath-Regular' with options
 (fontspec)             [Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCap
-sFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.84375-9.3075,Font=STI
-XTwoMath-Regular,Style=MathScript},{Size=-6.84375,Font=STIXTwoMath-Regular,Styl
-e=MathScriptScript}},RawFeature={mathfontdimen=xetex},Path={fonts/STIX2/},Exten
-sion={.ttf},RawFeature={mathfontdimen=tex3}].
+sFont={},Script=Math,SizeFeatures={{Size=10.2-},{Size=7.5-10.2,Font=STIXTwoMath
+-Regular,Style=MathScript},{Size=-7.5,Font=STIXTwoMath-Regular,Style=MathScript
+Script}},RawFeature={mathfontdimen=xetex},Path={fonts/STIX2/},Extension={.ttf},
+RawFeature={mathfontdimen=tex3}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <9.3075->"[fonts/STIX2/STIXTwoMath-Regular.ttf]:mode=bas
-e;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;"<6.84375-9.
-3075>"[fonts/STIX2/STIXTwoMath-Regular.ttf]:mode=base;script=math;language=dflt
-;mathfontdimen=xetex;mathfontdimen=tex3;+ssty=0;"<-6.84375>"[fonts/STIX2/STIXTw
-oMath-Regular.ttf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;math
-fontdimen=tex3;+ssty=1;"
+(fontspec)             <10.2->"[fonts/STIX2/STIXTwoMath-Regular.ttf]:mode=base;
+script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;"<7.5-10.2>"[f
+onts/STIX2/STIXTwoMath-Regular.ttf]:mode=base;script=math;language=dflt;mathfon
+tdimen=xetex;mathfontdimen=tex3;+ssty=0;"<-7.5>"[fonts/STIX2/STIXTwoMath-Regula
+r.ttf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=te
+x3;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 4
@@ -788,22 +772,18 @@ LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/cmex/m/n --> TU/STIXTwoMath-Regular(3)/b/n on input
  line 48.
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolo
-r.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg
-/color.cfg"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: luatex.def on input line 274.
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def
-/luatex.def"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
 File: luatex.def 2025/09/29 v1.2f Graphics/color driver for luatex
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/graphics/mat
-hcolor.ltx")
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -813,22 +793,16 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geo
-metry.sty"
+) (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
 Package: geometry 2026/03/07 v6.0 Page Geometry
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/graphics/key
-val.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty
 Package: keyval 2026-05-17 v1.15 key=value parser (DPC)
 \KV@toks@=\toks22
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvt
-ex.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifte
-x.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
 \Gm@cnth=\count310
@@ -844,10 +818,7 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layoutvoffset=\dimen169
 \Gm@dimlist=\toks23
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geo
-metry.cfg"))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fan
-cyhdr.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg)) (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 
 \f@nch@headwidth=\skip54
@@ -865,9 +836,7 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthC=\skip66
 \f@nch@widthR=\skip67
 \@temptokenb=\toks24
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/tit
-lesec.sty"
+) (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box55
 \beforetitleunit=\skip68
@@ -878,9 +847,7 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \titlewidth=\dimen172
 \titlewidthlast=\dimen173
 \titlewidthfirst=\dimen174
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enu
-mitem.sty"
+) (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip70
 \enit@outerparindent=\dimen175
@@ -888,9 +855,7 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@inbox=\box56
 \enit@count@id=\count313
 \enitdp@description=\count314
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.
-sty"
+) (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty
 Package: array 2026/02/24 v2.7b Tabular extension package (FMi)
 \col@sep=\dimen176
 \ar@mcellbox=\box57
@@ -900,8 +865,7 @@ Package: array 2026/02/24 v2.7b Tabular extension package (FMi)
 \backup@length=\skip72
 \ar@cellbox=\box58
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/boo
-ktabs.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen178
 \lightrulewidth=\dimen179
@@ -921,8 +885,7 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count318
 \@thisrulewidth=\dimen190
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tools/longta
-ble.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty
 Package: longtable 2026-01-28 v4.27 Multi-page Table package (DPC)
 \LTleft=\skip73
 \LTright=\skip74
@@ -941,20 +904,17 @@ Package: longtable 2026-01-28 v4.27 Multi-page Table package (DPC)
 \c@LT@chunks=\count323
 \LT@p@ftn=\toks28
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/multirow/mul
-tirow.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/multirow/multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip77
 \multirow@cntb=\count324
 \multirow@dima=\skip78
 \bigstrutjot=\dimen192
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/caption/capt
-ion.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/caption/capt
-ion3.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@tempdima=\dimen193
 \captionmargin=\dimen194
@@ -970,37 +930,33 @@ Package caption Info: Standard document class detected.
 \c@continuedfloat=\count326
 Package caption Info: longtable package is loaded.
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/caption/ltca
-ption.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
-))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyp
-erref.sty"
+)) (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyperref.st
+y
 Package: hyperref 2026-06-17 v7.01r Hypertext links for LaTeX
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/kvsetkeys/kv
-setkeys.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/kvdefineke
-ys/kvdefinekeys.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/kvdefinekeys/kvdefine
+keys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pdfescape/
-pdfescape.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pdfescape/pdfescape.s
+ty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/ltxcmds/lt
-xcmds.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds
-/pdftexcmds.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds
+.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/infwarerr/
-infwarerr.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/infwarerr/infwarerr.s
+ty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -1008,49 +964,39 @@ Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 \pdftexcmds@toks=\toks29
 ))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hyco
-lor.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nam
-eref.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nameref.sty
 Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/refcount/ref
-count.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/gettitlest
-ring/gettitlestring.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/gettitlestring/gettit
+lestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kv
-options.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count327
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/stringenc/
-stringenc.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/stringenc/stringenc.s
+ty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
 \@linkdim=\dimen257
 \Hy@linkcounter=\count328
 \Hy@pagecounter=\count329
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1
-enc.def"
+ (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2026-06-17 v7.01r Hyperref: PDFDocEncoding definition (HO)
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/intcalc/in
-tcalc.sty"
+) (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count330
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pue
-nc.def"
+ (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/puenc.def
 File: puenc.def 2026-06-17 v7.01r Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 4070.
@@ -1063,19 +1009,18 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4466.
 \c@Hy@tempcnt=\count331
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty
 \Urlmuskip=\muskip19
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4805.
 \XeTeXLinkMargin=\dimen258
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bit
-set.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc
-/bigintcalc.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc
+.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
@@ -1095,18 +1040,17 @@ Package hyperref Info: PDF/A mode OFF on input line 6121.
 )
 Package hyperref Info: Driver (autodetected): hluatex.
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hlu
-atex.def"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hluatex.def
 File: hluatex.def 2026-06-17 v7.01r Hyperref driver for luaTeX
 \Fld@listcount=\count336
 \c@bookmark@seq@number=\count337
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/rerunfileche
-ck/rerunfilecheck.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfil
+echeck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/uniquecoun
-ter/uniquecounter.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/uniquecounter/uniquec
+ounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
@@ -1114,20 +1058,17 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip79
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/graphics/gra
-phicx.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.sty
 Package: graphicx 2026-05-17 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/graphics/gra
-phics.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
 Package: graphics 2026-05-17 v1.4h Standard LaTeX Graphics (DPC,SPQR)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/graphics/tri
-g.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg
-/graphics.cfg"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.c
+fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: luatex.def on input line 106.
@@ -1135,45 +1076,43 @@ Package graphics Info: Driver file: luatex.def on input line 106.
 \Gin@req@height=\dimen261
 \Gin@req@width=\dimen262
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontend
-layer/tikz.sty"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclay
-er/pgf.sty"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilitie
-s/pgfrcs.sty"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilit
-ies/pgfutil-common.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.
+sty
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.st
+y
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-common.tex
 \pgfutil@everybye=\toks30
 \pgfutil@tempdima=\dimen263
 \pgfutil@tempdimb=\dimen264
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilit
-ies/pgfutil-latex.def"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-latex.def
 \pgfutil@abb=\box64
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilit
-ies/pgfrcs.code.tex"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.re
-vision.tex")
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.
+code.tex
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2026-08-01 v3.1.12 (3.1.12)
 ))
 Package: pgf 2026-08-01 v3.1.12 (3.1.12)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclay
-er/pgfcore.sty"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemla
-yer/pgfsys.sty"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/system
-layer/pgfsys.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgfcore.
+sty
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemlayer/pgfsys.
+sty
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s.code.tex
 Package: pgfsys 2026-08-01 v3.1.12 (3.1.12)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilit
-ies/pgfkeys.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex
 \pgfkeys@pathtoks=\toks31
 \pgfkeys@temptoks=\toks32
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilit
-ies/pgfkeyslibraryfiltered.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+libraryfiltered.code.tex
 \pgfkeys@tmptoks=\toks33
 ))
 \pgf@x=\dimen265
@@ -1197,40 +1136,40 @@ ies/pgfkeyslibraryfiltered.code.tex"
 \t@pgf@tokc=\toks36
 \pgf@sys@id@count=\count342
 Lua function pgfsys@strcmp = 31
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/system
-layer/pgf.cfg"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.c
+fg
 File: pgf.cfg 2026-08-01 v3.1.12 (3.1.12)
 )
 Driver file for pgf: pgfsys-luatex.def
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/system
-layer/pgfsys-luatex.def"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-luatex.def
 File: pgfsys-luatex.def 2026-08-01 v3.1.12 (3.1.12)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/system
-layer/pgfsys-common-pdf.def"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-common-pdf.def
 File: pgfsys-common-pdf.def 2026-08-01 v3.1.12 (3.1.12)
 )))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/system
-layer/pgfsyssoftpath.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+ssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfsyssoftpath@smallbuffer@items=\count343
 \pgfsyssoftpath@bigbuffer@items=\count344
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/system
-layer/pgfsysprotocol.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+sprotocol.code.tex
 File: pgfsysprotocol.code.tex 2026-08-01 v3.1.12 (3.1.12)
 ))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcore.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+e.code.tex
 Package: pgfcore 2026-08-01 v3.1.12 (3.1.12)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmath.code.tex"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathutil.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathparser.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathutil.
+code.tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathparse
+r.code.tex
 \pgfmath@dimen=\dimen275
 \pgfmath@count=\count345
 \pgfmath@box=\box65
@@ -1238,34 +1177,34 @@ gfmathparser.code.tex"
 \pgfmath@stack@operand=\toks38
 \pgfmath@stack@operation=\toks39
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathfunctions.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathfunctions.basic.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathfunctions.trigonometric.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathfunctions.random.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathfunctions.comparison.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathfunctions.base.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathfunctions.round.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathfunctions.misc.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathfunctions.integerarithmetics.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathcalc.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmathfloat.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.code.tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.basic.code.tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.trigonometric.code.tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.random.code.tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.comparison.code.tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.base.code.tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.round.code.tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.misc.code.tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathcalc.
+code.tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfloat
+.code.tex
 \c@pgfmathroundto@lastzeros=\count346
 ))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfint.code.tex")
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcorepoints.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfint.code.
+tex)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epoints.code.tex
 File: pgfcorepoints.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@picminx=\dimen276
 \pgf@picmaxx=\dimen277
@@ -1282,130 +1221,129 @@ File: pgfcorepoints.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@zx=\dimen288
 \pgf@zy=\dimen289
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcorepathconstruct.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@path@lastx=\dimen290
 \pgf@path@lasty=\dimen291
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcorepathusage.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathusage.code.tex
 File: pgfcorepathusage.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@shorten@end@additional=\dimen292
 \pgf@shorten@start@additional=\dimen293
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcorescopes.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+escopes.code.tex
 File: pgfcorescopes.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfpic=\box66
 \pgf@hbox=\box67
 \pgf@layerbox@main=\box68
 \pgf@picture@serial@count=\count347
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcoregraphicstate.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+egraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgflinewidth=\dimen294
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcoretransformations.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransformations.code.tex
 File: pgfcoretransformations.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@pt@x=\dimen295
 \pgf@pt@y=\dimen296
 \pgf@pt@temp=\dimen297
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcorequick.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+equick.code.tex
 File: pgfcorequick.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcoreobjects.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eobjects.code.tex
 File: pgfcoreobjects.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcorepathprocessing.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcorearrows.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+earrows.code.tex
 File: pgfcorearrows.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfarrowsep=\dimen298
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcoreshade.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eshade.code.tex
 File: pgfcoreshade.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@max=\dimen299
 \pgf@sys@shading@range@num=\count348
 \pgf@shadingcount=\count349
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcoreimage.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eimage.code.tex
 File: pgfcoreimage.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcoreexternal.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eexternal.code.tex
 File: pgfcoreexternal.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfexternal@startupbox=\box69
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcorelayers.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+elayers.code.tex
 File: pgfcorelayers.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcoretransparency.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransparency.code.tex
 File: pgfcoretransparency.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcorepatterns.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epatterns.code.tex
 File: pgfcorepatterns.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basicl
-ayer/pgfcorerdf.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+erdf.code.tex
 File: pgfcorerdf.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/module
-s/pgfmoduleshapes.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+shapes.code.tex
 File: pgfmoduleshapes.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfnodeparttextbox=\box70
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/module
-s/pgfmoduleplot.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+plot.code.tex
 File: pgfmoduleplot.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatib
-ility/pgfcomp-version-0-65.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-0-65.sty
 Package: pgfcomp-version-0-65 2026-08-01 v3.1.12 (3.1.12)
 \pgf@nodesepstart=\dimen300
 \pgf@nodesepend=\dimen301
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatib
-ility/pgfcomp-version-1-18.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-1-18.sty
 Package: pgfcomp-version-1-18 2026-08-01 v3.1.12 (3.1.12)
 ))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilitie
-s/pgffor.sty"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilitie
-s/pgfkeys.sty"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilit
-ies/pgfkeys.code.tex"))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgf
-math.sty"
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/p
-gfmath.code.tex"))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilit
-ies/pgffor.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.st
+y
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.s
+ty
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex))
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex))
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.
+code.tex
 Package: pgffor 2026-08-01 v3.1.12 (3.1.12)
 \pgffor@iter=\dimen302
 \pgffor@skip=\dimen303
 \pgffor@stack=\toks40
 \pgffor@toks=\toks41
 ))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/fronte
-ndlayer/tikz/tikz.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/tikz.code.tex
 Package: tikz 2026-08-01 v3.1.12 (3.1.12)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/librar
-ies/pgflibraryplothandlers.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@plot@mark@count=\count350
 \pgfplotmarksize=\dimen304
@@ -1427,8 +1365,8 @@ File: pgflibraryplothandlers.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \tikznumberofcurrentchild=\count353
 \tikz@fig@count=\count354
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/module
-s/pgfmodulematrix.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+matrix.code.tex
 File: pgfmodulematrix.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfmatrixcurrentrow=\count355
 \pgfmatrixcurrentcolumn=\count356
@@ -1436,338 +1374,213 @@ File: pgfmodulematrix.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
 \tikz@expandcount=\count358
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/fronte
-ndlayer/tikz/libraries/tikzlibrarytopaths.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/fronte
-ndlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibraryshapes.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2026-08-01 v3.1.12 (3.1.12)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/librar
-ies/shapes/pgflibraryshapes.geometric.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/shapes/
+pgflibraryshapes.geometric.code.tex
 File: pgflibraryshapes.geometric.code.tex 2026-08-01 v3.1.12 (3.1.12)
 ))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/librar
-ies/pgflibraryarrows.meta.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryarrows.meta.code.tex
 File: pgflibraryarrows.meta.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfarrowinset=\dimen313
 \pgfarrowlength=\dimen314
 \pgfarrowwidth=\dimen315
 \pgfarrowlinewidth=\dimen316
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/fronte
-ndlayer/tikz/libraries/tikzlibrarypositioning.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/fronte
-ndlayer/tikz/libraries/tikzlibrarycalc.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/fronte
-ndlayer/tikz/libraries/tikzlibraryfit.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibraryfit.code.tex
 File: tikzlibraryfit.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/fronte
-ndlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarybackgrounds.code.tex
 File: tikzlibrarybackgrounds.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@layerbox@background=\box75
 \pgf@layerboxsaved@background=\box76
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/minted/minte
-d.sty"
-Package: minted 2026/03/03 v3.8.0 Yet another Pygments shim for LaTeX
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/listings/listings.sty
+\lst@mode=\count359
+\lst@gtempboxa=\box77
+\lst@token=\toks42
+\lst@length=\count360
+\lst@currlwidth=\dimen317
+\lst@column=\count361
+\lst@pos=\count362
+\lst@lostspace=\dimen318
+\lst@width=\dimen319
+\lst@newlines=\count363
+\lst@lineno=\count364
+\lst@maxwidth=\dimen320
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/catchfile/
-catchfile.sty"
-Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/etexcmds/e
-texcmds.sty"
-Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
-))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/fvextra/fvex
-tra.sty"
-Package: fvextra 2026/02/25 v1.14.0 fvextra - extensions and patches for fancyv
-rb
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/fancyvrb/fan
-cyvrb.sty"
-Package: fancyvrb 2026/04/16 4.6a verbatim text (tvz,hv)
-\FV@CodeLineNo=\count359
-\FV@InFile=\read3
-\FV@TabBox=\box77
-\c@FancyVerbLine=\count360
-\FV@StepNumber=\count361
-\FV@OutFile=\write4
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/upquote/upqu
-ote.sty"
-Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
-tim
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/base/textcom
-p.sty"
-Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
-))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/lineno/linen
-o.sty"
-Package: lineno 2026/03/08 line numbers on paragraphs v5.9
-\linenopenalty=\count362
-\output=\toks42
-\linenoprevgraf=\count363
-\linenumbersep=\dimen317
-\linenumberwidth=\dimen318
-\c@linenumber=\count364
-\c@pagewiselinenumber=\count365
-\c@LN@truepage=\count366
-\c@internallinenumber=\count367
-\c@internallinenumbers=\count368
-\quotelinenumbersep=\dimen319
-\bframerule=\dimen320
-\bframesep=\dimen321
-\bframebox=\box78
-\@LN@amsmath@ams@eqpen=\count369
-)
-\c@FancyVerbWriteLine=\count370
-\c@FancyVerbBufferLine=\count371
-\c@FV@TrueTabGroupLevel=\count372
-\c@FV@TrueTabCounter=\count373
-\FV@TabBox@Group=\box79
-\FV@bgcolorstructbox=\box80
-\FV@TmpLength=\skip80
-\c@FV@HighlightLinesStart=\count374
-\c@FV@HighlightLinesStop=\count375
-\FV@LoopCount=\count376
-\FV@NCharsBox=\box81
-\FV@BreakIndent=\dimen322
-\FV@BreakIndentNChars=\count377
-\FV@BreakSymbolSepLeft=\dimen323
-\FV@BreakSymbolSepLeftNChars=\count378
-\FV@BreakSymbolSepRight=\dimen324
-\FV@BreakSymbolSepRightNChars=\count379
-\FV@BreakSymbolIndentLeft=\dimen325
-\FV@BreakSymbolIndentLeftNChars=\count380
-\FV@BreakSymbolIndentRight=\dimen326
-\FV@BreakSymbolIndentRightNChars=\count381
-\c@FancyVerbLineBreakLast=\count382
-\FV@LineBox=\box82
-\FV@LineIndentBox=\box83
-\c@FV@BreakBufferDepth=\count383
-\FV@LineWidth=\dimen327
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/latex2pydata
-/latex2pydata.sty"
-Package: latex2pydata 2026/02/25 v0.7.0 latex2pydata - write data to file in Py
-thon literal format
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pgfopts/pgfo
-pts.sty"
-Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
-\pgfopts@list@add@a@toks=\toks43
-\pgfopts@list@add@b@toks=\toks44
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tools/shelle
-sc.sty"
-Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
-Package shellesc Info: Restricted shell escape enabled on input line 77.
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/float/float.
-sty"
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count384
-\float@exts=\toks45
-\float@box=\box84
-\@float@everytoks=\toks46
-\@floatcapt=\box85
-)
-\c@minted@FancyVerbLineTemp=\count385
-\@float@every@listing=\toks47
-\c@listing=\count386
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-olorbox.sty"
-Package: tcolorbox 2026/05/28 version 6.10.0 text color boxes
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tools/verbat
-im.sty"
-Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks48
-\verbatim@line=\toks49
-\verbatim@in@stream=\read4
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/environ/envi
-ron.sty"
-Package: environ 2014/05/04 v0.3 A new way to define environments
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/trimspaces/t
-rimspaces.sty"
-Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))
-\tcb@titlebox=\box86
-\tcb@upperbox=\box87
-\tcb@lowerbox=\box88
-\tcb@phantombox=\box89
-\c@tcbbreakpart=\count387
-\c@tcblayer=\count388
-\c@tcolorbox@number=\count389
-\l__tcobox_tmpa_box=\box90
-\l__tcobox_tmpa_dim=\dimen328
-\tcb@temp=\box91
-\tcb@temp=\box92
-\tcb@temp=\box93
-\tcb@temp=\box94
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-braster.code.tex"
-Library (tcolorbox): 'tcbraster.code.tex' version '6.10.0'
-\c@tcbrastercolumn=\count390
-\c@tcbrasterrow=\count391
-\c@tcbrasternum=\count392
-\c@tcbraster=\count393
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-bskins.code.tex"
-Library (tcolorbox): 'tcbskins.code.tex' version '6.10.0'
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tikzfill/tik
-zfill.image.sty"
-Package: tikzfill.image 2026/04/23 v1.2.0 Image filling library for TikZ
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tikzfill/tik
-zlibraryfill.image.code.tex"
-File: tikzlibraryfill.image.code.tex 2026/04/23 v1.2.0 Image filling library
-\l__tikzfill_tmpa_dim=\dimen329
-\l__tikzfill_tmpb_dim=\dimen330
-\l__tikzfill_img_box=\box95
-))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-bskinsjigsaw.code.tex"
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.10.0'
-))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-bbreakable.code.tex"
-Library (tcolorbox): 'tcbbreakable.code.tex' version '6.10.0'
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/pdfcol/pdfco
-l.sty"
-Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
-)
-Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
-\tcb@testbox=\box96
-\tcb@totalupperbox=\box97
-\tcb@totallowerbox=\box98
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iflu
-atex.sty"
-Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-bhooks.code.tex"
-Library (tcolorbox): 'tcbhooks.code.tex' version '6.10.0'
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-btheorems.code.tex"
-Library (tcolorbox): 'tcbtheorems.code.tex' version '6.10.0'
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-bfitting.code.tex"
-Library (tcolorbox): 'tcbfitting.code.tex' version '6.10.0'
-\tcbfitdim=\dimen331
-\tcb@lowerfitdim=\dimen332
-\tcb@upperfitdim=\dimen333
-\tcb@cur@hbadness=\count394
-)
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-blistingsutf8.code.tex"
-Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.10.0'
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-blistings.code.tex"
-Library (tcolorbox): 'tcblistings.code.tex' version '6.10.0'
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/listings/lis
-tings.sty"
-\lst@mode=\count395
-\lst@gtempboxa=\box99
-\lst@token=\toks50
-\lst@length=\count396
-\lst@currlwidth=\dimen334
-\lst@column=\count397
-\lst@pos=\count398
-\lst@lostspace=\dimen335
-\lst@width=\dimen336
-\lst@newlines=\count399
-\lst@lineno=\count400
-\lst@maxwidth=\dimen337
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/listings/lst
-patch.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/listings/lst
-misc.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
-\c@lstnumber=\count401
-\lst@skipnumbers=\count402
-\lst@framebox=\box100
+\c@lstnumber=\count365
+\lst@skipnumbers=\count366
+\lst@framebox=\box78
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/listings/lis
-tings.cfg"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/listings/listings.cfg
 File: listings.cfg 2025/11/14 1.11b listings configuration
 ))
 Package: listings 2025/11/14 1.11b (Carsten Heinz)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-blistingscore.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2026/05/28 version 6.10.0 text color boxes
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tools/verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks43
+\verbatim@line=\toks44
+\verbatim@in@stream=\read3
+)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/trimspaces/trimspaces.s
+ty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box79
+\tcb@upperbox=\box80
+\tcb@lowerbox=\box81
+\tcb@phantombox=\box82
+\c@tcbbreakpart=\count367
+\c@tcblayer=\count368
+\c@tcolorbox@number=\count369
+\l__tcobox_tmpa_box=\box83
+\l__tcobox_tmpa_dim=\dimen321
+\tcb@temp=\box84
+\tcb@temp=\box85
+\tcb@temp=\box86
+\tcb@temp=\box87
+
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbraster.cod
+e.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '6.10.0'
+\c@tcbrastercolumn=\count370
+\c@tcbrasterrow=\count371
+\c@tcbrasternum=\count372
+\c@tcbraster=\count373
+)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbskins.code
+.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.10.0'
+
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tikzfill/tikzfill.image
+.sty
+Package: tikzfill.image 2026/04/23 v1.2.0 Image filling library for TikZ
+
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tikzfill/tikzlibraryfil
+l.image.code.tex
+File: tikzlibraryfill.image.code.tex 2026/04/23 v1.2.0 Image filling library
+\l__tikzfill_tmpa_dim=\dimen322
+\l__tikzfill_tmpb_dim=\dimen323
+\l__tikzfill_img_box=\box88
+))
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbskinsjigsa
+w.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.10.0'
+))
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbbreakable.
+code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.10.0'
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/pdfcol/pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+)
+Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
+\tcb@testbox=\box89
+\tcb@totalupperbox=\box90
+\tcb@totallowerbox=\box91
+
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+))
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbhooks.code
+.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '6.10.0'
+)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbtheorems.c
+ode.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.10.0'
+)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbfitting.co
+de.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '6.10.0'
+\tcbfitdim=\dimen324
+\tcb@lowerfitdim=\dimen325
+\tcb@upperfitdim=\dimen326
+\tcb@cur@hbadness=\count374
+)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcblistingsut
+f8.code.tex
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.10.0'
+
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcblistings.c
+ode.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '6.10.0'
+
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcblistingsco
+re.code.tex
 Library (tcolorbox): 'tcblistingscore.code.tex' version '6.10.0'
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-bprocessing.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbprocessing
+.code.tex
 Library (tcolorbox): 'tcbprocessing.code.tex' version '6.10.0'
 )
-\c@tcblisting=\count403
+\c@tcblisting=\count375
 ))
 Package tcolorbox Info: Library `listingsutf8' is compatible with pdftex only. 
 Library `listings` is loaded instead. on input line 29.
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-bexternal.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbexternal.c
+ode.tex
 Library (tcolorbox): 'tcbexternal.code.tex' version '6.10.0'
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-bmagazine.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbmagazine.c
+ode.tex
 Library (tcolorbox): 'tcbmagazine.code.tex' version '6.10.0'
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-bvignette.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbvignette.c
+ode.tex
 Library (tcolorbox): 'tcbvignette.code.tex' version '6.10.0'
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/fronte
-ndlayer/tikz/libraries/tikzlibraryfadings.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibraryfadings.code.tex
 File: tikzlibraryfadings.code.tex 2026-08-01 v3.1.12 (3.1.12)
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/pgf/librar
-ies/pgflibraryfadings.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryfadings.code.tex
 File: pgflibraryfadings.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tc
-bposter.code.tex"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcbposter.cod
+e.tex
 Library (tcolorbox): 'tcbposter.code.tex' version '6.10.0'
 ))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/tit
-letoc.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titletoc.sty
 Package: titletoc 2025/01/04 v2.17 TOC entries
-\ttl@leftsep=\dimen338
+\ttl@leftsep=\dimen327
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/babel/babe
-l.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty
 Package: babel 2026/08/08 v26.10 The multilingual framework for LuaLaTeX, pdfLa
 TeX and XeLaTeX
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/babel/luab
-abel.def"
-\bbl@readstream=\read5
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def
+\bbl@readstream=\read4
 \l@afrikaans=\language2
 Package babel Info: Non-standard hyphenation setup on input line 118.
 \l@ancientgreek=\language3
@@ -1854,7 +1667,7 @@ Package babel Info: Non-standard hyphenation setup on input line 118.
 \babelcatcodetablenum=\catcodetable14
 \bbl@pattcodes=\catcodetable15
 )
-\babel@savecnt=\count404
+\babel@savecnt=\count376
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
 ne 2105.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
@@ -1869,11 +1682,10 @@ LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?)
 on input line 2113.
 LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
 on input line 2138.
-\U@D=\dimen339
+\U@D=\dimen328
 \l@unhyphenated=\language84
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/babel/luab
-abel.def"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def
 \bbl@attr@locale=\attribute4
 )
 Package babel Info: Configuration files are deprecated, as
@@ -1883,19 +1695,17 @@ Package babel Info: Configuration files are deprecated, as
 *************************************
 * Local config file bblopts.cfg used
 *
-
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/arabi/bblopt
-s.cfg"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/arabi/bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/generic/babel/loca
-le/en/babel-english.tex")
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/generic/babel/locale/en/babel
+-english.tex)
 Package babel Info: Importing font and identification data for 'english'
 (babel)             from babel-en.ini. Reported on input line 4426.
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/babel-englis
-h/english.ldf"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/babel-english/english.l
+df
 Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
@@ -1904,84 +1714,80 @@ Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
 (babel)             (\language79). Reported on input line 108.
 ))
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csq
-uotes.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2026-05-19 v5.2p context-sensitive quotations (JAW)
-\csq@reset=\count405
-\csq@gtype=\count406
-\csq@glevel=\count407
-\csq@qlevel=\count408
-\csq@maxlvl=\count409
-\csq@tshold=\count410
-\csq@ltx@everypar=\toks51
+\csq@reset=\count377
+\csq@gtype=\count378
+\csq@glevel=\count379
+\csq@qlevel=\count380
+\csq@maxlvl=\count381
+\csq@tshold=\count382
+\csq@ltx@everypar=\toks45
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csq
-uotes.def"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2026-05-19 v5.2p csquotes generic definitions (JAW)
 )
 Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csq
-uotes.cfg"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.cfg
 File: csquotes.cfg 
 )))
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
+ (./main.aux)
+\openout1 = main.aux
 
-No file EEM441.aux.
-
-\openout1 = EEM441.aux
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 18.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 18.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 15.
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/
-supp-pdf.mkii"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
+ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count411
-\scratchdimen=\dimen340
-\scratchbox=\box101
-\nofMPsegments=\count412
-\nofMParguments=\count413
-\everyMPshowfont=\toks52
-\MPscratchCnt=\count414
-\MPscratchDim=\dimen341
-\MPnumerator=\count415
-\makeMPintoPDFobject=\count416
-\everyMPtoPDFconversion=\toks53
+\scratchcounter=\count383
+\scratchdimen=\dimen329
+\scratchbox=\box92
+\nofMPsegments=\count384
+\nofMParguments=\count385
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count386
+\MPscratchDim=\dimen330
+\MPnumerator=\count387
+\makeMPintoPDFobject=\count388
+\everyMPtoPDFconversion=\toks47
 )
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg
-/epstopdf-base.sty"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
+ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
-("C:/Users/Farhan Aizuddin/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/eps
-topdf-sys.cfg"
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/epstopdf-sys.c
+fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 *geometry* driver: auto-detecting
@@ -2003,12 +1809,12 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \topmargin=-62.67403pt
 * \headheight=28.0pt
 * \headsep=25.0pt
-* \topskip=11.0pt
+* \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=59.0pt
+* \marginparwidth=44.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -2019,58 +1825,72 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 18.
-\@outlinefile=\write5
+Package hyperref Info: Link coloring ON on input line 15.
+(./main.out) (./main.out)
+\@outlinefile=\write4
 
-\openout5 = EEM441.out
-\c@lstlisting=\count417
+\openout4 = main.out
+\c@lstlisting=\count389
 Package babel Info: Main language set to 'english'.
-<figures/usm-logo.png, id=42, 1377.145pt x 843.15pt>
+<figures/usm-logo.png, id=82, 1377.145pt x 843.15pt>
 File: figures/usm-logo.png Graphic file (type png)
 <use figures/usm-logo.png>
-Package luatex.def Info: figures/usm-logo.png  used on input line 24.
+Package luatex.def Info: figures/usm-logo.png  used on input line 21.
 (luatex.def)             Requested size: 236.15797pt x 144.58154pt.
-[1
+ [1
 
-{C:/Users/Farhan Aizuddin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./fi
-gures/usm-logo.png>]
-No file EEM441.toc.
-\tf@toc=\write6
+{C:/Users/micha/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./figures/usm-
+logo.png>] (./main.toc)
+\tf@toc=\write5
 
-\openout6 = EEM441.toc
+\openout5 = main.toc
 
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1] (./experiments/exp01.tex
-
-LaTeX Warning: Reference `fig:exp1-openloop' on page 1 undefined on input line 
-29.
-
-<figures/exp1-2-trainer.jpg, id=53, 2352.79pt x 1875.005pt>
+<figures/seee-emblem-only.png, id=114, 2341.74875pt x 803.0pt>
+File: figures/seee-emblem-only.png Graphic file (type png)
+<use figures/seee-emblem-only.png>
+Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
+(luatex.def)             Requested size: 142.26378pt x 48.7783pt.
+<figures/exp1-2-trainer.jpg, id=116, 2352.79pt x 1875.005pt>
 File: figures/exp1-2-trainer.jpg Graphic file (type jpg)
 <use figures/exp1-2-trainer.jpg>
-Package luatex.def Info: figures/exp1-2-trainer.jpg  used on input line 34.
+Package luatex.def Info: figures/exp1-2-trainer.jpg  used on input line 40.
 (luatex.def)             Requested size: 382.01434pt x 304.4129pt.
 
+
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 35.
+(caption)                particular \caption on input line 41.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 66.
+(caption)                particular \caption on input line 71.
+See the caption package documentation for explanation.
+
+<figures/exp1-2-controller.jpg, id=117, 1875.005pt x 2768.3425pt>
+File: figures/exp1-2-controller.jpg Graphic file (type jpg)
+<use figures/exp1-2-controller.jpg>
+Package luatex.def Info: figures/exp1-2-controller.jpg  used on input line 78.
+(luatex.def)             Requested size: 292.12376pt x 431.28522pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 79.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `tab:exp1-closed' on page 1 undefined on input line 89
-.
+Underfull \hbox (badness 1067) in paragraph at lines 102--103
+[]\TU/IBMPlexSans(0)/m/n/12 Slowly vary trim-mer $\TU/STIXTwoMath-Regular(1)/m/
+n/12 𝑅[]$ \TU/IBMPlexSans(0)/m/n/12 to ob-tain an op-ti-mum out-put re-sponse
+ (min-i-mum
+ []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 135.
+(caption)                particular \caption on input line 162.
 See the caption package documentation for explanation.
 
 
@@ -2078,11 +1898,16 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1
 
 
-] [2<./figures/exp1-2-trainer.jpg>] [3]) (./experiments/exp02.tex [4]
+<./figures/seee-emblem-only.png>] [2<./figures/exp1-2-trainer.jpg>] [3<./figures
+/exp1-2-controller.jpg>] [4]) (./experiments/exp02.tex [5]
+File: figures/seee-emblem-only.png Graphic file (type png)
+<use figures/seee-emblem-only.png>
+Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
+(luatex.def)             Requested size: 142.26378pt x 48.7783pt.
 File: figures/exp1-2-trainer.jpg Graphic file (type jpg)
 <use figures/exp1-2-trainer.jpg>
 Package luatex.def Info: figures/exp1-2-trainer.jpg  used on input line 37.
-(luatex.def)             Requested size: 382.01434pt x 304.4129pt.
+(luatex.def)             Requested size: 247.18535pt x 196.98148pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -2090,40 +1915,30 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:exp2-openloop' on page 5 undefined on input line 
-46.
-
-
-LaTeX Warning: Reference `tab:exp2-table1' on page 5 undefined on input line 56
-.
-
-
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 76.
+(caption)                particular \caption on input line 85.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `tab:exp2-table2' on page 5 undefined on input line 11
-4.
-
-
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 134.
+(caption)                particular \caption on input line 153.
 See the caption package documentation for explanation.
 
-[5
+[6
 
-] [6] [7]) (./experiments/exp03.tex [8]
+] [7] [8]) (./experiments/exp03.tex [9]
+File: figures/seee-emblem-only.png Graphic file (type png)
+<use figures/seee-emblem-only.png>
+Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
+(luatex.def)             Requested size: 142.26378pt x 48.7783pt.
 LaTeX Font Info:    Font shape `TU/JetBrainsMono(0)/m/n' will be
-(Font)              scaled to size 10.27296pt on input line 32.
+(Font)              scaled to size 11.25806pt on input line 32.
 
-
-LaTeX Warning: Reference `fig:exp3-mux-schematic' on page 9 undefined on input 
-line 37.
-
-
-LaTeX Warning: Reference `tab:exp3-truth' on page 9 undefined on input line 42.
-
+Underfull \hbox (badness 2310) in paragraph at lines 32--33
+[]\TU/IBMPlexSans(0)/m/n/12 Work-ing di-rec-tory: \TU/JetBrainsMono(0)/m/n/12 fp
+ga\TU/IBMPlexSans(0)/m/n/12 ; project name: \TU/JetBrainsMono(0)/m/n/12 activity
+1\TU/IBMPlexSans(0)/m/n/12 ; top-level en-tity:
+ []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -2131,117 +1946,28 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 LaTeX Font Info:    Font shape `TU/JetBrainsMono(0)/m/n' will be
-(Font)              scaled to size 9.38171pt on input line 62.
+(Font)              scaled to size 10.27296pt on input line 62.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 78.
 See the caption package documentation for explanation.
 
-
-LaTeX Warning: Reference `lst:exp3-mux-ver' on page 9 undefined on input line 8
-8.
-
-
-LaTeX Warning: Reference `tab:exp3-truth' on page 9 undefined on input line 91.
-
-
-
-LaTeX Warning: Reference `fig:exp3-rtl' on page 9 undefined on input line 94.
-
-\pydata@fh@0=\write7
-
-\openout7 = _D452D6017FD0347892660C6D2AEAAEFB.data.minted
-runsystem(latexminted config  --timestamp 20260811083137 D452D6017FD0347892660C6
-D2AEAAEFB)...(Command execution disabled via shell_escape='p').
-
-./experiments/exp03.tex:117: Package minted Error: minted v3+ executable is not
- installed, is not added to PATH, or is not permitted with restricted shell esc
-ape; or MiKTeX is being used with -aux-directory or -output-directory without s
-etting a TEXMF_OUTPUT_DIRECTORY environment variable.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.117 \end{minted}
-                  
-This error message was generated by an \errmessage
-command, so I can't give any explicit help.
-Pretend that you're Hercule Poirot: Examine all clues,
-and deduce the truth by order and method.
-
-
-./experiments/exp03.tex:117: Package minted Error: Missing definition for highl
-ighting style "friendly" (minted executable is unavailable or disabled); attemp
-ting to substitute fallback style.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.117 \end{minted}
-                  
-(That was another \errmessage.)
-
-
-./experiments/exp03.tex:117: Package minted Error: Missing definition for highl
-ighting style "default" (minted executable is unavailable or disabled); attempt
-ing to substitute fallback style.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.117 \end{minted}
-                  
-(That was another \errmessage.)
-
-
-./experiments/exp03.tex:117: Package minted Error: Cannot highlight code (minte
-d executable is unavailable or disabled); attempting to typeset without highlig
-hting.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.117 \end{minted}
-                  
-(That was another \errmessage.)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2025/11/14 1.11b listings language file
+)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2025/11/14 1.11b listings language file
+)
+(C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2025/11/14 1.11b listings language file
+)
+LaTeX Font Info:    Font shape `TU/JetBrainsMono(0)/b/n' will be
+(Font)              scaled to size 10.27296pt on input line 100.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 142.
 See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `lst:exp3-mux-vrl' on page 9 undefined on input line 1
-52.
-
-
-LaTeX Warning: Reference `fig:exp3-mux-vrl-symbol' on page 9 undefined on input
- line 153.
-
-
-LaTeX Warning: Reference `fig:exp3-mux-schver' on page 9 undefined on input lin
-e 154.
-
-
-LaTeX Warning: Reference `tab:exp3-truth' on page 9 undefined on input line 157
-.
-
-
-./experiments/exp03.tex:180: Package minted Error: Cannot highlight code (minte
-d executable is unavailable or disabled); attempting to typeset without highlig
-hting.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.180 \end{minted}
-                  
-(That was another \errmessage.)
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -2254,100 +1980,22 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `lst:exp3-counter' on page 9 undefined on input line 2
-26.
-
-
-LaTeX Warning: Reference `tab:exp3-timing' on page 9 undefined on input line 23
-1.
-
-
-./experiments/exp03.tex:250: Package minted Error: Cannot highlight code (minte
-d executable is unavailable or disabled); attempting to typeset without highlig
-hting.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.250 \end{minted}
-                  
-(That was another \errmessage.)
-
-
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 266.
 See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `lst:exp3-counta' on page 9 undefined on input line 27
-6.
-
-
-LaTeX Warning: Reference `tab:exp3-pins' on page 9 undefined on input line 278.
-
-
-
-./experiments/exp03.tex:291: Package minted Error: Cannot highlight code (minte
-d executable is unavailable or disabled); attempting to typeset without highlig
-hting.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.291 \end{minted}
-                  
-(That was another \errmessage.)
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 311.
 See the caption package documentation for explanation.
 
-[9
+[10
 
-] [10] [11] [12] [13]) (./experiments/exp04.tex [14]
-
-LaTeX Warning: Reference `lst:exp4-seven' on page 15 undefined on input line 32
-.
-
-
-LaTeX Warning: Reference `lst:exp4-led' on page 15 undefined on input line 34.
-
-
-LaTeX Warning: Reference `fig:exp4-schematic' on page 15 undefined on input lin
-e 36.
-
-
-LaTeX Warning: Reference `tab:exp4-pins' on page 15 undefined on input line 37.
-
-
-
-./experiments/exp04.tex:55: Package minted Error: Cannot highlight code (minted
- executable is unavailable or disabled); attempting to typeset without highligh
-ting.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 \end{minted}
-                 
-(That was another \errmessage.)
-
-
-./experiments/exp04.tex:72: Package minted Error: Cannot highlight code (minted
- executable is unavailable or disabled); attempting to typeset without highligh
-ting.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.72 \end{minted}
-                 
-(That was another \errmessage.)
+] [11] [12] [13] [14] [15]) (./experiments/exp04.tex [16]
+File: figures/seee-emblem-only.png Graphic file (type png)
+<use figures/seee-emblem-only.png>
+Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
+(luatex.def)             Requested size: 142.26378pt x 48.7783pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -2359,27 +2007,20 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 110.
 See the caption package documentation for explanation.
 
-[15
+[17
 
-] [16]) (./experiments/exp05.tex [17]
-
-LaTeX Warning: Reference `tab:exp5-pins-lcd' on page 18 undefined on input line
- 21.
-
-
-LaTeX Warning: Reference `fig:exp5-timing' on page 18 undefined on input line 2
-3.
-
-
-LaTeX Warning: Reference `tab:exp5-commands' on page 18 undefined on input line
- 25.
+] [18]) (./experiments/exp05.tex [19]
+File: figures/seee-emblem-only.png Graphic file (type png)
+<use figures/seee-emblem-only.png>
+Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
+(luatex.def)             Requested size: 142.26378pt x 48.7783pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 52.
 See the caption package documentation for explanation.
 
-[18
+[20
 
 ]
 
@@ -2392,21 +2033,23 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 136.
 See the caption package documentation for explanation.
 
-
-LaTeX Warning: Reference `lst:exp5-lcdt' on page 19 undefined on input line 148
-.
-
-
-LaTeX Warning: Reference `lst:exp5-lcdctrl' on page 19 undefined on input line 
-148.
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 148--149
+[]\TU/IBMPlexSans(0)/m/n/12 Write the Ver-ilog mod-ules given in List-ing [][]7[][] (\TU/JetBrainsMono(0)/m/n/12 lcd_t\TU/IBMPlexSans(0)/m/n/12 ) and List-ing [][]8[][]
+ []
 
 
-LaTeX Warning: Reference `fig:exp5-schematic' on page 19 undefined on input lin
-e 151.
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
+[]\TU/IBMPlexSans(0)/m/n/12 Draw the schematic in Fig-ure [][]10[][], con-nect-i
+ng \TU/JetBrainsMono(0)/m/n/12 lcd_t\TU/IBMPlexSans(0)/m/n/12 ’s out-puts to
+ []
 
 
-LaTeX Warning: Reference `tab:exp5-pinassign' on page 19 undefined on input lin
-e 152.
+Underfull \hbox (badness 1460) in paragraph at lines 151--152
+\TU/JetBrainsMono(0)/m/n/12 LCD_Controller\TU/IBMPlexSans(0)/m/n/12 ’s in-puts
+, and \TU/JetBrainsMono(0)/m/n/12 LCD_Controller\TU/IBMPlexSans(0)/m/n/12 ’s 
+out-puts to the LCD in-
+ []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -2414,73 +2057,32 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 3417) in paragraph at lines 179--179
-[][]\TU/IBMPlexSans(0)/m/n/10 Fig-ure 9[][]: []|[]Schematic di-a-gram for the LC
-D in-ter-face: \TU/JetBrainsMono(0)/m/n/10 lcd_t \TU/IBMPlexSans(0)/m/n/10 (look
-up-table se-quencer) feed-ing
- []
-
-
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 205.
 See the caption package documentation for explanation.
 
-
-./experiments/exp05.tex:304: Package minted Error: Cannot highlight code (minte
-d executable is unavailable or disabled); attempting to typeset without highlig
-hting.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.304 \end{minted}
-                  
-(That was another \errmessage.)
-
-
-./experiments/exp05.tex:388: Package minted Error: Cannot highlight code (minte
-d executable is unavailable or disabled); attempting to typeset without highlig
-hting.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.388 \end{minted}
-                  
-(That was another \errmessage.)
-
-[19] [20]
+LaTeX Font Info:    Font shape `TU/JetBrainsMono(0)/m/it' will be
+(Font)              scaled to size 10.27296pt on input line 212.
+[22] [23]
 
 Package tcolorbox Warning: The upper box part has become overfull on input line
  402.
 
-[21] [22]
+[24] [25]
 
 Package tcolorbox Warning: The upper box part has become overfull on input line
  402.
 
-[23]) (./experiments/exp06.tex [24]
-
-LaTeX Warning: Reference `tab:exp6-stepseq' on page 25 undefined on input line 
-27.
+[26]) (./experiments/exp06.tex [27]
+File: figures/seee-emblem-only.png Graphic file (type png)
+<use figures/seee-emblem-only.png>
+Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
+(luatex.def)             Requested size: 142.26378pt x 48.7783pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 42.
 See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `lst:exp6-step' on page 25 undefined on input line 59.
-
-
-
-LaTeX Warning: Reference `fig:exp6-rtl' on page 25 undefined on input line 61.
-
-
-LaTeX Warning: Reference `tab:exp6-pins' on page 25 undefined on input line 62.
-
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -2492,76 +2094,37 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 116.
 See the caption package documentation for explanation.
 
+[28
 
-./experiments/exp06.tex:150: Package minted Error: Cannot highlight code (minte
-d executable is unavailable or disabled); attempting to typeset without highlig
-hting.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.150 \end{minted}
-                  
-(That was another \errmessage.)
-
-
-./experiments/exp06.tex:226: Package minted Error: Cannot highlight code (minte
-d executable is unavailable or disabled); attempting to typeset without highlig
-hting.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.226 \end{minted}
-                  
-(That was another \errmessage.)
-
-
-./experiments/exp06.tex:248: Package minted Error: Cannot highlight code (minte
-d executable is unavailable or disabled); attempting to typeset without highlig
-hting.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.248 \end{minted}
-                  
-(That was another \errmessage.)
-
-
-LaTeX Warning: Reference `tab:exp6-stepseq' on page 25 undefined on input line 
-254.
-
-[25
-
-] [26] [27]
+] [29] [30]
 
 Package tcolorbox Warning: The upper box part has become overfull on input line
  267.
 
-[28]
-Underfull \hbox (badness 2671) in paragraph at lines 275--276
-[]\TU/IBMPlexSans(0)/m/n/10.95 Par-al-lax Inc., \TU/IBMPlexSans(0)/m/it/10.95 4-
-Phase 12-Volt 75$ \TU/STIXTwoMath-Regular(1)/m/n/10.95 Ω$ \TU/IBMPlexSans(0)/m
-/it/10.95 Unipo-lar Step-per Mo-tor (#27964)\TU/IBMPlexSans(0)/m/n/10.95 , tech-
-ni-cal
+[31] [32]) (./experiments/exp07.tex [33]
+File: figures/seee-emblem-only.png Graphic file (type png)
+<use figures/seee-emblem-only.png>
+Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
+(luatex.def)             Requested size: 142.26378pt x 48.7783pt.
+
+Underfull \hbox (badness 3417) in paragraph at lines 10--11
+[]\TU/IBMPlexSans(0)/m/n/12 To be-come fa-mil-iar with sig-nal con-di-tion-ing 
+in a computer-based data-
  []
 
-) (./experiments/exp07.tex [29]
-
-LaTeX Warning: Reference `fig:exp7-daq-overview' on page 30 undefined on input 
-line 30.
-
-[30
+[34
 
 ]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 57.
 See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 6575) in paragraph at lines 65--66
+[]\TU/IBMPlexSans(0)/m/it/12 Ob-jec-tive: mea-sure the en-coder’s pulse char-a
+c-ter-is-tics and de-sign a signal-
+ []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -2574,41 +2137,28 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `tab:exp7-results' on page 31 undefined on input line 
-154.
-
-
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 171.
 See the caption package documentation for explanation.
 
-[31] [32] [33]) (./experiments/exp08.tex [34]
+[35] [36] [37]
+Underfull \hbox (badness 2057) in paragraph at lines 181--182
+[]\TU/IBMPlexSans(0)/m/n/12 Com-pare your software-computed speed with the oscil
+loscope-measured
+ []
 
-LaTeX Warning: Reference `fig:exp8-blockdiagram' on page 35 undefined on input 
-line 30.
+) (./experiments/exp08.tex [38]
+File: figures/seee-emblem-only.png Graphic file (type png)
+<use figures/seee-emblem-only.png>
+Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
+(luatex.def)             Requested size: 142.26378pt x 48.7783pt.
+ [39
 
+]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 51.
 See the caption package documentation for explanation.
-
-[35
-
-]
-Underfull \hbox (badness 1303) in paragraph at lines 62--63
-[]\TU/IBMPlexSans(0)/m/n/10.95 Ob-tain the resistance--temperature char-ac-ter-i
-s-tic for the NTC ther-mis-tor from its
- []
-
-
-Underfull \hbox (badness 1024) in paragraph at lines 80--81
-[]\TU/IBMPlexSans(0)/m/n/10.95 Ver-ify both the in-put and out-put wiring us-ing
- the DAQ card’s bun-dled con-fig-u-ra-
- []
-
-
-LaTeX Warning: Reference `fig:exp8-flowchart' on page 36 undefined on input lin
-e 97.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -2616,47 +2166,27 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `tab:exp8-results' on page 36 undefined on input line 
-137.
-
-
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 154.
 See the caption package documentation for explanation.
 
-[36] [37] [38]) (./experiments/exp09.tex [39]
+[40] [41] [42]) (./experiments/exp09.tex [43]
+File: figures/seee-emblem-only.png Graphic file (type png)
+<use figures/seee-emblem-only.png>
+Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
+(luatex.def)             Requested size: 142.26378pt x 48.7783pt.
+ [44
 
-LaTeX Warning: Reference `tab:exp9-vref' on page 40 undefined on input line 31.
-
-
-
-LaTeX Warning: Reference `fig:exp9-timing' on page 40 undefined on input line 4
-0.
-
+]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 62.
 See the caption package documentation for explanation.
 
-[40
-
-]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 111.
 See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:exp9-circuit' on page 41 undefined on input line 
-122.
-
-
-LaTeX Warning: Reference `fig:exp9-circuit' on page 41 undefined on input line 
-123.
-
-
-LaTeX Warning: Reference `tab:exp9-freerun' on page 41 undefined on input line 
-124.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -2669,30 +2199,15 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:exp9-circuit' on page 41 undefined on input line 
-207.
-
-
-LaTeX Warning: Reference `tab:exp9-fpga' on page 41 undefined on input line 214
-.
-
-
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 236.
 See the caption package documentation for explanation.
 
-[41] [42]) (./experiments/exp10.tex [43]
-
-LaTeX Warning: Reference `fig:exp10-circuit' on page 44 undefined on input line
- 40.
-
-
-LaTeX Warning: Reference `tab:exp10-result' on page 44 undefined on input line 
-41.
-
-
-LaTeX Warning: Reference `tab:exp10-result' on page 44 undefined on input line 
-42.
+[45] [46]) (./experiments/exp10.tex [47]
+File: figures/seee-emblem-only.png Graphic file (type png)
+<use figures/seee-emblem-only.png>
+Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
+(luatex.def)             Requested size: 142.26378pt x 48.7783pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -2705,66 +2220,42 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:exp10-circuit' on page 44 undefined on input line
- 111.
-
-
-LaTeX Warning: Reference `tab:exp10-sine' on page 44 undefined on input line 12
-3.
-
-
-LaTeX Warning: Reference `fig:exp10-circuit' on page 44 undefined on input line
- 124.
-
-
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 152.
 See the caption package documentation for explanation.
 
-[44
+[48
 
-] [45]) [46] (./EEM441.aux)
+] [49]) [50] (./main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-07-20>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `EEM441.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `EEM441.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  B46255FA24EA5417DC7671DB6DBC7930;2303.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: B46255FA24EA5417DC7671DB6DBC7930;2303.
 )
 
 Here is how much of LuaTeX's memory you used:
- 45175 strings out of 475695
- 244175,1977958 words of node,token memory allocated
+ 41606 strings out of 475695
+ 1164484,1977958 words of node,token memory allocated
  1359 words of node memory still in use:
    30 hlist, 2 vlist, 14 rule, 2 glue, 4 kern, 1 glyph, 90 attribute, 64 glue_sp
 ec, 82 attribute_list, 2 write, 24 pdf_literal, 24 pdf_colorstack nodes
-   avail lists: 1:13,2:15074,3:2718,4:613,5:1763,6:295,7:12777,8:65,9:2153,10:29
-,11:718,12:19
- 66677 multiletter control sequences out of 65536+600000
- 122 fonts using 46466487 bytes
- 97i,13n,117p,649b,1539s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<./fonts/PlexSans/IBMPlexSans-Regular.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf
-><./fonts/JetBrainsMono/JetBrainsMono-Regular.ttf><./fonts/STIX2/STIXTwoMath-Reg
-ular.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/PlexSans/IBMPlexSans-It
-alic.ttf><./fonts/PlexSans/IBMPlexSans-SemiBold.ttf><./fonts/PlexSans/IBMPlexSan
-s-Regular.ttf><./fonts/PlexSans/IBMPlexSans-Medium.ttf><./fonts/PlexSans/IBMPlex
-Sans-Light.ttf>
-Output written on EEM441.pdf (48 pages, 1663407 bytes).
+   avail lists: 1:3,2:37195,3:2782,4:24487,5:22268,6:289,7:29795,8:47,9:66620,10
+:41,11:3435
+ 62732 multiletter control sequences out of 65536+600000
+ 124 fonts using 47026007 bytes
+ 97i,13n,117p,663b,1761s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<./fonts/PlexSans/IBMPlexSans-Regular.ttf><./fonts/JetBrainsMono/JetBrainsMono-I
+talic.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/JetBrainsMono/JetBrain
+sMono-Bold.ttf><./fonts/JetBrainsMono/JetBrainsMono-Regular.ttf><./fonts/STIX2/S
+TIXTwoMath-Regular.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/PlexSans/
+IBMPlexSans-Italic.ttf><./fonts/PlexSans/IBMPlexSans-SemiBold.ttf><./fonts/PlexS
+ans/IBMPlexSans-Regular.ttf><./fonts/PlexSans/IBMPlexSans-Medium.ttf><./fonts/Pl
+exSans/IBMPlexSans-Light.ttf>
+Output written on main.pdf (52 pages, 3007944 bytes).
 
-PDF statistics: 640 PDF objects out of 1000 (max. 8388607)
- 362 named destinations out of 1000 (max. 1048576)
- 256 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1184 PDF objects out of 1200 (max. 8388607)
+ 732 named destinations out of 1000 (max. 1048576)
+ 336 words of extra memory for PDF output out of 10000 (max. 100000000)
 

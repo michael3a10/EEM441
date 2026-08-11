@@ -1,7 +1,7 @@
 % ============================================================
 %  Experiment 6 --- Stepper Motor Control with FPGA
 % ============================================================
-\experimentheader{6}{Stepper Motor Control}{Stepper Motor Control with FPGA}
+\experimentheader{6}{Stepper Motor Control}{Stepper Motor Control with FPGA}{FPGA Lab}
 
 \begin{objectives}
 \begin{enumerate}
@@ -117,8 +117,8 @@ Coil 4 (\=B) & 0 & 1 & 1 & 0 & 0 \\
 \label{tab:exp6-pins}
 \end{boxedtable}
 
-\begin{codepanel}{step.v --- top-level module}
-\begin{minted}{verilog}
+\begin{codepanel}{step.v --- top-level module}{verilogstyle}
+\begin{lstlisting}
 //============================================================
 // Stepper Motor Controller
 //============================================================
@@ -147,12 +147,12 @@ module step(osc, reset, dir, mode, move, phaseout, ledr);
     .phaseout (phaseout)
   );
 endmodule
-\end{minted}
+\end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
 
-\begin{codepanel}{step.v --- motor controller module (excerpt)}
-\begin{minted}{verilog}
+\begin{codepanel}{step.v --- motor controller module (excerpt)}{verilogstyle}
+\begin{lstlisting}
 // Module stepper is the motor controller.
 module stepper(clk, reset, dir, mode, move, phaseout);
   input  clk, reset, dir, mode, move;
@@ -223,12 +223,12 @@ module stepper(clk, reset, dir, mode, move, phaseout);
     end
   end
 endmodule
-\end{minted}
+\end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
 
-\begin{codepanel}{step.v --- clock divider module}
-\begin{minted}{verilog}
+\begin{codepanel}{step.v --- clock divider module}{verilogstyle}
+\begin{lstlisting}
 // Module divider divides the incoming clock to produce a
 // clock suitable for driving the motor controller.
 module divider(osc, clk);
@@ -245,7 +245,7 @@ module divider(osc, clk);
     clk   = count[15];
   end
 endmodule
-\end{minted}
+\end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
 \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp6-step}: \texttt{step.v} --- top-level, motor-controller, and clock-divider modules.\end{center}

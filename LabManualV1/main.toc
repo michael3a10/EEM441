@@ -1,0 +1,12 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{Experiment 1: DC Motor Speed Control}{1}{section*.1}%
+\contentsline {section}{Experiment 2: DC Motor Position Control}{6}{section*.2}%
+\contentsline {section}{Experiment 3: Introduction to Quartus II}{10}{section*.3}%
+\contentsline {section}{Experiment 4: DIP Switch \& 7-Segment}{17}{section*.4}%
+\contentsline {section}{Experiment 5: LCD Interfacing}{20}{section*.5}%
+\contentsline {section}{Experiment 6: Stepper Motor Control}{28}{section*.6}%
+\contentsline {section}{Experiment 7: DC Motor Speed Measurement}{34}{section*.7}%
+\contentsline {section}{Experiment 8: Temperature Control}{39}{section*.8}%
+\contentsline {section}{Experiment 9: ADC Interfacing}{44}{section*.9}%
+\contentsline {section}{Experiment 10: DAC Interfacing}{48}{section*.10}%
+\contentsfinish 

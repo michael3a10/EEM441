@@ -1,7 +1,7 @@
 % ============================================================
 %  Experiment 3 --- Introduction to Altera Quartus II Software
 % ============================================================
-\experimentheader{3}{Introduction to Quartus II}{Introduction to Altera Quartus II Software}
+\experimentheader{3}{Introduction to Quartus II}{Introduction to Altera Quartus II Software}{FPGA Lab}
 
 \begin{objectives}
 \begin{enumerate}
@@ -95,8 +95,8 @@ S0 & S1 & I0 & I1 & I2 & I3 \\
   \item Print and submit the Verilog code and simulation result.
 \end{enumerate}
 
-\begin{codepanel}{mux\_ver.v}
-\begin{minted}{verilog}
+\begin{codepanel}{mux\_ver.v}{verilogstyle}
+\begin{lstlisting}
 module mux_ver(out, i0, i1, i2, i3, s1, s0);
   output out;
   input i0, i1, i2, i3;
@@ -114,7 +114,7 @@ module mux_ver(out, i0, i1, i2, i3, s1, s0);
     endcase
   end
 endmodule
-\end{minted}
+\end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
 \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-mux-ver}: \texttt{mux\_ver.v} --- Verilog 4-to-1 multiplexer.\end{center}
@@ -158,8 +158,8 @@ endmodule
   \item Print and submit the schematic diagram, Verilog code, and simulation result.
 \end{enumerate}
 
-\begin{codepanel}{mux\_vrl.v}
-\begin{minted}{verilog}
+\begin{codepanel}{mux\_vrl.v}{verilogstyle}
+\begin{lstlisting}
 module mux_vrl(out, i0, i1, i2, i3, s1, s0);
   output out;
   input i0, i1, i2, i3;
@@ -177,7 +177,7 @@ module mux_vrl(out, i0, i1, i2, i3, s1, s0);
     endcase
   end
 endmodule
-\end{minted}
+\end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
 \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-mux-vrl}: \texttt{mux\_vrl.v} --- Verilog module to be reused as a schematic symbol.\end{center}
@@ -232,8 +232,8 @@ endmodule
   \item Print and submit the Verilog code and simulation result.
 \end{enumerate}
 
-\begin{codepanel}{counter.v}
-\begin{minted}{verilog}
+\begin{codepanel}{counter.v}{verilogstyle}
+\begin{lstlisting}
 module counter(Q, clock, clear);
   output [3:0] Q;
   input clock, clear;
@@ -247,7 +247,7 @@ module counter(Q, clock, clear);
       Q = (Q + 1) % 16;
   end
 endmodule
-\end{minted}
+\end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
 \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-counter}: \texttt{counter.v} --- 4-bit up counter with asynchronous clear.\end{center}
@@ -282,13 +282,13 @@ endmodule
   \item Change the assignment to \verb|assign q[6:0] = 7'b1111000;|, save, recompile, and download again. Record the new displayed pattern.
 \end{enumerate}
 
-\begin{codepanel}{counta.v}
-\begin{minted}{verilog}
+\begin{codepanel}{counta.v}{verilogstyle}
+\begin{lstlisting}
 module counta(q);
   output [6:0] q;
   assign q[6:0] = 7'b0010000;
 endmodule
-\end{minted}
+\end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
 \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-counta}: \texttt{counta.v} --- static seven-segment pattern.\end{center}

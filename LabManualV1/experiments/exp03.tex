@@ -4,99 +4,86 @@
 \experimentheader{3}{Introduction to Quartus II}{Introduction to Altera Quartus II Software}{FPGA Lab}
 
 \begin{objectives}
-\begin{enumerate}
-  \item To use schematic entry as a design method in Altera Quartus II.
-  \item To use Verilog as a design entry method in Altera Quartus II.
-  \item To combine schematic and Verilog as a single design entry in Altera Quartus II.
-  \item To simulate the circuit using Altera Quartus II.
-  \item To download the design onto an Altera DE2 board.
-\end{enumerate}
+  \begin{enumerate}
+    \item To use schematic entry as a design method in Altera Quartus II.
+    \item To use Verilog as a design entry method in Altera Quartus II.
+    \item To combine schematic and Verilog as a single design entry in Altera Quartus II.
+    \item To simulate the circuit using Altera Quartus II.
+    \item To download the design onto an Altera DE2 board.
+  \end{enumerate}
 \end{objectives}
 
 \begin{equipment}
-\begin{itemize}
-  \item Altera Quartus II software
-  \item Altera DE2 board
-\end{itemize}
+  \begin{itemize}
+    \item Altera Quartus II software
+    \item Altera DE2 board
+  \end{itemize}
 \end{equipment}
 
 \begin{procedure}
 
-\textbf{Activity 1 --- Schematic entry}\vspace{2pt}
+  \textbf{Activity 1 --- Schematic entry}\vspace{2pt}
 
-\textit{Objective: use schematic entry to design a 4-to-1 multiplexer in Quartus II.}
+  \textit{Objective: use schematic entry to design a 4-to-1 multiplexer in Quartus II.}
 
-\begin{enumerate}
-  \item Open Quartus II and start the New Project Wizard.
-  \begin{itemize}
-    \item Working directory: \texttt{fpga}; project name: \texttt{activity1}; top-level entity: \texttt{mux\_sch}.
-    \item Device family: Cyclone II, device \texttt{EP2C35F672C6N}.
-    \item Accept the default EDA tool settings (synthesis, simulation, timing analysis) and finish.
-  \end{itemize}
-  \item Create a new Block Diagram/Schematic file.
-  \item Place three 3-input AND gates and one 4-input OR gate from the primitives library, and wire them as shown in Figure~\ref{fig:exp3-mux-schematic} using rubberbanding to connect components.
-  \item Add and name the input pins (\texttt{i0}--\texttt{i3}, \texttt{s0}, \texttt{s1}) and the output pin (\texttt{out}).
-  \item Save as \texttt{mux\_sch.bdf} and start compilation.
-  \item Create a Vector Waveform File to simulate the design: insert input nodes \texttt{i0}--\texttt{i3}, \texttt{s0}, \texttt{s1}, and output node \texttt{out}.
-  \item Assign logic values to the inputs, save as \texttt{mux\_sch.vwf}, then run Compilation and Simulation.
-  \item Record the outputs, then repeat for each input combination in Table~\ref{tab:exp3-truth}, saving the waveform file each time.
-  \item Print and submit the schematic diagram and simulation result.
-\end{enumerate}
+  \begin{enumerate}
+    \item Open Quartus II and start the New Project Wizard.
+          \begin{itemize}
+            \item Working directory: \texttt{fpga}; project name: \texttt{activity1}; top-level entity: \texttt{mux\_sch}.
+            \item Device family: Cyclone II (\texttt{EP2C35F672C6N}) or Cyclone IV (\texttt{EP4CE115F29C7N}).
+            \item Accept the default EDA tool settings (synthesis, simulation, timing analysis) and finish.
+          \end{itemize}
+    \item Create a new Block Diagram/Schematic file.
+    \item Place three 3-input AND gates and one 4-input OR gate from the primitives library, and wire them as shown in Figure~\ref{fig:exp3-mux-schematic} using rubberbanding to connect components.
+    \item Add and name the input pins (\texttt{i0}--\texttt{i3}, \texttt{s0}, \texttt{s1}) and the output pin (\texttt{out}).
+    \item Save as \texttt{mux\_sch.bdf} and start compilation.
+    \item Create a Vector Waveform File to simulate the design: insert input nodes \texttt{i0}--\texttt{i3}, \texttt{s0}, \texttt{s1}, and output node \texttt{out}.
+    \item Assign logic values to the inputs, save as \texttt{mux\_sch.vwf}, then run Compilation and Simulation.
+    \item Record the outputs, then repeat for each input combination in Table~\ref{tab:exp3-truth}, saving the waveform file each time.
+    \item Print and submit the schematic diagram and simulation result.
+  \end{enumerate}
 
-\begin{boxedfigure}
-\centering
-\begin{tikzpicture}[node distance=6mm and 10mm]
-  \node[io] (i0) {i0};
-  \node[io, below=4mm of i0] (i1) {i1};
-  \node[io, below=4mm of i1] (i2) {i2};
-  \node[io, below=4mm of i2] (i3) {i3};
-  \node[io, below=6mm of i3] (s0) {s0};
-  \node[io, below=4mm of s0] (s1) {s1};
-  \node[block, right=26mm of i1, minimum height=3.6cm, minimum width=2.4cm, yshift=-6mm] (mux) {4-to-1\\MUX};
-  \node[io, right=14mm of mux] (out) {out};
-  \foreach \sig in {i0,i1,i2,i3} { \draw[arr] (\sig) -- (\sig -| mux.west); }
-  \draw[arr] (s0) -| ($(mux.south)+(-0.5,0)$);
-  \draw[arr] (s1) -| ($(mux.south)+(0.5,0)$);
-  \draw[arr] (mux) -- (out);
-\end{tikzpicture}
-\captionof{figure}{Schematic-entry 4-to-1 multiplexer (\texttt{mux\_sch}).}
-\label{fig:exp3-mux-schematic}
-\end{boxedfigure}
+  \begin{boxedfigure}
+    \centering
+    \includegraphics[width=0.85\linewidth]{figures/Exp3_Figure_1.png}
+    \captionof{figure}{Mux Schematic.}
+    \label{fig:exp3-mux-schematic}
+  \end{boxedfigure}
 
-\begin{boxedtable}
-\centering
-\begin{tabular}{cccccc}
-\toprule
-S0 & S1 & I0 & I1 & I2 & I3 \\
-\midrule
-0 & 0 & 1 & 1 & 0 & 0 \\
-0 & 1 & 0 & 1 & 1 & 0 \\
-1 & 0 & 1 & 1 & 0 & 1 \\
-1 & 1 & 1 & 1 & 0 & 0 \\
-\bottomrule
-\end{tabular}
-\captionof{table}{Input combinations to simulate.}
-\label{tab:exp3-truth}
-\end{boxedtable}
+  \begin{boxedtable}
+    \centering
+    \begin{tabular}{cccccc}
+      \toprule
+      S0 & S1 & I0 & I1 & I2 & I3 \\
+      \midrule
+      0  & 0  & 1  & 1  & 0  & 0  \\
+      0  & 1  & 0  & 1  & 1  & 0  \\
+      1  & 0  & 1  & 1  & 0  & 1  \\
+      1  & 1  & 1  & 1  & 0  & 0  \\
+      \bottomrule
+    \end{tabular}
+    \captionof{table}{Input combinations to simulate.}
+    \label{tab:exp3-truth}
+  \end{boxedtable}
 
-\textbf{Activity 2 --- Verilog entry}\vspace{2pt}
+  \textbf{Activity 2 --- Verilog entry}\vspace{2pt}
 
-\textit{Objective: use Verilog code as a design entry method in Quartus II.}
+  \textit{Objective: use Verilog code as a design entry method in Quartus II.}
 
-\begin{enumerate}
-  \item Start a new project (\texttt{Activity2}, top level \texttt{mux\_ver}) with the same device and EDA tool settings as Activity 1.
-  \item Create a new Verilog file and enter the code in Listing~\ref{lst:exp3-mux-ver}.
-  \item Save as \texttt{mux\_ver}, then compile the design.
-  \item Create a Vector Waveform File; insert input nodes \texttt{i0}--\texttt{i3}, \texttt{s0}, \texttt{s1}, and output node \texttt{out}.
-  \item Assign logic values matching Table~\ref{tab:exp3-truth}, save as \texttt{mux\_ver.vwf}, then start simulation.
-  \item Inspect the result in the Simulation Report --- Simulation Waveform.
-  \item Change the input values (saving before each run) and re-simulate.
-  \item View the synthesized schematic via \textbf{Tools} $\to$ \textbf{Netlist Viewer} $\to$ \textbf{RTL Viewer}, shown in Figure~\ref{fig:exp3-rtl}.
-  \item Print and submit the Verilog code and simulation result.
-\end{enumerate}
+  \begin{enumerate}
+    \item Start a new project (\texttt{Activity2}, top level \texttt{mux\_ver}) with the same device and EDA tool settings as Activity 1.
+    \item Create a new Verilog file and enter the code in Listing~\ref{lst:exp3-mux-ver}.
+    \item Save as \texttt{mux\_ver}, then compile the design.
+    \item Create a Vector Waveform File; insert input nodes \texttt{i0}--\texttt{i3}, \texttt{s0}, \texttt{s1}, and output node \texttt{out}.
+    \item Assign logic values matching Table~\ref{tab:exp3-truth}, save as \texttt{mux\_ver.vwf}, then start simulation.
+    \item Inspect the result in the Simulation Report --- Simulation Waveform.
+    \item Change the input values (saving before each run) and re-simulate.
+    \item View the synthesized schematic via \textbf{Tools} $\to$ \textbf{Netlist Viewer} $\to$ \textbf{RTL Viewer}, shown in Figure~\ref{fig:exp3-rtl}.
+    \item Print and submit the Verilog code and simulation result.
+  \end{enumerate}
 
-\begin{codepanel}{mux\_ver.v}{verilogstyle}
-\begin{lstlisting}
+  \begin{codepanel}{mux\_ver.v}{verilogstyle}
+    \begin{lstlisting}
 module mux_ver(out, i0, i1, i2, i3, s1, s0);
   output out;
   input i0, i1, i2, i3;
@@ -115,51 +102,51 @@ module mux_ver(out, i0, i1, i2, i3, s1, s0);
   end
 endmodule
 \end{lstlisting}
-\end{codepanel}
-\vspace{-4pt}
-\begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-mux-ver}: \texttt{mux\_ver.v} --- Verilog 4-to-1 multiplexer.\end{center}
+  \end{codepanel}
+  \vspace{-4pt}
+  \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-mux-ver}: \texttt{mux\_ver.v} --- Verilog 4-to-1 multiplexer.\end{center}
 
-\begin{boxedfigure}
-\centering
-\begin{tikzpicture}
-  \node[block, minimum width=1.6cm, minimum height=2.6cm, trapezium, trapezium left angle=70, trapezium right angle=110, shape border rotate=0] (mux) {};
-  \node[above=1mm of mux, font=\small\plexmedium] {Mux0};
-  \node[io, left=12mm of mux, yshift=8mm] (s1) {s1};
-  \node[io, below=3mm of s1] (s0) {s0};
-  \node[io, below=5mm of s0] (i3) {i3};
-  \node[io, below=3mm of i3] (i2) {i2};
-  \node[io, below=3mm of i2] (i1) {i1};
-  \node[io, below=3mm of i1] (i0) {i0};
-  \node[io, right=14mm of mux] (out) {out};
-  \draw[arr] (s1) -- ($(mux.west)+(0,0.9)$) node[midway, above, font=\tiny] {SEL[1..0]};
-  \draw[arr] (s0) -- ($(mux.west)+(0,0.55)$);
-  \draw[arr] (i3) -- ($(mux.west)+(0,-0.1)$) node[midway, above, font=\tiny] {DATA[3..0]};
-  \draw[arr] (i2) -- ($(mux.west)+(0,-0.35)$);
-  \draw[arr] (i1) -- ($(mux.west)+(0,-0.6)$);
-  \draw[arr] (i0) -- ($(mux.west)+(0,-0.85)$);
-  \draw[arr] (mux.east) -- (out) node[midway, above, font=\tiny] {out};
-\end{tikzpicture}
-\captionof{figure}{RTL Viewer output for \texttt{mux\_ver} (\texttt{Mux0}).}
-\label{fig:exp3-rtl}
-\end{boxedfigure}
+  \begin{boxedfigure}
+    \centering
+    \begin{tikzpicture}
+      \node[block, minimum width=1.6cm, minimum height=2.6cm, trapezium, trapezium left angle=70, trapezium right angle=110, shape border rotate=0] (mux) {};
+      \node[above=1mm of mux, font=\small\plexmedium] {Mux0};
+      \node[io, left=12mm of mux, yshift=8mm] (s1) {s1};
+      \node[io, below=3mm of s1] (s0) {s0};
+      \node[io, below=5mm of s0] (i3) {i3};
+      \node[io, below=3mm of i3] (i2) {i2};
+      \node[io, below=3mm of i2] (i1) {i1};
+      \node[io, below=3mm of i1] (i0) {i0};
+      \node[io, right=14mm of mux] (out) {out};
+      \draw[arr] (s1) -- ($(mux.west)+(0,0.9)$) node[midway, above, font=\tiny] {SEL[1..0]};
+      \draw[arr] (s0) -- ($(mux.west)+(0,0.55)$);
+      \draw[arr] (i3) -- ($(mux.west)+(0,-0.1)$) node[midway, above, font=\tiny] {DATA[3..0]};
+      \draw[arr] (i2) -- ($(mux.west)+(0,-0.35)$);
+      \draw[arr] (i1) -- ($(mux.west)+(0,-0.6)$);
+      \draw[arr] (i0) -- ($(mux.west)+(0,-0.85)$);
+      \draw[arr] (mux.east) -- (out) node[midway, above, font=\tiny] {out};
+    \end{tikzpicture}
+    \captionof{figure}{RTL Viewer output for \texttt{mux\_ver} (\texttt{Mux0}).}
+    \label{fig:exp3-rtl}
+  \end{boxedfigure}
 
-\textbf{Activity 3 --- Combining schematic and Verilog entry}\vspace{2pt}
+  \textbf{Activity 3 --- Combining schematic and Verilog entry}\vspace{2pt}
 
-\textit{Objective: combine a Verilog module with schematic entry in a single design.}
+  \textit{Objective: combine a Verilog module with schematic entry in a single design.}
 
-\begin{enumerate}
-  \item Start a new project (\texttt{activity3}, top level \texttt{mux\_schver}) with the same device and EDA tool settings.
-  \item Create a new Verilog HDL file with the code in Listing~\ref{lst:exp3-mux-vrl}; save as \texttt{mux\_vrl}.
-  \item Generate a reusable symbol from the file via \textbf{File} $\to$ \textbf{Create/Update} $\to$ \textbf{Create Symbol Files for Current File}. The resulting block is shown in Figure~\ref{fig:exp3-mux-vrl-symbol}.
-  \item Create a new Block Diagram/Schematic file, place the \texttt{mux\_vrl} symbol from the project library, and connect its inputs and output to input/output pads as shown in Figure~\ref{fig:exp3-mux-schver}.
-  \item Save as \texttt{mux\_schver.bdf} and start compilation.
-  \item Create a Vector Waveform File, insert the same nodes as before, assign logic values, save as \texttt{mux\_schver.vwf}, and run Compilation and Simulation.
-  \item Record the outputs for the combinations in Table~\ref{tab:exp3-truth}, saving the waveform file each time.
-  \item Print and submit the schematic diagram, Verilog code, and simulation result.
-\end{enumerate}
+  \begin{enumerate}
+    \item Start a new project (\texttt{activity3}, top level \texttt{mux\_schver}) with the same device and EDA tool settings.
+    \item Create a new Verilog HDL file with the code in Listing~\ref{lst:exp3-mux-vrl}; save as \texttt{mux\_vrl}.
+    \item Generate a reusable symbol from the file via \textbf{File} $\to$ \textbf{Create/Update} $\to$ \textbf{Create Symbol Files for Current File}. The resulting block is shown in Figure~\ref{fig:exp3-mux-vrl-symbol}.
+    \item Create a new Block Diagram/Schematic file, place the \texttt{mux\_vrl} symbol from the project library, and connect its inputs and output to input/output pads as shown in Figure~\ref{fig:exp3-mux-schver}.
+    \item Save as \texttt{mux\_schver.bdf} and start compilation.
+    \item Create a Vector Waveform File, insert the same nodes as before, assign logic values, save as \texttt{mux\_schver.vwf}, and run Compilation and Simulation.
+    \item Record the outputs for the combinations in Table~\ref{tab:exp3-truth}, saving the waveform file each time.
+    \item Print and submit the schematic diagram, Verilog code, and simulation result.
+  \end{enumerate}
 
-\begin{codepanel}{mux\_vrl.v}{verilogstyle}
-\begin{lstlisting}
+  \begin{codepanel}{mux\_vrl.v}{verilogstyle}
+    \begin{lstlisting}
 module mux_vrl(out, i0, i1, i2, i3, s1, s0);
   output out;
   input i0, i1, i2, i3;
@@ -178,62 +165,62 @@ module mux_vrl(out, i0, i1, i2, i3, s1, s0);
   end
 endmodule
 \end{lstlisting}
-\end{codepanel}
-\vspace{-4pt}
-\begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-mux-vrl}: \texttt{mux\_vrl.v} --- Verilog module to be reused as a schematic symbol.\end{center}
+  \end{codepanel}
+  \vspace{-4pt}
+  \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-mux-vrl}: \texttt{mux\_vrl.v} --- Verilog module to be reused as a schematic symbol.\end{center}
 
-\begin{boxedfigure}
-\centering
-\begin{tikzpicture}
-  \node[block, minimum width=2.4cm, minimum height=3.2cm] (sym) {};
-  \node[above=1mm of sym, font=\small\plexmedium] {mux\_vrl};
-  \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-0.35)$) {i0};
-  \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-0.75)$) {i1};
-  \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-1.15)$) {i2};
-  \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-1.55)$) {i3};
-  \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-1.95)$) {s1};
-  \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-2.35)$) {s0};
-  \node[font=\scriptsize, anchor=east] at ($(sym.north east)+(-0.15,-0.35)$) {out};
-\end{tikzpicture}
-\captionof{figure}{Auto-generated \texttt{mux\_vrl} symbol block.}
-\label{fig:exp3-mux-vrl-symbol}
-\end{boxedfigure}
+  \begin{boxedfigure}
+    \centering
+    \begin{tikzpicture}
+      \node[block, minimum width=2.4cm, minimum height=3.2cm] (sym) {};
+      \node[above=1mm of sym, font=\small\plexmedium] {mux\_vrl};
+      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-0.35)$) {i0};
+      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-0.75)$) {i1};
+      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-1.15)$) {i2};
+      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-1.55)$) {i3};
+      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-1.95)$) {s1};
+      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-2.35)$) {s0};
+      \node[font=\scriptsize, anchor=east] at ($(sym.north east)+(-0.15,-0.35)$) {out};
+    \end{tikzpicture}
+    \captionof{figure}{Auto-generated \texttt{mux\_vrl} symbol block.}
+    \label{fig:exp3-mux-vrl-symbol}
+  \end{boxedfigure}
 
-\begin{boxedfigure}
-\centering
-\begin{tikzpicture}[node distance=4mm and 14mm]
-  \node[io] (i0) {i0};
-  \node[io, below=3mm of i0] (i1) {i1};
-  \node[io, below=3mm of i1] (i2) {i2};
-  \node[io, below=3mm of i2] (i3) {i3};
-  \node[io, below=3mm of i3] (s1) {s1};
-  \node[io, below=3mm of s1] (s0) {s0};
-  \node[block, right=of i2, minimum height=3.4cm, minimum width=2.2cm, yshift=-9mm] (mux) {mux\_vrl};
-  \node[io, right=14mm of mux] (out) {out};
-  \foreach \sig in {i0,i1,i2,i3,s1,s0} { \draw[arr] (\sig) -- (\sig -| mux.west); }
-  \draw[arr] (mux) -- (out);
-\end{tikzpicture}
-\captionof{figure}{Combined schematic \texttt{mux\_schver}: the Verilog-derived \texttt{mux\_vrl} block wired to I/O pads.}
-\label{fig:exp3-mux-schver}
-\end{boxedfigure}
+  \begin{boxedfigure}
+    \centering
+    \begin{tikzpicture}[node distance=4mm and 14mm]
+      \node[io] (i0) {i0};
+      \node[io, below=3mm of i0] (i1) {i1};
+      \node[io, below=3mm of i1] (i2) {i2};
+      \node[io, below=3mm of i2] (i3) {i3};
+      \node[io, below=3mm of i3] (s1) {s1};
+      \node[io, below=3mm of s1] (s0) {s0};
+      \node[block, right=of i2, minimum height=3.4cm, minimum width=2.2cm, yshift=-9mm] (mux) {mux\_vrl};
+      \node[io, right=14mm of mux] (out) {out};
+      \foreach \sig in {i0,i1,i2,i3,s1,s0} { \draw[arr] (\sig) -- (\sig -| mux.west); }
+      \draw[arr] (mux) -- (out);
+    \end{tikzpicture}
+    \captionof{figure}{Combined schematic \texttt{mux\_schver}: the Verilog-derived \texttt{mux\_vrl} block wired to I/O pads.}
+    \label{fig:exp3-mux-schver}
+  \end{boxedfigure}
 
-\textbf{Activity 4 --- Timing analysis}\vspace{2pt}
+  \textbf{Activity 4 --- Timing analysis}\vspace{2pt}
 
-\textit{Objective: analyse the maximum operating speed of a design.}
+  \textit{Objective: analyse the maximum operating speed of a design.}
 
-\begin{enumerate}
-  \item Start a new project (\texttt{Activity4}, top level \texttt{counter}) with the same device and EDA tool settings.
-  \item Create a new Verilog file with the code in Listing~\ref{lst:exp3-counter}; save as \texttt{counter} and compile.
-  \item Create a Vector Waveform File; insert \texttt{clock} and \texttt{clear} as inputs and \texttt{Q} as output.
-  \item Force \texttt{clear} low, assign a clock signal to \texttt{clock}, save as \texttt{counter.vwf}, then start simulation.
-  \item Inspect the result in the Simulation Report --- Simulation Waveform.
-  \item Run \textbf{Processing} $\to$ \textbf{Start} $\to$ \textbf{Start Classic Timing Analyzer}.
-  \item Read the maximum clock frequency from the Timing Analyzer Summary (Table~\ref{tab:exp3-timing}).
-  \item Print and submit the Verilog code and simulation result.
-\end{enumerate}
+  \begin{enumerate}
+    \item Start a new project (\texttt{Activity4}, top level \texttt{counter}) with the same device and EDA tool settings.
+    \item Create a new Verilog file with the code in Listing~\ref{lst:exp3-counter}; save as \texttt{counter} and compile.
+    \item Create a Vector Waveform File; insert \texttt{clock} and \texttt{clear} as inputs and \texttt{Q} as output.
+    \item Force \texttt{clear} low, assign a clock signal to \texttt{clock}, save as \texttt{counter.vwf}, then start simulation.
+    \item Inspect the result in the Simulation Report --- Simulation Waveform.
+    \item Run \textbf{Processing} $\to$ \textbf{Start} $\to$ \textbf{Start Classic Timing Analyzer}.
+    \item Read the maximum clock frequency from the Timing Analyzer Summary (Table~\ref{tab:exp3-timing}).
+    \item Print and submit the Verilog code and simulation result.
+  \end{enumerate}
 
-\begin{codepanel}{counter.v}{verilogstyle}
-\begin{lstlisting}
+  \begin{codepanel}{counter.v}{verilogstyle}
+    \begin{lstlisting}
 module counter(Q, clock, clear);
   output [3:0] Q;
   input clock, clear;
@@ -248,68 +235,68 @@ module counter(Q, clock, clear);
   end
 endmodule
 \end{lstlisting}
-\end{codepanel}
-\vspace{-4pt}
-\begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-counter}: \texttt{counter.v} --- 4-bit up counter with asynchronous clear.\end{center}
+  \end{codepanel}
+  \vspace{-4pt}
+  \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-counter}: \texttt{counter.v} --- 4-bit up counter with asynchronous clear.\end{center}
 
-\begin{boxedtable}
-\centering
-\begin{tabular}{clll}
-\toprule
-\# & Type & Actual time & Failed paths \\
-\midrule
-1 & Worst-case $t_{co}$ (clock $\to$ Q[3]) & 7.410\,ns & 0 \\
-2 & Clock setup (\texttt{clock}) & 233.64\,MHz (4.280\,ns period) & 0 \\
-3 & Total failed paths & --- & 0 \\
-\bottomrule
-\end{tabular}
-\captionof{table}{Timing Analyzer Summary for \texttt{counter}.}
-\label{tab:exp3-timing}
-\end{boxedtable}
+  \begin{boxedtable}
+    \centering
+    \begin{tabular}{clll}
+      \toprule
+      \# & Type                                   & Actual time                    & Failed paths \\
+      \midrule
+      1  & Worst-case $t_{co}$ (clock $\to$ Q[3]) & 7.410\,ns                      & 0            \\
+      2  & Clock setup (\texttt{clock})           & 233.64\,MHz (4.280\,ns period) & 0            \\
+      3  & Total failed paths                     & ---                            & 0            \\
+      \bottomrule
+    \end{tabular}
+    \captionof{table}{Timing Analyzer Summary for \texttt{counter}.}
+    \label{tab:exp3-timing}
+  \end{boxedtable}
 
-\textbf{Activity 5 --- Downloading to the DE2 board}\vspace{2pt}
+  \textbf{Activity 5 --- Downloading to the DE2 board}\vspace{2pt}
 
-\textit{Objective: download a Verilog design onto the Altera DE2 board and drive the seven-segment display.}
+  \textit{Objective: download a Verilog design onto the Altera DE2 board and drive the seven-segment display.}
 
-\begin{enumerate}
-  \item Start a new project (\texttt{activity5}, top level \texttt{counta}) with the same device and EDA tool settings.
-  \item Create a new Verilog HDL file with the code in Listing~\ref{lst:exp3-counta}; save as \texttt{counta}.
-  \item Compile and simulate the design.
-  \item Assign each output pin to a physical device pin using \textbf{Assignment} $\to$ \textbf{Pin Planner}, per Table~\ref{tab:exp3-pins} (refer to the DE2 user manual for pin locations).
-  \item Save, then recompile the project.
-  \item Download the configuration to the DE2 board via \textbf{Tools} $\to$ \textbf{Programmer} $\to$ \textbf{Hardware Setup} $\to$ USB-Blaster $\to$ \textbf{Start}.
-  \item Record the pattern displayed on the seven-segment display.
-  \item Change the assignment to \verb|assign q[6:0] = 7'b1111000;|, save, recompile, and download again. Record the new displayed pattern.
-\end{enumerate}
+  \begin{enumerate}
+    \item Start a new project (\texttt{activity5}, top level \texttt{counta}) with the same device and EDA tool settings.
+    \item Create a new Verilog HDL file with the code in Listing~\ref{lst:exp3-counta}; save as \texttt{counta}.
+    \item Compile and simulate the design.
+    \item Assign each output pin to a physical device pin using \textbf{Assignment} $\to$ \textbf{Pin Planner}, per Table~\ref{tab:exp3-pins} (refer to the DE2 user manual for pin locations).
+    \item Save, then recompile the project.
+    \item Download the configuration to the DE2 board via \textbf{Tools} $\to$ \textbf{Programmer} $\to$ \textbf{Hardware Setup} $\to$ USB-Blaster $\to$ \textbf{Start}.
+    \item Record the pattern displayed on the seven-segment display.
+    \item Change the assignment to \verb|assign q[6:0] = 7'b1111000;|, save, recompile, and download again. Record the new displayed pattern.
+  \end{enumerate}
 
-\begin{codepanel}{counta.v}{verilogstyle}
-\begin{lstlisting}
+  \begin{codepanel}{counta.v}{verilogstyle}
+    \begin{lstlisting}
 module counta(q);
   output [6:0] q;
   assign q[6:0] = 7'b0010000;
 endmodule
 \end{lstlisting}
-\end{codepanel}
-\vspace{-4pt}
-\begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-counta}: \texttt{counta.v} --- static seven-segment pattern.\end{center}
+  \end{codepanel}
+  \vspace{-4pt}
+  \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-counta}: \texttt{counta.v} --- static seven-segment pattern.\end{center}
 
-\begin{boxedtable}
-\centering
-\begin{tabular}{clcl}
-\toprule
-\# & Node name & Direction & Pin \\
-\midrule
-1 & Q[6] & Output & PIN\_V13 \\
-2 & Q[5] & Output & PIN\_V14 \\
-3 & Q[4] & Output & PIN\_AE11 \\
-4 & Q[3] & Output & PIN\_AD11 \\
-5 & Q[2] & Output & PIN\_AC12 \\
-6 & Q[1] & Output & PIN\_AB12 \\
-7 & Q[0] & Output & PIN\_AF10 \\
-\bottomrule
-\end{tabular}
-\captionof{table}{Seven-segment output pin assignment (DE2 board).}
-\label{tab:exp3-pins}
-\end{boxedtable}
+  \begin{boxedtable}
+    \centering
+    \begin{tabular}{clcl}
+      \toprule
+      \# & Node name & Direction & Pin       \\
+      \midrule
+      1  & Q[6]      & Output    & PIN\_V13  \\
+      2  & Q[5]      & Output    & PIN\_V14  \\
+      3  & Q[4]      & Output    & PIN\_AE11 \\
+      4  & Q[3]      & Output    & PIN\_AD11 \\
+      5  & Q[2]      & Output    & PIN\_AC12 \\
+      6  & Q[1]      & Output    & PIN\_AB12 \\
+      7  & Q[0]      & Output    & PIN\_AF10 \\
+      \bottomrule
+    \end{tabular}
+    \captionof{table}{Seven-segment output pin assignment (DE2 board).}
+    \label{tab:exp3-pins}
+  \end{boxedtable}
 
 \end{procedure}

@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  11 AUG 2026 15:31
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  11 AUG 2026 16:29
  restricted system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/micha/Documents/GitHub/EEM441/LabManualV1/main
@@ -1952,15 +1952,24 @@ ga\TU/IBMPlexSans(0)/m/n/12 ; project name: \TU/JetBrainsMono(0)/m/n/12 activity
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+[]\TU/IBMPlexSans(0)/m/n/12 De-vice fam-ily: Cy-clone II (\TU/JetBrainsMono(0)/
+m/n/12 EP2C35F672C6N\TU/IBMPlexSans(0)/m/n/12 ) or Cy-clone IV
+ []
+
+<figures/Exp3_Figure_1.png, id=266, 757.6305pt x 501.072pt>
+File: figures/Exp3_Figure_1.png Graphic file (type png)
+<use figures/Exp3_Figure_1.png>
+Package luatex.def Info: figures/Exp3_Figure_1.png  used on input line 48.
+(luatex.def)             Requested size: 382.01434pt x 252.64561pt.
+
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 62.
+(caption)                particular \caption on input line 49.
 See the caption package documentation for explanation.
 
-LaTeX Font Info:    Font shape `TU/JetBrainsMono(0)/m/n' will be
-(Font)              scaled to size 10.27296pt on input line 62.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 78.
+(caption)                particular \caption on input line 65.
 See the caption package documentation for explanation.
 
 (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstlang1.sty
@@ -1972,37 +1981,40 @@ File: lstlang2.sty 2025/11/14 1.11b listings language file
 (C:/Users/micha/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2025/11/14 1.11b listings language file
 )
+LaTeX Font Info:    Font shape `TU/JetBrainsMono(0)/m/n' will be
+(Font)              scaled to size 10.27296pt on input line 86.
 LaTeX Font Info:    Font shape `TU/JetBrainsMono(0)/b/n' will be
-(Font)              scaled to size 10.27296pt on input line 100.
+(Font)              scaled to size 10.27296pt on input line 87.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 142.
+(caption)                particular \caption on input line 129.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 198.
+(caption)                particular \caption on input line 185.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 216.
+(caption)                particular \caption on input line 203.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 266.
+(caption)                particular \caption on input line 253.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 311.
+(caption)                particular \caption on input line 298.
 See the caption package documentation for explanation.
 
 [11
 
-] [12] [13] [14] [15] [16]) (./experiments/exp04.tex [17]
+] [12<./figures/Exp3_Figure_1.png>] [13] [14] [15] [16])
+(./experiments/exp04.tex [17]
 File: figures/seee-emblem-only.png Graphic file (type png)
 <use figures/seee-emblem-only.png>
 Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
@@ -2242,21 +2254,25 @@ See the caption package documentation for explanation.
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-07-20>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: B46255FA24EA5417DC7671DB6DBC7930;2303.
 )
 
 Here is how much of LuaTeX's memory you used:
- 41612 strings out of 475695
- 1164499,1977958 words of node,token memory allocated
+ 41622 strings out of 475695
+ 1164385,1977958 words of node,token memory allocated
  1359 words of node memory still in use:
    30 hlist, 2 vlist, 14 rule, 2 glue, 4 kern, 1 glyph, 90 attribute, 64 glue_sp
 ec, 82 attribute_list, 2 write, 24 pdf_literal, 24 pdf_colorstack nodes
-   avail lists: 1:5,2:37195,3:2782,4:24487,5:22268,6:289,7:29795,8:47,9:66620,10
+   avail lists: 1:8,2:37196,3:2454,4:24487,5:22268,6:289,7:29795,8:47,9:66620,10
 :41,11:3435
- 62733 multiletter control sequences out of 65536+600000
- 124 fonts using 47025895 bytes
- 97i,13n,117p,665b,1761s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 62740 multiletter control sequences out of 65536+600000
+ 124 fonts using 47026007 bytes
+ 97i,13n,117p,665b,1762s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <./fonts/PlexSans/IBMPlexSans-Regular.ttf><./fonts/JetBrainsMono/JetBrainsMono-I
 talic.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/JetBrainsMono/JetBrain
 sMono-Bold.ttf><./fonts/JetBrainsMono/JetBrainsMono-Regular.ttf><./fonts/STIX2/S
@@ -2264,9 +2280,9 @@ TIXTwoMath-Regular.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/PlexSans/
 IBMPlexSans-Italic.ttf><./fonts/PlexSans/IBMPlexSans-SemiBold.ttf><./fonts/PlexS
 ans/IBMPlexSans-Regular.ttf><./fonts/PlexSans/IBMPlexSans-Medium.ttf><./fonts/Pl
 exSans/IBMPlexSans-Light.ttf>
-Output written on main.pdf (53 pages, 3009089 bytes).
+Output written on main.pdf (53 pages, 3157222 bytes).
 
-PDF statistics: 1190 PDF objects out of 1200 (max. 8388607)
+PDF statistics: 1192 PDF objects out of 1200 (max. 8388607)
  734 named destinations out of 1000 (max. 1048576)
  336 words of extra memory for PDF output out of 10000 (max. 100000000)
 

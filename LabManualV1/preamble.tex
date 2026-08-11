@@ -78,11 +78,11 @@
 % ---------- Section styling ----------
 \usepackage{titlesec}
 \titleformat{\section}
-{\normalfont\Large\plexmedium\color{inkblack}}
-{\thesection}{0.6em}{}
+  {\normalfont\Large\plexmedium\color{inkblack}}
+  {\thesection}{0.6em}{}
 \titleformat{\subsection}
-{\normalfont\large\plexmedium\color{inkblack}}
-{\thesubsection}{0.6em}{}
+  {\normalfont\large\plexmedium\color{inkblack}}
+  {\thesubsection}{0.6em}{}
 \titlespacing*{\section}{0pt}{1.4em}{0.8em}
 \titlespacing*{\subsection}{0pt}{1.1em}{0.6em}
 
@@ -92,6 +92,7 @@
 
 % ---------- Tables ----------
 \usepackage{array}
+\usepackage{needspace}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{multirow}
@@ -121,24 +122,24 @@
 
 \tikzset{
   block/.style = {
-      draw=slategray, thick, fill=panelbg, rounded corners=1pt,
-      minimum height=1.1cm, minimum width=2.6cm, align=center,
-      font=\small\plexmedium
-    },
+    draw=slategray, thick, fill=panelbg, rounded corners=1pt,
+    minimum height=1.1cm, minimum width=2.6cm, align=center,
+    font=\small\plexmedium
+  },
   io/.style = {
-      draw=accentblue, thick, fill=white, rounded corners=1pt,
-      minimum height=0.9cm, minimum width=2.2cm, align=center,
-      font=\small
-    },
+    draw=accentblue, thick, fill=white, rounded corners=1pt,
+    minimum height=0.9cm, minimum width=2.2cm, align=center,
+    font=\small
+  },
   decision/.style = {
-      draw=slategray, thick, fill=panelbg, diamond, aspect=2,
-      align=center, font=\small\plexmedium, inner sep=2pt
-    },
+    draw=slategray, thick, fill=panelbg, diamond, aspect=2,
+    align=center, font=\small\plexmedium, inner sep=2pt
+  },
   startstop/.style = {
-      draw=accentteal, thick, fill=white, rounded corners=10pt,
-      minimum height=0.8cm, minimum width=2cm, align=center,
-      font=\small\plexmedium
-    },
+    draw=accentteal, thick, fill=white, rounded corners=10pt,
+    minimum height=0.8cm, minimum width=2cm, align=center,
+    font=\small\plexmedium
+  },
   arr/.style = {-{Latex[length=2.2mm]}, thick, draw=slategray},
 }
 
@@ -205,8 +206,8 @@
   keywordstyle      = \color{hdlkeyword}\bfseries,      % reserved keywords
   keywordstyle=[2]\color{hdltype}\bfseries,             % IEEE library types
   morekeywords=[2]{std_logic, std_logic_vector, std_ulogic, std_ulogic_vector,
-      signed, unsigned, integer, natural, positive, boolean, bit, bit_vector,
-      character, string, time, real},
+    signed, unsigned, integer, natural, positive, boolean, bit, bit_vector,
+    character, string, time, real},
 }
 
 % ============================================================
@@ -253,15 +254,15 @@
   language     = C,
   emphstyle    = \color{swtype},
   emph={int, char, float, double, void, long, short, unsigned, signed,
-      size_t, bool, uint8_t, uint16_t, uint32_t, int8_t, int16_t, int32_t},
+    size_t, bool, uint8_t, uint16_t, uint32_t, int8_t, int16_t, int32_t},
   moredelim    = [l][\color{swpreproc}\bfseries]{\#},   % preprocessor directive lines
-  % Note: this directive colouring (like listings' built-in `directives`
-  % class) does not take effect inside a breakable tcolorbox, which is
-  % how all code panels in this document are rendered -- a known
-  % listings/tcolorbox interaction. #include/#define lines therefore
-  % render in the default text colour inside \codepanel, which is a
-  % minor, accepted cosmetic gap; all keyword/type/comment/string
-  % highlighting is unaffected and works correctly.
+    % Note: this directive colouring (like listings' built-in `directives`
+    % class) does not take effect inside a breakable tcolorbox, which is
+    % how all code panels in this document are rendered -- a known
+    % listings/tcolorbox interaction. #include/#define lines therefore
+    % render in the default text colour inside \codepanel, which is a
+    % minor, accepted cosmetic gap; all keyword/type/comment/string
+    % highlighting is unaffected and works correctly.
 }
 
 \lstdefinestyle{cppstyle}{
@@ -270,8 +271,8 @@
   language     = [ISO]C++,
   emphstyle    = \color{swtype},
   emph={int, char, float, double, void, long, short, unsigned, signed,
-      bool, auto, size_t, string, vector, map, class, struct,
-      uint8_t, uint16_t, uint32_t, int8_t, int16_t, int32_t},
+    bool, auto, size_t, string, vector, map, class, struct,
+    uint8_t, uint16_t, uint32_t, int8_t, int16_t, int32_t},
   moredelim    = [l][\color{swpreproc}\bfseries]{\#},   % preprocessor directive lines
 }
 
@@ -297,14 +298,14 @@
   % by the time \begin{lstlisting} reads them.
   \lstset{style=#2}%
   \begin{tcolorbox}[
-    enhanced, breakable,
-    colback=codebg, colframe=panelrule,
-    boxrule=0.6pt, arc=1.5pt,
-    left=4pt, right=4pt, top=3pt, bottom=3pt,
-    title={\small\plexmedium\color{slategray} #1},
-    fonttitle=\small, coltitle=slategray,
-    colbacktitle=panelbg, boxsep=1pt,
-  ]
+      enhanced, breakable,
+      colback=codebg, colframe=panelrule,
+      boxrule=0.6pt, arc=1.5pt,
+      left=4pt, right=4pt, top=3pt, bottom=3pt,
+      title={\small\plexmedium\color{slategray} #1},
+      fonttitle=\small, coltitle=slategray,
+      colbacktitle=panelbg, boxsep=1pt,
+    ]
 }{%
   \end{tcolorbox}
 }
@@ -324,9 +325,9 @@
   colbacktitle=panelbg,
   toptitle=2pt, bottomtitle=2pt,
   overlay={
-      \draw[accentblue, line width=2.2pt]
+    \draw[accentblue, line width=2.2pt]
       ([xshift=0pt]frame.north west) -- ([xshift=0pt]frame.south west);
-    },
+  },
   #2
 }
 
@@ -350,18 +351,35 @@
   colbacktitle=warnbg,
 }
 
+% ---------- Per-experiment numbering for figures/tables/listings ----------
+% expnum tracks "which experiment are we in"; figure/table/listing are
+% chained to it so they read as N.1, N.2, ... and reset at each new
+% \experimentheader, instead of numbering continuously 1..end of book.
+\newcounter{expnum}
+\newcounter{listing}
+\counterwithin{figure}{expnum}
+\counterwithin{table}{expnum}
+\counterwithin{listing}{expnum}
+\renewcommand{\thelisting}{\theexpnum.\arabic{listing}}
+
 % ---------- Experiment title block ----------
 \newcommand{\experimentheader}[4]{%
   % #1 = experiment number, #2 = short title, #3 = full title, #4 = track label (e.g. Control Lab)
   \clearpage
+  \setcounter{expnum}{#1}%
+  \setcounter{figure}{0}%
+  \setcounter{table}{0}%
+  \setcounter{listing}{0}%
   \phantomsection
   \addcontentsline{toc}{section}{Experiment #1: #2}
   \markboth{#2 \textbar\ #4}{#2 \textbar\ #4}
   \begingroup
   \centering
   \vspace*{0.2em}
-  \includegraphics[width=5cm]{figures/seee-emblem-only.png}\par
+  \includegraphics[width=3.6cm]{figures/seee-emblem-only.png}\par
   \vspace{0.5em}
+  {\plexlight\color{slategray}\large EEM 441 --- Control, Instrumentation \& FPGA Laboratory\par}
+  \vspace{0.6em}
   {\plexmedium\color{usmpurple}\Huge Experiment #1\par}
   \vspace{0.2em}
   {\plexmedium\color{inkblack}\LARGE #3\par}
@@ -369,14 +387,21 @@
   \endgroup
 }
 
+% Convenience command for listing captions: \listingcaption{label}{caption text}
+% Produces "Listing N.M: caption text" consistent with Figure/Table numbering.
+\newcommand{\listingcaption}[2]{%
+  \refstepcounter{listing}%
+  \begin{center}\small\color{slategray}Listing \thelisting\label{#1}: #2\end{center}%
+}
+
 % ---------- Table of contents styling ----------
 \usepackage{titletoc}
 \renewcommand{\contentsname}{\plexmedium\color{inkblack}Table of Contents}
 \titlecontents{section}
-[0pt]
-{\vspace{6pt}\plexmedium}
-{}{}
-{\titlerule*[6pt]{.}\contentspage}
+  [0pt]
+  {\vspace{6pt}\plexmedium}
+  {}{}
+  {\titlerule*[6pt]{.}\contentspage}
 
 % ---------- Misc ----------
 \usepackage[english]{babel}

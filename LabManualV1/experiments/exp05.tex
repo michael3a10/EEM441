@@ -27,7 +27,10 @@ Two important internal registers are selected via the RS pin. When $\text{RS}=0$
 It is good practice to check the busy flag before writing to the LCD: with $\text{RS}=0$ and $\text{R}/\overline{\text{W}}=1$, the busy flag appears on D7. While D7\,=\,1 the LCD is busy with internal operations and will not accept new data; once D7\,=\,0, the LCD is ready to receive the next byte.
 \end{introduction}
 
+\needspace{4cm}
 \begin{boxedtable}
+\captionof{table}{Pin description for the LCD module.}
+\label{tab:exp5-pins-lcd}
 \centering
 \begin{tabular}{clcl}
 \toprule
@@ -49,52 +52,11 @@ Pin & Symbol & I/O & Description \\
 14 & DB7  & I/O & \\
 \bottomrule
 \end{tabular}
-\captionof{table}{Pin description for the LCD module.}
-\label{tab:exp5-pins-lcd}
 \end{boxedtable}
 
 \begin{boxedfigure}
 \centering
-\resizebox{0.98\linewidth}{!}{%
-\begin{tikzpicture}[
-  x=1.05cm, y=0.9cm,
-  sig/.style={very thick, draw=inkblack},
-  lbl/.style={font=\small\plexmedium, anchor=east},
-]
-  % row y-positions
-  \def\yD{6}\def\yE{4}\def\yRW{2}\def\yRS{0}
-
-  \node[lbl] at (-0.3,\yD)  {D0--D7};
-  \node[lbl] at (-0.3,\yE)  {E};
-  \node[lbl] at (-0.3,\yRW) {R/$\overline{\text{W}}$};
-  \node[lbl] at (-0.3,\yRS) {RS};
-
-  % D0-D7 line: low, then hexagon "Data" pulse, then low
-  \draw[sig] (0,\yD) -- (3.4,\yD);
-  \draw[sig] (3.4,\yD) -- (3.8,\yD+0.4) -- (7.6,\yD+0.4) -- (8.0,\yD) -- (7.6,\yD-0.4) -- (3.8,\yD-0.4) -- cycle;
-  \node[font=\small] at (5.7,\yD) {Data};
-  \draw[sig] (8.0,\yD) -- (11,\yD);
-  % tD arrow
-  \draw[<->, thin] (3.4,\yD-0.9) -- (4.6,\yD-0.9);
-  \node[font=\scriptsize] at (4.0,\yD-1.25) {$t_D$};
-  \draw[dotted] (3.4,\yD-1.4) -- (3.4,\yE+0.55);
-  \draw[dotted] (4.6,\yD-1.4) -- (4.6,\yE+0.55);
-
-  % E line: low, high pulse, low
-  \draw[sig] (0,\yE) -- (3.4,\yE) -- (3.4,\yE+0.55) -- (7.6,\yE+0.55) -- (7.6,\yE) -- (11,\yE);
-  \draw[dotted] (7.6,\yE+0.9) -- (7.6,\yRW-0.55);
-
-  % R/W line: low pulse near start (setup), then returns; tAS / tAH markers
-  \draw[sig] (0,\yRW) -- (2.9,\yRW) -- (2.9,\yRW+0.5) -- (3.9,\yRW+0.5) -- (3.9,\yRW) -- (7.1,\yRW) -- (7.1,\yRW+0.5) -- (8.1,\yRW+0.5) -- (8.1,\yRW) -- (11,\yRW);
-  \draw[<->, thin] (2.9,\yRW-0.35) -- (3.4,\yRW-0.35);
-  \node[font=\scriptsize] at (3.15,\yRW-0.62) {$t_{AS}$};
-  \draw[<->, thin] (7.6,\yRW-0.35) -- (8.1,\yRW-0.35);
-  \node[font=\scriptsize] at (7.85,\yRW-0.62) {$t_{AH}$};
-
-  % RS line: low, then step high covering the enable pulse, then low
-  \draw[sig] (0,\yRS) -- (3.4,\yRS) -- (3.4,\yRS+0.55) -- (7.6,\yRS+0.55) -- (7.6,\yRS) -- (11,\yRS);
-\end{tikzpicture}
-}
+\includegraphics[width=0.85\linewidth]{figures/Exp5_Figure_1.png}
 
 \vspace{4pt}
 \footnotesize
@@ -107,7 +69,10 @@ $t_{AH}$ = hold time after E falls, for RS and R/$\overline{\text{W}}$, minimum 
 \label{fig:exp5-timing}
 \end{boxedfigure}
 
+\needspace{4cm}
 \begin{boxedtable}
+\captionof{table}{LCD command codes.}
+\label{tab:exp5-commands}
 \centering
 \begin{tabular}{cl}
 \toprule
@@ -133,8 +98,6 @@ C0 & Force cursor to beginning of line 2 \\
 38 & 2 lines, $5\times7$ dot matrix \\
 \bottomrule
 \end{tabular}
-\captionof{table}{LCD command codes.}
-\label{tab:exp5-commands}
 \end{boxedtable}
 
 \begin{procedure}
@@ -156,31 +119,15 @@ C0 & Force cursor to beginning of line 2 \\
 
 \begin{boxedfigure}
 \centering
-\resizebox{0.98\linewidth}{!}{%
-\begin{tikzpicture}[node distance=14mm and 18mm]
-  \node[io] (clk) {CLK};
-  \node[io, below=6mm of clk] (rst) {RST};
-  \node[block, right=of clk, minimum width=3cm, minimum height=2.6cm, yshift=-8mm] (lcdt) {lcd\_t\\[2pt]\scriptsize CLK, RST $\to$\\ mLCD\_DATA,\\ mLCD\_RS, mLCD\_Start};
-  \node[block, right=42mm of lcdt, minimum width=3.2cm, minimum height=2.8cm] (lcdc) {LCD\_Controller\\[2pt]\scriptsize iDATA, iRS, iStart $\to$\\ LCD\_DATA, LCD\_RW,\\ LCD\_EN, LCD\_RS, LCD\_POW};
-  \node[io, right=of lcdc, yshift=10mm] (lcddata) {LCD\_DATA[7:0]};
-  \node[io, right=of lcdc, yshift=2mm] (lcden) {LCD\_EN};
-  \node[io, right=of lcdc, yshift=-6mm] (lcdrs) {LCD\_RS};
-  \node[io, right=of lcdc, yshift=-14mm] (lcdpow) {LCD\_POW};
-
-  \draw[arr] (clk) -- (lcdt);
-  \draw[arr] (rst) -- (lcdt);
-  \draw[arr] (lcdt) -- (lcdc) node[midway, above, font=\tiny] {mLCD\_DATA, mLCD\_RS, mLCD\_Start};
-  \draw[arr] (lcdc.east) ++(0,10mm) -- (lcddata);
-  \draw[arr] (lcdc.east) ++(0,2mm) -- (lcden);
-  \draw[arr] (lcdc.east) ++(0,-6mm) -- (lcdrs);
-  \draw[arr] (lcdc.east) ++(0,-14mm) -- (lcdpow);
-\end{tikzpicture}
-}
+\includegraphics[width=0.9\linewidth]{figures/Exp5_Figure_2.png}
 \captionof{figure}{Schematic diagram for the LCD interface: \texttt{lcd\_t} (lookup-table sequencer) feeding \texttt{LCD\_Controller} (bus-timing controller).}
 \label{fig:exp5-schematic}
 \end{boxedfigure}
 
+\needspace{4cm}
 \begin{boxedtable}
+\captionof{table}{Pin assignment for the LCD interface.}
+\label{tab:exp5-pinassign}
 \centering
 \begin{tabular}{clcl}
 \toprule
@@ -202,8 +149,6 @@ C0 & Force cursor to beginning of line 2 \\
 14 & RST          & Input  & PIN\_G26 \\
 \bottomrule
 \end{tabular}
-\captionof{table}{Pin assignment for the LCD interface.}
-\label{tab:exp5-pinassign}
 \end{boxedtable}
 
 \begin{codepanel}{lcd\_t.v --- Appendix 1: lookup-table sequencer}{verilogstyle}
@@ -304,7 +249,7 @@ endmodule
 \end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
-\begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp5-lcdt}: \texttt{lcd\_t.v} --- lookup-table LCD message sequencer.\end{center}
+\listingcaption{lst:exp5-lcdt}{\texttt{lcd\_t.v} --- lookup-table LCD message sequencer.}
 
 \begin{codepanel}{LCD\_Controller.v --- Appendix 2: bus-timing controller}{verilogstyle}
 \begin{lstlisting}
@@ -388,7 +333,7 @@ endmodule
 \end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
-\begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp5-lcdctrl}: \texttt{LCD\_Controller.v} --- generates the LCD enable-pulse timing.\end{center}
+\listingcaption{lst:exp5-lcdctrl}{\texttt{LCD\_Controller.v} --- generates the LCD enable-pulse timing.}
 
 \textbf{Activity 2 --- Displaying DIP switch input on the LCD}\vspace{2pt}
 

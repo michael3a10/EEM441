@@ -50,7 +50,10 @@
     \label{fig:exp3-mux-schematic}
   \end{boxedfigure}
 
+  \needspace{4cm}
   \begin{boxedtable}
+    \captionof{table}{Input combinations to simulate.}
+    \label{tab:exp3-truth}
     \centering
     \begin{tabular}{cccccc}
       \toprule
@@ -62,8 +65,6 @@
       1  & 1  & 1  & 1  & 0  & 0  \\
       \bottomrule
     \end{tabular}
-    \captionof{table}{Input combinations to simulate.}
-    \label{tab:exp3-truth}
   \end{boxedtable}
 
   \textbf{Activity 2 --- Verilog entry}\vspace{2pt}
@@ -104,31 +105,15 @@ endmodule
 \end{lstlisting}
   \end{codepanel}
   \vspace{-4pt}
-  \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-mux-ver}: \texttt{mux\_ver.v} --- Verilog 4-to-1 multiplexer.\end{center}
+  \listingcaption{lst:exp3-mux-ver}{\texttt{mux\_ver.v} --- Verilog 4-to-1 multiplexer.}
 
   \begin{boxedfigure}
     \centering
-    \begin{tikzpicture}
-      \node[block, minimum width=1.6cm, minimum height=2.6cm, trapezium, trapezium left angle=70, trapezium right angle=110, shape border rotate=0] (mux) {};
-      \node[above=1mm of mux, font=\small\plexmedium] {Mux0};
-      \node[io, left=12mm of mux, yshift=8mm] (s1) {s1};
-      \node[io, below=3mm of s1] (s0) {s0};
-      \node[io, below=5mm of s0] (i3) {i3};
-      \node[io, below=3mm of i3] (i2) {i2};
-      \node[io, below=3mm of i2] (i1) {i1};
-      \node[io, below=3mm of i1] (i0) {i0};
-      \node[io, right=14mm of mux] (out) {out};
-      \draw[arr] (s1) -- ($(mux.west)+(0,0.9)$) node[midway, above, font=\tiny] {SEL[1..0]};
-      \draw[arr] (s0) -- ($(mux.west)+(0,0.55)$);
-      \draw[arr] (i3) -- ($(mux.west)+(0,-0.1)$) node[midway, above, font=\tiny] {DATA[3..0]};
-      \draw[arr] (i2) -- ($(mux.west)+(0,-0.35)$);
-      \draw[arr] (i1) -- ($(mux.west)+(0,-0.6)$);
-      \draw[arr] (i0) -- ($(mux.west)+(0,-0.85)$);
-      \draw[arr] (mux.east) -- (out) node[midway, above, font=\tiny] {out};
-    \end{tikzpicture}
+    \includegraphics[width=0.85\linewidth]{figures/Exp3_Figure_2.png}
     \captionof{figure}{RTL Viewer output for \texttt{mux\_ver} (\texttt{Mux0}).}
     \label{fig:exp3-rtl}
   \end{boxedfigure}
+  \newpage
 
   \textbf{Activity 3 --- Combining schematic and Verilog entry}\vspace{2pt}
 
@@ -167,42 +152,23 @@ endmodule
 \end{lstlisting}
   \end{codepanel}
   \vspace{-4pt}
-  \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-mux-vrl}: \texttt{mux\_vrl.v} --- Verilog module to be reused as a schematic symbol.\end{center}
+  \listingcaption{lst:exp3-mux-vrl}{\texttt{mux\_vrl.v} --- Verilog module to be reused as a schematic symbol.}
 
   \begin{boxedfigure}
     \centering
-    \begin{tikzpicture}
-      \node[block, minimum width=2.4cm, minimum height=3.2cm] (sym) {};
-      \node[above=1mm of sym, font=\small\plexmedium] {mux\_vrl};
-      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-0.35)$) {i0};
-      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-0.75)$) {i1};
-      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-1.15)$) {i2};
-      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-1.55)$) {i3};
-      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-1.95)$) {s1};
-      \node[font=\scriptsize, anchor=west] at ($(sym.north west)+(0.15,-2.35)$) {s0};
-      \node[font=\scriptsize, anchor=east] at ($(sym.north east)+(-0.15,-0.35)$) {out};
-    \end{tikzpicture}
+    \includegraphics[width=0.85\linewidth]{figures/Exp3_Figure_3.png}
     \captionof{figure}{Auto-generated \texttt{mux\_vrl} symbol block.}
     \label{fig:exp3-mux-vrl-symbol}
   \end{boxedfigure}
+  \vspace*{1em}
 
   \begin{boxedfigure}
     \centering
-    \begin{tikzpicture}[node distance=4mm and 14mm]
-      \node[io] (i0) {i0};
-      \node[io, below=3mm of i0] (i1) {i1};
-      \node[io, below=3mm of i1] (i2) {i2};
-      \node[io, below=3mm of i2] (i3) {i3};
-      \node[io, below=3mm of i3] (s1) {s1};
-      \node[io, below=3mm of s1] (s0) {s0};
-      \node[block, right=of i2, minimum height=3.4cm, minimum width=2.2cm, yshift=-9mm] (mux) {mux\_vrl};
-      \node[io, right=14mm of mux] (out) {out};
-      \foreach \sig in {i0,i1,i2,i3,s1,s0} { \draw[arr] (\sig) -- (\sig -| mux.west); }
-      \draw[arr] (mux) -- (out);
-    \end{tikzpicture}
-    \captionof{figure}{Combined schematic \texttt{mux\_schver}: the Verilog-derived \texttt{mux\_vrl} block wired to I/O pads.}
+    \includegraphics[width=0.85\linewidth]{figures/Exp3_Figure_4.png}
+    \captionof{figure}{Combined schematic \texttt{mux\_schver}.}
     \label{fig:exp3-mux-schver}
   \end{boxedfigure}
+  \vspace*{1em}
 
   \textbf{Activity 4 --- Timing analysis}\vspace{2pt}
 
@@ -215,7 +181,7 @@ endmodule
     \item Force \texttt{clear} low, assign a clock signal to \texttt{clock}, save as \texttt{counter.vwf}, then start simulation.
     \item Inspect the result in the Simulation Report --- Simulation Waveform.
     \item Run \textbf{Processing} $\to$ \textbf{Start} $\to$ \textbf{Start Classic Timing Analyzer}.
-    \item Read the maximum clock frequency from the Timing Analyzer Summary (Table~\ref{tab:exp3-timing}).
+    \item Read the maximum clock frequency from the Timing Analyzer Summary (Figure~\ref{fig:exp3-timing}).
     \item Print and submit the Verilog code and simulation result.
   \end{enumerate}
 
@@ -237,22 +203,16 @@ endmodule
 \end{lstlisting}
   \end{codepanel}
   \vspace{-4pt}
-  \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-counter}: \texttt{counter.v} --- 4-bit up counter with asynchronous clear.\end{center}
+  \listingcaption{lst:exp3-counter}{\texttt{counter.v} --- 4-bit up counter with asynchronous clear.}
+  \vspace*{1em}
 
-  \begin{boxedtable}
+  \begin{boxedfigure}
     \centering
-    \begin{tabular}{clll}
-      \toprule
-      \# & Type                                   & Actual time                    & Failed paths \\
-      \midrule
-      1  & Worst-case $t_{co}$ (clock $\to$ Q[3]) & 7.410\,ns                      & 0            \\
-      2  & Clock setup (\texttt{clock})           & 233.64\,MHz (4.280\,ns period) & 0            \\
-      3  & Total failed paths                     & ---                            & 0            \\
-      \bottomrule
-    \end{tabular}
-    \captionof{table}{Timing Analyzer Summary for \texttt{counter}.}
-    \label{tab:exp3-timing}
-  \end{boxedtable}
+    \includegraphics[width=\linewidth]{figures/Exp3_Figure_6.png}
+    \captionof{figure}{Timing analyzer summary for the \texttt{counter} design.}
+    \label{fig:exp3-timing}
+  \end{boxedfigure}
+  \vspace*{1em}
 
   \textbf{Activity 5 --- Downloading to the DE2 board}\vspace{2pt}
 
@@ -278,9 +238,12 @@ endmodule
 \end{lstlisting}
   \end{codepanel}
   \vspace{-4pt}
-  \begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp3-counta}: \texttt{counta.v} --- static seven-segment pattern.\end{center}
+  \listingcaption{lst:exp3-counta}{\texttt{counta.v} --- static seven-segment pattern.}
 
+  \needspace{4cm}
   \begin{boxedtable}
+    \captionof{table}{Seven-segment output pin assignment (DE2 board).}
+    \label{tab:exp3-pins}
     \centering
     \begin{tabular}{clcl}
       \toprule
@@ -295,8 +258,6 @@ endmodule
       7  & Q[0]      & Output    & PIN\_AF10 \\
       \bottomrule
     \end{tabular}
-    \captionof{table}{Seven-segment output pin assignment (DE2 board).}
-    \label{tab:exp3-pins}
   \end{boxedtable}
 
 \end{procedure}

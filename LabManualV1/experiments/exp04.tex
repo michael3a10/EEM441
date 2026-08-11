@@ -55,7 +55,7 @@ endmodule
 \end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
-\begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp4-seven}: \texttt{seven.v} --- 16-bit frequency divider.\end{center}
+\listingcaption{lst:exp4-seven}{\texttt{seven.v} --- 16-bit frequency divider.}
 
 \begin{codepanel}{led.v --- 4-bit counter}{verilogstyle}
 \begin{lstlisting}
@@ -72,29 +72,19 @@ endmodule
 \end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
-\begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp4-led}: \texttt{led.v} --- 4-bit binary counter.\end{center}
+\listingcaption{lst:exp4-led}{\texttt{led.v} --- 4-bit binary counter.}
 
 \begin{boxedfigure}
 \centering
-\begin{tikzpicture}[node distance=10mm and 14mm]
-  \node[io] (clk) {clk};
-  \node[block, right=of clk, minimum width=2.4cm, minimum height=1.8cm] (seven) {seven\\[2pt]\scriptsize clk~~q[15..0]};
-  \node[block, right=32mm of seven, minimum width=2.2cm, minimum height=1.8cm] (led) {led\\[2pt]\scriptsize clk~~x[3..0]};
-  \node[io, right=of led] (out) {x[3..0]};
-
-  \draw[arr] (clk) -- (seven);
-  \draw[arr] (seven.east) -- (led.west) node[midway, above, font=\scriptsize] {q[15..0]};
-  \draw[arr] (led) -- (out);
-
-  % tap q[16] (MSB of divider) down and back up into led clock
-  \coordinate (tap) at ($(seven.east)!0.35!(led.west)$);
-  \draw[arr] (tap) -- ++(0,-1.1) node[below, font=\scriptsize] {q[16]} -| (led.south);
-\end{tikzpicture}
+\includegraphics[width=0.85\linewidth]{figures/Exp4_Figure_1.png}
 \captionof{figure}{Schematic diagram for the 16-bit binary counter with frequency divider.}
 \label{fig:exp4-schematic}
 \end{boxedfigure}
 
+\needspace{4cm}
 \begin{boxedtable}
+\captionof{table}{Pin assignment for the 4-bit binary counter.}
+\label{tab:exp4-pins}
 \centering
 \begin{tabular}{clcl}
 \toprule
@@ -107,8 +97,6 @@ endmodule
 5 & X[0] & Output & PIN\_AE23 \\
 \bottomrule
 \end{tabular}
-\captionof{table}{Pin assignment for the 4-bit binary counter.}
-\label{tab:exp4-pins}
 \end{boxedtable}
 
 \textbf{Activity 2 --- 0--99 counter on seven-segment display}\vspace{2pt}

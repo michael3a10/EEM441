@@ -44,44 +44,15 @@ To find the digital value to send to the DAC for a given angle, multiply the res
 
 \begin{boxedfigure}
 \centering
-\resizebox{0.85\linewidth}{!}{%
-\begin{tikzpicture}[node distance=8mm and 14mm]
-  \node[block, minimum width=3.2cm, minimum height=3.2cm] (dac) {\phantom{x}};
-  \node[above=1mm of dac, font=\small\plexmedium] {DAC0800};
-
-  % top pins: data bus MSB..LSB
-  \node[font=\scriptsize, anchor=south] at ($(dac.north west)+(0.35,0.1)$) {5};
-  \node[font=\scriptsize, anchor=south] at ($(dac.north west)+(2.85,0.1)$) {12};
-  \node[font=\scriptsize] at ($(dac.north west)+(0.35,0.55)$) {MSB};
-  \node[font=\scriptsize] at ($(dac.north west)+(2.85,0.55)$) {LSB};
-  \node[io, above=of dac, minimum width=3.2cm] (databus) {D0 (pin 5) -- D7 (pin 12)};
-
-  % left pins
-  \node[font=\scriptsize, anchor=east] at ($(dac.west)+(-0.1,0.4)$) {14};
-  \node[font=\scriptsize, anchor=east] at ($(dac.west)+(-0.1,-0.5)$) {15};
-  \node[font=\scriptsize, anchor=east] at ($(dac.west)+(-0.1,-1.1)$) {16};
-  \node[font=\scriptsize, anchor=east] at ($(dac.west)+(-0.1,-1.5)$) {13, 1};
-
-  % right pins
-  \node[font=\scriptsize, anchor=west] at ($(dac.east)+(0.1,0.4)$) {4};
-  \node[font=\scriptsize, anchor=west] at ($(dac.east)+(0.1,-0.6)$) {2};
-
-  \node[io, left=of dac, yshift=1.0cm] (ref) {Ref. resistors\\(10k, 10k, 100$\Omega$)};
-  \node[io, left=of dac, yshift=-1.3cm] (comp) {Compensation\\(0.01$\mu$F, --5V)};
-  \node[io, right=of dac, yshift=1.0cm] (opamp) {Op-amp\\(10k, 10k)};
-  \node[io, right=of opamp] (scope) {Oscilloscope};
-
-  \draw[arr] (ref) -- ($(dac.west)+(0,1.0)$);
-  \draw[arr] (comp) -- ($(dac.west)+(0,-1.3)$);
-  \draw[arr] ($(dac.east)+(0,1.0)$) -- (opamp);
-  \draw[arr] (opamp) -- (scope);
-\end{tikzpicture}
-}
+\includegraphics[width=0.8\linewidth]{figures/Exp10_Figure_1.png}
 \captionof{figure}{DAC0800 test circuit with op-amp output stage.}
 \label{fig:exp10-circuit}
 \end{boxedfigure}
 
+\needspace{4cm}
 \begin{boxedtable}
+\captionof{table}{DAC0800 digital-to-analog conversion results.}
+\label{tab:exp10-result}
 \centering
 \begin{tabular}{cc}
 \toprule
@@ -99,8 +70,6 @@ Digital value (decimal) & Analog value \\
 255 & \\
 \bottomrule
 \end{tabular}
-\captionof{table}{DAC0800 digital-to-analog conversion results.}
-\label{tab:exp10-result}
 \end{boxedtable}
 
 \textbf{Activity 2 --- Generating a square wave}\vspace{2pt}
@@ -128,7 +97,10 @@ Digital value (decimal) & Analog value \\
   \item Print and submit the Verilog code and simulation result.
 \end{enumerate}
 
+\needspace{4cm}
 \begin{boxedtable}
+\captionof{table}{Angle vs.\ voltage magnitude for the sine wave.}
+\label{tab:exp10-sine}
 \centering
 \begin{tabular}{cccc}
 \toprule
@@ -149,8 +121,6 @@ Angle ($^\circ$) & $\sin\theta$ & $V_{out}$ (V) & Value sent to DAC ($V_{out}\ti
 360 & & & \\
 \bottomrule
 \end{tabular}
-\captionof{table}{Angle vs.\ voltage magnitude for the sine wave.}
-\label{tab:exp10-sine}
 \end{boxedtable}
 
 \end{procedure}

@@ -27,7 +27,10 @@ Unlike an ordinary DC motor, a stepper motor does not spin freely when power is 
 The rotor is driven by the interaction of magnetic fields as coils are switched on and off in sequence. Table~\ref{tab:exp6-stepseq} shows the normal four-coil unipolar step sequence; taking a step means driving two of the four coil-driver pins high at a time, in the order shown, through the ULN2003 driver.
 \end{introduction}
 
+\needspace{4cm}
 \begin{boxedtable}
+\captionof{table}{Normal step sequence for a four-coil unipolar stepper motor.}
+\label{tab:exp6-stepseq}
 \centering
 \begin{tabular}{lccccc}
 \toprule
@@ -39,8 +42,6 @@ Coil 3 (B)  & 1 & 0 & 0 & 1 & 1 \\
 Coil 4 (\=B) & 0 & 1 & 1 & 0 & 0 \\
 \bottomrule
 \end{tabular}
-\captionof{table}{Normal step sequence for a four-coil unipolar stepper motor.}
-\label{tab:exp6-stepseq}
 \end{boxedtable}
 
 \begin{procedure}
@@ -66,33 +67,15 @@ Coil 4 (\=B) & 0 & 1 & 1 & 0 & 0 \\
 
 \begin{boxedfigure}
 \centering
-\resizebox{0.98\linewidth}{!}{%
-\begin{tikzpicture}[node distance=10mm and 16mm]
-  \node[io] (osc) {osc};
-  \node[block, right=of osc, minimum width=2.2cm] (div) {divider\\\scriptsize d1};
-  \node[io, below=6mm of osc, yshift=-4mm] (move) {move};
-  \node[io, below=2mm of move] (modein) {mode};
-  \node[io, below=8mm of modein] (reset) {reset};
-  \node[io, below=2mm of reset] (dir) {dir};
-  \node[block, right=42mm of div, minimum width=2.6cm, minimum height=3cm] (step) {stepper\\\scriptsize s1};
-  \node[io, right=of step, yshift=6mm] (phaseout) {phaseout[3:0]};
-  \node[io, right=of step, yshift=-6mm] (ledr) {ledr[3:0]};
-
-  \draw[arr] (osc) -- (div);
-  \draw[arr] (div.east) -- ($(step.west)+(0,12mm)$) node[midway, above, font=\tiny] {clk};
-  \draw[arr] (move) -| ($(step.west)+(0,6mm)$);
-  \draw[arr] (modein) -| ($(step.west)+(0,2mm)$);
-  \draw[arr] (reset) -| ($(step.west)+(0,-4mm)$);
-  \draw[arr] (dir) -| ($(step.west)+(0,-8mm)$);
-  \draw[arr] (step.east) ++(0,6mm) -- (phaseout);
-  \draw[arr] (step.east) ++(0,-6mm) -- (ledr);
-\end{tikzpicture}
-}
+\includegraphics[width=0.7\linewidth]{figures/Exp6_Figure_1.png}
 \captionof{figure}{RTL Viewer overview of the \texttt{step} top-level module.}
 \label{fig:exp6-rtl}
 \end{boxedfigure}
 
+\needspace{4cm}
 \begin{boxedtable}
+\captionof{table}{Pin assignment for stepper motor control.}
+\label{tab:exp6-pins}
 \centering
 \begin{tabular}{clcl}
 \toprule
@@ -113,8 +96,6 @@ Coil 4 (\=B) & 0 & 1 & 1 & 0 & 0 \\
 9 & phaseout[0] & Output & PIN\_D25 \\
 \bottomrule
 \end{tabular}
-\captionof{table}{Pin assignment for stepper motor control.}
-\label{tab:exp6-pins}
 \end{boxedtable}
 
 \begin{codepanel}{step.v --- top-level module}{verilogstyle}
@@ -248,7 +229,7 @@ endmodule
 \end{lstlisting}
 \end{codepanel}
 \vspace{-4pt}
-\begin{center}\small\color{slategray}Listing \refstepcounter{equation}\theequation\label{lst:exp6-step}: \texttt{step.v} --- top-level, motor-controller, and clock-divider modules.\end{center}
+\listingcaption{lst:exp6-step}{\texttt{step.v} --- top-level, motor-controller, and clock-divider modules.}
 
 \begin{needsupdate}
 The controller module contains a repetitive 8-state case statement (one branch per motor phase, in both rotation directions) that has been abbreviated above for readability. The full state sequence is fully specified by Table~\ref{tab:exp6-stepseq}: each state transitions to the next (or previous) entry in the cycle depending on \texttt{dir}, wrapping around after the eighth state.

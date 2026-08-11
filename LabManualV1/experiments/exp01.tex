@@ -20,8 +20,9 @@
 \end{equipment}
 
 \begin{procedure}
-
+  \vspace*{0.5em}
   \textbf{(a) Open-loop control of DC motor}
+
 
   \begin{enumerate}
     \item Switch on the supply and measure all constant voltages; calibrate variable voltages in terms of voltage and angle (degrees).
@@ -41,8 +42,11 @@
     \captionof{figure}{DC Motor / PID Control trainer.}
     \label{fig:exp1-openloop}
   \end{boxedfigure}
+  \vspace*{1em}
 
+  \needspace{4cm}
   \begin{boxedtable}
+    \captionof{table}{Open-loop speed response.}
     {\renewcommand{\arraystretch}{1.5}%
       \centering
       \begin{tabular}{|c|c|c|c|c|}
@@ -68,7 +72,6 @@
         $+30$    &                      &                        &                          &         \\
         \hline
       \end{tabular}
-      \captionof{table}{Open-loop speed response.}
     }
   \end{boxedtable}
   \newpage
@@ -85,7 +88,7 @@
   \textit{(i) Using P-controller with feedback through optical encoder}\vspace{2pt}
 
   \begin{enumerate}
-    \item Select the P-controller by setting PROP on the controller (DIP switch 1) to  (refer to Figure~\ref{fig:exp1-closedloop}).
+    \item Select the P-controller by setting PROP on the controller (DIP switch 1) to ON (refer to Figure~\ref{fig:exp1-closedloop}).
     \item Connect \textit{Adjust B} of the plant to the input of the PID controller.
     \item Connect \textit{Output A} of the plant to the controller feedback.
     \item Connect the controller output to \textit{Input A} of the plant.
@@ -93,6 +96,7 @@
     \item Adjust trimmer $R_{p2}$ (varies $K_p$) to obtain an optimum response (minimum steady-state error).
     \item Turn potentiometer-B to vary the speed of the motor. Record the input and output voltages for various positions in tabular form.
   \end{enumerate}
+  \vspace*{1.5em}
 
   \textit{(ii) Speed control with PI-controller}\vspace{2pt}
 
@@ -107,6 +111,7 @@
     \item Turn potentiometer-B to vary the speed of the motor. Record the input and output voltages for various positions (Table~\ref{tab:exp1-closed}). Repeat step 3 if necessary to fine-tune the response.
     \item Compare the experimental results for the P-controller and the PI-controller.
   \end{enumerate}
+  \vspace*{1.5em}
 
   \textit{(iii) Speed control with PD-controller}\vspace{2pt}
 
@@ -117,6 +122,7 @@
     \item Vary supply B from $30^\circ$ to $270^\circ$ in steps of $30^\circ$ and study the variation in reference speed ($V_{in}$) and output speed ($V_o$). Plot the error curve.
     \item Study the effect of varying $R_d$ on the output.
   \end{enumerate}
+  \vspace*{1.5em}
 
   \textit{(iv) Speed control with PID-controller}\vspace{2pt}
 
@@ -133,7 +139,10 @@
     \item As before, take observations by varying the applied voltage.
   \end{enumerate}
 
+  \needspace{4cm}
   \begin{boxedtable}
+    \captionof{table}{Closed-loop speed response.}
+    \label{tab:exp1-closed}
     {\renewcommand{\arraystretch}{1.5}%
       \centering
       \begin{tabular}{|c|c|c|c|c|}
@@ -159,8 +168,6 @@
         $+30$    &                      &                        &                          &         \\
         \hline
       \end{tabular}
-      \captionof{table}{Closed-loop speed response.}
-      \label{tab:exp1-closed}
     }
   \end{boxedtable}
 

@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  11 AUG 2026 08:29
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  11 AUG 2026 08:31
  restricted system commands enabled.
  file:line:error style messages enabled.
 **g:/Github/EEM441/LabManualV1/EEM441
@@ -2151,7 +2151,7 @@ LaTeX Warning: Reference `fig:exp3-rtl' on page 9 undefined on input line 94.
 \pydata@fh@0=\write7
 
 \openout7 = _D452D6017FD0347892660C6D2AEAAEFB.data.minted
-runsystem(latexminted config  --timestamp 20260811082912 D452D6017FD0347892660C6
+runsystem(latexminted config  --timestamp 20260811083137 D452D6017FD0347892660C6
 D2AEAAEFB)...(Command execution disabled via shell_escape='p').
 
 ./experiments/exp03.tex:117: Package minted Error: minted v3+ executable is not
@@ -2754,7 +2754,7 @@ ec, 82 attribute_list, 2 write, 24 pdf_literal, 24 pdf_colorstack nodes
    avail lists: 1:13,2:15074,3:2718,4:613,5:1763,6:295,7:12777,8:65,9:2153,10:29
 ,11:718,12:19
  66677 multiletter control sequences out of 65536+600000
- 122 fonts using 46466039 bytes
+ 122 fonts using 46466487 bytes
  97i,13n,117p,649b,1539s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <./fonts/PlexSans/IBMPlexSans-Regular.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf
 ><./fonts/JetBrainsMono/JetBrainsMono-Regular.ttf><./fonts/STIX2/STIXTwoMath-Reg

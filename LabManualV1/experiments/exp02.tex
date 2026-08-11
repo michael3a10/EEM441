@@ -34,18 +34,8 @@
 
 \begin{boxedfigure}
 \centering
-\begin{tikzpicture}[node distance=8mm and 10mm]
-  \node[io] (vin) {$V_{in}$};
-  \node[block, right=of vin] (plant) {Motor\\Plant};
-  \node[block, right=of plant] (fvc) {Frequency to\\Voltage Controller};
-  \node[block, right=of fvc, minimum width=3cm] (scope) {Oscilloscope};
-
-  \draw[arr] (vin) -- (plant);
-  \draw[arr] (plant) -- (fvc) node[midway, above, font=\scriptsize] {Ch-2};
-  \draw[arr] (fvc) -- (scope) node[midway, above, font=\scriptsize] {Ch-1};
-  \draw[arr] (plant.north) -- ++(0,0.9) -| (scope.north);
-\end{tikzpicture}
-\captionof{figure}{Connection diagram of open-loop position control.}
+\includegraphics[width=0.85\linewidth]{figures/exp1-2-trainer.jpg}
+\captionof{figure}{DC Motor / PID Control trainer, used for Experiments 1 and 2. The panel provides Speed Control and Angular Position Control knobs, Adjust A/B and Input A/B BNC connections, the Speed Plant and Position Plant motor assembly, Output A/B, and the PID Controller daughterboard (PROP, DIFF, INTG, and Summer stages).}
 \label{fig:exp2-openloop}
 \end{boxedfigure}
 
@@ -53,37 +43,7 @@
 
 \textit{(i) Position control with proportional feedback control}\vspace{2pt}
 
-The motion of a motor can be converted into rotational position with the help of a suitable gearbox. The electrical signal, proportional to (angular) position, is obtained with the help of a circular potentiometer of good accuracy. This signal is fed back to the summer to extract an error signal, which is fed to the controller to obtain optimum performance. Different controllers may be tried for this case, to study them.
-
-\begin{boxedfigure}
-\centering
-\begin{tikzpicture}[node distance=9mm and 9mm]
-  % potentiometer symbol: wiper arrow over a resistor-style rectangle, grounded
-  \node[draw, thick, minimum width=4mm, minimum height=9mm, rotate=90] (potres) {};
-  \draw[thick, -{Latex[length=1.6mm]}] ($(potres.north)+(0.35,0.05)$) -- ($(potres.south)+(-0.35,-0.05)$);
-  \draw[thick] (potres.south) -- ++(0,-4mm) coordinate (potgnd);
-  \draw[thick] (potgnd) -- ++(-2mm,0) -- ++(4mm,0);
-  \draw[thick] ([yshift=-1mm]potgnd) -- ++(-1.4mm,0) -- ++(2.8mm,0);
-  \draw[thick] ([yshift=-2mm]potgnd) -- ++(-0.7mm,0) -- ++(1.4mm,0);
-
-  \node[draw, circle, right=9mm of potres, inner sep=1pt, minimum size=5mm] (sum) {$\otimes$};
-  \node[block, right=of sum] (ctrl) {Controller};
-  \node[block, right=of ctrl] (plant) {Motor Plant};
-  \node[block, right=of plant] (gear) {Gear Box};
-  \node[block, below=12mm of ctrl, xshift=12mm] (potbox) {Potentiometer};
-
-  \draw[arr] (potres.north) -- ++(4mm,0) |- (sum.west);
-  \draw[arr] (sum) -- (ctrl);
-  \draw[arr] (ctrl) -- (plant);
-  \draw[arr] (plant) -- (gear);
-  \draw[arr] (gear.east) -- ++(1.3,0) node[right, font=\small\plexmedium] {Position};
-
-  \draw[arr] (gear.south) |- (potbox.east);
-  \draw[arr] (potbox.west) -| (sum.south);
-\end{tikzpicture}
-\captionof{figure}{Schematic diagram of position control.}
-\label{fig:exp2-closedloop}
-\end{boxedfigure}
+The motion of a motor can be converted into rotational position with the help of a suitable gearbox. The electrical signal, proportional to (angular) position, is obtained with the help of a circular potentiometer of good accuracy. This signal is fed back to the summer to extract an error signal, which is fed to the controller to obtain optimum performance. Different controllers may be tried for this case, to study them: use the PID Controller daughterboard shown in Figure~\ref{fig:exp2-openloop}, selecting the desired stage(s) via its DIP switch.
 
 \begin{enumerate}
   \item Select the P-controller by setting PROP on the controller (DIP switch 1) to ON; all other switches OFF.

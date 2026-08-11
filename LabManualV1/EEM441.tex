@@ -1,0 +1,104 @@
+% !TEX program = lualatex
+% !TeX program = lualatex
+% !TEX TS-program = lualatex
+% !BIB program = bibtex
+% Note: this document MUST be compiled with LuaLaTeX (not pdfLaTeX/XeLaTeX),
+% and requires -shell-escape (for the minted package's syntax highlighting).
+% In VS Code (LaTeX Workshop), the "% !TEX program = lualatex" line above
+% is normally enough to select the right engine automatically once you
+% add a recipe/tool that passes -shell-escape -- see the note at the very
+% end of this file for the exact settings.json snippet.
+\documentclass[11pt]{article}
+\input{preamble.tex}
+
+\title{EEM 441 --- Control, Instrumentation \& FPGA Laboratory}
+\author{}
+\date{}
+
+\begin{document}
+
+% ---------- Cover page ----------
+\begin{titlepage}
+\centering
+\vspace*{2.2cm}
+\includegraphics[width=0.5\textwidth]{figures/usm-logo.png}\par
+\vspace{2.0cm}
+{\plexlight\color{slategray}\Large Universiti Sains Malaysia\par}
+\vspace{0.3em}
+{\plexlight\color{slategray}\large School of Electrical and Electronic Engineering\par}
+\vspace{2.2cm}
+{\plexmedium\color{usmpurple}\fontsize{34}{40}\selectfont EEM 441\par}
+\vspace{0.5em}
+{\plexmedium\color{inkblack}\Large Control, Instrumentation \& FPGA Laboratory\par}
+\vspace{0.6em}
+{\plexlight\color{slategray}\large Laboratory Manual\par}
+\vfill
+{\plexlight\color{slategray}\normalsize Experiments 1--10\par}
+\vspace{2cm}
+\end{titlepage}
+
+% ---------- Table of contents ----------
+\pagestyle{empty}
+\tableofcontents
+\clearpage
+\pagestyle{fancy}
+\setcounter{page}{1}
+
+\input{experiments/exp01.tex}
+\input{experiments/exp02.tex}
+\input{experiments/exp03.tex}
+\input{experiments/exp04.tex}
+\input{experiments/exp05.tex}
+\input{experiments/exp06.tex}
+\input{experiments/exp07.tex}
+\input{experiments/exp08.tex}
+\input{experiments/exp09.tex}
+\input{experiments/exp10.tex}
+
+\end{document}
+
+% ============================================================
+% VS Code / LaTeX Workshop setup (one-time, per machine)
+% ============================================================
+% This document needs LuaLaTeX + -shell-escape (for minted's
+% Pygments-based syntax highlighting). Add this to your VS Code
+% settings.json (User or Workspace settings -> "Open Settings (JSON)"):
+%
+% {
+%   "latex-workshop.latex.tools": [
+%     {
+%       "name": "lualatex-shell-escape",
+%       "command": "lualatex",
+%       "args": [
+%         "-shell-escape",
+%         "-synctex=1",
+%         "-interaction=nonstopmode",
+%         "-file-line-error",
+%         "%DOC%"
+%       ]
+%     }
+%   ],
+%   "latex-workshop.latex.recipes": [
+%     {
+%       "name": "lualatex x3 (shell-escape)",
+%       "tools": [
+%         "lualatex-shell-escape",
+%         "lualatex-shell-escape",
+%         "lualatex-shell-escape"
+%       ]
+%     }
+%   ],
+%   "latex-workshop.latex.recipe.default": "lualatex x3 (shell-escape)"
+% }
+%
+% MiKTeX also needs to be told it's allowed to run pygmentize (an
+% external program) -- either accept the prompt MiKTeX shows the first
+% time, or pre-approve it: MiKTeX Console -> Settings -> "Always allow"
+% under "MiKTeX will ask before installing missing packages" /
+% shell-escape related prompts. If pygmentize itself is missing:
+%   pip install Pygments
+%
+% Also make sure preamble.tex, the experiments/ folder, and the
+% fonts/ folder are all sitting next to this main.tex file -- they
+% are loaded via relative paths (\input{preamble.tex}, fonts/PlexSans/
+% etc.) and will fail to be found otherwise.

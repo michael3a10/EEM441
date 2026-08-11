@@ -31,20 +31,8 @@
 
 \begin{boxedfigure}
 \centering
-\begin{tikzpicture}[node distance=8mm and 10mm]
-  \node[io] (vin) {$V_{in}$};
-  \node[block, right=of vin] (plant) {Motor\\Plant};
-  \node[block, right=of plant] (fvc) {Frequency to\\Voltage Controller};
-  \node[block, right=of fvc, minimum width=3cm] (scope) {Oscilloscope};
-
-  \draw[arr] (vin) -- (plant);
-  \draw[arr] (plant) -- (fvc) node[midway, above, font=\scriptsize] {Ch-2};
-  \draw[arr] (fvc) -- (scope) node[midway, above, font=\scriptsize] {Ch-1};
-
-  % feedback line from plant output up and into scope Ch-1
-  \draw[arr] (plant.north) -- ++(0,0.9) -| (scope.north);
-\end{tikzpicture}
-\captionof{figure}{Open-loop control of motor speed.}
+\includegraphics[width=0.85\linewidth]{figures/exp1-2-trainer.jpg}
+\captionof{figure}{DC Motor / PID Control trainer, used for Experiments 1 and 2. The panel provides Speed Control and Angular Position Control knobs, Adjust A/B and Input A/B BNC connections, the Speed Plant and Position Plant motor assembly, Output A/B, and the PID Controller daughterboard (PROP, DIFF, INTG, and Summer stages).}
 \label{fig:exp1-openloop}
 \end{boxedfigure}
 

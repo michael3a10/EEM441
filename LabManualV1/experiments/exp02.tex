@@ -34,7 +34,7 @@
 
   \begin{boxedfigure}
     \centering
-    \includegraphics[width=0.55\linewidth]{figures/exp1-2-trainer.jpg}
+    \includegraphics[width=0.85\linewidth]{figures/exp1-2-trainer.jpg}
     \captionof{figure}{DC Motor / PID Control trainer.}
     \label{fig:exp2-openloop}
   \end{boxedfigure}
@@ -43,7 +43,14 @@
 
   \textit{(i) Position control with proportional feedback control}\vspace{2pt}
 
-  The motion of a motor can be converted into rotational position with the help of a suitable gearbox. The electrical signal, proportional to (angular) position, is obtained with the help of a circular potentiometer of good accuracy. This signal is fed back to the summer to extract an error signal, which is fed to the controller to obtain optimum performance. Different controllers may be tried for this case, to study them: use the PID Controller daughterboard shown in Figure~\ref{fig:exp2-openloop}, selecting the desired stage(s) via its DIP switch.
+  The motion of a motor can be converted into rotational position with the help of a suitable gearbox. The electrical signal, proportional to (angular) position, is obtained with the help of a circular potentiometer of good accuracy. This signal is fed back to the summer to extract an error signal, which is fed to the controller to obtain optimum performance. Different controllers may be tried for this case, to study them: use the PID Controller daughterboard shown in Figure~\ref{fig:exp2-closedloop}, selecting the desired stage(s) via its DIP switch.
+
+  \begin{boxedfigure}
+    \centering
+    \includegraphics[width=0.48\linewidth, angle=90]{figures/exp1-2-controller.jpg}
+    \captionof{figure}{PID Control module.}
+    \label{fig:exp2-closedloop}
+  \end{boxedfigure}
 
   \begin{enumerate}
     \item Select the P-controller by setting PROP on the controller (DIP switch 1) to ON; all other switches OFF.
@@ -97,7 +104,7 @@
     \item Turn potentiometer-B of the motor plant to a middle position (e.g.\ $+180$).
     \item Slowly vary the respective trimmers $R_{p2}$ and $R_i$ to obtain an optimum output response.
     \item Turn potentiometer-B to vary the position of the motor. Record the input and output voltages for various positions.
-  \end{enumerate}
+  \end{enumerate}\newpage
 
   \textit{(iii) Position control with PD-controller}\vspace{2pt}
 

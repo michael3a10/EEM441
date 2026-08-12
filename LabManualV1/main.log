@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  12 AUG 2026 20:19
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.13)  13 AUG 2026 06:55
  restricted system commands enabled.
  file:line:error style messages enabled.
 **g:/Github/EEM441/LabManualV1/main
@@ -2341,7 +2341,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 50.
 See the caption package documentation for explanation.
 
-<figures/Exp9_Figure_1.png, id=1022, 624.08156pt x 239.39438pt>
+<figures/Exp9_Figure_1.png, id=1023, 624.08156pt x 239.39438pt>
 File: figures/Exp9_Figure_1.png Graphic file (type png)
 <use figures/Exp9_Figure_1.png>
 Package luatex.def Info: figures/Exp9_Figure_1.png  used on input line 71.
@@ -2351,7 +2351,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 74.
 See the caption package documentation for explanation.
 
-<figures/Exp9_Figure_2.png, id=1026, 459.96844pt x 282.30469pt>
+<figures/Exp9_Figure_2.png, id=1027, 459.96844pt x 282.30469pt>
 File: figures/Exp9_Figure_2.png Graphic file (type png)
 <use figures/Exp9_Figure_2.png>
 Package luatex.def Info: figures/Exp9_Figure_2.png  used on input line 93.
@@ -2377,7 +2377,7 @@ File: figures/seee-emblem-only.png Graphic file (type png)
 <use figures/seee-emblem-only.png>
 Package luatex.def Info: figures/seee-emblem-only.png  used on input line 4.
 (luatex.def)             Requested size: 102.43008pt x 35.11646pt.
-<figures/Exp10_Figure_1.png, id=1071, 490.08093pt x 276.28218pt>
+<figures/Exp10_Figure_1.png, id=1072, 490.08093pt x 276.28218pt>
 File: figures/Exp10_Figure_1.png Graphic file (type png)
 <use figures/Exp10_Figure_1.png>
 Package luatex.def Info: figures/Exp10_Figure_1.png  used on input line 47.
@@ -2418,7 +2418,7 @@ ec, 84 attribute_list, 2 write, 24 pdf_literal, 24 pdf_colorstack nodes
    avail lists: 1:4,2:41131,3:1727,4:23875,5:22218,6:257,7:29164,8:42,9:66389,10
 :41,11:3473
  62973 multiletter control sequences out of 65536+600000
- 102 fonts using 35469243 bytes
+ 102 fonts using 35469167 bytes
  97i,13n,117p,643b,1762s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <./fonts/PlexSans/IBMPlexSans-Regular.ttf><./fonts/JetBrainsMono/JetBrainsMono-I
 talic.ttf><./fonts/JetBrainsMono/JetBrainsMono-Bold.ttf><./fonts/JetBrainsMono/J
@@ -2426,9 +2426,9 @@ etBrainsMono-Regular.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/STIX2/S
 TIXTwoMath-Regular.ttf><./fonts/PlexSans/IBMPlexSans-Italic.ttf><./fonts/PlexSan
 s/IBMPlexSans-SemiBold.ttf><./fonts/PlexSans/IBMPlexSans-Regular.ttf><./fonts/Pl
 exSans/IBMPlexSans-Medium.ttf><./fonts/PlexSans/IBMPlexSans-Light.ttf>
-Output written on main.pdf (53 pages, 4563993 bytes).
+Output written on main.pdf (53 pages, 4564063 bytes).
 
-PDF statistics: 1207 PDF objects out of 1440 (max. 8388607)
+PDF statistics: 1208 PDF objects out of 1440 (max. 8388607)
  737 named destinations out of 1000 (max. 1048576)
  336 words of extra memory for PDF output out of 10000 (max. 100000000)
 

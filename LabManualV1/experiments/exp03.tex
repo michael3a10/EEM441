@@ -54,17 +54,19 @@
   \begin{boxedtable}
     \captionof{table}{Input combinations to simulate.}
     \label{tab:exp3-truth}
-    \centering
-    \begin{tabular}{cccccc}
-      \toprule
-      S0 & S1 & I0 & I1 & I2 & I3 \\
-      \midrule
-      0  & 0  & 1  & 1  & 0  & 0  \\
-      0  & 1  & 0  & 1  & 1  & 0  \\
-      1  & 0  & 1  & 1  & 0  & 1  \\
-      1  & 1  & 1  & 1  & 0  & 0  \\
-      \bottomrule
-    \end{tabular}
+    {\renewcommand{\arraystretch}{1.5}
+      \centering
+      \begin{tabular}{cccccc}
+        \toprule
+        S0 & S1 & I0 & I1 & I2 & I3 \\
+        \midrule
+        0  & 0  & 1  & 1  & 0  & 0  \\
+        0  & 1  & 0  & 1  & 1  & 0  \\
+        1  & 0  & 1  & 1  & 0  & 1  \\
+        1  & 1  & 1  & 1  & 0  & 0  \\
+        \bottomrule
+      \end{tabular}
+    }
   \end{boxedtable}
 
   \textbf{Activity 2 --- Verilog entry}\vspace{2pt}
@@ -244,20 +246,22 @@ endmodule
   \begin{boxedtable}
     \captionof{table}{Seven-segment output pin assignment (DE2 board).}
     \label{tab:exp3-pins}
-    \centering
-    \begin{tabular}{clcl}
-      \toprule
-      \# & Node name & Direction & Pin       \\
-      \midrule
-      1  & Q[6]      & Output    & PIN\_V13  \\
-      2  & Q[5]      & Output    & PIN\_V14  \\
-      3  & Q[4]      & Output    & PIN\_AE11 \\
-      4  & Q[3]      & Output    & PIN\_AD11 \\
-      5  & Q[2]      & Output    & PIN\_AC12 \\
-      6  & Q[1]      & Output    & PIN\_AB12 \\
-      7  & Q[0]      & Output    & PIN\_AF10 \\
-      \bottomrule
-    \end{tabular}
+    {\renewcommand{\arraystretch}{1.5}
+      \centering
+      \begin{tabular}{cccc}
+        \toprule
+        \# & Node name & Direction & Pin \\
+        \midrule
+        1  & Q[6]      & Output    &     \\
+        2  & Q[5]      & Output    &     \\
+        3  & Q[4]      & Output    &     \\
+        4  & Q[3]      & Output    &     \\
+        5  & Q[2]      & Output    &     \\
+        6  & Q[1]      & Output    &     \\
+        7  & Q[0]      & Output    &     \\
+        \bottomrule
+      \end{tabular}
+    }
   \end{boxedtable}
 
 \end{procedure}

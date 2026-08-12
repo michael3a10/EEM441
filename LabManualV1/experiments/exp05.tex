@@ -4,255 +4,268 @@
 \experimentheader{5}{LCD Interfacing}{Interfacing LCD to Altera DE2 Board}{FPGA Lab}
 
 \begin{objectives}
-\begin{enumerate}
-  \item To use Verilog code as a design entry method in Altera Quartus II Software.
-  \item To interface an LCD module to the Altera DE2 board.
-\end{enumerate}
+  \begin{enumerate}
+    \item To use Verilog code as a design entry method in Altera Quartus II Software.
+    \item To interface an LCD module to the Altera DE2 board.
+  \end{enumerate}
 \end{objectives}
 
 \begin{equipment}
-\begin{itemize}
-  \item Altera Quartus II software
-  \item Altera DE2 board
-\end{itemize}
+  \begin{itemize}
+    \item Altera Quartus II software
+    \item Altera DE2 board
+  \end{itemize}
 \end{equipment}
 
 \begin{introduction}
-In recent years, LCDs have largely replaced simple LED displays: they can show numbers, characters, and graphics, and are relatively easy to program. Table~\ref{tab:exp5-pins-lcd} lists the LCD pins relevant to programming.
+  In recent years, LCDs have largely replaced simple LED displays: they can show numbers, characters, and graphics, and are relatively easy to program. Table~\ref{tab:exp5-pins-lcd} lists the LCD pins relevant to programming.
+  \vspace*{10pt}
 
-The \textit{enable} (E) pin is used by the LCD to latch the information presented on its data pins: a high-to-low transition on E must be applied for the LCD to latch the data, and this pulse must be at least 450\,ns wide. The required timing is shown in Figure~\ref{fig:exp5-timing}.
+  The \textit{enable} (E) pin is used by the LCD to latch the information presented on its data pins: a high-to-low transition on E must be applied for the LCD to latch the data, and this pulse must be at least 450\,ns wide. The required timing is shown in Figure~\ref{fig:exp5-timing}.
+  \vspace*{10pt}
 
-Two important internal registers are selected via the RS pin. When $\text{RS}=0$, the \textit{instruction/command} register is selected, allowing commands to be sent to the LCD (Table~\ref{tab:exp5-commands} lists the available command codes). When $\text{RS}=1$, the \textit{data} register is selected, allowing ASCII character data to be written for display, sent through data pins D0--D7.
+  Two important internal registers are selected via the RS pin. When $\text{RS}=0$, the \textit{instruction/command} register is selected, allowing commands to be sent to the LCD (Table~\ref{tab:exp5-commands} lists the available command codes). When $\text{RS}=1$, the \textit{data} register is selected, allowing ASCII character data to be written for display, sent through data pins D0--D7.
+  \vspace*{10pt}
 
-It is good practice to check the busy flag before writing to the LCD: with $\text{RS}=0$ and $\text{R}/\overline{\text{W}}=1$, the busy flag appears on D7. While D7\,=\,1 the LCD is busy with internal operations and will not accept new data; once D7\,=\,0, the LCD is ready to receive the next byte.
+  It is good practice to check the busy flag before writing to the LCD: with $\text{RS}=0$ and $\text{R}/\overline{\text{W}}=1$, the busy flag appears on D7. While D7\,=\,1 the LCD is busy with internal operations and will not accept new data; once D7\,=\,0, the LCD is ready to receive the next byte.
 \end{introduction}
 
 \needspace{4cm}
 \begin{boxedtable}
-\captionof{table}{Pin description for the LCD module.}
-\label{tab:exp5-pins-lcd}
-\centering
-\begin{tabular}{clcl}
-\toprule
-Pin & Symbol & I/O & Description \\
-\midrule
-1  & $V_{ss}$ & --- & Ground \\
-2  & $V_{cc}$ & --- & $+5\,\text{V}$ power supply \\
-3  & $V_{ee}$ & --- & Power supply to control contrast \\
-4  & RS   & I   & $\text{RS}=0$: command register; $\text{RS}=1$: data register \\
-5  & R/$\overline{\text{W}}$ & I & $0$: write; $1$: read \\
-6  & E    & I/O & Enable (latches data on high-to-low transition) \\
-7  & DB0  & I/O & \multirow{8}{*}{8-bit data bus} \\
-8  & DB1  & I/O & \\
-9  & DB2  & I/O & \\
-10 & DB3  & I/O & \\
-11 & DB4  & I/O & \\
-12 & DB5  & I/O & \\
-13 & DB6  & I/O & \\
-14 & DB7  & I/O & \\
-\bottomrule
-\end{tabular}
+  \captionof{table}{Pin description for the LCD module.}
+  \label{tab:exp5-pins-lcd}
+  {\renewcommand{\arraystretch}{1.5}
+    \centering
+    \begin{tabular}{cccc}
+      \toprule
+      Pin & Symbol                  & I/O & Description                                                                                                                    \\
+      \midrule
+      1   & $V_{ss}$                & --- & Ground                                                                                                                         \\
+      2   & $V_{cc}$                & --- & $+5\,\text{V}$ power supply                                                                                                    \\
+      3   & $V_{ee}$                & --- & Power supply to control contrast                                                                                               \\
+      4   & RS                      & I   & $\text{RS}=0$: command register; $\text{RS}=1$: data register                                                                  \\
+      5   & R/$\overline{\text{W}}$ & I   & $0$: write; $1$: read                                                                                                          \\
+      6   & E                       & I/O & Enable (latches data on high-to-low transition)                                                                                \\
+      7   & DB0                     & I/O & \tikz[remember picture, baseline=(dbus-top.base)] \node[coordinate] (dbus-top) {};\multirow{8}{*}{\hspace{14pt}8-bit data bus} \\
+      8   & DB1                     & I/O &                                                                                                                                \\
+      9   & DB2                     & I/O &                                                                                                                                \\
+      10  & DB3                     & I/O &                                                                                                                                \\
+      11  & DB4                     & I/O &                                                                                                                                \\
+      12  & DB5                     & I/O &                                                                                                                                \\
+      13  & DB6                     & I/O &                                                                                                                                \\
+      14  & DB7                     & I/O & \tikz[remember picture, baseline=(dbus-bottom.base)] \node[coordinate] (dbus-bottom) {};                                       \\
+      \bottomrule
+    \end{tabular}
+  }
 \end{boxedtable}
 
-\begin{boxedfigure}
-\centering
-\includegraphics[width=0.85\linewidth]{figures/Exp5_Figure_1.png}
+\begin{tikzpicture}[remember picture, overlay]
+  \draw[decorate, decoration={brace, amplitude=6pt, raise=1pt}, thick]
+  ([xshift=-75pt]dbus-top -| dbus-top) -- ([xshift=-75pt]dbus-bottom -| dbus-top);
+\end{tikzpicture}
 
-\vspace{4pt}
-\footnotesize
-$t_D$ = data output delay time \\
-$t_{AS}$ = setup time prior to E (going high) for RS and R/$\overline{\text{W}}$, minimum 140\,ns \\
-$t_{AH}$ = hold time after E falls, for RS and R/$\overline{\text{W}}$, minimum 10\,ns \\
-\textit{Note: a read operation requires an L-to-H pulse on the E pin.}
-\normalsize
-\captionof{figure}{LCD write-cycle timing diagram.}
-\label{fig:exp5-timing}
+\begin{boxedfigure}
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/Exp5_Figure_1.png}
+
+  \vspace{4pt}
+  \captionof{figure}{LCD write-cycle timing diagram.}
+  \label{fig:exp5-timing}
 \end{boxedfigure}
 
 \needspace{4cm}
 \begin{boxedtable}
-\captionof{table}{LCD command codes.}
-\label{tab:exp5-commands}
-\centering
-\begin{tabular}{cl}
-\toprule
-Code (hex) & Command to LCD instruction register \\
-\midrule
-1  & Clear display screen \\
-2  & Return home \\
-4  & Decrement cursor (shift cursor left) \\
-6  & Increment cursor (shift cursor right) \\
-5  & Shift display right \\
-7  & Shift display left \\
-8  & Display off, cursor off \\
-A  & Display off, cursor on \\
-C  & Display on, cursor off \\
-E  & Display on, cursor blinking \\
-F  & Display on, cursor blinking \\
-10 & Shift cursor position left \\
-14 & Shift cursor position right \\
-18 & Shift entire display left \\
-1C & Shift entire display right \\
-80 & Force cursor to beginning of line 1 \\
-C0 & Force cursor to beginning of line 2 \\
-38 & 2 lines, $5\times7$ dot matrix \\
-\bottomrule
-\end{tabular}
+  \captionof{table}{LCD command codes.}
+  \label{tab:exp5-commands}
+  {\renewcommand{\arraystretch}{1.5}
+    \centering
+    \begin{tabular}{cl}
+      \toprule
+      Code (hex) & Command to LCD instruction register   \\
+      \midrule
+      1          & Clear display screen                  \\
+      2          & Return home                           \\
+      4          & Decrement cursor (shift cursor left)  \\
+      6          & Increment cursor (shift cursor right) \\
+      5          & Shift display right                   \\
+      7          & Shift display left                    \\
+      8          & Display off, cursor off               \\
+      A          & Display off, cursor on                \\
+      C          & Display on, cursor off                \\
+      E          & Display on, cursor blinking           \\
+      F          & Display on, cursor blinking           \\
+      10         & Shift cursor position left            \\
+      14         & Shift cursor position right           \\
+      18         & Shift entire display left             \\
+      1C         & Shift entire display right            \\
+      80         & Force cursor to beginning of line 1   \\
+      C0         & Force cursor to beginning of line 2   \\
+      38         & 2 lines, $5\times7$ dot matrix        \\
+      \bottomrule
+    \end{tabular}
+  }
 \end{boxedtable}
 
 \begin{procedure}
 
-\textbf{Activity 1 --- Displaying lookup-table data on the LCD}\vspace{2pt}
+  \textbf{Activity 1 --- Displaying lookup-table data on the LCD}\vspace{2pt}
 
-\textit{Objective: display fixed text, stored in a lookup table, on the LCD.}
+  \textit{Objective: display fixed text, stored in a lookup table, on the LCD.}
 
-\begin{enumerate}
-  \item Open Quartus II.
-  \item Write the Verilog modules given in Listing~\ref{lst:exp5-lcdt} (\texttt{lcd\_t}) and Listing~\ref{lst:exp5-lcdctrl} (\texttt{LCD\_Controller}) to send commands and data to the LCD.
-  \item \texttt{lcd\_t} uses a lookup table (LUT) to store the sequence of commands and characters to send to the LCD.
-  \item Create a reusable symbol for each module, as in Experiment 3.
-  \item Draw the schematic in Figure~\ref{fig:exp5-schematic}, connecting \texttt{lcd\_t}'s outputs to \texttt{LCD\_Controller}'s inputs, and \texttt{LCD\_Controller}'s outputs to the LCD interface pins.
-  \item Assign pin numbers as shown in Table~\ref{tab:exp5-pinassign}.
-  \item Download the program to the Altera DE2 board.
-  \item Discuss the result based on your observation of the LCD.
-\end{enumerate}
+  \begin{enumerate}
+    \item Open Quartus II (Device family: Cyclone II (\texttt{EP2C35F672C6N}) or Cyclone IV (\texttt{EP4CE115F29C7N})).
+    \item Write the Verilog modules given in Listing~\ref{lst:exp5-lcdt} (\texttt{lcd\_t}) and Listing~\ref{lst:exp5-lcdctrl} (\texttt{LCD\_Controller}) to send commands and data to the LCD.
+    \item \texttt{lcd\_t} uses a lookup table (LUT) to store the sequence of commands and characters to send to the LCD.
+    \item Create a reusable symbol for each module, as in Experiment 3.
+    \item Draw the schematic in Figure~\ref{fig:exp5-schematic}, connecting \texttt{lcd\_t}'s outputs to \texttt{LCD\_Controller}'s inputs, and \texttt{LCD\_Controller}'s outputs to the LCD interface pins.
+    \item Assign pin numbers as shown in Table~\ref{tab:exp5-pinassign}.
+    \item Download the program to the Altera DE2 board.
+    \item Discuss the result based on your observation of the LCD.
+  \end{enumerate}
 
-\begin{boxedfigure}
-\centering
-\includegraphics[width=0.9\linewidth]{figures/Exp5_Figure_2.png}
-\captionof{figure}{Schematic diagram for the LCD interface: \texttt{lcd\_t} (lookup-table sequencer) feeding \texttt{LCD\_Controller} (bus-timing controller).}
-\label{fig:exp5-schematic}
-\end{boxedfigure}
+  \begin{boxedfigure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/Exp5_Figure_2.png}
+    \captionof{figure}{Schematic diagram for the LCD interface: \texttt{lcd\_t} (lookup-table sequencer) feeding \texttt{LCD\_Controller} (bus-timing controller).}
+    \label{fig:exp5-schematic}
+  \end{boxedfigure}
+  \vspace*{1em
+  }
+  \begin{boxedtable}
+    \captionof{table}{Pin assignment for the LCD interface.}
+    \label{tab:exp5-pinassign}
+    {\renewcommand{\arraystretch}{1.5}
+      \centering
+      \begin{tabular}{clcl}
+        \toprule
+        \# & Node name    & Direction & Location \\
+        \midrule
+        1  & LCD\_DATA[7] & Output    & PIN\_H3  \\
+        2  & LCD\_DATA[6] & Output    & PIN\_H4  \\
+        3  & LCD\_DATA[5] & Output    & PIN\_J3  \\
+        4  & LCD\_DATA[4] & Output    & PIN\_J4  \\
+        5  & LCD\_DATA[3] & Output    & PIN\_H2  \\
+        6  & LCD\_DATA[2] & Output    & PIN\_H1  \\
+        7  & LCD\_DATA[1] & Output    & PIN\_J2  \\
+        8  & LCD\_DATA[0] & Output    & PIN\_J1  \\
+        9  & LCD\_EN      & Output    & PIN\_K3  \\
+        10 & LCD\_POW     & Output    & PIN\_L4  \\
+        11 & LCD\_RS      & Output    & PIN\_K1  \\
+        12 & LCD\_RW      & Output    & PIN\_K4  \\
+        13 & CLK          & Input     & PIN\_N2  \\
+        14 & RST          & Input     & PIN\_G26 \\
+        \bottomrule
+      \end{tabular}
+    }
+  \end{boxedtable}
 
-\needspace{4cm}
-\begin{boxedtable}
-\captionof{table}{Pin assignment for the LCD interface.}
-\label{tab:exp5-pinassign}
-\centering
-\begin{tabular}{clcl}
-\toprule
-\# & Node name & Direction & Location \\
-\midrule
-1  & LCD\_DATA[7] & Output & PIN\_H3 \\
-2  & LCD\_DATA[6] & Output & PIN\_H4 \\
-3  & LCD\_DATA[5] & Output & PIN\_J3 \\
-4  & LCD\_DATA[4] & Output & PIN\_J4 \\
-5  & LCD\_DATA[3] & Output & PIN\_H2 \\
-6  & LCD\_DATA[2] & Output & PIN\_H1 \\
-7  & LCD\_DATA[1] & Output & PIN\_J2 \\
-8  & LCD\_DATA[0] & Output & PIN\_J1 \\
-9  & LCD\_EN      & Output & PIN\_K3 \\
-10 & LCD\_POW     & Output & PIN\_L4 \\
-11 & LCD\_RS      & Output & PIN\_K1 \\
-12 & LCD\_RW      & Output & PIN\_K4 \\
-13 & CLK          & Input  & PIN\_N2 \\
-14 & RST          & Input  & PIN\_G26 \\
-\bottomrule
-\end{tabular}
-\end{boxedtable}
+  \begin{codepanel}{lcd\_t.v --- Appendix 1: lookup-table sequencer (part 1 of 2)}{verilogstyle}
+    \begin{lstlisting}
+    module lcd_t (
+        // Host side
+        CLK, RST, mLCD_Done,
+        mLCD_DATA, mLCD_RS, mLCD_Start
+    );
+      // Host side
+      input  CLK, RST, mLCD_Done;
+      // Internal wires/registers
+      output [7:0] mLCD_DATA;
+      output mLCD_RS, mLCD_Start;
+      reg  [5:0] LUT_INDEX;
+      reg  [8:0] LUT_DATA;
+      reg  [5:0] mLCD_ST;
+      reg  [17:0] mDLY;
+      reg  mLCD_Start;
+      reg  [7:0] mLCD_DATA;
+      reg  mLCD_RS;
+      wire mLCD_Done;
 
-\begin{codepanel}{lcd\_t.v --- Appendix 1: lookup-table sequencer}{verilogstyle}
-\begin{lstlisting}
-module lcd_t (
-    // Host side
-    CLK, RST, mLCD_Done,
-    mLCD_DATA, mLCD_RS, mLCD_Start
-);
-  // Host side
-  input  CLK, RST, mLCD_Done;
-  // Internal wires/registers
-  output [7:0] mLCD_DATA;
-  output mLCD_RS, mLCD_Start;
-  reg  [5:0] LUT_INDEX;
-  reg  [8:0] LUT_DATA;
-  reg  [5:0] mLCD_ST;
-  reg  [17:0] mDLY;
-  reg  mLCD_Start;
-  reg  [7:0] mLCD_DATA;
-  reg  mLCD_RS;
-  wire mLCD_Done;
+      parameter LCD_INITIAL = 0;
+      parameter LCD_LINE1   = 5;
+      parameter LCD_CH_LINE = LCD_LINE1 + 16;
+      parameter LCD_LINE2   = LCD_LINE1 + 16 + 1;
+      parameter LUT_SIZE    = LCD_LINE1 + 32 + 1;
 
-  parameter LCD_INITIAL = 0;
-  parameter LCD_LINE1   = 5;
-  parameter LCD_CH_LINE = LCD_LINE1 + 16;
-  parameter LCD_LINE2   = LCD_LINE1 + 16 + 1;
-  parameter LUT_SIZE    = LCD_LINE1 + 32 + 1;
-
-  // Sequencing state machine: send one LUT entry, wait for
-  // LCD_Controller to finish (mLCD_Done), pause, then advance.
-  always @(posedge CLK or negedge RST)
-  begin
-    if (!RST)
-    begin
-      LUT_INDEX  <= 0;
-      mLCD_ST    <= 0;
-      mDLY       <= 0;
-      mLCD_Start <= 0;
-      mLCD_DATA  <= 0;
-      mLCD_RS    <= 0;
-    end
-    else if (LUT_INDEX < LUT_SIZE)
-    begin
-      case (mLCD_ST)
-        0: begin
-          mLCD_DATA  <= LUT_DATA[7:0];
-          mLCD_RS    <= LUT_DATA[8];
-          mLCD_Start <= 1;
-          mLCD_ST    <= 1;
-        end
-        1: if (mLCD_Done) begin
+      // Sequencing state machine: send one LUT entry, wait for
+      // LCD_Controller to finish (mLCD_Done), pause, then advance.
+      always @(posedge CLK or negedge RST)
+      begin
+        if (!RST)
+        begin
+          LUT_INDEX  <= 0;
+          mLCD_ST    <= 0;
+          mDLY       <= 0;
           mLCD_Start <= 0;
-          mLCD_ST    <= 2;
+          mLCD_DATA  <= 0;
+          mLCD_RS    <= 0;
         end
-        2: if (mDLY < 18'h3FFFE)
-             mDLY <= mDLY + 1;
-           else begin
-             mDLY    <= 0;
-             mLCD_ST <= 3;
-           end
-        3: begin
-          LUT_INDEX <= LUT_INDEX + 1;
-          mLCD_ST   <= 0;
+        else if (LUT_INDEX < LUT_SIZE)
+        begin
+          case (mLCD_ST)
+            0: begin
+              mLCD_DATA  <= LUT_DATA[7:0];
+              mLCD_RS    <= LUT_DATA[8];
+              mLCD_Start <= 1;
+              mLCD_ST    <= 1;
+            end
+            1: if (mLCD_Done) begin
+              mLCD_Start <= 0;
+              mLCD_ST    <= 2;
+            end
+            2: if (mDLY < 18'h3FFFE)
+                 mDLY <= mDLY + 1;
+               else begin
+                 mDLY    <= 0;
+                 mLCD_ST <= 3;
+               end
+    \end{lstlisting}
+  \end{codepanel}
+  \newpage
+
+  \begin{codepanel}{lcd\_t.v --- Appendix 1: lookup-table sequencer (part 2 of 2, continued)}{verilogstyle}
+    \begin{lstlisting}
+            3: begin
+              LUT_INDEX <= LUT_INDEX + 1;
+              mLCD_ST   <= 0;
+            end
+          endcase
         end
-      endcase
-    end
-  end
+      end
+      // Lookup table: LCD_INITIAL entries are setup commands
+      // (function set, display on, clear, entry mode, home);
+      // LCD_LINE1 / LCD_LINE2 entries are ASCII characters for
+      // each line, with the MSB (bit 8) marking RS = 1 (data).
+      always
+      begin
+        case (LUT_INDEX)
+          LCD_INITIAL+0: LUT_DATA <= 9'h038;  // function set
+          LCD_INITIAL+1: LUT_DATA <= 9'h00C;  // display on
+          LCD_INITIAL+2: LUT_DATA <= 9'h001;  // clear display
+          LCD_INITIAL+3: LUT_DATA <= 9'h006;  // entry mode set
+          LCD_INITIAL+4: LUT_DATA <= 9'h080;  // cursor home, line 1
+          // Line 1: "Welcome to the "
+          LCD_LINE1+0:  LUT_DATA <= 9'h120;
+          LCD_LINE1+1:  LUT_DATA <= 9'h157;
+          LCD_LINE1+2:  LUT_DATA <= 9'h165;
+          // ... remaining characters follow the same pattern ...
+          LCD_LINE1+15: LUT_DATA <= 9'h120;
+          LCD_CH_LINE:  LUT_DATA <= 9'h0C0;   // move to line 2
+          // Line 2: "    EEM 441 Lab "
+          LCD_LINE2+0:  LUT_DATA <= 9'h120;
+          LCD_LINE2+4:  LUT_DATA <= 9'h145;
+          // ... remaining characters follow the same pattern ...
+          LCD_LINE2+15: LUT_DATA <= 9'h120;
+          default:      LUT_DATA <= 9'h000;
+        endcase
+      end
+    endmodule
+      \end{lstlisting}
+  \end{codepanel}
+  \vspace{-4pt}
+  \listingcaption{lst:exp5-lcdt}{\texttt{lcd\_t.v} --- lookup-table LCD message sequencer.}
 
-  // Lookup table: LCD_INITIAL entries are setup commands
-  // (function set, display on, clear, entry mode, home);
-  // LCD_LINE1 / LCD_LINE2 entries are ASCII characters for
-  // each line, with the MSB (bit 8) marking RS = 1 (data).
-  always
-  begin
-    case (LUT_INDEX)
-      LCD_INITIAL+0: LUT_DATA <= 9'h038;  // function set
-      LCD_INITIAL+1: LUT_DATA <= 9'h00C;  // display on
-      LCD_INITIAL+2: LUT_DATA <= 9'h001;  // clear display
-      LCD_INITIAL+3: LUT_DATA <= 9'h006;  // entry mode set
-      LCD_INITIAL+4: LUT_DATA <= 9'h080;  // cursor home, line 1
-      // Line 1: "Welcome to the "
-      LCD_LINE1+0:  LUT_DATA <= 9'h120;
-      LCD_LINE1+1:  LUT_DATA <= 9'h157;
-      LCD_LINE1+2:  LUT_DATA <= 9'h165;
-      // ... remaining characters follow the same pattern ...
-      LCD_LINE1+15: LUT_DATA <= 9'h120;
-      LCD_CH_LINE:  LUT_DATA <= 9'h0C0;   // move to line 2
-      // Line 2: "    EEM 441 Lab "
-      LCD_LINE2+0:  LUT_DATA <= 9'h120;
-      LCD_LINE2+4:  LUT_DATA <= 9'h145;
-      // ... remaining characters follow the same pattern ...
-      LCD_LINE2+15: LUT_DATA <= 9'h120;
-      default:      LUT_DATA <= 9'h000;
-    endcase
-  end
-endmodule
-\end{lstlisting}
-\end{codepanel}
-\vspace{-4pt}
-\listingcaption{lst:exp5-lcdt}{\texttt{lcd\_t.v} --- lookup-table LCD message sequencer.}
-
-\begin{codepanel}{LCD\_Controller.v --- Appendix 2: bus-timing controller}{verilogstyle}
-\begin{lstlisting}
+  \begin{codepanel}{LCD\_Controller.v --- Appendix 2: bus-timing controller (part 1 of 2)}{verilogstyle}
+    \begin{lstlisting}
 module LCD_Controller (
     // Host side
     iDATA, iRS, iStart, oDone, CLK, RST,
@@ -284,7 +297,6 @@ module LCD_Controller (
   assign LCD_RW   = 1'b0;
   assign LCD_RS   = iRS;
   assign LCD_POW  = 1'b1;
-
   always @(posedge CLK or negedge RST)
   begin
     if (!RST)
@@ -305,7 +317,12 @@ module LCD_Controller (
         mStart <= 1'b1;
         oDone  <= 1'b0;
       end
+\end{lstlisting}
+  \end{codepanel}
+  \newpage
 
+  \begin{codepanel}{LCD\_Controller.v --- Appendix 2: bus-timing controller (part 2 of 2, continued)}{verilogstyle}
+    \begin{lstlisting}
       if (mStart)
       begin
         case (ST)
@@ -331,17 +348,17 @@ module LCD_Controller (
   end
 endmodule
 \end{lstlisting}
-\end{codepanel}
-\vspace{-4pt}
-\listingcaption{lst:exp5-lcdctrl}{\texttt{LCD\_Controller.v} --- generates the LCD enable-pulse timing.}
+  \end{codepanel}
+  \vspace{-4pt}
+  \listingcaption{lst:exp5-lcdctrl}{\texttt{LCD\_Controller.v} --- generates the LCD enable-pulse timing.}
 
-\textbf{Activity 2 --- Displaying DIP switch input on the LCD}\vspace{2pt}
+  \textbf{Activity 2 --- Displaying DIP switch input on the LCD}\vspace{2pt}
 
-\textit{Objective: display the live 8-bit DIP switch configuration on the LCD.}
+  \textit{Objective: display the live 8-bit DIP switch configuration on the LCD.}
 
-\begin{enumerate}
-  \item Write Verilog code that reads the 8-bit DIP switch configuration and displays it on the LCD (e.g.\ if switch 1 is turned on, the LCD should display \texttt{1} in the corresponding position).
-  \item Print and submit the Verilog code and simulation result.
-\end{enumerate}
+  \begin{enumerate}
+    \item Write Verilog code that reads the 8-bit DIP switch configuration and displays it on the LCD (e.g.\ if switch 1 is turned on, the LCD should display \texttt{1} in the corresponding position).
+    \item Print and submit the Verilog code and simulation result.
+  \end{enumerate}
 
 \end{procedure}

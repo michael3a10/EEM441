@@ -4,123 +4,129 @@
 \experimentheader{10}{DAC Interfacing}{Interfacing FPGA to a Digital-to-Analog Converter}{FPGA Lab}
 
 \begin{objectives}
-\begin{enumerate}
-  \item To understand the operation of a digital-to-analog converter (DAC).
-  \item To interface an FPGA, via the Altera DE2 board, to a DAC.
-\end{enumerate}
+  \begin{enumerate}
+    \item To understand the operation of a digital-to-analog converter (DAC).
+    \item To interface an FPGA, via the Altera DE2 board, to a DAC.
+  \end{enumerate}
 \end{objectives}
 
 \begin{equipment}
-\begin{itemize}
-  \item Altera DE2 board
-  \item Multimeter / oscilloscope
-  \item DAC0800 digital-to-analog converter
-  \item Resistors: $10\,\text{k}\Omega$ (\texttt{$\times$4}), $100\,\Omega$ (\texttt{$\times$1})
-  \item Capacitor: $0.01\,\mu\text{F}$
-\end{itemize}
+  \begin{itemize}
+    \item Altera DE2 board
+    \item Multimeter / oscilloscope
+    \item DAC0800 digital-to-analog converter
+    \item Resistors: $10\,\text{k}\Omega$ (\texttt{$\times$4}), $100\,\Omega$ (\texttt{$\times$1})
+    \item Capacitor: $0.01\,\mu\text{F}$
+  \end{itemize}
 \end{equipment}
 
 \begin{introduction}
-A digital-to-analog converter (DAC) converts digital pulses into an analog signal. The first criterion for judging a DAC is its resolution, which depends on the number of binary inputs: the number of distinct analog output levels equals $2^n$, where $n$ is the number of data-bit inputs. An 8-bit DAC such as the DAC0800 therefore provides 256 discrete voltage (or current) output levels.
+  A digital-to-analog converter (DAC) converts digital pulses into an analog signal. The first criterion for judging a DAC is its resolution, which depends on the number of binary inputs: the number of distinct analog output levels equals $2^n$, where $n$ is the number of data-bit inputs. An 8-bit DAC such as the DAC0800 therefore provides 256 discrete voltage (or current) output levels.
 
-A DAC can be used to generate a sine wave. The output voltage for a given angle $\theta$ is:
-\[
-V_{out} = 5\,\text{V} + \left(5\,\text{V} \times \sin\theta\right)
-\]
-To find the digital value to send to the DAC for a given angle, multiply the resulting $V_{out}$ by 25.6 (since there are 256 steps across a $10\,\text{V}$ full-scale output).
+  A DAC can be used to generate a sine wave. The output voltage for a given angle $\theta$ is:
+  \[
+    V_{out} = 5\,\text{V} + \left(5\,\text{V} \times \sin\theta\right)
+  \]
+  To find the digital value to send to the DAC for a given angle, multiply the resulting $V_{out}$ by 25.6 (since there are 256 steps across a $10\,\text{V}$ full-scale output).
 \end{introduction}
 
 \begin{procedure}
 
-\textbf{Activity 1 --- DAC0800 operation}\vspace{2pt}
+  \textbf{Activity 1 --- DAC0800 operation}\vspace{2pt}
 
-\textit{Objective: understand the operation of the DAC0800.}
+  \textit{Objective: understand the operation of the DAC0800.}
 
-\begin{enumerate}
-  \item Connect the DAC0800 as shown in Figure~\ref{fig:exp10-circuit}.
-  \item Apply the digital input values at D0--D7 as listed in Table~\ref{tab:exp10-result}.
-  \item Measure the resulting analog output and tabulate your results in Table~\ref{tab:exp10-result}.
-\end{enumerate}
+  \begin{enumerate}
+    \item Connect the DAC0800 as shown in Figure~\ref{fig:exp10-circuit}.
+    \item Apply the digital input values at D0--D7 as listed in Table~\ref{tab:exp10-result}.
+    \item Measure the resulting analog output and tabulate your results in Table~\ref{tab:exp10-result}.
+  \end{enumerate}
 
-\begin{boxedfigure}
-\centering
-\includegraphics[width=0.8\linewidth]{figures/Exp10_Figure_1.png}
-\captionof{figure}{DAC0800 test circuit with op-amp output stage.}
-\label{fig:exp10-circuit}
-\end{boxedfigure}
+  \begin{boxedfigure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/Exp10_Figure_1.png}
+    \captionof{figure}{DAC0800 test circuit with op-amp output stage.}
+    \label{fig:exp10-circuit}
+  \end{boxedfigure}
 
-\needspace{4cm}
-\begin{boxedtable}
-\captionof{table}{DAC0800 digital-to-analog conversion results.}
-\label{tab:exp10-result}
-\centering
-\begin{tabular}{cc}
-\toprule
-Digital value (decimal) & Analog value \\
-\midrule
-0   & \\
-10  & \\
-60  & \\
-80  & \\
-100 & \\
-128 & \\
-180 & \\
-200 & \\
-220 & \\
-255 & \\
-\bottomrule
-\end{tabular}
-\end{boxedtable}
+  \needspace{4cm}
+  \begin{boxedtable}
+    \captionof{table}{DAC0800 digital-to-analog conversion results.}
+    \label{tab:exp10-result}
+    {\renewcommand{\arraystretch}{1.5}
+      \centering
+      \begin{tabular}{cc}
+        \toprule
+        Digital value (decimal) & Analog value \\
+        \midrule
+        0                       &              \\
+        10                      &              \\
+        60                      &              \\
+        80                      &              \\
+        100                     &              \\
+        128                     &              \\
+        180                     &              \\
+        200                     &              \\
+        220                     &              \\
+        255                     &              \\
+        \bottomrule
+      \end{tabular}
+    }
+  \end{boxedtable}
+  \vspace*{1.5em}
 
-\textbf{Activity 2 --- Generating a square wave}\vspace{2pt}
+  \textbf{Activity 2 --- Generating a square wave}\vspace{2pt}
 
-\textit{Objective: interface the FPGA to the DAC0800 and generate a square wave.}
+  \textit{Objective: interface the FPGA to the DAC0800 and generate a square wave.}
 
-\begin{enumerate}
-  \item Connect the circuit as shown in Figure~\ref{fig:exp10-circuit}.
-  \item Connect D0--D7 of the DAC to general-purpose I/O pins on the DE2 board.
-  \item Write Verilog code to generate a square wave with a frequency of 100\,Hz and a 70\% duty cycle.
-  \item You may use a lookup table, following the same approach as the LCD program in Experiment 5.
-  \item Print and submit the Verilog code and simulation result.
-\end{enumerate}
+  \begin{enumerate}
+    \item Connect the circuit as shown in Figure~\ref{fig:exp10-circuit}.
+    \item Connect D0--D7 of the DAC to general-purpose I/O pins on the DE2 board.
+    \item Write Verilog code to generate a square wave with a frequency of 100\,Hz and a 70\% duty cycle.
+    \item You may use a lookup table, following the same approach as the LCD program in Experiment 5.
+    \item Print and submit the Verilog code and simulation result.
+  \end{enumerate}
+  \newpage
 
-\textbf{Activity 3 --- Generating a sine wave}\vspace{2pt}
+  \textbf{Activity 3 --- Generating a sine wave}\vspace{2pt}
 
-\textit{Objective: interface the FPGA to the DAC0800 and generate a sine wave.}
+  \textit{Objective: interface the FPGA to the DAC0800 and generate a sine wave.}
 
-\begin{enumerate}
-  \item Using the equation in the Introduction, complete Table~\ref{tab:exp10-sine}.
-  \item Connect the circuit as shown in Figure~\ref{fig:exp10-circuit}.
-  \item Connect D0--D7 of the DAC to general-purpose I/O pins on the DE2 board.
-  \item Write Verilog code to generate a sine wave with a frequency of 100\,Hz.
-  \item You may use a lookup table, following the same approach as the LCD program in Experiment 5.
-  \item Print and submit the Verilog code and simulation result.
-\end{enumerate}
+  \begin{enumerate}
+    \item Using the equation in the Introduction, complete Table~\ref{tab:exp10-sine}.
+    \item Connect the circuit as shown in Figure~\ref{fig:exp10-circuit}.
+    \item Connect D0--D7 of the DAC to general-purpose I/O pins on the DE2 board.
+    \item Write Verilog code to generate a sine wave with a frequency of 100\,Hz.
+    \item You may use a lookup table, following the same approach as the LCD program in Experiment 5.
+    \item Print and submit the Verilog code and simulation result.
+  \end{enumerate}
 
-\needspace{4cm}
-\begin{boxedtable}
-\captionof{table}{Angle vs.\ voltage magnitude for the sine wave.}
-\label{tab:exp10-sine}
-\centering
-\begin{tabular}{cccc}
-\toprule
-Angle ($^\circ$) & $\sin\theta$ & $V_{out}$ (V) & Value sent to DAC ($V_{out}\times 25.6$) \\
-\midrule
-0   & & & \\
-30  & & & \\
-60  & & & \\
-90  & & & \\
-120 & & & \\
-150 & & & \\
-180 & & & \\
-210 & & & \\
-240 & & & \\
-270 & & & \\
-300 & & & \\
-330 & & & \\
-360 & & & \\
-\bottomrule
-\end{tabular}
-\end{boxedtable}
+  \needspace{4cm}
+  \begin{boxedtable}
+    \captionof{table}{Angle vs.\ voltage magnitude for the sine wave.}
+    \label{tab:exp10-sine}
+    {\renewcommand{\arraystretch}{1.5}
+      \centering
+      \begin{tabular}{cccc}
+        \toprule
+        Angle ($^\circ$) & $\sin\theta$ & $V_{out}$ (V) & Value sent to DAC ($V_{out}\times 25.6$) \\
+        \midrule
+        0                &              &               &                                          \\
+        30               &              &               &                                          \\
+        60               &              &               &                                          \\
+        90               &              &               &                                          \\
+        120              &              &               &                                          \\
+        150              &              &               &                                          \\
+        180              &              &               &                                          \\
+        210              &              &               &                                          \\
+        240              &              &               &                                          \\
+        270              &              &               &                                          \\
+        300              &              &               &                                          \\
+        330              &              &               &                                          \\
+        360              &              &               &                                          \\
+        \bottomrule
+      \end{tabular}
+    }
+  \end{boxedtable}
 
 \end{procedure}

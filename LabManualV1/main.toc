@@ -5,8 +5,8 @@
 \contentsline {section}{Experiment 4: DIP Switch \& 7-Segment}{18}{section*.4}%
 \contentsline {section}{Experiment 5: LCD Interfacing}{21}{section*.5}%
 \contentsline {section}{Experiment 6: Stepper Motor Control}{29}{section*.6}%
-\contentsline {section}{Experiment 7: DC Motor Speed Measurement}{34}{section*.7}%
-\contentsline {section}{Experiment 8: Temperature Control}{39}{section*.8}%
-\contentsline {section}{Experiment 9: ADC Interfacing}{44}{section*.9}%
-\contentsline {section}{Experiment 10: DAC Interfacing}{48}{section*.10}%
+\contentsline {section}{Experiment 7: DC Motor Speed Measurement}{35}{section*.7}%
+\contentsline {section}{Experiment 8: Temperature Control}{41}{section*.8}%
+\contentsline {section}{Experiment 9: ADC Interfacing}{45}{section*.9}%
+\contentsline {section}{Experiment 10: DAC Interfacing}{49}{section*.10}%
 \contentsfinish 

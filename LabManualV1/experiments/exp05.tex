@@ -118,7 +118,7 @@
     \item \texttt{lcd\_t} uses a lookup table (LUT) to store the sequence of commands and characters to send to the LCD.
     \item Create a reusable symbol for each module, as in Experiment 3.
     \item Draw the schematic in Figure~\ref{fig:exp5-schematic}, connecting \texttt{lcd\_t}'s outputs to \texttt{LCD\_Controller}'s inputs, and \texttt{LCD\_Controller}'s outputs to the LCD interface pins.
-    \item Assign pin numbers as shown in Table~\ref{tab:exp5-pinassign}.
+    \item Assign pin numbers as given in the Altera DE2 board manual (Cyclone II or Cyclone IV).
     \item Download the program to the Altera DE2 board.
     \item Discuss the result based on your observation of the LCD.
   \end{enumerate}
@@ -140,20 +140,20 @@
         \toprule
         \# & Node name    & Direction & Location \\
         \midrule
-        1  & LCD\_DATA[7] & Output    & PIN\_H3  \\
-        2  & LCD\_DATA[6] & Output    & PIN\_H4  \\
-        3  & LCD\_DATA[5] & Output    & PIN\_J3  \\
-        4  & LCD\_DATA[4] & Output    & PIN\_J4  \\
-        5  & LCD\_DATA[3] & Output    & PIN\_H2  \\
-        6  & LCD\_DATA[2] & Output    & PIN\_H1  \\
-        7  & LCD\_DATA[1] & Output    & PIN\_J2  \\
-        8  & LCD\_DATA[0] & Output    & PIN\_J1  \\
-        9  & LCD\_EN      & Output    & PIN\_K3  \\
-        10 & LCD\_POW     & Output    & PIN\_L4  \\
-        11 & LCD\_RS      & Output    & PIN\_K1  \\
-        12 & LCD\_RW      & Output    & PIN\_K4  \\
-        13 & CLK          & Input     & PIN\_N2  \\
-        14 & RST          & Input     & PIN\_G26 \\
+        1  & LCD\_DATA[7] & Output    &          \\
+        2  & LCD\_DATA[6] & Output    &          \\
+        3  & LCD\_DATA[5] & Output    &          \\
+        4  & LCD\_DATA[4] & Output    &          \\
+        5  & LCD\_DATA[3] & Output    &          \\
+        6  & LCD\_DATA[2] & Output    &          \\
+        7  & LCD\_DATA[1] & Output    &          \\
+        8  & LCD\_DATA[0] & Output    &          \\
+        9  & LCD\_EN      & Output    &          \\
+        10 & LCD\_POW     & Output    &          \\
+        11 & LCD\_RS      & Output    &          \\
+        12 & LCD\_RW      & Output    &          \\
+        13 & CLK          & Input     &          \\
+        14 & RST          & Input     &          \\
         \bottomrule
       \end{tabular}
     }

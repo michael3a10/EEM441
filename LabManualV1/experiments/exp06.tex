@@ -23,6 +23,7 @@
 
 \begin{introduction}
   Unlike an ordinary DC motor, a stepper motor does not spin freely when power is applied --- it must be driven with a continuously pulsed sequence of specific coil-energising patterns. Each pulse advances the rotor by a fixed step angle (for this motor, $3.6^\circ$ per step), which is what gives stepper motors their positioning precision: as long as speed and torque stay within the motor's limits, the controller always knows the rotor's exact position.
+  \vspace*{1.5em}
 
   The rotor is driven by the interaction of magnetic fields as coils are switched on and off in sequence. Table~\ref{tab:exp6-stepseq} shows the normal four-coil unipolar step sequence; taking a step means driving two of the four coil-driver pins high at a time, in the order shown, through the ULN2003 driver.
 \end{introduction}
@@ -37,10 +38,10 @@
       \toprule
       Coil    & Step 1 & Step 2 & Step 3 & Step 4 & Step 1 \\
       \midrule
-      1 (A)   & 1      & 1      & 0      & 0      & 1      \\
-      2 (\=A) & 0      & 0      & 1      & 1      & 0      \\
-      3 (B)   & 1      & 0      & 0      & 1      & 1      \\
-      4 (\=B) & 0      & 1      & 1      & 0      & 0      \\
+      1 (B)   & 1      & 1      & 0      & 0      & 1      \\
+      2 (\=B) & 0      & 0      & 1      & 1      & 0      \\
+      3 (A)   & 1      & 0      & 0      & 1      & 1      \\
+      4 (\=A) & 0      & 1      & 1      & 0      & 0      \\
       \bottomrule
     \end{tabular}
   }
@@ -57,7 +58,7 @@
     \item Open Quartus II and start the New Project Wizard.
           \begin{itemize}
             \item Working directory: \texttt{fpga}; project name: \texttt{activity1}; top-level entity: \texttt{step}.
-            \item Device family: Cyclone II, device \texttt{EP2C35F672C6N}.
+            \item Device family: Cyclone II (\texttt{EP2C35F672C6N}) or Cyclone IV (\texttt{EP4CE115F29C7N}).
             \item Accept the default EDA tool settings and finish.
           \end{itemize}
     \item Create a new Verilog HDL file and enter the code in Listing~\ref{lst:exp6-step} (\texttt{step}, \texttt{divider}, and \texttt{stepper} modules).
@@ -251,8 +252,147 @@ endmodule
     \item Display the motor's direction of rotation on the seven-segment display, and the current mode (step / continuous) on the LCD display.
     \item Print and submit the Verilog code and schematic diagram.
   \end{enumerate}
-
 \end{procedure}
+\newpage
+
+\begin{labsection}{Appendix: Stepper Motor Datasheet Reference}{}
+  Relevant specifications and wiring information for the Parallax \#27964 stepper motor used in this experiment, extracted from the manufacturer datasheet (see References).
+  \begin{boxedtable}
+    \captionof{table}{Technical specifications, Parallax \#27964 stepper motor.}
+    \label{tab:exp6-motorspecs}
+    {\renewcommand{\arraystretch}{1.4}
+      \centering
+      \begin{tabular}{|l|c|}
+        \hline
+        Parameter                        & Value                   \\
+        \hline
+        Type                             & 4-phase, 12\,V unipolar \\
+        \hline
+        Step angle                       & $3.6^\circ$ per step    \\
+        \hline
+        Phase resistance                 & $75\,\Omega$            \\
+        \hline
+        Current                          & 150\,mA                 \\
+        \hline
+        Phase inductance                 & 39\,mH                  \\
+        \hline
+        Detent torque                    & 80\,g$\cdot$cm          \\
+        \hline
+        Holding torque                   & 600\,g$\cdot$cm         \\
+        \hline
+        Mounting hole spacing (diagonal) & 1.73\,in                \\
+        \hline
+        Mounting hole diameter           & 0.11\,in                \\
+        \hline
+        Shaft diameter                   & 0.197\,in               \\
+        \hline
+        Shaft length                     & 0.43\,in                \\
+        \hline
+        Motor diameter                   & 1.66\,in                \\
+        \hline
+        Motor height                     & 1.35\,in                \\
+        \hline
+        Weight                           & 0.55\,lb                \\
+        \hline
+      \end{tabular}
+    }
+  \end{boxedtable}
+
+  \begin{boxedfigure}
+    \centering
+    \begin{tikzpicture}[
+        lbl/.style={font=\small},
+        % Custom style for the vertical coils matching the image look
+        coil style/.style={
+            decorate,
+            decoration={coil, amplitude=1.5mm, segment length=2.0mm, pre length=1mm, post length=1mm},
+            thick
+          }
+      ]
+      % --- Outer Circle ---
+      \draw[thick] (0,0) circle (3.2cm);
+
+      % --- Center Common Connection ---
+      \node[lbl] at (0,3.9) {{\plexmedium Black}};
+      \node[lbl] at (0,3.6) {Common};
+      \draw[thick] (0,3.4) -- (0,0); % Vertical common line
+      \draw[thick] (-0.8,0) -- (0.8,0); % Horizontal center-tap link
+
+      % --- LEFT SIDE (Phase A) ---
+      % Horizontal lead-in lines from outside the circle
+      \draw[thick] (-3.8,1.3) -- (-0.8,1.3);   % Top left wire (White)
+      \draw[thick] (-3.8,-1.3) -- (-0.8,-1.3); % Bottom left wire (Green)
+
+      % Vertical Coils (Split into two halves to cleanly meet the center tap)
+      \draw[coil style] (-0.8,1.3) -- (-0.8,0);
+      \draw[coil style] (-0.8,0) -- (-0.8,-1.3);
+
+      % Left Labels
+      \node[lbl, anchor=east] at (-3.9,1.3) {B};
+      \node[lbl, anchor=south] at (-4.5,1.5) {{\plexmedium Red / Orange}};
+
+      \node[lbl, anchor=east] at (-3.9,-1.3) {$\overline{\text{\=B}}$};
+      \node[lbl, anchor=north] at (-4.5,-1.5) {{\plexmedium Brown / Red}};
+
+
+      % --- RIGHT SIDE (Phase B) ---
+      % Horizontal lead-in lines from outside the circle
+      \draw[thick] (3.8,1.3) -- (0.8,1.3);   % Top right wire (Brown)
+      \draw[thick] (3.8,-1.3) -- (0.8,-1.3); % Bottom right wire (Red)
+
+      % Vertical Coils
+      \draw[coil style] (0.8,1.3) -- (0.8,0);
+      \draw[coil style] (0.8,0) -- (0.8,-1.3);
+
+      % Right Labels (Matched to image: Brown is B-bar, Red is B)
+      \node[lbl, anchor=west] at (3.9,1.3) {$\overline{\text{A}}$};
+      \node[lbl, anchor=south] at (4.5,1.5) {{\plexmedium White / Blue}};
+
+      \node[lbl, anchor=west] at (3.9,-1.3) {\=A};
+      \node[lbl, anchor=north] at (4.5,-1.5) {{\plexmedium Green / White}};
+
+    \end{tikzpicture}
+    \captionof{figure}{Coil winding and lead-wire colours, Parallax \#27964 stepper motor.}
+    \label{fig:exp6-coils}
+  \end{boxedfigure}
+
+  \begin{boxedfigure}
+    \centering
+    \begin{tikzpicture}[node distance=8mm and 14mm]
+      \node[block, minimum width=2.6cm, minimum height=4.3cm] (drv) {ULN2803\\Darlington\\array};
+      \node[io, left=of drv, yshift=1.8cm] (p4) {P4};
+      \node[io, left=of drv, yshift=0.55cm] (p5) {P5};
+      \node[io, left=of drv, yshift=-0.55cm] (p6) {P6};
+      \node[io, left=of drv, yshift=-1.8cm] (p7) {P7};
+      \node[io, left=of drv, yshift=-3.0cm] (gnd) {GND};
+
+      \draw[arr] (p4) -- ($(drv.west)+(0,1.8)$);
+      \draw[arr] (p5) -- ($(drv.west)+(0,0.55)$);
+      \draw[arr] (p6) -- ($(drv.west)+(0,-0.55)$);
+      \draw[arr] (p7) -- ($(drv.west)+(0,-1.8)$);
+      \draw[arr] (gnd) -| ($(drv.south)+(-0.5,0)$);
+
+      \node[block, right=32mm of drv, minimum width=2.8cm, minimum height=4.3cm] (motor) {Stepper\\Motor\\(\#27964)};
+      \node[io, below=6mm of motor] (vcc) {+12\,VDC};
+      \draw[arr] (motor.south) -- (vcc);
+
+      \draw[arr] ($(drv.east)+(0,1.8)$)  -- ($(motor.west)+(0,1.8)$)  node[midway, above, font=\scriptsize] {Red};
+      \draw[arr] ($(drv.east)+(0,0.55)$) -- ($(motor.west)+(0,0.55)$) node[midway, above, font=\scriptsize] {Brown};
+      \draw[arr] ($(drv.east)+(0,-0.55)$) -- ($(motor.west)+(0,-0.55)$) node[midway, below, font=\scriptsize] {White};
+      \draw[arr] ($(drv.east)+(0,-1.8)$) -- ($(motor.west)+(0,-1.8)$) node[midway, below, font=\scriptsize] {Green};
+      \draw[arr] ($(drv.south)+(0.5,0)$) |- ($(vcc.west)+(-1,0)$) -- (vcc.west) node[pos=-0.92, below, font=\scriptsize] {Black};
+    \end{tikzpicture}
+    \captionof{figure}{Reference driver-wiring diagram.}
+    \label{fig:exp6-driverwiring}
+  \end{boxedfigure}
+
+  Note:
+  \begin{enumerate}
+    \item The P4--P7 labelling above follows the datasheet's original microcontroller example; in this experiment, the corresponding driver inputs are instead the \texttt{phaseout[3:0]} outputs of the \texttt{stepper} module, assigned to DE2 GPIO pins as listed in Table~\ref{tab:exp6-pins}.
+    \item The GND are to be common ground with the DE2 board, ULN2803 and the power source.
+    \item The +12\,VDC is to be supplied from an external power source, not the DE2 board.
+  \end{enumerate}
+\end{labsection}
 
 \begin{labsection}{References}{}
   \begin{enumerate}

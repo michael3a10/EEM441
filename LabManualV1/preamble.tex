@@ -120,7 +120,7 @@
 % ---------- Graphics / TikZ ----------
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, backgrounds, decorations.pathreplacing}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, backgrounds, decorations.pathreplacing,decorations.pathmorphing}
 
 \tikzset{
   block/.style = {
@@ -169,51 +169,65 @@
 
 
 \lstdefinestyle{hdlbase}{
-basicstyle       = \ttfamily\small\color{inkblack},
-commentstyle     = \color{hdlcomment}\itshape,
-stringstyle      = \color{hdlstring},
-numberstyle      = \tiny\color{slategray},
-identifierstyle  = \color{inkblack},
-backgroundcolor  = \color{hdlbg},
-numbers          = left,
-numbersep        = 8pt,
-stepnumber       = 1,
-breaklines       = true,
-breakatwhitespace= false,
-showstringspaces = false,
-showspaces       = false,
-showtabs         = false,
-tabsize          = 2,
-columns          = flexible,
-keepspaces       = true,
-frame            = none,
-xleftmargin      = 12pt,
-framexleftmargin = 8pt,
-aboveskip        = 4pt,
-belowskip        = 2pt,
-captionpos       = b,
-literate=*{0}{{\color{usmorange}0}}1
-  {1}{{\color{usmorange}1}}1
-  {2}{{\color{usmorange}2}}1
-  {3}{{\color{usmorange}3}}1
-  {4}{{\color{usmorange}4}}1
-  {5}{{\color{usmorange}5}}1
-  {6}{{\color{usmorange}6}}1
-  {7}{{\color{usmorange}7}}1
-  {8}{{\color{usmorange}8}}1
-  {9}{{\color{usmorange}9}}1
-{:[}{{\color{inkblack}:[}}2  % Keeps operators black if bumped together
-{]:}{{\color{inkblack}]:}}2
-  {'}{{\color{inkblack}'}}1
-  {,}{{\color{inkblack},}}1
-  {;}{{\color{inkblack};}}1
-  {+}{{\color{inkblack}+}}1
-  {-}{{\color{inkblack}-}}1
-  {*}{{\color{inkblack}*}}1
-  {/}{{\color{inkblack}/}}1
-  {=}{{\color{inkblack}=}}1
-  {<}{{\color{inkblack}<}}1
-  {>}{{\color{inkblack}>}}1
+  basicstyle       = \ttfamily\small\color{inkblack},
+  commentstyle     = \color{hdlcomment}\itshape,
+  stringstyle      = \color{hdlstring},
+  numberstyle      = \tiny\color{slategray},
+  identifierstyle  = \color{inkblack},
+  backgroundcolor  = \color{hdlbg},
+  numbers          = left,
+  numbersep        = 8pt,
+  stepnumber       = 1,
+  breaklines       = true,
+  breakatwhitespace= false,
+  showstringspaces = false,
+  showspaces       = false,
+  showtabs         = false,
+  tabsize          = 2,
+  columns          = flexible,
+  keepspaces       = true,
+  frame            = none,
+  xleftmargin      = 12pt,
+  framexleftmargin = 8pt,
+  aboveskip        = 4pt,
+  belowskip        = 2pt,
+  captionpos       = b,
+  literate         =
+    {16'}{{\textcolor{usmorange}{16}'}}3
+    {17'}{{\textcolor{usmorange}{17}'}}3
+    {18'}{{\textcolor{usmorange}{18}'}}3
+    {19'}{{\textcolor{usmorange}{19}'}}3
+    {32'}{{\textcolor{usmorange}{32}'}}3
+    {0'}{{\textcolor{usmorange}{0}'}}2
+    {1'}{{\textcolor{usmorange}{1}'}}2
+    {2'}{{\textcolor{usmorange}{2}'}}2
+    {3'}{{\textcolor{usmorange}{3}'}}2
+    {4'}{{\textcolor{usmorange}{4}'}}2
+    {5'}{{\textcolor{usmorange}{5}'}}2
+    {6'}{{\textcolor{usmorange}{6}'}}2
+    {7'}{{\textcolor{usmorange}{7}'}}2
+    {8'}{{\textcolor{usmorange}{8}'}}2
+    {9'}{{\textcolor{usmorange}{9}'}}2
+    {[0]}{{[\textcolor{usmorange}{0}]}}3
+    {[1]}{{[\textcolor{usmorange}{1}]}}3
+    {[2]}{{[\textcolor{usmorange}{2}]}}3
+    {[3]}{{[\textcolor{usmorange}{3}]}}3
+    {[4]}{{[\textcolor{usmorange}{4}]}}3
+    {[5]}{{[\textcolor{usmorange}{5}]}}3
+    {[6]}{{[\textcolor{usmorange}{6}]}}3
+    {[7]}{{[\textcolor{usmorange}{7}]}}3
+    {[8]}{{[\textcolor{usmorange}{8}]}}3
+    {[15]}{{[\textcolor{usmorange}{15}]}}4
+    {[16]}{{[\textcolor{usmorange}{16}]}}4
+    {[1:0]}{{[\textcolor{usmorange}{1:0}]}}5
+    {[3:0]}{{[\textcolor{usmorange}{3:0}]}}5
+    {[4:0]}{{[\textcolor{usmorange}{4:0}]}}5
+    {[5:0]}{{[\textcolor{usmorange}{5:0}]}}5
+    {[6:0]}{{[\textcolor{usmorange}{6:0}]}}5
+    {[7:0]}{{[\textcolor{usmorange}{7:0}]}}5
+    {[8:0]}{{[\textcolor{usmorange}{8:0}]}}5
+    {[15:0]}{{[\textcolor{usmorange}{15:0}]}}6
+    {[17:0]}{{[\textcolor{usmorange}{17:0}]}}6,
 }
 
 \lstdefinestyle{verilogstyle}{

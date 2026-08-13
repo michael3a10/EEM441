@@ -1,7 +1,7 @@
 % ============================================================
 %  Experiment 7 --- DC Motor Speed Measurement
 % ============================================================
-\experimentheader{7}{DC Motor Speed Measurement}{Instrumentation --- Measuring the Speed of a DC Motor Using a Computer}{Instrumentation Lab}
+\experimentheader{7}{DC Motor Speed Measurement}{DC Motor Speed Measurement}{Instrumentation Lab}
 
 \begin{objectives}
   \begin{enumerate}
@@ -122,13 +122,12 @@
   This method gives better resolution at high speed (many pulses arrive quickly, so $T_N$ is measured over a longer, more precise interval) but responds more slowly at low speed, since a full count of $N$ pulses can take a long time.
   \vspace*{1.5em}
 
-  \textbf{Method 2 --- by time (fixed time window, 1--9\,s):} the user specifies a measurement window $T$ seconds ($1 \leq T \leq 9$); the software counts the number of pulses $N_T$ that occur within that window, then computes
+  \textbf{Method 2 --- by period (fixed period window, 1--9\,s):} the user specifies a measurement window $T$ seconds ($1 \leq T \leq 9$); the software counts the number of pulses $N_T$ that occur within that window, then computes
   \[
     f = \frac{N_T}{T \times 12} \ \left[\text{rev/s}\right], \qquad
     \text{RPM} = 60f, \qquad
     \omega = 2\pi f \ \left[\text{rad/s}\right]
   \]
-  This method gives a predictable, fixed update rate (one reading every $T$ seconds) but loses resolution at low speed, since only a handful of pulses (or none) may occur within a short window.
 
   In both methods, $t_{\text{start}}$ and $t_{\text{stop}}$ (marking the beginning and end of the measurement) are obtained from the DAQ card's counter/timer using
   \[
@@ -153,8 +152,8 @@
       \draw[arr] (start) -- (init);
       \draw[arr] (init) -- (select);
       \draw[arr] (select) -- (mode);
-      \draw[arr] (mode.west) -| (bycounts) node[pos=0.25, above, font=\small] {by counts};
-      \draw[arr] (mode.east) -| (bytime) node[pos=0.25, above, font=\small] {by time};
+      \draw[arr] (mode.west) -| (bycounts) node[pos=0.25, above, font=\small,xshift=-10pt] {by counts};
+      \draw[arr] (mode.east) -| (bytime) node[pos=0.25, above, font=\small, xshift=10pt] {by period};
       \draw[arr] (bycounts) |- (calc.west);
       \draw[arr] (bytime) |- (calc.east);
       \draw[arr] (calc) -- (disp);
@@ -184,43 +183,21 @@
 
   \needspace{6cm}
   \begin{boxedtable}
-    \captionof{table}{By-counts method --- RPM, compared against the oscilloscope-calculated RPM.}
-    \label{tab:exp7-bycounts-rpm}
-    \centering
-    {\renewcommand{\arraystretch}{1.4}
-      \begin{tabular}{|c|c|c|c|c|c|c|}
-        \hline
-        \multirow{2}{*}{$N$} & \multicolumn{5}{c|}{$\omega$ (RPM)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(calculated RPM)}}                     \\
-        \cline{2-6}
-                             & \#1                                 & \#2                                                          & \#3 & \#4 & \#5 & \\
-        \hline
-                             &                                     &                                                              &     &     &     & \\
-        \hline
-                             &                                     &                                                              &     &     &     & \\
-        \hline
-                             &                                     &                                                              &     &     &     & \\
-        \hline
-      \end{tabular}
-    }
-  \end{boxedtable}
-
-  \needspace{6cm}
-  \begin{boxedtable}
     \captionof{table}{By-counts method: frequency comparison table.}
     \label{tab:exp7-bycounts-freq}
     \centering
     {\renewcommand{\arraystretch}{1.4}
       \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline
-        \multirow{2}{*}{$N$} & \multicolumn{5}{c|}{Frequency (Hz)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(Hz)}}                     \\
+        \multirow{2}{*}{$N$} & \multicolumn{5}{c|}{Measured Frequency (Hz)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(Hz)}}                     \\
         \cline{2-6}
-                             & \#1                                 & \#2                                              & \#3 & \#4 & \#5 & \\
+                             & \#1                                          & \#2                                              & \#3 & \#4 & \#5 & \\
         \hline
-                             &                                     &                                                  &     &     &     & \\
+                             &                                              &                                                  &     &     &     & \\
         \hline
-                             &                                     &                                                  &     &     &     & \\
+                             &                                              &                                                  &     &     &     & \\
         \hline
-                             &                                     &                                                  &     &     &     & \\
+                             &                                              &                                                  &     &     &     & \\
         \hline
       \end{tabular}
     }
@@ -228,21 +205,21 @@
 
   \needspace{6cm}
   \begin{boxedtable}
-    \captionof{table}{By-time method: RPM comparisontable.}
-    \label{tab:exp7-bytime-rpm}
+    \captionof{table}{By-counts method --- RPM comparison table.}
+    \label{tab:exp7-bycounts-rpm}
     \centering
     {\renewcommand{\arraystretch}{1.4}
       \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline
-        \multirow{2}{*}{$T$ (s)} & \multicolumn{5}{c|}{$\omega$ (RPM)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(calculated RPM)}}                     \\
+        \multirow{2}{*}{$N$} & \multicolumn{5}{c|}{$\omega$ (MeasuredRPM)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(calculated RPM)}}                     \\
         \cline{2-6}
-                                 & \#1                                 & \#2                                                          & \#3 & \#4 & \#5 & \\
+                             & \#1                                         & \#2                                                          & \#3 & \#4 & \#5 & \\
         \hline
-                                 &                                     &                                                              &     &     &     & \\
+                             &                                             &                                                              &     &     &     & \\
         \hline
-                                 &                                     &                                                              &     &     &     & \\
+                             &                                             &                                                              &     &     &     & \\
         \hline
-                                 &                                     &                                                              &     &     &     & \\
+                             &                                             &                                                              &     &     &     & \\
         \hline
       \end{tabular}
     }
@@ -250,25 +227,49 @@
 
   \needspace{6cm}
   \begin{boxedtable}
-    \captionof{table}{By-time method: frequency comparison table.}
+    \captionof{table}{By-period method: frequency comparison table.}
     \label{tab:exp7-bytime-freq}
     \centering
     {\renewcommand{\arraystretch}{1.4}
       \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline
-        \multirow{2}{*}{$T$ (s)} & \multicolumn{5}{c|}{Frequency (Hz)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(Hz)}}                     \\
+        \multirow{2}{*}{$T$ (s)} & \multicolumn{5}{c|}{Measured Frequency (Hz)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(Hz)}}                     \\
         \cline{2-6}
-                                 & \#1                                 & \#2                                              & \#3 & \#4 & \#5 & \\
+                                 & \#1                                          & \#2                                              & \#3 & \#4 & \#5 & \\
         \hline
-                                 &                                     &                                                  &     &     &     & \\
+                                 &                                              &                                                  &     &     &     & \\
         \hline
-                                 &                                     &                                                  &     &     &     & \\
+                                 &                                              &                                                  &     &     &     & \\
         \hline
-                                 &                                     &                                                  &     &     &     & \\
+                                 &                                              &                                                  &     &     &     & \\
         \hline
       \end{tabular}
     }
   \end{boxedtable}
+
+  \needspace{6cm}
+  \begin{boxedtable}
+    \captionof{table}{By-period method: RPM comparison table.}
+    \label{tab:exp7-bytime-rpm}
+    \centering
+    {\renewcommand{\arraystretch}{1.4}
+      \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        \multirow{2}{*}{$T$ (s)} & \multicolumn{5}{c|}{$\omega$ (Measureed RPM)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(calculated RPM)}}                     \\
+        \cline{2-6}
+                                 & \#1                                           & \#2                                                          & \#3 & \#4 & \#5 & \\
+        \hline
+                                 &                                               &                                                              &     &     &     & \\
+        \hline
+                                 &                                               &                                                              &     &     &     & \\
+        \hline
+                                 &                                               &                                                              &     &     &     & \\
+        \hline
+      \end{tabular}
+    }
+  \end{boxedtable}
+
+
 
 \end{procedure}
 

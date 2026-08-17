@@ -15,7 +15,9 @@
 
 \begin{equipment}
   \begin{itemize}
-    \item Altera Quartus II software
+    \item Altera Quartus II software \\[10pt]
+          (version 9/10/12 for Cyclone II))\\[5pt]
+          (version 9/10/12/latest for Cyclone IV)
     \item Altera DE2 board
   \end{itemize}
 \end{equipment}
@@ -38,7 +40,7 @@
     \item Add and name the input pins (\texttt{i0}--\texttt{i3}, \texttt{s0}, \texttt{s1}) and the output pin (\texttt{out}).
     \item Save as \texttt{mux\_sch.bdf} and start compilation.
     \item Create a Vector Waveform File to simulate the design: insert input nodes \texttt{i0}--\texttt{i3}, \texttt{s0}, \texttt{s1}, and output node \texttt{out}.
-    \item Assign logic values to the inputs, save as \texttt{mux\_sch.vwf}, then run Compilation and Simulation.\newpage
+    \item Assign logic values to the inputs, save as \texttt{mux\_sch.vwf}, then run Compilation and Simulation.
     \item Record the outputs, then repeat for each input combination in Table~\ref{tab:exp3-truth}, saving the waveform file each time.
     \item Print and submit the schematic diagram and simulation result.
   \end{enumerate}
@@ -77,7 +79,7 @@
   \begin{enumerate}
     \item Start a new project (\texttt{Activity2}, top level \texttt{mux\_ver}) with the same device and EDA tool settings as Activity 1.
     \item Create a new Verilog file and enter the code in Listing~\ref{lst:exp3-mux-ver}.
-    \item Save as \texttt{mux\_ver}, then compile the design.
+    \item Save as \texttt{mux\_ver}, then compile the design.\newpage
     \item Create a Vector Waveform File; insert input nodes \texttt{i0}--\texttt{i3}, \texttt{s0}, \texttt{s1}, and output node \texttt{out}.
     \item Assign logic values matching Table~\ref{tab:exp3-truth}, save as \texttt{mux\_ver.vwf}, then start simulation.
     \item Inspect the result in the Simulation Report --- Simulation Waveform.
@@ -112,7 +114,7 @@ endmodule
 
   \begin{boxedfigure}
     \centering
-    \includegraphics[width=0.85\linewidth]{figures/Exp3_Figure_2.png}
+    \includegraphics[width=0.75\linewidth]{figures/Exp3_Figure_2.png}
     \captionof{figure}{RTL Viewer output for \texttt{mux\_ver} (\texttt{Mux0}).}
     \label{fig:exp3-rtl}
   \end{boxedfigure}

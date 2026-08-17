@@ -65,7 +65,7 @@
 \color{inkblack}
 
 % ---------- Page geometry ----------
-\usepackage[a4paper,margin=2cm,headheight=28pt]{geometry}
+\usepackage[a4paper,margin=2.2cm,headheight=28pt]{geometry}
 
 % ---------- Headers / footers ----------
 \usepackage{fancyhdr}
@@ -120,16 +120,24 @@
 % ---------- Graphics / TikZ ----------
 \usepackage{graphicx}
 \usepackage{eso-pic}
+\usepackage{etoolbox}
+\newbool{showwatermark}
+\booltrue{showwatermark}
 % Document-wide faint SEEE watermark, centred on every page. The image
 % itself (figures/seee-emblem-watermark.png) is pre-faded and flattened
 % to fully opaque pixels at generation time -- PNG alpha transparency
 % was found not to render reliably via \includegraphics + eso-pic in
 % this build environment, so the fade is baked into solid RGB pixels
-% instead, which is robust across any PDF viewer/renderer.
+% instead, which is robust across any PDF viewer/renderer. Toggle off
+% with \boolfalse{showwatermark} for pages (e.g. the fillable lab
+% report cover sheets) where the watermark would compete visually
+% with printed/handwritten form fields.
 \AddToShipoutPictureBG{%
-  \AtPageCenter{%
-    \makebox(0,0){\includegraphics[width=9cm]{figures/seee-emblem-watermark.png}}%
-  }%
+  \ifbool{showwatermark}{%
+    \AtPageCenter{%
+      \makebox(0,0){\includegraphics[width=9cm]{figures/seee-emblem-watermark.png}}%
+    }%
+  }{}%
 }
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, backgrounds, decorations.pathreplacing,decorations.pathmorphing}
@@ -443,6 +451,50 @@
 \newcommand{\listingcaption}[2]{%
   \refstepcounter{listing}%
   \begin{center}\small\color{slategray}Listing \thelisting\label{#1}: #2\end{center}%
+}
+
+% ---------- Lab report cover page (appendix) ----------
+% \labcoverpage{experiment number}{quoted experiment title}
+% Generates a fillable cover sheet for students to print and attach to
+% their submitted lab report: USM crest, semester/course line,
+% experiment number/title, and Date / Group No. / Group Members fields
+% with fill-in-the-blank rules. The watermark and page number are both
+% suppressed on this page (\thispagestyle{empty} plus toggling
+% showwatermark off before the page ships and back on immediately
+% after), since a background image and a page number aren't
+% appropriate on a form students will print and hand-fill.
+\newcommand{\labcoverpage}[2]{%
+  \boolfalse{showwatermark}%
+  \clearpage
+  \thispagestyle{empty}
+  \begin{center}
+    \vspace*{0.2cm}
+    \includegraphics[width=4.6cm]{figures/usm-logo.png}\par
+    \vspace{0.25cm}
+    {\large School of Electrical and Electronics Engineering\par}
+    {\large Universiti Sains Malaysia, Engineering Campus\par}
+    \vspace{0.7cm}
+    {\Large SEMESTER 1, 2026/2027\par}
+    \vspace{0.7cm}
+    {\fontsize{30}{36}\selectfont\plexmedium EEM 441\par}
+    \vspace{2pt}
+    {\Large Control \& Instrumentation Laboratory\par}
+    \vspace{0.6cm}
+    {\Large\bfseries Experiment #1\par}
+    \vspace{2pt}
+    {\Large #2\par}
+  \end{center}
+  \vspace{0.9cm}
+
+  \noindent Date \hspace{2.85cm}: \makebox[7cm]{\hrulefill}\\[0.7cm]
+  \noindent Group No. \hspace{1.6cm}: \makebox[7cm]{\hrulefill}\\[0.9cm]
+
+  \noindent Group Members : \makebox[8cm]{\hrulefill}\hspace{0.6cm}Matrix \# \makebox[2.2cm]{\hrulefill}\\[0.7cm]
+  \noindent\hphantom{Group Members} : \makebox[8cm]{\hrulefill}\hspace{0.6cm}Matrix \# \makebox[2.2cm]{\hrulefill}\\[0.7cm]
+  \noindent\hphantom{Group Members} : \makebox[8cm]{\hrulefill}\hspace{0.6cm}Matrix \# \makebox[2.2cm]{\hrulefill}\\[0.7cm]
+  \noindent\hphantom{Group Members} : \makebox[8cm]{\hrulefill}\hspace{0.6cm}Matrix \# \makebox[2.2cm]{\hrulefill}
+  \clearpage
+  \booltrue{showwatermark}%
 }
 
 % ---------- Table of contents styling ----------

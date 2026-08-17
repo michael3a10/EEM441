@@ -1,7 +1,7 @@
 % ============================================================
 %  Experiment 7 --- DC Motor Speed Measurement
 % ============================================================
-\experimentheader{7}{DC Motor Speed Measurement}{DC Motor Speed Measurement}{Instrumentation Lab}
+\experimentheader{7}{Experiment 7}{DC Motor Speed Measurement System}{Instrumentation Lab}
 
 \begin{objectives}
   \begin{enumerate}
@@ -70,7 +70,7 @@
     \item Wire the encoder's output test point to the oscilloscope.
     \item Run the motor across its usable speed range and observe the encoder pulse train on the oscilloscope.
     \item At a representative operating speed, measure the pulse period and estimate the corresponding fundamental frequency from the oscilloscope trace.
-    \item From this measurement, determine a suitable cutoff frequency for noise-rejection filter.
+    \item From this measurement, determine a suitable cutoff frequency for noise-rejection filter.\newpage
     \item Design the necessary filter based on the cutoff frequency determined prior.Justify your design choices.
     \item Design the signal-conditioning circuit needed to present the filtered encoder pulses to the PCIE-1816's digital input with valid logic levels. Justify your design choices.
   \end{enumerate}
@@ -128,6 +128,7 @@
     \text{RPM} = 60f, \qquad
     \omega = 2\pi f \ \left[\text{rad/s}\right]
   \]
+  \newpage
 
   In both methods, $t_{\text{start}}$ and $t_{\text{stop}}$ (marking the beginning and end of the measurement) are obtained from the DAQ card's counter/timer using
   \[
@@ -169,7 +170,7 @@
     \item In C, C++, or Python, write a program that:
           \begin{itemize}
             \item initialises the PCIE-1816 (via the vendor driver / SDK, or the DAQ card's counter API),
-            \item lets the user select the measurement method (by counts, $1 \leq N \leq 99$; or by time, $1 \leq T \leq 9$\,s) and enter the corresponding parameter,
+            \item lets the user select the measurement method (by counts, $1 \leq N \leq 99$; or by time, $1 \leq T \leq 9$\,s) and enter the corresponding parameter, \newpage
             \item for the \emph{by counts} method: times how long it takes for $N$ encoder pulses to occur,
             \item for the \emph{by time} method: counts how many encoder pulses occur within the window $T$,
             \item computes the frequency, RPM, and angular speed $\omega$ using the relations above, and

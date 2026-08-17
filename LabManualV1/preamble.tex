@@ -65,7 +65,7 @@
 \color{inkblack}
 
 % ---------- Page geometry ----------
-\usepackage[a4paper,margin=2.2cm,headheight=28pt]{geometry}
+\usepackage[a4paper,margin=2cm,headheight=28pt]{geometry}
 
 % ---------- Headers / footers ----------
 \usepackage{fancyhdr}
@@ -119,6 +119,18 @@
 
 % ---------- Graphics / TikZ ----------
 \usepackage{graphicx}
+\usepackage{eso-pic}
+% Document-wide faint SEEE watermark, centred on every page. The image
+% itself (figures/seee-emblem-watermark.png) is pre-faded and flattened
+% to fully opaque pixels at generation time -- PNG alpha transparency
+% was found not to render reliably via \includegraphics + eso-pic in
+% this build environment, so the fade is baked into solid RGB pixels
+% instead, which is robust across any PDF viewer/renderer.
+\AddToShipoutPictureBG{%
+  \AtPageCenter{%
+    \makebox(0,0){\includegraphics[width=9cm]{figures/seee-emblem-watermark.png}}%
+  }%
+}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, backgrounds, decorations.pathreplacing,decorations.pathmorphing}
 
@@ -147,6 +159,11 @@
 
 % ---------- Code listings (listings package -- no shell-escape required) ----------
 \usepackage{listings}
+\usepackage[most]{tcolorbox}
+% tcolorbox is still needed for the code-listing panels (\codepanel) and
+% the "Pending" callout box (needsupdate), even though the Objectives/
+% Equipment/Procedure/etc. panels no longer use it -- see \labsection
+% further below, which now uses plain headings instead.
 
 % ============================================================
 % Verilog / VHDL: styled after the Quartus II text editor's classic
@@ -351,44 +368,42 @@
 }
 
 % ---------- Section panels (Objectives / Equipment / Procedure / etc.) ----------
-\usepackage[most]{tcolorbox}
+% Plain run-in headings instead of boxed panels, to maximise usable
+% page width/height (no box padding, background fill, or border) and
+% let the page watermark show through unobstructed. Each heading is
+% set in the same weight/colour family as \subsection for visual
+% consistency with the rest of the document, followed by a thin rule.
+\newcommand{\labsectionheading}[1]{%
+  \par\vspace{0.6em}%
+  {\large\plexmedium\color{accentblue} #1\par}%
+  \vspace{1pt}%
+  {\color{panelrule}\hrule height 0.6pt}%
+  \vspace{0.3em}%
+}
 
-\newtcolorbox{labsection}[2]{
-  enhanced, breakable,
-  colback=panelbg, colframe=panelrule,
-  boxrule=0.6pt, arc=2pt,
-  left=8pt, right=8pt, top=6pt, bottom=6pt,
-  title={\plexmedium\color{inkblack} #1},
-  fonttitle=\normalsize,
-  attach title to upper=\par\vspace{2pt}\noindent,
-  coltitle=inkblack,
-  colbacktitle=panelbg,
-  toptitle=2pt, bottomtitle=2pt,
-  overlay={
-      \draw[accentblue, line width=2.2pt]
-      ([xshift=0pt]frame.north west) -- ([xshift=0pt]frame.south west);
-    },
-  #2
+\newenvironment{labsection}[1]{%
+  \labsectionheading{#1}%
+}{%
+  \par\vspace{0.1em}%
 }
 
 % Convenience wrappers for the standard recurring sections
-\newenvironment{objectives}{\begin{labsection}{Objectives}{}}{\end{labsection}}
-\newenvironment{equipment}{\begin{labsection}{Equipment / Software Required}{}}{\end{labsection}}
-\newenvironment{introduction}{\begin{labsection}{Introduction}{}}{\end{labsection}}
-\newenvironment{procedure}{\begin{labsection}{Procedure}{}}{\end{labsection}}
-\newenvironment{materials}{\begin{labsection}{Materials}{}}{\end{labsection}}
-\newenvironment{reportq}{\begin{labsection}{Report}{}}{\end{labsection}}
+\newenvironment{objectives}{\begin{labsection}{Objectives}}{\end{labsection}}
+\newenvironment{equipment}{\begin{labsection}{Equipment / Software Required}}{\end{labsection}}
+\newenvironment{introduction}{\begin{labsection}{Introduction}}{\end{labsection}}
+\newenvironment{procedure}{\begin{labsection}{Procedure}}{\end{labsection}}
+\newenvironment{materials}{\begin{labsection}{Materials}}{\end{labsection}}
+\newenvironment{reportq}{\begin{labsection}{Report}}{\end{labsection}}
 
 % ---------- Placeholder / TODO callout (for hardware not yet finalized) ----------
-\newtcolorbox{needsupdate}{
-  enhanced, breakable,
-  colback=warnbg, colframe=warnrule,
-  boxrule=0.7pt, arc=2pt,
-  left=8pt, right=8pt, top=5pt, bottom=5pt,
-  fonttitle=\small\plexmedium,
-  title={\color{warnrule!70!black} Pending},
-  coltitle=warnrule!60!black,
-  colbacktitle=warnbg,
+\newenvironment{needsupdate}{%
+  \par\vspace{0.6em}%
+  {\small\plexmedium\color{warnrule!70!black} Pending\par}%
+  \vspace{1pt}%
+  {\color{warnrule}\hrule height 0.6pt}%
+  \vspace{0.3em}%
+}{%
+  \par\vspace{0.3em}%
 }
 
 % ---------- Per-experiment numbering for figures/tables/listings ----------
@@ -415,9 +430,7 @@
   \markboth{#2 \textbar\ #4}{#2 \textbar\ #4}
   \begingroup
   \centering
-  \vspace*{0.2em}
-  \includegraphics[width=3.6cm]{figures/seee-emblem-only.png}\par
-  \vspace{0.6em}
+  \vspace*{0.4em}
   {\plexmedium\color{usmpurple}\Huge Experiment #1\par}
   \vspace{0.2em}
   {\plexmedium\color{inkblack}\LARGE #3\par}

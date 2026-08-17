@@ -1,7 +1,7 @@
 % ============================================================
 %  Experiment 2 --- DC Motor / PID Control (Position)
 % ============================================================
-\experimentheader{2}{DC Motor Position Control}{DC Motor / PID Control --- Position}{Control Lab}
+\experimentheader{2}{Experiment 2}{DC Motor / PID Control --- Position}{Control Lab}
 
 \begin{objectives}
   \begin{enumerate}
@@ -44,11 +44,13 @@
 
   \textit{(i) Position control with proportional feedback control}\vspace{2pt}
 
-  The motion of a motor can be converted into rotational position with the help of a suitable gearbox. The electrical signal, proportional to (angular) position, is obtained with the help of a circular potentiometer of good accuracy. This signal is fed back to the summer to extract an error signal, which is fed to the controller to obtain optimum performance. Different controllers may be tried for this case, to study them: use the PID Controller daughterboard shown in Figure~\ref{fig:exp2-closedloop}, selecting the desired stage(s) via its DIP switch.
+  The motion of a motor can be converted into rotational position with the help of a suitable gearbox. The electrical signal, proportional to (angular) position, is obtained with the help of a circular potentiometer of good accuracy. \vspace*{1em}
+
+  This signal is fed back to the summer to extract an error signal, which is fed to the controller to obtain optimum performance. Different controllers may be tried for this case, to study them: use the PID Controller daughterboard shown in Figure~\ref{fig:exp2-closedloop}, selecting the desired stage(s) via its DIP switch.
 
   \begin{boxedfigure}
     \centering
-    \includegraphics[width=0.48\linewidth, angle=90]{figures/exp1-2-controller.jpg}
+    \includegraphics[width=0.6\linewidth, angle=90]{figures/exp1-2-controller.jpg}
     \captionof{figure}{PID Control module.}
     \label{fig:exp2-closedloop}
   \end{boxedfigure}
@@ -135,7 +137,7 @@
     \item Record the input and output voltages for various positions in Table~\ref{tab:exp2-table2}.
   \end{enumerate}
 
-  \needspace{4cm}
+  \needspace{2cm}
   \begin{boxedtable}
     \captionof{table}{Closed-loop PID position response.}
     \label{tab:exp2-table2}

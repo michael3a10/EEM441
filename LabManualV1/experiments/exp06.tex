@@ -71,34 +71,28 @@
 
   \begin{boxedfigure}
     \centering
-    \includegraphics[width=\linewidth]{figures/Exp6_Figure_1.jpg}
+    \includegraphics[width=0.7\linewidth]{figures/Exp6_Figure_1.png}
     \captionof{figure}{RTL Viewer overview of the \texttt{step} top-level module.}
     \label{fig:exp6-rtl}
   \end{boxedfigure}
 
-  \needspace{4cm}
   \begin{boxedtable}
     \captionof{table}{Pin assignment for stepper motor control.}
     \label{tab:exp6-pins}
     {\renewcommand{\arraystretch}{1.5}
       \centering
-      \begin{tabular}{cccc}
+      \begin{tabular}{cccc|cccc}
         \toprule
-        \# & Node name   & Direction & Pin location \\
+        \# & Node name   & Direction & Pin location & \# & Node name   & Direction & Pin location \\
         \midrule
-        1  & osc         & Input     &              \\
-           & dir (SW0)   & Input     &              \\
-           & mode (SW1)  & Input     &              \\
-           & move (SW2)  & Input     &              \\
-           & reset (SW3) & Input     &              \\
-        2  & ledr[3]     & Output    &              \\
-        3  & ledr[2]     & Output    &              \\
-        4  & ledr[1]     & Output    &              \\
-        5  & ledr[0]     & Output    &              \\
-        6  & phaseout[3] & Output    &              \\
-        7  & phaseout[2] & Output    &              \\
-        8  & phaseout[1] & Output    &              \\
-        9  & phaseout[0] & Output    &              \\
+        1  & osc         & Input     &              & 5  & ledr[0]     & Output    &              \\
+           & dir (SW0)   & Input     &              & 6  & phaseout[3] & Output    &              \\
+           & mode (SW1)  & Input     &              & 7  & phaseout[2] & Output    &              \\
+           & move (SW2)  & Input     &              & 8  & phaseout[1] & Output    &              \\
+           & reset (SW3) & Input     &              & 9  & phaseout[0] & Output    &              \\
+        2  & ledr[3]     & Output    &              &    &             &           &              \\
+        3  & ledr[2]     & Output    &              &    &             &           &              \\
+        4  & ledr[1]     & Output    &              &    &             &           &              \\
         \bottomrule
       \end{tabular}
     }
@@ -253,10 +247,16 @@ endmodule
     \item Print and submit the Verilog code and schematic diagram.
   \end{enumerate}
 \end{procedure}
-\newpage
 
 \begin{labsection}{Appendix: Stepper Motor Datasheet Reference}{}
   Relevant specifications and wiring information for the Parallax \#27964 stepper motor used in this experiment, extracted from the manufacturer datasheet (see References).
+  \begin{boxedfigure}
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/Exp6_Motor.png}
+    \captionof{figure}{Parallax \#27964 stepper motor.}
+    \label{fig:exp6-motor}
+  \end{boxedfigure}
+
   \begin{boxedtable}
     \captionof{table}{Technical specifications, Parallax \#27964 stepper motor.}
     \label{tab:exp6-motorspecs}
@@ -297,6 +297,7 @@ endmodule
       \end{tabular}
     }
   \end{boxedtable}
+  \vspace*{1.5em}
 
   \begin{boxedfigure}
     \centering

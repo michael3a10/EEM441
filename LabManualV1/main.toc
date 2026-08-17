@@ -1,12 +1,12 @@
 \babel@toc {english}{}\relax 
-\contentsline {section}{Experiment 1: DC Motor Speed Control}{1}{section*.1}%
-\contentsline {section}{Experiment 2: DC Motor Position Control}{6}{section*.2}%
-\contentsline {section}{Experiment 3: Introduction to Quartus II}{11}{section*.3}%
-\contentsline {section}{Experiment 4: DIP Switch \& 7-Segment}{18}{section*.4}%
-\contentsline {section}{Experiment 5: LCD Interfacing}{21}{section*.5}%
-\contentsline {section}{Experiment 6: Stepper Motor Control}{29}{section*.6}%
-\contentsline {section}{Experiment 7: DC Motor Speed Measurement}{36}{section*.7}%
-\contentsline {section}{Experiment 8: Temperature Control}{42}{section*.8}%
-\contentsline {section}{Experiment 9: ADC Interfacing}{46}{section*.9}%
-\contentsline {section}{Experiment 10: DAC Interfacing}{50}{section*.10}%
+\contentsline {section}{Experiment 1: Experiment 1}{1}{section*.1}%
+\contentsline {section}{Experiment 2: Experiment 2}{6}{section*.2}%
+\contentsline {section}{Experiment 3: Experiment 3}{12}{section*.3}%
+\contentsline {section}{Experiment 4: Experiment 4}{19}{section*.4}%
+\contentsline {section}{Experiment 5: LCD Interfacing}{22}{section*.5}%
+\contentsline {section}{Experiment 6: Stepper Motor Control}{30}{section*.6}%
+\contentsline {section}{Experiment 7: Experiment 7}{37}{section*.7}%
+\contentsline {section}{Experiment 8: Experiment 8}{43}{section*.8}%
+\contentsline {section}{Experiment 9: Experiment 9}{47}{section*.9}%
+\contentsline {section}{Experiment 10: Experiment 10}{51}{section*.10}%
 \contentsfinish 

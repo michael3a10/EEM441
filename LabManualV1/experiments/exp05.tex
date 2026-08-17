@@ -1,7 +1,7 @@
 % ============================================================
 %  Experiment 5 --- Interfacing LCD to Altera DE2 Board
 % ============================================================
-\experimentheader{5}{LCD Interfacing}{Interfacing LCD to Altera DE2 Board}{FPGA Lab}
+\experimentheader{5}{LCD Interfacing}{Experiment 5}{FPGA Lab}
 
 \begin{objectives}
   \begin{enumerate}
@@ -105,6 +105,7 @@
     \end{tabular}
   }
 \end{boxedtable}
+\vspace*{1.5em}
 
 \begin{procedure}
 
@@ -125,7 +126,7 @@
 
   \begin{boxedfigure}
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/Exp5_Figure_2.png}
+    \includegraphics[width=\linewidth]{figures/Exp5_Figure_2.png}
     \captionof{figure}{Schematic diagram for the LCD interface: \texttt{lcd\_t} (lookup-table sequencer) feeding \texttt{LCD\_Controller} (bus-timing controller).}
     \label{fig:exp5-schematic}
   \end{boxedfigure}
@@ -212,18 +213,17 @@
               mLCD_Start <= 0;
               mLCD_ST    <= 2;
             end
+    \end{lstlisting}
+  \end{codepanel}
+
+  \begin{codepanel}{lcd\_t.v --- Appendix 1: lookup-table sequencer (part 2 of 2, continued)}{verilogstyle}
+    \begin{lstlisting}
             2: if (mDLY < 18'h3FFFE)
                  mDLY <= mDLY + 1;
                else begin
                  mDLY    <= 0;
                  mLCD_ST <= 3;
                end
-    \end{lstlisting}
-  \end{codepanel}
-  \newpage
-
-  \begin{codepanel}{lcd\_t.v --- Appendix 1: lookup-table sequencer (part 2 of 2, continued)}{verilogstyle}
-    \begin{lstlisting}
             3: begin
               LUT_INDEX <= LUT_INDEX + 1;
               mLCD_ST   <= 0;
@@ -263,6 +263,7 @@
   \end{codepanel}
   \vspace{-4pt}
   \listingcaption{lst:exp5-lcdt}{\texttt{lcd\_t.v} --- lookup-table LCD message sequencer.}
+  \newpage
 
   \begin{codepanel}{LCD\_Controller.v --- Appendix 2: bus-timing controller (part 1 of 2)}{verilogstyle}
     \begin{lstlisting}

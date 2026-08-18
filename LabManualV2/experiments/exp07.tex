@@ -1,0 +1,284 @@
+% ============================================================
+%  Experiment 7 --- DC Motor Speed Measurement
+% ============================================================
+\experimentheader{7}{Experiment 7}{DC Motor Speed Measurement System}{Instrumentation Lab}
+
+\begin{objectives}
+  \begin{enumerate}
+    \item To understand the methods of acquiring measurements automatically with the aid of a computer.
+    \item To become familiar with the data-acquisition (DAQ) environment.
+    \item To become familiar with signal conditioning in a computer-based data-acquisition system.
+    \item To design and build a signal-conditioning circuit whose parameters are justified by a measurement, rather than assumed.
+    \item To implement a computer-based measurement system for the rotational speed of a DC motor.
+  \end{enumerate}
+\end{objectives}
+
+\begin{equipment}
+  \begin{itemize}
+    \item DC motor trainer with a 12-slot wheel encoder
+    \item Digital storage oscilloscope (DSO)
+    \item Components for the student-designed filter and signal-conditioning circuit (op-amps, resistors, capacitors)
+    \item ADAM-3968 wiring terminal board
+    \item PCIE-1816 multifunction DAQ card, installed in the host PC
+    \item PC with a C/C++ or Python development environment
+  \end{itemize}
+\end{equipment}
+
+\begin{introduction}
+  In most measurement processes it is often necessary to acquire data automatically, without a human operator. A computer-based instrument has several advantages over conventional measuring instruments: it can acquire measurements quickly and accurately, sustain real-time control, and operate for extended periods with consistent precision.\vspace*{10pt}
+
+  A computer-based measurement system typically contains the following elements (Figure~\ref{fig:exp7-daq-overview}): a transducer, a signal-conditioning stage, data-acquisition hardware, analysis hardware, and software running on the host PC.\newpage
+
+  \textbf{Signal conditioning} means manipulating an analogue signal so that it meets the requirements of the next processing stage --- most commonly, so that it is suitable for an analogue-to-digital converter. Signal conditioning can include amplification, filtering, range matching, and isolation.\vspace*{10pt}
+
+  \textbf{Filtering} is the most common signal-conditioning function: frequencies that do not carry valid data are attenuated. In this experiment the encoder produces a pulse train whose useful frequency content is bounded, and any filter used ahead of the DAQ card should be designed --- not assumed --- around that bound.\vspace*{10pt}
+
+  \textbf{Amplification} increases the resolution of the input signal and improves its signal-to-noise ratio.\vspace*{10pt}
+
+  \textbf{Isolation} allows a signal to pass from its source to the measurement device without a direct physical (galvanic) connection, protecting sensitive equipment from the signal source and vice versa.\vspace*{10pt}
+
+  \textbf{The Sallen--Key topology} is a widely used active-filter structure, valued for its simplicity: it realises a two-pole (12\,dB/octave) low-pass, high-pass, or band-pass response using a single op-amp configured as a near-unity-gain voltage-controlled voltage source (VCVS), together with two resistors and two capacitors that set the cutoff frequency and $Q$.
+\end{introduction}
+\vspace*{1.5em}
+
+\begin{boxedfigure}
+  \centering
+  \begin{tikzpicture}[node distance=8mm and 10mm]
+    \node[block] (trans) {HPAC-08 Trainer};
+    \node[block, right=of trans] (fil) {Filter\\Circuit};
+    \node[block, right=of fil] (cond) {Signal\\Conditioning Circuit};
+    \node[block, right=of cond] (daq) {Data\\Acquisition};
+    \node[block, below=of daq] (pc) {Computer};
+
+    \draw[arr] (trans) -- (fil);
+    \draw[arr] (fil) -- (cond);
+    \draw[arr] (cond) -- (daq);
+    \draw[arr] (daq.south) -- (pc.north);
+  \end{tikzpicture}
+  \captionof{figure}{Computer-based measurement system: transducer, signal conditioning, DAQ hardware, and analysis software.}
+  \label{fig:exp7-daq-overview}
+\end{boxedfigure}
+\vspace*{1.5em}
+
+\begin{procedure}
+
+  \textbf{Activity 1 --- Characterising the encoder signal and designing the filter}\vspace{2pt}
+
+  \textit{Objective: measure the encoder's pulse characteristics and design a signal-conditioning filter around the measured cutoff frequency, rather than an assumed one.}
+
+  \begin{enumerate}
+    \item Wire the encoder's output test point to the oscilloscope.
+    \item Run the motor across its usable speed range and observe the encoder pulse train on the oscilloscope.
+    \item At a representative operating speed, measure the pulse period and estimate the corresponding fundamental frequency from the oscilloscope trace.
+    \item From this measurement, determine a suitable cutoff frequency for noise-rejection filter.\newpage
+    \item Design the necessary filter based on the cutoff frequency determined prior.Justify your design choices.
+    \item Design the signal-conditioning circuit needed to present the filtered encoder pulses to the PCIE-1816's digital input with valid logic levels. Justify your design choices.
+  \end{enumerate}
+  \vspace*{1.5em}
+
+  \textbf{Activity 2 --- Interfacing to the DAQ hardware}\vspace{2pt}
+
+  \textit{Objective: connect the conditioned encoder signal to the PC via the ADAM-3968 and PCIE-1816.}
+
+  \begin{enumerate}
+    \item Connect the output of your signal-conditioning circuit to a digital input terminal on the ADAM-3968 terminal board.
+    \item Verify the voltage needed by PCIE1816 for it to detect HIGH/LOW logic using the NAVIGATOR application in the PC before writing any code, to confirm the expected pulses are being registered.
+  \end{enumerate}
+
+  \begin{boxedfigure}
+    \centering
+    \resizebox{0.98\linewidth}{!}{%
+      \begin{tikzpicture}[node distance=12mm and 16mm]
+        \node[block, minimum width=2.6cm] (trainer) {DC Motor\\Trainer};
+        \node[block, right=of trainer, minimum width=2.8cm] (filt) {Filter \&\\Signal Cond.\\ Circuit};
+        \node[block, right=of filt, minimum width=2.4cm] (adam) {ADAM-3968};
+        \node[block, right=of adam, minimum width=2.6cm] (pcie) {PCIE-1816};
+        \node[block, right=of pcie, minimum width=2.4cm] (pc) {PC\\\scriptsize C/C++/Python GUI};
+
+        \draw[arr] (trainer) -- (filt);
+        \draw[arr] (filt) -- (adam);
+        \draw[arr] (adam) -- (pcie);
+        \draw[arr] (pcie) -- (pc);
+      \end{tikzpicture}
+    }
+    \captionof{figure}{Signal path from the DC motor trainer to the host PC.}
+    \label{fig:exp7-signalpath}
+  \end{boxedfigure}
+  \vspace*{1.5em}
+
+  \textbf{Activity 3 --- Speed measurement software}\vspace{2pt}
+
+  \textit{Objective: implement software to compute and display motor speed (frequency and RPM) in real time, using two selectable measurement methods.}
+
+  Two complementary methods can be used to convert the pulse train into a frequency and rotational speed, and your software should let the user select between them:
+  \vspace*{1.5em}
+
+  \textbf{Method 1 --- by counts (fixed pulse count, 1--99):} the user specifies a target pulse count $N$ ($1 \leq N \leq 99$); the software measures the elapsed time $T_N$ for $N$ pulses to occur, then computes
+  \[
+    f = \frac{N}{T_N \times 12} \ \left[\text{rev/s}\right], \qquad
+    \text{RPM} = 60f, \qquad
+    \omega = 2\pi f \ \left[\text{rad/s}\right]
+  \]
+  \vspace*{1.5em}
+
+  \textbf{Method 2 --- by period (fixed period window, 1--9\,s):} the user specifies a measurement window $T$ seconds ($1 \leq T \leq 9$); the software counts the number of pulses $N_T$ that occur within that window, then computes
+  \[
+    f = \frac{N_T}{T \times 12} \ \left[\text{rev/s}\right], \qquad
+    \text{RPM} = 60f, \qquad
+    \omega = 2\pi f \ \left[\text{rad/s}\right]
+  \]
+  \newpage
+
+  In both methods, $t_{\text{start}}$ and $t_{\text{stop}}$ (marking the beginning and end of the measurement) are obtained from the DAQ card's counter/timer using
+  \[
+    \text{Elapsed time} = \frac{t_{\text{stop}} - t_{\text{start}}}{\text{CLK\_TCK}}
+  \]
+  where $\text{CLK\_TCK}$ is the counter's clock tick rate.
+
+  \begin{boxedfigure}
+    \centering
+    \begin{tikzpicture}[node distance=7mm and 10mm]
+      \node[startstop] (start) {Start};
+      \node[block, below=of start] (init) {Initialise DAQ card};
+      \node[block, below=of init] (select) {User selects method:\\by counts ($N$) or by time ($T$)};
+      \node[decision, below=of select, minimum width=2.6cm] (mode) {Method?};
+      \node[block, below left=10mm and -4mm of mode] (bycounts) {Measure elapsed\\time $T_N$ for $N$ pulses};
+      \node[block, below right=10mm and -4mm of mode] (bytime) {Count pulses $N_T$\\within window $T$};
+      \node[block, below=26mm of mode] (calc) {Compute $f$, RPM, $\omega$};
+      \node[block, below=of calc] (disp) {Display / log result};
+      \node[decision, below=of disp, minimum width=2.6cm] (dec) {End of\\measurement?};
+      \node[startstop, below=of dec] (end) {End};
+
+      \draw[arr] (start) -- (init);
+      \draw[arr] (init) -- (select);
+      \draw[arr] (select) -- (mode);
+      \draw[arr] (mode.west) -| (bycounts) node[pos=0.25, above, font=\small,xshift=-10pt] {by counts};
+      \draw[arr] (mode.east) -| (bytime) node[pos=0.25, above, font=\small, xshift=10pt] {by period};
+      \draw[arr] (bycounts) |- (calc.west);
+      \draw[arr] (bytime) |- (calc.east);
+      \draw[arr] (calc) -- (disp);
+      \draw[arr] (disp) -- (dec);
+      \draw[arr] (dec) -- (end) node[midway, right, font=\small] {Yes};
+      \draw[arr] (dec.east) -- ++(2.6,0) |- (select.east) node[pos=0.25, above, font=\small, xshift=10pt] {No};
+    \end{tikzpicture}
+    \captionof{figure}{Measurement loop for the speed-acquisition software}
+    \label{fig:exp7-flowchart}
+  \end{boxedfigure}
+
+  \begin{enumerate}
+    \item In C, C++, or Python, write a program that:
+          \begin{itemize}
+            \item initialises the PCIE-1816 (via the vendor driver / SDK, or the DAQ card's counter API),
+            \item lets the user select the measurement method (by counts, $1 \leq N \leq 99$; or by time, $1 \leq T \leq 9$\,s) and enter the corresponding parameter, \newpage
+            \item for the \emph{by counts} method: times how long it takes for $N$ encoder pulses to occur,
+            \item for the \emph{by time} method: counts how many encoder pulses occur within the window $T$,
+            \item computes the frequency, RPM, and angular speed $\omega$ using the relations above, and
+            \item displays the running value (frequency and RPM, with the active method indicated) in a simple GUI, updating in real time.
+          \end{itemize}
+    \item Interface your filter/conditioning circuit, the ADAM-3968, and the PCIE-1816 together and perform measurements across a range of motor input voltages, using both methods at each operating point. Compare your computed speed against a direct oscilloscope measurement of the encoder period at the same operating point.
+    \item Tabulate your results (Tables~\ref{tab:exp7-bycounts-rpm}--\ref{tab:exp7-bytime-freq}).
+    \item Plot computed speed (from both software methods) against the oscilloscope-measured speed.
+    \item Discuss and comment on your results, including any discrepancy between the two software methods and the oscilloscope reference, and how each method's resolution changes with motor speed (see the trade-off noted above).
+  \end{enumerate}
+
+  \needspace{6cm}
+  \begin{boxedtable}
+    \captionof{table}{By-counts method: frequency comparison table.}
+    \label{tab:exp7-bycounts-freq}
+    \centering
+    {\renewcommand{\arraystretch}{1.4}
+      \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        \multirow{2}{*}{$N$} & \multicolumn{5}{c|}{Measured Frequency (Hz)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(Hz)}}                     \\
+        \cline{2-6}
+                             & \#1                                          & \#2                                              & \#3 & \#4 & \#5 & \\
+        \hline
+                             &                                              &                                                  &     &     &     & \\
+        \hline
+                             &                                              &                                                  &     &     &     & \\
+        \hline
+                             &                                              &                                                  &     &     &     & \\
+        \hline
+      \end{tabular}
+    }
+  \end{boxedtable}
+
+  \needspace{6cm}
+  \begin{boxedtable}
+    \captionof{table}{By-counts method --- RPM comparison table.}
+    \label{tab:exp7-bycounts-rpm}
+    \centering
+    {\renewcommand{\arraystretch}{1.4}
+      \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        \multirow{2}{*}{$N$} & \multicolumn{5}{c|}{$\omega$ (MeasuredRPM)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(calculated RPM)}}                     \\
+        \cline{2-6}
+                             & \#1                                         & \#2                                                          & \#3 & \#4 & \#5 & \\
+        \hline
+                             &                                             &                                                              &     &     &     & \\
+        \hline
+                             &                                             &                                                              &     &     &     & \\
+        \hline
+                             &                                             &                                                              &     &     &     & \\
+        \hline
+      \end{tabular}
+    }
+  \end{boxedtable}
+
+  \needspace{6cm}
+  \begin{boxedtable}
+    \captionof{table}{By-period method: frequency comparison table.}
+    \label{tab:exp7-bytime-freq}
+    \centering
+    {\renewcommand{\arraystretch}{1.4}
+      \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        \multirow{2}{*}{$T$ (s)} & \multicolumn{5}{c|}{Measured Frequency (Hz)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(Hz)}}                     \\
+        \cline{2-6}
+                                 & \#1                                          & \#2                                              & \#3 & \#4 & \#5 & \\
+        \hline
+                                 &                                              &                                                  &     &     &     & \\
+        \hline
+                                 &                                              &                                                  &     &     &     & \\
+        \hline
+                                 &                                              &                                                  &     &     &     & \\
+        \hline
+      \end{tabular}
+    }
+  \end{boxedtable}
+
+  \needspace{6cm}
+  \begin{boxedtable}
+    \captionof{table}{By-period method: RPM comparison table.}
+    \label{tab:exp7-bytime-rpm}
+    \centering
+    {\renewcommand{\arraystretch}{1.4}
+      \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        \multirow{2}{*}{$T$ (s)} & \multicolumn{5}{c|}{$\omega$ (Measureed RPM)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(calculated RPM)}}                     \\
+        \cline{2-6}
+                                 & \#1                                           & \#2                                                          & \#3 & \#4 & \#5 & \\
+        \hline
+                                 &                                               &                                                              &     &     &     & \\
+        \hline
+                                 &                                               &                                                              &     &     &     & \\
+        \hline
+                                 &                                               &                                                              &     &     &     & \\
+        \hline
+      \end{tabular}
+    }
+  \end{boxedtable}
+
+
+
+\end{procedure}
+
+\begin{reportq}
+  \begin{enumerate}
+    \item Present your oscilloscope measurements of the encoder pulse and your resulting filter design (topology, calculations, and component values), together with the measured response of the built filter.
+    \item Present your design of the signal-conditioning stage between the filter and the PCIE-1816 digital input, with justification.
+    \item Compare your software-computed speed (both by-counts and by-time methods) with the oscilloscope-measured speed across your tested operating points, and discuss the sources of any discrepancy.
+    \item Compare the by-counts and by-time methods directly: at what motor speeds does each method give better resolution or a more stable reading, and why? Which would you recommend for a low-speed application, and which for a high-speed one?
+    \item What is the theoretical maximum measurable speed of this system, given the encoder resolution (12 slots/revolution) and your software's timing resolution?
+  \end{enumerate}
+\end{reportq}

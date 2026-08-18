@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  18 AUG 2026 12:28
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  18 AUG 2026 12:30
  restricted system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/micha/Documents/GitHub/EEM441/LabManualV1/main
@@ -2424,39 +2424,39 @@ See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 359.
+(caption)                particular \caption on input line 358.
 See the caption package documentation for explanation.
 
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
-359.
+358.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
 [40<./figures/Exp6_Motor.png>]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 389.
+(caption)                particular \caption on input line 388.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (15.65982pt too wide) in paragraph at lines 395--396
+Overfull \hbox (15.65982pt too wide) in paragraph at lines 394--395
 \TU/IBMPlexSans(0)/m/n/12 ple; in this ex-per-i-ment, the cor-re-spond-ing drive
 r in-puts are in-stead the \TU/JetBrainsMono(0)/m/n/12 phaseout[3:0]
  []
 
-File: figures/seee-emblem-watermark.png Graphic file (type png)
-<use figures/seee-emblem-watermark.png>
-Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
-406.
-(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
-[41]
-Overfull \hbox (32.75397pt too wide) in paragraph at lines 407--408
+
+Overfull \hbox (32.75397pt too wide) in paragraph at lines 406--407
 []\TU/IBMPlexSans(0)/m/n/12 Par-al-lax Inc., \TU/IBMPlexSans(0)/m/it/12 4-Phase 12-Volt 75$ \TU/STIXTwoMath-Regular(1)/m/n/12 
 Ω$ \TU/IBMPlexSans(0)/m/it/12 Unipo-lar Step-per Mo-tor (#27964)\TU/IBMPlexSan
 s(0)/m/n/12 , tech-ni-cal datasheet. 
  []
 
-) [42]
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+407.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[41]) [42]
 File: figures/usm-logo.png Graphic file (type png)
 <use figures/usm-logo.png>
 Package luatex.def Info: figures/usm-logo.png  used on input line 64.
@@ -2763,10 +2763,10 @@ Here is how much of LuaTeX's memory you used:
    31 hlist, 2 vlist, 14 rule, 1 disc, 3 glue, 5 kern, 14 glyph, 96 attribute, 6
 4 glue_spec, 85 attribute_list, 2 write, 24 pdf_literal, 24 pdf_colorstack nodes
 
-   avail lists: 1:4,2:14710,3:1484,4:13132,5:11562,6:118,7:16392,8:42,9:34602,10
+   avail lists: 1:4,2:14710,3:1504,4:13132,5:11562,6:118,7:16392,8:42,9:34602,10
 :41,11:1807
  63224 multiletter control sequences out of 65536+600000
- 106 fonts using 36122703 bytes
+ 106 fonts using 36122551 bytes
  97i,14n,117p,589b,1267s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <./fonts/PlexSans/IBMPlexSans-Regular.ttf><./fonts/JetBrainsMono/JetBrainsMono-I
 talic.ttf><./fonts/JetBrainsMono/JetBrainsMono-Bold.ttf><./fonts/JetBrainsMono/J
@@ -2774,7 +2774,7 @@ etBrainsMono-Regular.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/STIX2/S
 TIXTwoMath-Regular.ttf><./fonts/PlexSans/IBMPlexSans-Italic.ttf><./fonts/PlexSan
 s/IBMPlexSans-SemiBold.ttf><./fonts/PlexSans/IBMPlexSans-Regular.ttf><./fonts/Pl
 exSans/IBMPlexSans-Medium.ttf><./fonts/PlexSans/IBMPlexSans-Light.ttf>
-Output written on main.pdf (65 pages, 4382283 bytes).
+Output written on main.pdf (65 pages, 4382232 bytes).
 
 PDF statistics: 1296 PDF objects out of 1440 (max. 8388607)
  782 named destinations out of 1000 (max. 1048576)

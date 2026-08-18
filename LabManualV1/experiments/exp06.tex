@@ -13,12 +13,16 @@
 \end{objectives}
 
 \begin{equipment}
-  \begin{itemize}
+  \begin{enumerate}
     \item Altera Quartus II software
+          \begin{itemize}
+            \item version 9/10/12 for Cyclone II
+            \item version 9/10/12/latest for Cyclone IV
+          \end{itemize}
     \item Altera DE2 board
     \item Parallax 4-phase, 12\,V, 75\,$\Omega$ unipolar stepper motor
     \item ULN2003 Darlington transistor array (motor driver)
-  \end{itemize}
+  \end{enumerate}
 \end{equipment}
 
 \begin{introduction}
@@ -46,7 +50,6 @@
     \end{tabular}
   }
 \end{boxedtable}
-\newpage
 
 \begin{procedure}
 
@@ -71,10 +74,10 @@
 
   \begin{boxedfigure}
     \centering
-    \includegraphics[width=0.7\linewidth]{figures/Exp6_Figure_1.png}
+    \includegraphics[width=\linewidth]{figures/Exp6_Figure_1.png}
     \captionof{figure}{RTL Viewer overview of the \texttt{step} top-level module.}
     \label{fig:exp6-rtl}
-  \end{boxedfigure}
+  \end{boxedfigure}\newpage
 
   \begin{boxedtable}
     \captionof{table}{Pin assignment for stepper motor control.}
@@ -130,7 +133,7 @@ module step(osc, reset, dir, mode, move, phaseout, ledr);
 endmodule
 \end{lstlisting}
   \end{codepanel}
-  \vspace{-4pt}
+  \newpage
 
   \begin{codepanel}{step.v --- motor controller module (part 1 of 2)}{verilogstyle}
     \begin{lstlisting}
@@ -252,7 +255,7 @@ endmodule
   Relevant specifications and wiring information for the Parallax \#27964 stepper motor used in this experiment, extracted from the manufacturer datasheet (see References).
   \begin{boxedfigure}
     \centering
-    \includegraphics[width=0.4\linewidth]{figures/Exp6_Motor.png}
+    \includegraphics[width=0.6\linewidth]{figures/Exp6_Motor.png}
     \captionof{figure}{Parallax \#27964 stepper motor.}
     \label{fig:exp6-motor}
   \end{boxedfigure}

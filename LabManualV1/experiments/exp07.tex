@@ -119,7 +119,6 @@
     \text{RPM} = 60f, \qquad
     \omega = 2\pi f \ \left[\text{rad/s}\right]
   \]
-  This method gives better resolution at high speed (many pulses arrive quickly, so $T_N$ is measured over a longer, more precise interval) but responds more slowly at low speed, since a full count of $N$ pulses can take a long time.
   \vspace*{1.5em}
 
   \textbf{Method 2 --- by period (fixed period window, 1--9\,s):} the user specifies a measurement window $T$ seconds ($1 \leq T \leq 9$); the software counts the number of pulses $N_T$ that occur within that window, then computes

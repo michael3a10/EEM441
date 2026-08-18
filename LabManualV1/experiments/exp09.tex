@@ -1,7 +1,7 @@
 % ============================================================
 %  Experiment 9 --- Interfacing FPGA to Analog-to-Digital Converter
 % ============================================================
-\experimentheader{9}{Experiment 9}{ADC Interfacing}{FPGA Lab}
+\experimentheader{9}{Experiment 9}{Interfacing FPGA to Analog-to-Digital Converter}{FPGA Lab}
 
 \begin{objectives}
   \begin{enumerate}
@@ -11,7 +11,12 @@
 \end{objectives}
 
 \begin{equipment}
-  \begin{itemize}
+  \begin{enumerate}
+    \item Altera Quartus II software
+          \begin{itemize}
+            \item version 9/10/12 for Cyclone II
+            \item version 9/10/12/latest for Cyclone IV
+          \end{itemize}
     \item Altera DE2 board
     \item Multimeter / oscilloscope
     \item ADC0804 analog-to-digital converter
@@ -20,7 +25,7 @@
     \item Capacitor: $150\,\text{pF}$
     \item 8 LEDs
     \item 74LS245 octal bus transceiver
-  \end{itemize}
+  \end{enumerate}
 \end{equipment}
 
 \begin{introduction}
@@ -35,7 +40,7 @@
       D_{out} = \frac{V_{in}}{\text{step size}}
     \]
   \end{center}
-  where $D_{out}$ is the digital data output and $V_{in}$ is the analog input voltage.\newpage
+  where $D_{out}$ is the digital data output and $V_{in}$ is the analog input voltage.
 
   Data conversion with the ADC0804 follows this sequence (Figure~\ref{fig:exp9-timing}):
   \begin{enumerate}[label=\roman*.]
@@ -128,7 +133,7 @@
   \begin{enumerate}
     \item Use the circuit from Figure~\ref{fig:exp9-circuit}, modified as follows.
     \item Connect the $\overline{\text{RD}}$ and $\overline{\text{WR}}$ pins to general-purpose I/O pins on the DE2 board, declared as \textbf{outputs}.
-    \item Connect the $\overline{\text{INTR}}$ and D0--D7 pins to the inputs of a 74LS245. Connect the 74LS245's outputs to general-purpose I/O pins on the DE2 board, declared as \textbf{inputs}. Refer to the DE2 user manual for pin locations.\newpage
+    \item Connect the $\overline{\text{INTR}}$ and D0--D7 pins to the inputs of a 74LS245. Connect the 74LS245's outputs to general-purpose I/O pins on the DE2 board, declared as \textbf{inputs}. Refer to the DE2 user manual for pin locations.
     \item In Verilog, generate the $\overline{\text{WR}}$ pulse to start conversion, poll $\overline{\text{INTR}}$ for end of conversion, then pulse $\overline{\text{RD}}$ to read the data on D0--D7.
     \item Assign the FPGA's digitised outputs to the LED pins.
     \item Compile, simulate, and download the program to the DE2 board.

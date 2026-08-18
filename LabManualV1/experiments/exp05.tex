@@ -1,7 +1,7 @@
 % ============================================================
 %  Experiment 5 --- Interfacing LCD to Altera DE2 Board
 % ============================================================
-\experimentheader{5}{LCD Interfacing}{Experiment 5}{FPGA Lab}
+\experimentheader{5}{Experiment 5}{LCD Interfacing to Altera DE2 Board}{FPGA Lab}
 
 \begin{objectives}
   \begin{enumerate}
@@ -11,10 +11,14 @@
 \end{objectives}
 
 \begin{equipment}
-  \begin{itemize}
+  \begin{enumerate}
     \item Altera Quartus II software
+          \begin{itemize}
+            \item version 9/10/12 for Cyclone II
+            \item version 9/10/12/latest for Cyclone IV
+          \end{itemize}
     \item Altera DE2 board
-  \end{itemize}
+  \end{enumerate}
 \end{equipment}
 
 \begin{introduction}
@@ -320,7 +324,6 @@ module LCD_Controller (
       end
 \end{lstlisting}
   \end{codepanel}
-  \newpage
 
   \begin{codepanel}{LCD\_Controller.v --- Appendix 2: bus-timing controller (part 2 of 2, continued)}{verilogstyle}
     \begin{lstlisting}

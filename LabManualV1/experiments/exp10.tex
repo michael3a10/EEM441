@@ -1,7 +1,7 @@
 % ============================================================
 %  Experiment 10 --- Interfacing FPGA to Digital-to-Analog Converter
 % ============================================================
-\experimentheader{10}{Experiment 10}{DAC Interfacing}{FPGA Lab}
+\experimentheader{10}{Experiment 10}{Interfacing FPGA to Digital-to-Analog Converter}{FPGA Lab}
 
 \begin{objectives}
   \begin{enumerate}
@@ -11,13 +11,18 @@
 \end{objectives}
 
 \begin{equipment}
-  \begin{itemize}
+  \begin{enumerate}
+    \item Altera Quartus II software
+          \begin{itemize}
+            \item version 9/10/12 for Cyclone II
+            \item version 9/10/12/latest for Cyclone IV
+          \end{itemize}
     \item Altera DE2 board
     \item Multimeter / oscilloscope
     \item DAC0800 digital-to-analog converter
     \item Resistors: $10\,\text{k}\Omega$ (\texttt{$\times$4}), $100\,\Omega$ (\texttt{$\times$1})
     \item Capacitor: $0.01\,\mu\text{F}$
-  \end{itemize}
+  \end{enumerate}
 \end{equipment}
 
 \begin{introduction}
@@ -86,7 +91,6 @@
     \item You may use a lookup table, following the same approach as the LCD program in Experiment 5.
     \item Print and submit the Verilog code and simulation result.
   \end{enumerate}
-  \newpage
 
   \textbf{Activity 3 --- Generating a sine wave}\vspace{2pt}
 

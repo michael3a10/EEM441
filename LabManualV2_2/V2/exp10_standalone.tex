@@ -1,0 +1,22 @@
+% !TEX program = lualatex
+% !TeX program = lualatex
+% !TEX TS-program = lualatex
+% ============================================================
+%  EEM 441 -- Experiment 10 (standalone / V2)
+%  Self-contained single-experiment build: fillable lab report
+%  cover page + this experiment's full content. Compile 3x with
+%  lualatex from inside this V2/ folder (no -shell-escape needed).
+% ============================================================
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+
+\begin{document}
+
+\pagestyle{fancy}
+\setcounter{page}{1}
+
+\labcoverpage{10}{INTERFACING FPGA TO A DIGITAL-TO-ANALOG CONVERTER}
+
+\input{../experiments/exp10.tex}
+
+\end{document}

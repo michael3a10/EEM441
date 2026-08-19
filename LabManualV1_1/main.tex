@@ -1,0 +1,123 @@
+% !TEX program = lualatex
+% !TeX program = lualatex
+% !TEX TS-program = lualatex
+% Note: this document MUST be compiled with LuaLaTeX (not pdfLaTeX/XeLaTeX)
+% because it uses fontspec/unicode-math for custom fonts. No -shell-escape
+% is required -- code highlighting uses the listings package, not minted.
+% Compile 3x for the table of contents and cross-references to resolve.
+\documentclass[12pt]{article}
+\input{preamble.tex}
+
+\title{EEM 441 --- Control, Instrumentation \& FPGA Laboratory}
+\author{}
+\date{}
+
+\begin{document}
+
+\boolfalse{showwatermark}
+% ---------- Cover page ----------
+\begin{titlepage}
+    \centering
+    \vspace*{2.2cm}
+    \includegraphics[width=0.5\textwidth]{figures/usm-logo.png}\par
+    \vspace{2.5em}
+    {\plexlight\color{slategray}\Huge School \\ of \\ Electrical and Electronic Engineering\par}
+    \vspace{1.5cm}
+    {\plexmedium\color{usmpurple}\fontsize{52}{40}\selectfont EEM 441\par}
+    \vspace{0.5em}
+    {\plexmedium\color{inkblack}\Huge Control, Instrumentation \\\& FPGA Laboratory\par}
+    \vspace{0.6em}
+    {\plexlight\color{slategray}\Huge Laboratory Manual\par}
+    \vfill
+    {\plexlight\color{slategray}\Huge Experiments 1--10\par}
+    \vspace{2cm}
+\end{titlepage}
+\booltrue{showwatermark}
+% ---------- Table of contents ----------
+\pagestyle{empty}
+\tableofcontents
+\clearpage
+\pagestyle{fancy}
+\setcounter{page}{1}
+
+% Each experiment is preceded by its own fillable lab report cover
+% page (see \labcoverpage in preamble.tex). No watermark or page
+% number on the cover pages themselves.
+\labcoverpage{1}{DC MOTOR / PID CONTROL --- SPEED}
+\input{experiments/exp01.tex}
+
+\labcoverpage{2}{DC MOTOR / PID CONTROL --- POSITION}
+\input{experiments/exp02.tex}
+
+\labcoverpage{3}{FPGA --- INTRODUCTION TO ALTERA QUARTUS II SOFTWARE}
+\input{experiments/exp03.tex}
+
+\labcoverpage{4}{INTERFACING FPGA TO DIP SWITCH AND SEVEN SEGMENT}
+\input{experiments/exp04.tex}
+
+\labcoverpage{5}{INTERFACING LCD TO ALTERA DE2 BOARD}
+\input{experiments/exp05.tex}
+
+\labcoverpage{6}{STEPPER MOTOR CONTROL WITH FPGA}
+\input{experiments/exp06.tex}
+
+\labcoverpage{7}{DC MOTOR SPEED MEASUREMENT}
+\input{experiments/exp07.tex}
+
+\labcoverpage{8}{TEMPERATURE MEASUREMENT AND CONTROL}
+\input{experiments/exp08.tex}
+
+\labcoverpage{9}{INTERFACING FPGA TO AN ANALOG-TO-DIGITAL CONVERTER}
+\input{experiments/exp09.tex}
+
+\labcoverpage{10}{INTERFACING FPGA TO A DIGITAL-TO-ANALOG CONVERTER}
+\input{experiments/exp10.tex}
+
+\end{document}
+
+
+% ============================================================
+% VS Code / LaTeX Workshop setup (one-time, per machine)
+% ============================================================
+% This document only needs plain LuaLaTeX -- no -shell-escape, no
+% external programs. (Code highlighting uses the listings package,
+% not minted, so there's no Pygments/latexminted dependency either.)
+%
+% This project already includes a .vscode/settings.json with a
+% "lualatex x3" recipe (three plain LuaLaTeX passes, needed so the
+% table of contents and cross-references resolve). To use it:
+%   1. In VS Code: File -> Open Folder... and select the folder that
+%      contains this main.tex (not a parent folder, not just the file).
+%   2. Open main.tex from the Explorer sidebar.
+%   3. Press Ctrl+Alt+B (or the green play button).
+%
+% If you'd rather configure this by hand instead of relying on the
+% bundled .vscode/settings.json, add the following to your own
+% settings.json (User or Workspace settings -> "Open Settings (JSON)"):
+%
+% {
+%   "latex-workshop.latex.tools": [
+%     {
+%       "name": "lualatex-plain",
+%       "command": "lualatex",
+%       "args": [
+%         "-synctex=1",
+%         "-interaction=nonstopmode",
+%         "-file-line-error",
+%         "%DOC%"
+%       ]
+%     }
+%   ],
+%   "latex-workshop.latex.recipes": [
+%     {
+%       "name": "lualatex x3",
+%       "tools": ["lualatex-plain", "lualatex-plain", "lualatex-plain"]
+%     }
+%   ],
+%   "latex-workshop.latex.recipe.default": "lualatex x3"
+% }
+%
+% Make sure preamble.tex, the experiments/ folder, and the fonts/
+% folder are all sitting next to this main.tex file -- they are
+% loaded via relative paths (\input{preamble.tex}, fonts/PlexSans/
+% etc.) and will fail to be found otherwise.

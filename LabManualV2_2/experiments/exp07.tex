@@ -1,0 +1,113 @@
+% ============================================================
+%  Experiment 7 (Raspberry Pi version, open-ended) --- Speed Motor
+%  Measurement Using Raspberry Pi
+%  Rewritten to follow the official department open-ended lab
+%  document (EEM_441_Exp_7rpi_2024-2025V1).
+% ============================================================
+\experimentheader{7}{Experiment 7 (RPi, open-ended)}{Speed Motor Measurement Using Raspberry Pi}{Instrumentation Lab}
+
+\begin{labsection}{Objective}
+  Design and implement a speed measurement system using a Raspberry Pi. The system should accurately measure the speed of a moving object using sensors, process the data, and display the results. This lab encourages students to apply principles of embedded systems, sensor interfacing, and signal processing.
+\end{labsection}
+
+\begin{labsection}{Learning Outcomes}
+  By the end of this lab, students will:
+  \begin{enumerate}
+    \item Understand the basics of speed measurement and its applications.
+    \item Develop skills in interfacing sensors with a Raspberry Pi.
+    \item Implement a Python/C/C++ program to capture, process, and display speed data.
+    \item Gain experience in open-ended problem-solving and system design.
+  \end{enumerate}
+\end{labsection}
+
+\begin{labsection}{Introduction}
+  In this open-ended lab, students will design and implement a system to measure the rotational speed of a motor using a Raspberry Pi. This project challenges students to develop and build the necessary circuitry to process signals from a sensor trainer and interface it effectively with the Raspberry Pi. The goal is to create a complete system that captures the motor's rotational data, processes the information, and displays the measured speed. Through this hands-on experience, students will deepen their understanding of embedded systems, sensor integration, and data visualisation while developing practical problem-solving skills. An overall block diagram for the measurement system is shown in Figure~\ref{fig:exp7rpi-daq-overview}.
+\end{labsection}
+
+\begin{boxedfigure}
+  \centering
+  \begin{tikzpicture}[node distance=8mm and 10mm]
+    \node[block] (trans) {Transducer};
+    \node[block, right=of trans, minimum width=2.6cm] (cond) {Signal\\Conditioning};
+    \node[block, right=of cond, minimum width=3.2cm] (daq) {Data Acquisition\\and Analysis\\Hardware};
+    \node[block, below=of daq, minimum width=2.4cm] (sw) {Software};
+    \node[block, left=of sw, minimum width=2.4cm] (rpi) {Raspberry PI};
+
+    \draw[arr] (trans) -- (cond);
+    \draw[arr] (cond) -- (daq);
+    \draw[arr] (daq.south) -- (sw.north);
+    \draw[arr] (sw) -- (rpi);
+  \end{tikzpicture}
+  \captionof{figure}{Data Acquisition System.}
+  \label{fig:exp7rpi-daq-overview}
+\end{boxedfigure}\newpage
+
+\begin{equipment}
+  \begin{itemize}
+    \item Raspberry Pi (Raspberry Pi 4B)
+    \item Python / C/C++ installed on the Raspberry Pi
+    \item HPAC-08 trainer
+  \end{itemize}
+\end{equipment}
+
+\begin{procedure}
+  \begin{enumerate}
+    \item \textbf{Raspberry Pi setup.} You may set up with a Windows-based system or Linux-based system. Please check the resources in the References section. Software: you can use either Python or C/C++ with Microsoft Visual Studio Code.
+    \item Design an appropriate circuitry to convert the signal from the sensor to a signal suitable for the Raspberry Pi, including signal conditioning and signal conversion. Show all the necessary calculations for the measurement of speed.
+    \item \textbf{Displaying results.} Print the calculated speed to the terminal or display it on a small screen connected to the Raspberry Pi.
+    \item \textbf{Testing and verification.} Compare the results measured with the Raspberry Pi and the signal from the sensor using a DSO.
+  \end{enumerate}
+
+  \needspace{4cm}
+  \begin{boxedtable}
+    \captionof{table}{Speed measurement: Raspberry Pi vs.\ DSO reference.}
+    \label{tab:exp7rpi-results}
+    \centering
+    \begin{tabular}{ccc}
+      \toprule
+      Input voltage & Velocity (rad/s)\newline (Raspberry Pi) & Velocity (rad/s)(DSO) \\
+      \midrule
+                    &                                         &                       \\
+                    &                                         &                       \\
+                    &                                         &                       \\
+                    &                                         &                       \\
+      \bottomrule
+    \end{tabular}
+  \end{boxedtable}
+\end{procedure}
+
+\begin{labsection}{Deliverables}
+  \begin{enumerate}
+    \item \textbf{Code:} a programming script that accurately measures and displays speed based on sensor inputs.
+    \item \textbf{System setup diagram:} a diagram showing the placement and wiring of sensors to the Raspberry Pi.
+    \item \textbf{Documentation:} a report that explains the setup, the speed measurement process, sample readings, discussion, and any challenges encountered.
+    \item \textbf{Demo:} a short presentation demonstrating the working system and the collected data.
+  \end{enumerate}
+\end{labsection}
+
+\begin{labsection}{Evaluation Criteria}
+  \begin{itemize}
+    \item \textbf{Accuracy of measurements:} consistency and accuracy of speed readings.
+    \item \textbf{Code functionality:} proper functioning of the program without errors.
+    \item \textbf{Creativity in design:} unique solutions for sensor placement, code optimisation, or data handling.
+    \item \textbf{Clarity of documentation:} clear and thorough explanation of the approach, results, and challenges.
+  \end{itemize}
+\end{labsection}
+
+\begin{labsection}{Conclusion}
+  This open-ended lab provides hands-on experience in designing a basic speed measurement system, enhancing students' understanding of sensors, timing, and embedded programming. It also encourages troubleshooting and creativity in problem-solving, as there are multiple solutions for achieving accurate speed measurement.
+\end{labsection}
+
+\begin{labsection}{References}
+  \begin{itemize}
+    \item Setting up Raspberry Pi for the first time: \url{https://www.tomshardware.com/how-to/set-up-raspberry-pi}
+    \item \url{https://core-electronics.com.au/guides/temperature-sensing-with-raspberry_pi/}
+    \item \url{https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/temperature/}
+    \item \url{https://www.circuitbasics.com/raspberry-pi-ds18b20-temperature-sensor-tutorial/}
+    \item \url{https://www.hackster.io/vinayyn/multiple-ds18b20-temp-sensors-interfacing-with-raspberry-pi-d8a6b0}
+    \item \url{https://code.visualstudio.com/docs/setup/raspberry-pi}
+    \item Coding on Raspberry Pi remotely with Visual Studio Code: \url{https://www.raspberrypi.com/news/coding-on-raspberry-pi-remotely-with-visual-studio-code/}
+    \item \url{https://besomi.com/coding-on-raspberry-pi-remotely-with-visual-studio-code/}
+    \item \url{https://github.com/gloveboxes/Raspberry-Pi-with-Visual-Studio-Code-Remote-SSH-and-C-or-CDevelopment}
+  \end{itemize}
+\end{labsection}

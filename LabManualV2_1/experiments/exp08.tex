@@ -1,0 +1,170 @@
+% ============================================================
+%  Experiment 8 (Raspberry Pi version) --- Temperature Control
+% ============================================================
+\experimentheader{8}{Experiment 8 (RPi)}{Temperature Control System}{Instrumentation Lab}
+
+\begin{objectives}
+  \begin{enumerate}
+    \item To design and build a signal-conditioning circuit for an NTC thermistor.
+    \item To interface the conditioned temperature signal to a Raspberry Pi via an ADC0804 analog-to-digital converter.
+    \item To implement a computer-based system that displays the measured temperature and performs ON/OFF control of an indicator LED via Raspberry Pi GPIO.
+  \end{enumerate}
+\end{objectives}
+
+\begin{equipment}
+  \begin{itemize}
+    \item NTC thermistor and trainer board with indicator LED
+    \item Components for the student-designed signal-conditioning circuit (op-amps, resistors, capacitors)
+    \item ADC0804
+    \item Raspberry Pi 4B
+    \item Breadboard and jumper wires
+    \item Digital multimeter
+    \item Temperature sensor
+  \end{itemize}
+\end{equipment}
+
+\begin{introduction}
+  In many industrial processes, temperature must be regulated automatically. Two general strategies are used: \textit{logic (ON/OFF) control}, in which a heater, cooler, or indicator is simply switched on or off when a threshold is crossed, and \textit{fuzzy/proportional control}, which requires a more elaborate definition of ``hot'' or ``cold'' before acting. This experiment uses logic control.
+  \vspace*{1.5em}
+
+  An NTC (negative temperature coefficient) thermistor is a resistor whose resistance decreases as its temperature increases. Given the thermistor's resistance--temperature characteristic (from its datasheet), a measured resistance can be converted to a temperature, and vice versa.
+  \vspace*{1.5em}
+
+  The signal path for this experiment is: the thermistor's resistance is converted to a voltage by a signal-conditioning circuit (which the student must design), this voltage is digitised by the ADC0804 and read by the Raspberry Pi via GPIO through a level shifter, and software on the Pi computes the corresponding temperature, displays it, and drives the indicator LED on the trainer according to a threshold comparison (Figure~\ref{fig:exp8rpi-blockdiagram}).
+\end{introduction}
+
+\begin{boxedfigure}
+  \centering
+  \resizebox{0.98\linewidth}{!}{%
+    \begin{tikzpicture}[node distance=10mm and 12mm]
+      \node[block] (therm) {NTC\\Thermistor};
+      \node[block, right=of therm, minimum width=2.6cm] (cond) {Signal\\Conditioning\\Circuit};
+      \node[block, right=of cond] (adc) {ADC};
+      \node[block, right=of adc, minimum width=2.2cm] (shift) {Level Shifter};
+      \node[block, right=of shift, minimum width=2.6cm] (rpi) {Raspberry Pi};
+      \node[block, below=14mm of rpi] (bjt) {BJT \&\\ Relay};
+      \node[block, left=of bjt] (led) {Indicator LED\\(trainer)};
+
+      \draw[arr] (therm) -- (cond);
+      \draw[arr] (cond) -- (adc);
+      \draw[arr] (adc) -- (shift);
+      \draw[arr] (shift) -- (rpi);
+      \draw[arr] (rpi) -- (bjt);
+      \draw[arr] (bjt) -- (led);
+    \end{tikzpicture}
+  }
+  \captionof{figure}{Block diagram of the temperature measurement and control system.}
+  \label{fig:exp8rpi-blockdiagram}
+\end{boxedfigure}
+
+\begin{procedure}
+
+  \textbf{Activity 1 --- Signal-conditioning circuit design}\vspace{2pt}
+
+  \textit{Objective: design and build a circuit that converts the thermistor's resistance to a voltage suitable for the ADC0804 input.}
+
+  \begin{enumerate}
+    \item Obtain the resistance--temperature characteristic for the NTC thermistor from its datasheet, and determine the resistance range corresponding to the temperature range you intend to measure and control.
+    \item Design a signal-conditioning circuit that converts the thermistor's resistance to a voltage. Calculate your component values and justify your design choices, including the expected output voltage range over your chosen temperature range. Keep the output within the ADC0804's usable input range.
+    \item Include a voltage-follower (buffer) stage to eliminate loading effects between the conditioning circuit and the ADC0804 input.
+    \item Build the circuit and verify its output voltage against a reference temperature measurement at two or more points, and check linearity/consistency with your design calculations.
+  \end{enumerate}
+  \vspace*{1.5em}
+
+  \textbf{Activity 2 --- Interfacing to the Raspberry Pi via the ADC0804}\vspace{2pt}
+
+  \textit{Objective: connect the conditioned temperature signal to the Raspberry Pi via the ADC0804 and a level shifter, and connect the LED control line to a GPIO output.}
+
+  \begin{enumerate}
+    \item Connect the output of your signal-conditioning circuit to the $V_{in}$ inputs of the ADC0804.\newpage
+    \item Connect the ADC0804's D0--D7 and $\overline{\text{INTR}}$ outputs through the level shifter to Raspberry Pi GPIO input pins, and the $\overline{\text{CS}}$, $\overline{\text{RD}}$, $\overline{\text{WR}}$ control lines to Raspberry Pi GPIO output pins. \textbf{Do not connect the ADC0804's 5\,V logic outputs directly to the Pi}.
+    \item Connect the trainer's indicator LED control line to a Raspberry Pi GPIO output pin, via a transistor (BJT) or relay driver stage if the LED/trainer input requires more current than a GPIO pin can safely source directly (consult the trainer's LED driver requirements before connecting).
+    \item Verify both the input and output wiring with a simple test script before writing the full control program: confirm a static ADC reading is read back correctly, and confirm the LED can be toggled on and off from GPIO.
+  \end{enumerate}
+
+  \textbf{Activity 3 --- Temperature monitoring and LED control software}\vspace{2pt}
+
+  \textit{Objective: implement software that displays the measured temperature and controls the LED according to a threshold.}
+
+  \begin{enumerate}
+    \item In Python or C/C++, write a program that:
+          \begin{itemize}
+            \item Periodically triggers an ADC0804 conversion and reads back the digitised thermistor voltage.
+            \item Converts the reading to a temperature using your circuit's calibration from Activity 1.
+            \item Displays the current temperature in a simple terminal or GUI display, updating in real time.
+            \item Compares the measured temperature against the threshold and sets the LED GPIO output accordingly.
+          \end{itemize}
+    \item For GPIO access, either library introduced in Experiment 7 is suitable here: \texttt{RPi.GPIO} or \texttt{gpiozero} in Python, or \texttt{libgpiod}/\texttt{wiringPi} in C/C++. Since this experiment only needs periodic polling (not precise edge timing), a simple timed-loop read is sufficient --- interrupt-driven GPIO is not required here.
+    \item Report and justify your design choice for the signal-conditioning circuit.
+    \item Use the flowchart in Figure~\ref{fig:exp8rpi-flowchart} as a starting point for your control logic, adapting the ON/OFF branch to match your chosen design.
+  \end{enumerate}
+
+  \begin{boxedfigure}
+    \centering
+    \resizebox{0.5\linewidth}{!}{%
+      \begin{tikzpicture}[node distance=7mm and 10mm]
+        \node[startstop] (start) {Start};
+        \node[block, below=of start] (init) {Initialise GPIO pins (ADC control lines, LED output)};
+        \node[block, below=of init] (setpoint) {Read user-specified threshold temperature};
+        \node[block, below=of setpoint] (readv) {Trigger ADC0804 conversion, read digitised value};
+        \node[block, below=of readv] (calc) {Convert to temperature};
+        \node[decision, below=of calc, minimum width=3.2cm] (dec) {Measured vs.\\threshold?};
+        \node[block, below left=12mm and -6mm of dec] (ledon) {Set LED per\\design (case A)};
+        \node[block, below right=12mm and -6mm of dec] (ledoff) {Set LED per\\design (case B)};
+        \node[block, below=26mm of dec] (disp) {Display temperature \& LED state};
+
+        \draw[arr] (start) -- (init);
+        \draw[arr] (init) -- (setpoint);
+        \draw[arr] (setpoint) -- (readv);
+        \draw[arr] (readv) -- (calc);
+        \draw[arr] (calc) -- (dec);
+        \draw[arr] (dec.west) -| (ledon) node[pos=0, above, font=\small, xshift=-15pt] {above};
+        \draw[arr] (dec.east) -| (ledoff) node[pos=0, above, font=\small, xshift=15pt] {below};
+        \draw[arr] (ledon.south) |- ($(disp.north)+(-0.9,0)$);
+        \draw[arr] (ledoff.south) |- ($(disp.north)+(0.9,0)$);
+        % Loop back: drop below disp, go left past the whole diagram, then up into readv.
+        \coordinate (loopY) at ($(disp.south)+(0,-0.6)$);
+        \coordinate (loopX) at ($(readv.west)+(-1.8,0)$);
+        \draw[arr] (disp.south) -- (disp.south |- loopY)
+        -- (loopX |- loopY)
+        -- (loopX |- readv.west)
+        -- (readv.west);
+      \end{tikzpicture}
+    }
+    \captionof{figure}{Temperature monitoring and LED control loop.}
+    \label{fig:exp8rpi-flowchart}
+  \end{boxedfigure}
+
+  \begin{enumerate}[resume]
+    \item Set the controlled (threshold) temperature to a chosen value and record the measured temperature and LED state at 1-minute intervals for 35 minutes (Table~\ref{tab:exp8rpi-results}). Plot temperature against time.
+    \item Repeat for at least two further threshold temperatures. Plot your results.
+    \item Discuss your findings, including the responsiveness of the LED control and the accuracy of your temperature conversion.
+  \end{enumerate}
+
+  \needspace{4cm}
+  \begin{boxedtable}
+    \captionof{table}{Temperature and LED-state log.}
+    \label{tab:exp8rpi-results}
+    \centering
+    \begin{tabular}{cccc}
+      \toprule
+      Threshold temp. & Time (min) & Measured temp. & LED state \\
+      \midrule
+                      & 1          &                &           \\
+                      & 2          &                &           \\
+                      & \ldots     &                &           \\
+                      & 35         &                &           \\
+      \bottomrule
+    \end{tabular}
+  \end{boxedtable}
+
+\end{procedure}
+
+\begin{reportq}
+  \begin{enumerate}
+    \item Present your signal-conditioning circuit design (topology, calculations, component values) and its calibration against a reference temperature measurement.
+    \item State and justify your chosen LED ON/OFF logic (Activity 3, step for control logic).
+    \item Present and discuss your temperature-vs-time plots for each threshold tested with respect to the errors.
+    \item What sources of error or lag affect the accuracy and responsiveness of this system (thermistor thermal mass, signal-conditioning bandwidth, ADC conversion time, software polling rate, etc.)?
+  \end{enumerate}
+\end{reportq}

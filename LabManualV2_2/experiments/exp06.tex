@@ -1,0 +1,408 @@
+% ============================================================
+%  Experiment 6 --- Stepper Motor Control with FPGA
+% ============================================================
+\experimentheader{6}{Stepper Motor Control}{Stepper Motor Control with FPGA}{FPGA Lab}
+
+\begin{objectives}
+  \begin{enumerate}
+    \item To design digital circuits in an FPGA to control a stepper motor.
+    \item To use Verilog as a design entry method in Altera Quartus II Software.
+    \item To simulate the circuit using Altera Quartus II Software.
+    \item To download the design onto an Altera DE2 board.
+  \end{enumerate}
+\end{objectives}
+
+\begin{equipment}
+  \begin{enumerate}
+    \item Altera Quartus II software
+          \begin{itemize}
+            \item version 9/10/12 for Cyclone II
+            \item version 9/10/12/latest for Cyclone IV
+          \end{itemize}
+    \item Altera DE2 board
+    \item Parallax 4-phase, 12\,V, 75\,$\Omega$ unipolar stepper motor
+    \item ULN2003 Darlington transistor array (motor driver)
+  \end{enumerate}
+\end{equipment}
+
+\begin{introduction}
+  Unlike an ordinary DC motor, a stepper motor does not spin freely when power is applied --- it must be driven with a continuously pulsed sequence of specific coil-energising patterns. Each pulse advances the rotor by a fixed step angle (for this motor, $3.6^\circ$ per step), which is what gives stepper motors their positioning precision: as long as speed and torque stay within the motor's limits, the controller always knows the rotor's exact position.
+  \vspace*{1.5em}
+
+  The rotor is driven by the interaction of magnetic fields as coils are switched on and off in sequence. Table~\ref{tab:exp6-stepseq} shows the normal four-coil unipolar step sequence; taking a step means driving two of the four coil-driver pins high at a time, in the order shown, through the ULN2003 driver.
+\end{introduction}
+
+\needspace{4cm}
+\begin{boxedtable}
+  \captionof{table}{Normal step sequence for a four-coil unipolar stepper motor.}
+  \label{tab:exp6-stepseq}
+  {\renewcommand{\arraystretch}{1.5}
+    \centering
+    \begin{tabular}{lccccc}
+      \toprule
+      Coil    & Step 1 & Step 2 & Step 3 & Step 4 & Step 1 \\
+      \midrule
+      1 (B)   & 1      & 1      & 0      & 0      & 1      \\
+      2 (\=B) & 0      & 0      & 1      & 1      & 0      \\
+      3 (A)   & 1      & 0      & 0      & 1      & 1      \\
+      4 (\=A) & 0      & 1      & 1      & 0      & 0      \\
+      \bottomrule
+    \end{tabular}
+  }
+\end{boxedtable}
+
+\begin{procedure}
+
+  \textbf{Activity 1 --- Verilog stepper motor controller}\vspace{2pt}
+
+  \textit{Objective: write Verilog code to control the motion of a stepper motor.}
+
+  \begin{enumerate}
+    \item Open Quartus II and start the New Project Wizard.
+          \begin{itemize}
+            \item Working directory: \texttt{fpga}; project name: \texttt{activity1}; top-level entity: \texttt{step}.
+            \item Device family: Cyclone II (\texttt{EP2C35F672C6N}) or Cyclone IV (\texttt{EP4CE115F29C7N}).
+            \item Accept the default EDA tool settings and finish.
+          \end{itemize}
+    \item Create a new Verilog HDL file and enter the code in Listing~\ref{lst:exp6-step} (\texttt{step}, \texttt{divider}, and \texttt{stepper} modules).
+    \item Save as \texttt{step} and start compilation.
+    \item Use \textbf{Tools} $\to$ \textbf{Netlist Viewer} $\to$ \textbf{RTL Viewer} to generate the block overview shown in Figure~\ref{fig:exp6-rtl}.
+    \item Assign pin numbers as shown in Table~\ref{tab:exp6-pins} (refer to the DE2 user manual). For the \texttt{phaseout} outputs that interface with the stepper motor driver, use expansion header \texttt{GPIO\_0}.
+    \item Download the program to the Altera DE2 board.
+    \item Discuss the result.
+  \end{enumerate}
+
+  \begin{boxedfigure}
+    \centering
+    \includegraphics[width=\linewidth]{figures/Exp6_Figure_1.png}
+    \captionof{figure}{RTL Viewer overview of the \texttt{step} top-level module.}
+    \label{fig:exp6-rtl}
+  \end{boxedfigure}\newpage
+
+  \begin{boxedtable}
+    \captionof{table}{Pin assignment for stepper motor control.}
+    \label{tab:exp6-pins}
+    {\renewcommand{\arraystretch}{1.5}
+      \centering
+      \begin{tabular}{cccc|cccc}
+        \toprule
+        \# & Node name   & Direction & Pin location & \# & Node name   & Direction & Pin location \\
+        \midrule
+        1  & osc         & Input     &              & 5  & ledr[0]     & Output    &              \\
+           & dir (SW0)   & Input     &              & 6  & phaseout[3] & Output    &              \\
+           & mode (SW1)  & Input     &              & 7  & phaseout[2] & Output    &              \\
+           & move (SW2)  & Input     &              & 8  & phaseout[1] & Output    &              \\
+           & reset (SW3) & Input     &              & 9  & phaseout[0] & Output    &              \\
+        2  & ledr[3]     & Output    &              &    &             &           &              \\
+        3  & ledr[2]     & Output    &              &    &             &           &              \\
+        4  & ledr[1]     & Output    &              &    &             &           &              \\
+        \bottomrule
+      \end{tabular}
+    }
+  \end{boxedtable}
+
+  \begin{codepanel}{step.v --- top-level module}{verilogstyle}
+    \begin{lstlisting}
+//============================================================
+// Stepper Motor Controller
+//============================================================
+// TOP LEVEL MODULE
+// reset (active low) brings the shaft to its reference position.
+// mode selects step (1) or continuous (0) operation.
+// dir selects clockwise (1) or anti-clockwise (0) motion.
+// move shifts the shaft by one half-step in step mode.
+module step(osc, reset, dir, mode, move, phaseout, ledr);
+  input  osc, reset, mode, dir, move;
+  output [3:0] phaseout, ledr;
+
+  wire clk;
+
+  divider d1 (
+    .osc (osc),
+    .clk (clk)
+  );
+
+  stepper s1 (
+    .clk      (clk),
+    .reset    (reset),
+    .dir      (dir),
+    .mode     (mode),
+    .move     (move),
+    .phaseout (phaseout)
+  );
+endmodule
+\end{lstlisting}
+  \end{codepanel}
+  \newpage
+
+  \begin{codepanel}{step.v --- motor controller module (part 1 of 2)}{verilogstyle}
+    \begin{lstlisting}
+// Module stepper is the motor controller.
+module stepper(clk, reset, dir, mode, move, phaseout);
+  input  clk, reset, dir, mode, move;
+  output [3:0] phaseout;
+  reg [3:0] phaseout, position, ledr;
+
+  always @(posedge clk or negedge reset)
+  begin
+    if (reset == 0) begin
+      // motor resets to phase 1000 when reset is asserted
+      phaseout = 4'b1000;
+      ledr     = phaseout;
+    end
+    else begin
+      if (mode == 0) begin
+        // Mode = 0: continuous motion.
+        // The 8-state sequence below follows Table 1 in both
+        // directions; only the first two states are shown here,
+        // the remaining six states (0100, 0110, 0010, 0011,
+        // 0001, 1001) follow the identical if(dir==0)/else
+        // pattern, cycling back to 1000.
+        case (phaseout)
+          4'b1000: if (dir == 0) begin
+            phaseout = 4'b1100;  ledr = phaseout;
+          end else begin
+            phaseout = 4'b1001;  ledr = phaseout;
+          end
+          4'b1100: if (dir == 0) begin
+            phaseout = 4'b0100;  ledr = phaseout;
+          end else begin
+            phaseout = 4'b1000;  ledr = phaseout;
+          end
+          // ... 4'b0100, 4'b0110, 4'b0010, 4'b0011,
+          //     4'b0001, 4'b1001 follow the same pattern ...
+          default: $display("invalid input");
+        endcase
+      end
+      else begin
+        // Mode = 1: single-step motion, advances only when
+        // move == 0. Uses the same 8-state sequence as above,
+        // indexed by `position` instead of `phaseout`.
+        if (move == 1'b0) begin
+          case (position)
+            // ... identical 8-state sequence as continuous
+            //     mode, see Table 1 ...
+            default: $display("invalid input");
+          endcase
+        end
+      end
+    end
+  end
+\end{lstlisting}
+  \end{codepanel}
+  \vspace{-4pt}
+
+  \begin{codepanel}{step.v --- motor controller module (part 2 of 2)}{verilogstyle}
+    \begin{lstlisting}
+  // Motor advances by one half-step on the falling edge of move.
+  always @(negedge move or negedge reset)
+  begin
+    if (reset == 0) begin
+      position = 4'b1000;  // NOTE: corrected from the original
+                            // listing, which printed this value
+                            // as "4.101011" -- likely a
+                            // transcription error; 4'b1000
+                            // matches the reset state used
+                            // consistently elsewhere.
+      ledr = position;
+    end
+    else if (reset == 1) begin
+      position = phaseout;
+      ledr     = phaseout;
+    end
+  end
+endmodule
+\end{lstlisting}
+  \end{codepanel}
+  \vspace{-4pt}
+
+  \begin{codepanel}{step.v --- clock divider module}{verilogstyle}
+    \begin{lstlisting}
+// Module divider divides the incoming clock to produce a
+// clock suitable for driving the motor controller.
+module divider(osc, clk);
+  input  osc;
+  output clk;
+  reg    clk;
+  reg [15:0] count;
+
+  initial count = 16'b0000000000000000;
+
+  always @(posedge osc)
+  begin
+    count = count + 1;
+    clk   = count[15];
+  end
+endmodule
+\end{lstlisting}
+  \end{codepanel}
+  \vspace{-4pt}
+  \listingcaption{lst:exp6-step}{\texttt{step.v} --- top-level, motor-controller, and clock-divider modules.}
+  \vspace{1.5em}
+
+  \textbf{Activity 2 --- Variable-speed control with display feedback}\vspace{2pt}
+
+  \textit{Objective: extend the controller with selectable speed and direction/mode feedback.}
+
+  \begin{enumerate}
+    \item Write Verilog code that allows selection of three different speeds for the stepper motor in continuous-motion mode.
+    \item Display the motor's direction of rotation on the seven-segment display, and the current mode (step / continuous) on the LCD display.
+    \item Print and submit the Verilog code and schematic diagram.
+  \end{enumerate}
+\end{procedure}
+
+\begin{labsection}{Appendix: Stepper Motor Datasheet Reference}{}
+  Relevant specifications and wiring information for the Parallax \#27964 stepper motor used in this experiment, extracted from the manufacturer datasheet (see References).
+  \begin{boxedfigure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/Exp6_Motor.png}
+    \captionof{figure}{Parallax \#27964 stepper motor.}
+    \label{fig:exp6-motor}
+  \end{boxedfigure}
+
+  \begin{boxedtable}
+    \captionof{table}{Technical specifications, Parallax \#27964 stepper motor.}
+    \label{tab:exp6-motorspecs}
+    {\renewcommand{\arraystretch}{1.4}
+      \centering
+      \begin{tabular}{|l|c|}
+        \hline
+        Parameter                        & Value                   \\
+        \hline
+        Type                             & 4-phase, 12\,V unipolar \\
+        \hline
+        Step angle                       & $3.6^\circ$ per step    \\
+        \hline
+        Phase resistance                 & $75\,\Omega$            \\
+        \hline
+        Current                          & 150\,mA                 \\
+        \hline
+        Phase inductance                 & 39\,mH                  \\
+        \hline
+        Detent torque                    & 80\,g$\cdot$cm          \\
+        \hline
+        Holding torque                   & 600\,g$\cdot$cm         \\
+        \hline
+        Mounting hole spacing (diagonal) & 1.73\,in                \\
+        \hline
+        Mounting hole diameter           & 0.11\,in                \\
+        \hline
+        Shaft diameter                   & 0.197\,in               \\
+        \hline
+        Shaft length                     & 0.43\,in                \\
+        \hline
+        Motor diameter                   & 1.66\,in                \\
+        \hline
+        Motor height                     & 1.35\,in                \\
+        \hline
+        Weight                           & 0.55\,lb                \\
+        \hline
+      \end{tabular}
+    }
+  \end{boxedtable}
+
+  \begin{boxedfigure}
+    \centering
+    \begin{tikzpicture}[
+        lbl/.style={font=\small},
+        % Custom style for the vertical coils matching the image look
+        coil style/.style={
+            decorate,
+            decoration={coil, amplitude=1.5mm, segment length=2.0mm, pre length=1mm, post length=1mm},
+            thick
+          }
+      ]
+      % --- Outer Circle ---
+      \draw[thick] (0,0) circle (3.2cm);
+
+      % --- Center Common Connection ---
+      \node[lbl] at (0,3.9) {{\plexmedium Black}};
+      \node[lbl] at (0,3.6) {Common};
+      \draw[thick] (0,3.4) -- (0,0); % Vertical common line
+      \draw[thick] (-0.8,0) -- (0.8,0); % Horizontal center-tap link
+
+      % --- LEFT SIDE (Phase A) ---
+      % Horizontal lead-in lines from outside the circle
+      \draw[thick] (-3.8,1.3) -- (-0.8,1.3);   % Top left wire (White)
+      \draw[thick] (-3.8,-1.3) -- (-0.8,-1.3); % Bottom left wire (Green)
+
+      % Vertical Coils (Split into two halves to cleanly meet the center tap)
+      \draw[coil style] (-0.8,1.3) -- (-0.8,0);
+      \draw[coil style] (-0.8,0) -- (-0.8,-1.3);
+
+      % Left Labels
+      \node[lbl, anchor=east] at (-3.9,1.3) {B};
+      \node[lbl, anchor=south] at (-4.5,1.5) {{\plexmedium Red / Orange}};
+
+      \node[lbl, anchor=east] at (-3.9,-1.3) {$\overline{\text{\=B}}$};
+      \node[lbl, anchor=north] at (-4.5,-1.5) {{\plexmedium Brown / Red}};
+
+
+      % --- RIGHT SIDE (Phase B) ---
+      % Horizontal lead-in lines from outside the circle
+      \draw[thick] (3.8,1.3) -- (0.8,1.3);   % Top right wire (Brown)
+      \draw[thick] (3.8,-1.3) -- (0.8,-1.3); % Bottom right wire (Red)
+
+      % Vertical Coils
+      \draw[coil style] (0.8,1.3) -- (0.8,0);
+      \draw[coil style] (0.8,0) -- (0.8,-1.3);
+
+      % Right Labels (Matched to image: Brown is B-bar, Red is B)
+      \node[lbl, anchor=west] at (3.9,1.3) {$\overline{\text{A}}$};
+      \node[lbl, anchor=south] at (4.5,1.5) {{\plexmedium White / Blue}};
+
+      \node[lbl, anchor=west] at (3.9,-1.3) {\=A};
+      \node[lbl, anchor=north] at (4.5,-1.5) {{\plexmedium Green / White}};
+
+    \end{tikzpicture}
+    \captionof{figure}{Coil winding and lead-wire colours, Parallax \#27964 stepper motor.}
+    \label{fig:exp6-coils}
+  \end{boxedfigure}
+
+  \begin{boxedfigure}
+    \centering
+    \begin{tikzpicture}[node distance=8mm and 14mm]
+      \node[block, minimum width=2.6cm, minimum height=4.3cm] (drv) {ULN2803\\Darlington\\array};
+      \node[io, left=of drv, yshift=1.8cm] (p4) {P4};
+      \node[io, left=of drv, yshift=0.55cm] (p5) {P5};
+      \node[io, left=of drv, yshift=-0.55cm] (p6) {P6};
+      \node[io, left=of drv, yshift=-1.8cm] (p7) {P7};
+      \node[io, left=of drv, yshift=-3.0cm] (gnd) {GND};
+
+      \draw[arr] (p4) -- ($(drv.west)+(0,1.8)$);
+      \draw[arr] (p5) -- ($(drv.west)+(0,0.55)$);
+      \draw[arr] (p6) -- ($(drv.west)+(0,-0.55)$);
+      \draw[arr] (p7) -- ($(drv.west)+(0,-1.8)$);
+      \draw[arr] (gnd) -| ($(drv.south)+(-0.5,0)$);
+
+      \node[block, right=32mm of drv, minimum width=2.8cm, minimum height=4.3cm] (motor) {Stepper\\Motor\\(\#27964)};
+      \node[io, below=6mm of motor] (vcc) {+12\,VDC};
+      \draw[arr] (motor.south) -- (vcc);
+
+      \draw[arr] ($(drv.east)+(0,1.8)$)  -- ($(motor.west)+(0,1.8)$)  node[midway, above, font=\scriptsize] {Red};
+      \draw[arr] ($(drv.east)+(0,0.55)$) -- ($(motor.west)+(0,0.55)$) node[midway, above, font=\scriptsize] {Brown};
+      \draw[arr] ($(drv.east)+(0,-0.55)$) -- ($(motor.west)+(0,-0.55)$) node[midway, below, font=\scriptsize] {White};
+      \draw[arr] ($(drv.east)+(0,-1.8)$) -- ($(motor.west)+(0,-1.8)$) node[midway, below, font=\scriptsize] {Green};
+      \draw[arr] ($(drv.south)+(0.5,0)$) |- ($(vcc.west)+(-1,0)$) -- (vcc.west) node[pos=-0.92, below, font=\scriptsize] {Black};
+    \end{tikzpicture}
+    \captionof{figure}{Reference driver-wiring diagram.}
+    \label{fig:exp6-driverwiring}
+  \end{boxedfigure}
+
+  Note:
+  \begin{enumerate}
+    \item The P4--P7 labelling above follows the datasheet's original microcontroller example; in this experiment, the corresponding driver inputs are instead the \texttt{phaseout[3:0]} outputs of the \texttt{stepper} module, assigned to DE2 GPIO pins as listed in Table~\ref{tab:exp6-pins}.
+    \item The GND are to be common ground with the DE2 board, ULN2803 and the power source.
+    \item The +12\,VDC is to be supplied from an external power source, not the DE2 board.
+  \end{enumerate}
+\end{labsection}
+
+\begin{labsection}{References}{}
+  \begin{enumerate}
+    \item Altera DE2 User Manual.
+    \item \textit{Introduction to Quartus II Software --- Verilog, VHDL, Schematic}, Altera University Program.
+    \item \textit{Introduction to Verilog}, Carleton University course notes.
+    \item \textit{Stepper Motor Controller Using MAX~II CPLDs}, Altera Application Note AN-488.
+    \item Parallax Inc., \textit{4-Phase 12-Volt 75$\,\Omega$ Unipolar Stepper Motor (\#27964)}, technical datasheet.
+  \end{enumerate}
+\end{labsection}

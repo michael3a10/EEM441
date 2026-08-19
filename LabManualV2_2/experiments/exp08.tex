@@ -6,7 +6,7 @@
 %  deliberate departure: no DAC0800 is used in this version (see
 %  the note in Experimental Equipment and Deliverables below).
 % ============================================================
-\experimentheader{8}{Experiment 8 (RPi, open-ended)}{Temperature Control Using Raspberry Pi}{Instrumentation Lab}
+\experimentheader{8}{Experiment 8 (RPi, open-ended)}{Instrumentation: Temperature Control Using Raspberry Pi}{Instrumentation Lab}
 
 \begin{labsection}{Objectives}
   \begin{itemize}
@@ -52,14 +52,16 @@
     \node[block, right=of therm, minimum width=2.6cm] (cond) {Signal\\Conditioning\\Circuit};
     \node[block, right=of cond] (adc) {ADC};
     \node[block, right=of adc, minimum width=2.4cm] (rpi) {Raspberry\\Pi};
-    \node[block, below=of rpi, minimum width=2.4cm] (ctrl) {Control\\Circuit};
-    \node[block, right=of ctrl, minimum width=2.4cm] (heater) {Heater};
-    \node[block, left=of ctrl, minimum width=2.2cm] (buf) {Buffer};
+    \node[block, below=of rpi, minimum width=2.2cm] (buf) {Buffer};
+    \node[block, left=of buf, minimum width=2.4cm] (ctrl) {Control\\Circuit};
+    \node[block, left=of ctrl, minimum width=2.4cm] (heater) {Heater};
+
 
     \draw[arr] (therm) -- (cond);
     \draw[arr] (cond) -- (adc);
     \draw[arr] (adc) -- (rpi);
-    \draw[arr] (rpi) -- (ctrl);
+    \draw[arr] (rpi) -- (buf);
+    \draw[arr] (buf) -- (ctrl);
     \draw[arr] (ctrl) -- (heater);
   \end{tikzpicture}
   \captionof{figure}{Block diagram of the temperature control system.}
@@ -93,18 +95,15 @@
   \begin{boxedfigure}
     \centering
     \begin{tikzpicture}[node distance=8mm and 12mm]
-      \node[io] (gpio) {Raspberry Pi\\GPIO};
+      \node[io] (gpio) {Raspberry Pi\\Output};
       \node[block, right=of gpio] (bjt) {BJT};
-      \node[block, right=of bjt, minimum width=2.6cm] (relay) {Relay\\\scriptsize pins 1/2/3, 6/5/4};
-      \node[io, above=of relay, yshift=-4mm] (v5) {5\,V};
-      \node[io, right=of relay, yshift=6mm] (v12) {12\,V};
-      \node[block, right=of relay, yshift=-8mm, minimum width=2.6cm] (heaterterm) {To heater\\(trainee terminal)};
+      \node[block, right=of bjt, minimum width=2.6cm] (relay) {Relay};
+      \node[block, right=of relay, minimum width=2.6cm] (heaterterm) {To heater};
 
       \draw[arr] (gpio) -- (bjt);
       \draw[arr] (bjt) -- (relay);
-      \draw[arr] (v5) -- (relay.north);
-      \draw[arr] (v12) -- ($(relay.east)+(0,4mm)$);
-      \draw[arr] ($(relay.east)+(0,-4mm)$) -- (heaterterm);
+      \draw[arr] (relay) -- (heaterterm);
+
     \end{tikzpicture}
     \captionof{figure}{ON/OFF control: BJT/relay driver stage between the Raspberry Pi GPIO and the heater terminal.}
     \label{fig:exp8rpi-relay}
@@ -136,6 +135,7 @@
     \item \textbf{Demo:} a short presentation demonstrating the working system and the collected data.
   \end{enumerate}
 \end{labsection}
+\newpage
 
 \begin{labsection}{Evaluation Criteria}
   \textbf{(a) Performance of temperature control:}

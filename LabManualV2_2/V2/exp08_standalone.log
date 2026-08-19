@@ -1,8 +1,8 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  19 AUG 2026 16:47
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  19 AUG 2026 16:58
  restricted system commands enabled.
  file:line:error style messages enabled.
-**c:/Users/micha/Documents/GitHub/EEM441/LabManualV2_2/V2/exp07_standalone
-(c:/Users/micha/Documents/GitHub/EEM441/LabManualV2_2/V2/exp07_standalone.tex
+**c:/Users/micha/Documents/GitHub/EEM441/LabManualV2_2/V2/exp08_standalone
+(c:/Users/micha/Documents/GitHub/EEM441/LabManualV2_2/V2/exp08_standalone.tex
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-07-20>
 Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
@@ -1772,8 +1772,8 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (./exp07_standalone.aux)
-\openout1 = exp07_standalone.aux
+ (./exp08_standalone.aux)
+\openout1 = exp08_standalone.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
@@ -1864,10 +1864,10 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 13.
-(./exp07_standalone.out) (./exp07_standalone.out)
+(./exp08_standalone.out) (./exp08_standalone.out)
 \@outlinefile=\write4
 
-\openout4 = exp07_standalone.out
+\openout4 = exp08_standalone.out
 \c@lstlisting=\count392
 Package babel Info: Main language set to 'english'.
 <figures/usm-logo.png, id=46, 1377.145pt x 843.15pt>
@@ -1884,68 +1884,76 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--18
 
 
 {C:/Users/micha/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./figures/usm-
-logo.png>] (../experiments/exp07.tex
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 41.
-See the caption package documentation for explanation.
-
+logo.png>] (../experiments/exp08.tex
 <figures/seee-emblem-watermark.png, id=56, 2341.74875pt x 803.0pt>
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
-43.
+35.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
-[2
+ [2
 
 
 <./figures/seee-emblem-watermark.png>]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 63.
+(caption)                particular \caption on input line 67.
 See the caption package documentation for explanation.
 
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
-93.
+83.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
 [3]
-LaTeX Font Info:    Font shape `TU/JetBrainsMono(0)/m/n' will be
-(Font)              scaled to size 11.25806pt on input line 103.
-)
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 108.
+See the caption package documentation for explanation.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 114.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+138.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[4])
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
 22.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
- [4] (./exp07_standalone.aux)
+ [5] (./exp08_standalone.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-07-20>
  ***********
-Package rerunfilecheck Info: File `exp07_standalone.out' has not changed.
-(rerunfilecheck)             Checksum: 3C96CAE849CB7190E4A85C52B737FA05;345.
+Package rerunfilecheck Info: File `exp08_standalone.out' has not changed.
+(rerunfilecheck)             Checksum: D96B7A7CF65432C782CE9D023F2724EC;410.
 )
 
 Here is how much of LuaTeX's memory you used:
- 40376 strings out of 475695
+ 40431 strings out of 475695
  100000,1648299 words of node,token memory allocated
- 1566 words of node memory still in use:
-   31 hlist, 2 vlist, 14 rule, 1 disc, 3 glue, 5 kern, 14 glyph, 102 attribute, 
-64 glue_spec, 88 attribute_list, 2 write, 24 pdf_literal, 8 pdf_action, 24 pdf_c
-olorstack nodes
-   avail lists: 1:2,2:1462,3:841,4:118,5:721,6:45,7:4900,8:99,9:415,10:8,11:352
- 62274 multiletter control sequences out of 65536+600000
- 78 fonts using 23232271 bytes
- 97i,13n,117p,869b,775s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<./fonts/JetBrainsMono/JetBrainsMono-Regular.ttf><./fonts/STIX2/STIXTwoMath-Regu
-lar.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/PlexSans/IBMPlexSans-Sem
-iBold.ttf><./fonts/PlexSans/IBMPlexSans-Medium.ttf><./fonts/PlexSans/IBMPlexSans
--Regular.ttf>
-Output written on exp07_standalone.pdf (4 pages, 358930 bytes).
+ 1470 words of node memory still in use:
+   31 hlist, 2 vlist, 14 rule, 1 disc, 3 glue, 5 kern, 14 glyph, 86 attribute, 6
+4 glue_spec, 80 attribute_list, 2 write, 24 pdf_literal, 24 pdf_colorstack nodes
 
-PDF statistics: 146 PDF objects out of 1000 (max. 8388607)
- 20 named destinations out of 1000 (max. 1048576)
+   avail lists: 1:2,2:1885,3:722,4:114,5:966,6:52,7:5164,8:4,9:497,10:8,11:437
+ 62315 multiletter control sequences out of 65536+600000
+ 78 fonts using 23113351 bytes
+ 97i,13n,117p,727b,800s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<./fonts/PlexSans/IBMPlexSans-Italic.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf>
+<./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/PlexSans/IBMPlexSans-SemiBold.tt
+f><./fonts/PlexSans/IBMPlexSans-Medium.ttf><./fonts/PlexSans/IBMPlexSans-Regular
+.ttf>
+Output written on exp08_standalone.pdf (5 pages, 352183 bytes).
+
+PDF statistics: 144 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 1048576)
  264 words of extra memory for PDF output out of 10000 (max. 100000000)
 

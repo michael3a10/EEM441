@@ -94,18 +94,18 @@
 
   \begin{boxedfigure}
     \centering
-    \begin{tikzpicture}[node distance=8mm and 12mm]
-      \node[io] (gpio) {Raspberry Pi\\Output};
-      \node[block, right=of gpio] (bjt) {BJT};
-      \node[block, right=of bjt, minimum width=2.6cm] (relay) {Relay};
-      \node[block, right=of relay, minimum width=2.6cm] (heaterterm) {To heater};
-
-      \draw[arr] (gpio) -- (bjt);
-      \draw[arr] (bjt) -- (relay);
-      \draw[arr] (relay) -- (heaterterm);
-
-    \end{tikzpicture}
-    \captionof{figure}{ON/OFF control: BJT/relay driver stage between the Raspberry Pi GPIO and the heater terminal.}
+    \begin{minipage}[b]{0.42\linewidth}
+      \centering
+      \includegraphics[width=0.85\linewidth]{figures/Exp8_Figure_1.png}\\[2pt]
+      {\small (a) Heater terminal}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.52\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{figures/Exp8_Figure_2.png}\\[2pt]
+      {\small (b) connection diagram}
+    \end{minipage}
+    \captionof{figure}{ON/OFF control; (a) Heater terminal, (b) connection diagram.}
     \label{fig:exp8rpi-relay}
   \end{boxedfigure}
 

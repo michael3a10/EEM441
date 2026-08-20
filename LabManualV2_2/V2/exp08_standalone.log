@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  19 AUG 2026 16:58
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.8.11)  20 AUG 2026 11:19
  restricted system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/micha/Documents/GitHub/EEM441/LabManualV2_2/V2/exp08_standalone
@@ -1906,6 +1906,17 @@ Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line
 83.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
 [3]
+<figures/Exp8_Figure_1.png, id=79, 345.54094pt x 245.41687pt>
+File: figures/Exp8_Figure_1.png Graphic file (type png)
+<use figures/Exp8_Figure_1.png>
+Package luatex.def Info: figures/Exp8_Figure_1.png  used on input line 99.
+(luatex.def)             Requested size: 168.61725pt x 119.761pt.
+<figures/Exp8_Figure_2.png, id=80, 439.6425pt x 268.75406pt>
+File: figures/Exp8_Figure_2.png Graphic file (type png)
+<use figures/Exp8_Figure_2.png>
+Package luatex.def Info: figures/Exp8_Figure_2.png  used on input line 105.
+(luatex.def)             Requested size: 245.60631pt x 150.13626pt.
+
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 108.
@@ -1919,15 +1930,22 @@ See the caption package documentation for explanation.
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+135.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[4<./figures/Exp8_Figure_1.png><./figures/Exp8_Figure_2.png>]
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
 138.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
-[4])
+ [5])
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
 22.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
- [5] (./exp08_standalone.aux)
+ [6]
+(./exp08_standalone.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-07-20>
@@ -1937,23 +1955,23 @@ Package rerunfilecheck Info: File `exp08_standalone.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 40431 strings out of 475695
+ 40428 strings out of 475695
  100000,1648299 words of node,token memory allocated
  1470 words of node memory still in use:
    31 hlist, 2 vlist, 14 rule, 1 disc, 3 glue, 5 kern, 14 glyph, 86 attribute, 6
 4 glue_spec, 80 attribute_list, 2 write, 24 pdf_literal, 24 pdf_colorstack nodes
 
-   avail lists: 1:2,2:1885,3:722,4:114,5:966,6:52,7:5164,8:4,9:497,10:8,11:437
- 62315 multiletter control sequences out of 65536+600000
- 78 fonts using 23113351 bytes
- 97i,13n,117p,727b,800s stack positions out of 10000i,1000n,20000p,200000b,200000s
+   avail lists: 1:2,2:1885,3:722,4:108,5:966,6:57,7:5164,8:4,9:451,10:9,11:437
+ 62302 multiletter control sequences out of 65536+600000
+ 78 fonts using 23113431 bytes
+ 97i,13n,117p,727b,775s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <./fonts/PlexSans/IBMPlexSans-Italic.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf>
 <./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/PlexSans/IBMPlexSans-SemiBold.tt
 f><./fonts/PlexSans/IBMPlexSans-Medium.ttf><./fonts/PlexSans/IBMPlexSans-Regular
 .ttf>
-Output written on exp08_standalone.pdf (5 pages, 352183 bytes).
+Output written on exp08_standalone.pdf (6 pages, 707663 bytes).
 
-PDF statistics: 144 PDF objects out of 1000 (max. 8388607)
- 31 named destinations out of 1000 (max. 1048576)
+PDF statistics: 152 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 1048576)
  264 words of extra memory for PDF output out of 10000 (max. 100000000)
 

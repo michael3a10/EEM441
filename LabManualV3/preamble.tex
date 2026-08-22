@@ -1,0 +1,518 @@
+% ============================================================
+%  EEM 441 Control & Instrumentation / FPGA Lab Manual
+%  Shared preamble -- fonts, colors, boxes, code style, TikZ
+%  Compile with: lualatex -shell-escape
+% ============================================================
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+% ---------- Fonts ----------
+\setmainfont{IBMPlexSans}[
+  Path            = fonts/PlexSans/,
+  Extension       = .ttf,
+  UprightFont     = IBMPlexSans-Regular,
+  ItalicFont      = IBMPlexSans-Italic,
+  BoldFont        = IBMPlexSans-SemiBold,
+  BoldItalicFont  = IBMPlexSans-SemiBoldItalic,
+]
+
+\newfontfamily\plexlight{IBMPlexSans}[
+  Path            = fonts/PlexSans/,
+  Extension       = .ttf,
+  UprightFont     = IBMPlexSans-Light,
+  ItalicFont      = IBMPlexSans-LightItalic,
+  Ligatures       = {TeX},
+]
+
+\newfontfamily\plexmedium{IBMPlexSans}[
+  Path            = fonts/PlexSans/,
+  Extension       = .ttf,
+  UprightFont     = IBMPlexSans-Medium,
+  ItalicFont      = IBMPlexSans-MediumItalic,
+  Ligatures       = {TeX},
+]
+
+\setmonofont{JetBrainsMono}[
+  Path            = fonts/JetBrainsMono/,
+  Extension       = .ttf,
+  UprightFont     = JetBrainsMono-Regular,
+  ItalicFont      = JetBrainsMono-Italic,
+  BoldFont        = JetBrainsMono-Bold,
+  BoldItalicFont  = JetBrainsMono-BoldItalic,
+  RawFeature      = {-calt},   % disable ligatures: <= /= -> := must stay literal
+  Scale           = MatchLowercase,
+]
+
+\setmathfont{STIXTwoMath-Regular}[
+  Path      = fonts/STIX2/,
+  Extension = .ttf,
+]
+
+% ---------- Colour palette ----------
+\usepackage{xcolor}
+\definecolor{usmpurple}{HTML}{4B1D6B}   % USM crest purple, used sparingly for accents
+\definecolor{inkblack}{HTML}{1A1A1A}
+\definecolor{slategray}{HTML}{5B6570}
+\definecolor{panelbg}{HTML}{F7F7F9}
+\definecolor{panelrule}{HTML}{D8D8DE}
+\definecolor{accentblue}{HTML}{2A5DB0}
+\definecolor{accentteal}{HTML}{1B7A72}
+\definecolor{warnbg}{HTML}{FFF6E5}
+\definecolor{warnrule}{HTML}{E8B93F}
+\definecolor{codebg}{HTML}{F5F6FA}
+
+\color{inkblack}
+
+% ---------- Page geometry ----------
+\usepackage[a4paper,margin=2.2cm,headheight=28pt]{geometry}
+
+% ---------- Headers / footers ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{\large\plexmedium\color{slategray}EEM 441 (SEM 1 | 2026-2027)}
+\fancyhead[R]{\large\plexmedium\color{slategray}\leftmark}
+\fancyfoot[C]{\small\color{slategray}\thepage}
+
+% ---------- Section styling ----------
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\Large\plexmedium\color{inkblack}}
+{\thesection}{0.6em}{}
+\titleformat{\subsection}
+{\normalfont\large\plexmedium\color{inkblack}}
+{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.8em}
+\titlespacing*{\subsection}{0pt}{1.1em}{0.6em}
+
+% ---------- Lists ----------
+\usepackage{enumitem}
+\setlist{topsep=4pt, itemsep=6pt, parsep=2pt}
+
+% ---------- Tables ----------
+\usepackage{array}
+\usepackage{needspace}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{caption}
+\captionsetup{font={small}, labelfont={color=accentblue}, skip=6pt}
+
+% Non-floating table/figure wrappers -- required inside tcolorbox environments,
+% since LaTeX floats (table/figure) cannot be used inside non-page boxes.
+\newenvironment{boxedtable}[1][]{%
+  \par\medskip\centering
+}{%
+  \par\medskip
+}
+\newenvironment{boxedfigure}[1][]{%
+  \par\medskip\centering
+}{%
+  \par\medskip
+}
+
+% ---------- Hyperlinks ----------
+\usepackage[colorlinks=true, linkcolor=accentblue, urlcolor=accentblue, citecolor=accentblue]{hyperref}
+% xurl must load after hyperref: it makes \url break far more
+% aggressively (at underscores, hyphens, etc., not just '/'), so long
+% reference URLs wrap within the page margin instead of overflowing.
+\usepackage{xurl}
+
+% ---------- Graphics / TikZ ----------
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{etoolbox}
+\newbool{showwatermark}
+\booltrue{showwatermark}
+% Document-wide faint SEEE watermark, centred on every page. The image
+% itself (figures/seee-emblem-watermark.png) is pre-faded and flattened
+% to fully opaque pixels at generation time -- PNG alpha transparency
+% was found not to render reliably via \includegraphics + eso-pic in
+% this build environment, so the fade is baked into solid RGB pixels
+% instead, which is robust across any PDF viewer/renderer. Toggle off
+% with \boolfalse{showwatermark} for pages (e.g. the fillable lab
+% report cover sheets) where the watermark would compete visually
+% with printed/handwritten form fields.
+\AddToShipoutPictureBG{%
+  \ifbool{showwatermark}{%
+    \AtPageCenter{%
+      \makebox(0,0){\includegraphics[width=9cm]{figures/seee-emblem-watermark.png}}%
+    }%
+  }{}%
+}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, backgrounds, decorations.pathreplacing,decorations.pathmorphing}
+
+\tikzset{
+  block/.style = {
+      draw=slategray, thick, fill=panelbg, rounded corners=1pt,
+      minimum height=1.1cm, minimum width=2.6cm, align=center,
+      font=\small\plexmedium
+    },
+  io/.style = {
+      draw=accentblue, thick, fill=white, rounded corners=1pt,
+      minimum height=0.9cm, minimum width=2.2cm, align=center,
+      font=\small
+    },
+  decision/.style = {
+      draw=slategray, thick, fill=panelbg, diamond, aspect=2,
+      align=center, font=\small\plexmedium, inner sep=2pt
+    },
+  startstop/.style = {
+      draw=accentteal, thick, fill=white, rounded corners=10pt,
+      minimum height=0.8cm, minimum width=2cm, align=center,
+      font=\small\plexmedium
+    },
+  arr/.style = {-{Latex[length=2.2mm]}, thick, draw=slategray},
+}
+
+% ---------- Code listings (listings package -- no shell-escape required) ----------
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+% tcolorbox is still needed for the code-listing panels (\codepanel) and
+% the "Pending" callout box (needsupdate), even though the Objectives/
+% Equipment/Procedure/etc. panels no longer use it -- see \labsection
+% further below, which now uses plain headings instead.
+
+% ============================================================
+% Verilog / VHDL: styled after the Quartus II text editor's classic
+% default scheme (bold blue keywords, green comments, dark red/maroon
+% strings, black identifiers, light background) -- recognisable to
+% anyone who has used Quartus. HDL keyword classes exploit listings'
+% multi-class support so system tasks (Verilog $display etc.),
+% compiler directives (`define etc.), and IEEE library types
+% (std_logic etc.) are each coloured distinctly, matching how the
+% Quartus editor itself differentiates language elements.
+% ============================================================
+\definecolor{hdlkeyword}{HTML}{0000FF}    % language keywords -- Quartus blue
+\definecolor{hdlsystask}{HTML}{7F0055}    % Verilog $system tasks -- plum
+\definecolor{hdldirective}{HTML}{8B4513}  % `compiler directives -- brown
+\definecolor{hdltype}{HTML}{4A0080}       % IEEE types (std_logic etc.) -- deep indigo, distinct from keyword blue
+\definecolor{hdlcomment}{HTML}{3F7F3F}    % comments -- Quartus green
+\definecolor{hdlstring}{HTML}{7F0000}     % strings -- Quartus maroon
+\definecolor{hdlbg}{HTML}{FFFFFF}         % editor background -- white, as in Quartus
+\definecolor{usmorange}{HTML}{FF5900}     % USM orange -- for numerics
+
+
+\lstdefinestyle{hdlbase}{
+  basicstyle       = \ttfamily\small\color{inkblack},
+  commentstyle     = \color{hdlcomment}\itshape,
+  stringstyle      = \color{hdlstring},
+  numberstyle      = \tiny\color{slategray},
+  identifierstyle  = \color{inkblack},
+  backgroundcolor  = \color{hdlbg},
+  numbers          = left,
+  numbersep        = 8pt,
+  stepnumber       = 1,
+  breaklines       = true,
+  breakatwhitespace= false,
+  showstringspaces = false,
+  showspaces       = false,
+  showtabs         = false,
+  tabsize          = 2,
+  columns          = flexible,
+  keepspaces       = true,
+  frame            = none,
+  xleftmargin      = 12pt,
+  framexleftmargin = 8pt,
+  aboveskip        = 4pt,
+  belowskip        = 2pt,
+  captionpos       = b,
+  literate         =
+    {16'}{{\textcolor{usmorange}{16}'}}3
+    {17'}{{\textcolor{usmorange}{17}'}}3
+    {18'}{{\textcolor{usmorange}{18}'}}3
+    {19'}{{\textcolor{usmorange}{19}'}}3
+    {32'}{{\textcolor{usmorange}{32}'}}3
+    {0'}{{\textcolor{usmorange}{0}'}}2
+    {1'}{{\textcolor{usmorange}{1}'}}2
+    {2'}{{\textcolor{usmorange}{2}'}}2
+    {3'}{{\textcolor{usmorange}{3}'}}2
+    {4'}{{\textcolor{usmorange}{4}'}}2
+    {5'}{{\textcolor{usmorange}{5}'}}2
+    {6'}{{\textcolor{usmorange}{6}'}}2
+    {7'}{{\textcolor{usmorange}{7}'}}2
+    {8'}{{\textcolor{usmorange}{8}'}}2
+    {9'}{{\textcolor{usmorange}{9}'}}2
+    {[0]}{{[\textcolor{usmorange}{0}]}}3
+    {[1]}{{[\textcolor{usmorange}{1}]}}3
+    {[2]}{{[\textcolor{usmorange}{2}]}}3
+    {[3]}{{[\textcolor{usmorange}{3}]}}3
+    {[4]}{{[\textcolor{usmorange}{4}]}}3
+    {[5]}{{[\textcolor{usmorange}{5}]}}3
+    {[6]}{{[\textcolor{usmorange}{6}]}}3
+    {[7]}{{[\textcolor{usmorange}{7}]}}3
+    {[8]}{{[\textcolor{usmorange}{8}]}}3
+    {[15]}{{[\textcolor{usmorange}{15}]}}4
+    {[16]}{{[\textcolor{usmorange}{16}]}}4
+    {[1:0]}{{[\textcolor{usmorange}{1:0}]}}5
+    {[3:0]}{{[\textcolor{usmorange}{3:0}]}}5
+    {[4:0]}{{[\textcolor{usmorange}{4:0}]}}5
+    {[5:0]}{{[\textcolor{usmorange}{5:0}]}}5
+    {[6:0]}{{[\textcolor{usmorange}{6:0}]}}5
+    {[7:0]}{{[\textcolor{usmorange}{7:0}]}}5
+    {[8:0]}{{[\textcolor{usmorange}{8:0}]}}5
+    {[15:0]}{{[\textcolor{usmorange}{15:0}]}}6
+    {[17:0]}{{[\textcolor{usmorange}{17:0}]}}6,
+}
+
+\lstdefinestyle{verilogstyle}{
+  style        = hdlbase,
+  classoffset  = 0,
+  language     = Verilog,
+  keywordstyle      = \color{hdlkeyword}\bfseries,      % reserved keywords
+  keywordstyle=[2]\color{hdlsystask}\bfseries,          % $system tasks/functions
+  keywordstyle=[3]\color{hdldirective}\bfseries,        % `compiler directives
+}
+
+\lstdefinestyle{vhdlstyle}{
+  style        = hdlbase,
+  classoffset  = 0,
+  language     = VHDL,
+  keywordstyle      = \color{hdlkeyword}\bfseries,      % reserved keywords
+  keywordstyle=[2]\color{hdltype}\bfseries,             % IEEE library types
+  morekeywords=[2]{std_logic, std_logic_vector, std_ulogic, std_ulogic_vector,
+      signed, unsigned, integer, natural, positive, boolean, bit, bit_vector,
+      character, string, time, real},
+}
+
+% ============================================================
+% C / C++ / Python: each styled after that language's own common
+% editor conventions (not the HDL palette above) -- keywords bold
+% navy, types/built-ins in a distinct teal, preprocessor/decorators
+% in purple, comments in muted gray italic, strings in a warm brown.
+% ============================================================
+\definecolor{swkeyword}{HTML}{2A5DB0}     % keywords -- accentblue
+\definecolor{swtype}{HTML}{0F7A6C}        % built-in types -- teal
+\definecolor{swpreproc}{HTML}{8B3FA6}     % #include / decorators -- purple
+\definecolor{swcomment}{HTML}{6B7280}     % comments -- muted gray
+\definecolor{swstring}{HTML}{9A5B12}      % strings -- warm brown
+
+\lstdefinestyle{swbase}{
+  basicstyle       = \ttfamily\small\color{inkblack},
+  keywordstyle     = \color{swkeyword}\bfseries,
+  commentstyle     = \color{swcomment}\itshape,
+  stringstyle      = \color{swstring},
+  numberstyle      = \tiny\color{slategray},
+  identifierstyle  = \color{inkblack},
+  numbers          = left,
+  numbersep        = 8pt,
+  stepnumber       = 1,
+  breaklines       = true,
+  breakatwhitespace= false,
+  showstringspaces = false,
+  showspaces       = false,
+  showtabs         = false,
+  tabsize          = 4,
+  columns          = flexible,
+  keepspaces       = true,
+  frame            = none,
+  xleftmargin      = 12pt,
+  framexleftmargin = 8pt,
+  aboveskip        = 4pt,
+  belowskip        = 2pt,
+  captionpos       = b,
+}
+
+\lstdefinestyle{cstyle}{
+  style        = swbase,
+  classoffset  = 0,     % reset keyword-class state (avoids leakage from prior HDL styles)
+  language     = C,
+  emphstyle    = \color{swtype},
+  emph={int, char, float, double, void, long, short, unsigned, signed,
+      size_t, bool, uint8_t, uint16_t, uint32_t, int8_t, int16_t, int32_t},
+  moredelim    = [l][\color{swpreproc}\bfseries]{\#},   % preprocessor directive lines
+  % Note: this directive colouring (like listings' built-in `directives`
+  % class) does not take effect inside a breakable tcolorbox, which is
+  % how all code panels in this document are rendered -- a known
+  % listings/tcolorbox interaction. #include/#define lines therefore
+  % render in the default text colour inside \codepanel, which is a
+  % minor, accepted cosmetic gap; all keyword/type/comment/string
+  % highlighting is unaffected and works correctly.
+}
+
+\lstdefinestyle{cppstyle}{
+  style        = swbase,
+  classoffset  = 0,     % reset keyword-class state (avoids leakage from prior HDL styles)
+  language     = [ISO]C++,
+  emphstyle    = \color{swtype},
+  emph={int, char, float, double, void, long, short, unsigned, signed,
+      bool, auto, size_t, string, vector, map, class, struct,
+      uint8_t, uint16_t, uint32_t, int8_t, int16_t, int32_t},
+  moredelim    = [l][\color{swpreproc}\bfseries]{\#},   % preprocessor directive lines
+}
+
+\lstdefinestyle{pythonstyle}{
+  style        = swbase,
+  classoffset  = 0,     % reset keyword-class state (avoids leakage from prior HDL styles)
+  language     = Python,
+  morekeywords = {as, async, await, with, yield, lambda, None, True, False, self},
+  emphstyle    = \color{swtype},
+  emph={int, float, str, bool, list, dict, tuple, set, bytes},
+}
+
+\lstset{style=hdlbase}
+
+% Wrap listings in a light panel consistent with the section boxes.
+% Usage:  \begin{codepanel}{caption text}{lststyle} ... \begin{lstlisting} ... \end{lstlisting} ... \end{codepanel}
+\newenvironment{codepanel}[2]{%
+  % Apply the requested listings style BEFORE opening the tcolorbox group,
+  % so listings' internal keyword-class state (classoffset, directive
+  % classes, etc.) is fully established ahead of the nested tcolorbox/
+  % lstlisting groups -- applying it after \begin{tcolorbox} can leave
+  % some class registrations (e.g. C/C++ #directives) not fully active
+  % by the time \begin{lstlisting} reads them.
+  \lstset{style=#2}%
+  \begin{tcolorbox}[
+    enhanced, breakable,
+    colback=codebg, colframe=panelrule,
+    boxrule=0.6pt, arc=1.5pt,
+    left=4pt, right=4pt, top=3pt, bottom=3pt,
+    title={\small\plexmedium\color{slategray} #1},
+    fonttitle=\small, coltitle=slategray,
+    colbacktitle=panelbg, boxsep=1pt,
+  ]
+}{%
+  \end{tcolorbox}
+}
+
+% ---------- Section panels (Objectives / Equipment / Procedure / etc.) ----------
+% Plain run-in headings instead of boxed panels, to maximise usable
+% page width/height (no box padding, background fill, or border) and
+% let the page watermark show through unobstructed. Each heading is
+% set in the same weight/colour family as \subsection for visual
+% consistency with the rest of the document, followed by a thin rule.
+\newcommand{\labsectionheading}[1]{%
+  \par\vspace{0.6em}%
+  {\large\plexmedium\color{accentblue} #1\par}%
+  \vspace{1pt}%
+  {\color{panelrule}\hrule height 0.6pt}%
+  \vspace{0.3em}%
+}
+
+\newenvironment{labsection}[1]{%
+  \labsectionheading{#1}%
+}{%
+  \par\vspace{0.1em}%
+}
+
+% Convenience wrappers for the standard recurring sections
+\newenvironment{objectives}{\begin{labsection}{Objectives}}{\end{labsection}}
+\newenvironment{equipment}{\begin{labsection}{Equipment / Software Required}}{\end{labsection}}
+\newenvironment{introduction}{\begin{labsection}{Introduction}}{\end{labsection}}
+\newenvironment{procedure}{\begin{labsection}{Procedure}}{\end{labsection}}
+\newenvironment{materials}{\begin{labsection}{Materials}}{\end{labsection}}
+\newenvironment{reportq}{\begin{labsection}{Report}}{\end{labsection}}
+
+% ---------- Placeholder / TODO callout (for hardware not yet finalized) ----------
+\newenvironment{needsupdate}{%
+  \par\vspace{0.6em}%
+  {\small\plexmedium\color{warnrule!70!black} Pending\par}%
+  \vspace{1pt}%
+  {\color{warnrule}\hrule height 0.6pt}%
+  \vspace{0.3em}%
+}{%
+  \par\vspace{0.3em}%
+}
+
+% ---------- Per-experiment numbering for figures/tables/listings ----------
+% expnum tracks "which experiment are we in"; figure/table/listing are
+% chained to it so they read as N.1, N.2, ... and reset at each new
+% \experimentheader, instead of numbering continuously 1..end of book.
+\newcounter{expnum}
+\newcounter{listing}
+\counterwithin{figure}{expnum}
+\counterwithin{table}{expnum}
+\counterwithin{listing}{expnum}
+\renewcommand{\thelisting}{\theexpnum.\arabic{listing}}
+
+% ---------- Experiment title block ----------
+\newcommand{\experimentheader}[4]{%
+  % #1 = experiment number, #2 = short title, #3 = full title, #4 = track label (e.g. Control Lab)
+  \clearpage
+  \setcounter{expnum}{#1}%
+  \setcounter{figure}{0}%
+  \setcounter{table}{0}%
+  \setcounter{listing}{0}%
+  \phantomsection
+  \addcontentsline{toc}{section}{Experiment #1: #3}
+  \markboth{Experiment #1 \textbar\ #4}{Experiment #1 \textbar\ #4}
+  \begingroup
+  \centering
+  \vspace*{0.4em}
+  {\plexmedium\color{usmpurple}\Huge Experiment #1\par}
+  \vspace{0.2em}
+  {\plexmedium\color{inkblack}\LARGE #3\par}
+  \vspace{0.8em}
+  \endgroup
+}
+
+% Convenience command for listing captions: \listingcaption{label}{caption text}
+% Produces "Listing N.M: caption text" consistent with Figure/Table numbering.
+\newcommand{\listingcaption}[2]{%
+  \refstepcounter{listing}%
+  \begin{center}\small\color{slategray}Listing \thelisting\label{#1}: #2\end{center}%
+}
+
+% ---------- Lab report cover page (appendix) ----------
+% \labcoverpage{experiment number}{quoted experiment title}
+% Generates a fillable cover sheet for students to print and attach to
+% their submitted lab report: USM crest, semester/course line,
+% experiment number/title, and Date / Group No. / Group Members fields
+% with fill-in-the-blank rules. The watermark and page number are both
+% suppressed on this page (\thispagestyle{empty} plus toggling
+% showwatermark off before the page ships and back on immediately
+% after), since a background image and a page number aren't
+% appropriate on a form students will print and hand-fill.
+\newcommand{\labcoverpage}[2]{%
+  \boolfalse{showwatermark}%
+  \clearpage
+  \thispagestyle{empty}
+  \begin{center}
+    \vspace*{0.1cm}
+    \includegraphics[width=7.5cm]{figures/usm-logo.png}\par
+    \vspace{0.25cm}
+    {\large School of Electrical and Electronics Engineering\par}
+    {\large Universiti Sains Malaysia, Engineering Campus\par}
+    \vspace{0.7cm}
+    {\Large SEMESTER 1, 2026/2027\par}
+    \vspace{0.7cm}
+    {\fontsize{30}{36}\selectfont\plexmedium EEM 441\par}
+    \vspace{2pt}
+    {\Large Control \& Instrumentation Laboratory\par}
+    \vspace{0.6cm}
+    {\huge\bfseries Experiment #1\par}
+    \vspace{2pt}
+    {\Large #2\par}
+  \end{center}
+  \vspace{0.9cm}
+
+  \noindent Date \hspace{2.6cm}: \makebox[7cm]{\hrulefill}\\[0.7cm]
+  \noindent Group No. \hspace{1.6cm}: \makebox[7cm]{\hrulefill}\\[0.9cm]
+
+  \noindent Group Members : \makebox[8cm]{\hrulefill}\hspace{0.6cm}Matrix \# \makebox[2.2cm]{\hrulefill}\\[0.7cm]
+  \noindent\hphantom{Group Members} : \makebox[8cm]{\hrulefill}\hspace{0.6cm}Matrix \# \makebox[2.2cm]{\hrulefill}\\[0.7cm]
+  \noindent\hphantom{Group Members} : \makebox[8cm]{\hrulefill}\hspace{0.6cm}Matrix \# \makebox[2.2cm]{\hrulefill}\\[0.7cm]
+  \noindent\hphantom{Group Members} : \makebox[8cm]{\hrulefill}\hspace{0.6cm}Matrix \# \makebox[2.2cm]{\hrulefill}
+  \clearpage
+  \booltrue{showwatermark}%
+}
+
+% ---------- Table of contents styling ----------
+\usepackage{titletoc}
+\renewcommand{\contentsname}{\plexmedium\color{inkblack}Table of Contents}
+\titlecontents{section}
+[0pt]
+{\vspace{6pt}\plexmedium}
+{}{}
+{\titlerule*[6pt]{.}\contentspage}
+
+% ---------- Misc ----------
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\frenchspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}

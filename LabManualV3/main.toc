@@ -1,0 +1,12 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{Experiment 1: DC Motor / PID Control --- Speed}{2}{section*.1}%
+\contentsline {section}{Experiment 2: DC Motor / PID Control --- Position}{8}{section*.2}%
+\contentsline {section}{Experiment 3: Introduction to Altera Quartus II Software, and Interfacing FPGA to DIP Switch and Seven Segment}{15}{section*.3}%
+\contentsline {section}{Experiment 4: LCD Interfacing to Altera DE2 Board, and Stepper Motor Control with FPGA}{25}{section*.4}%
+\contentsline {section}{Experiment 5: Interfacing FPGA to Analog-to-Digital Converter}{42}{section*.5}%
+\contentsline {section}{Experiment 6: Interfacing FPGA to Digital-to-Analog Converter}{47}{section*.6}%
+\contentsline {section}{Experiment 7: DC Motor Speed Measurement System}{51}{section*.7}%
+\contentsline {section}{Experiment 8: Temperature Control System}{58}{section*.8}%
+\contentsline {section}{Experiment 9: Project Creation in SCADA (IoT)}{63}{section*.9}%
+\contentsline {section}{Experiment 10: Dashboard Visualization and Analysis (IoT)}{69}{section*.10}%
+\contentsfinish 

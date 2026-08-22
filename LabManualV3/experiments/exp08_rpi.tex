@@ -1,0 +1,152 @@
+% ============================================================
+%  Experiment 8 (Raspberry Pi version, open-ended) --- Temperature
+%  Control Using Raspberry Pi
+%  Rewritten to follow the official department open-ended lab
+%  document (EEM_441_Exp_8_Temperature_Control_RPI), with one
+%  deliberate departure: no DAC0800 is used in this version (see
+%  the note in Experimental Equipment and Deliverables below).
+% ============================================================
+\experimentheader{8}{Experiment 8 (RPi, open-ended)}{Instrumentation: Temperature Control Using Raspberry Pi}{Instrumentation Lab}
+
+\begin{labsection}{Objectives}
+  \begin{itemize}
+    \item To interface a temperature sensor and a heating element with a Raspberry Pi.
+    \item To implement a temperature control algorithm to maintain a target temperature.
+    \item To log temperature data and analyse system performance.
+  \end{itemize}
+\end{labsection}
+
+\begin{labsection}{Introduction}
+  In most industrial processes, there are possibilities when the temperature needs to be regulated automatically. For example, the temperature of fluid inside a reactor has to be controlled within a certain range in order to get a stable operation. Temperature control can be performed in two ways: through logic control, or fuzzy control. In logic control, the temperature is controlled by switching the heater on or off when a certain critical value is reached, whereas fuzzy control needs a true definition of ``hot'' before the control operation.
+  \vspace*{1.5em}
+
+  In this experiment, the logic control system is demonstrated. The controlled source temperature comes from the filament of a heater. The process is controlled by switching ``ON'' or ``OFF'' the voltage supply of the heater. When the filament temperature is higher than the controlled temperature, the Raspberry Pi will give a signal to switch off the heater. The heater will be switched on when the temperature of the filament is lower than the controlled temperature. The controlled temperature is a variable that can be specified by the user.
+  \vspace*{1.5em}
+
+  In this open-ended lab, students will design and implement a system to perform temperature control using a Raspberry Pi. This project challenges students to develop and build the necessary circuitry to process signals from a sensor trainer and interface it effectively with the Raspberry Pi. The goal is to create a complete system that captures the temperature sensor reading, processes the information, displays the temperature, and controls the heater. An overall block diagram for the measurement system is shown in Figure~\ref{fig:exp8rpi-blockdiagram}.
+\end{labsection}
+
+\begin{labsection}{Experimental Equipment}
+  \begin{enumerate}
+    \item Raspberry Pi 4B
+    \item Sensor trainer
+    \item Thermistor
+    \item Analog-to-digital converter, ADC0804
+    \item Operational amplifier, LM741
+    \item Relay
+    \item Resistors, capacitors (according to your design)
+    \item NPN transistor, 2N3904
+    \item LEDs
+    \item Power supply and connecting wires
+  \end{enumerate}
+  \vspace*{0.5em}
+  \begin{needsupdate}
+    \textbf{Departure from the department's reference document:} the official version of this experiment additionally specifies a DAC0800 (digital-to-analog converter), used to output two discrete levels representing the heater's ON/OFF state. This version deliberately omits the DAC0800 --- switching a heater on or off is a binary decision, requiring only a single GPIO output bit (through the relay/BJT driver stage below), and no analog quantity needs to be synthesised. If your instructor requires the DAC0800 to be included, revert to the official department document for this section.
+  \end{needsupdate}
+\end{labsection}
+
+\begin{boxedfigure}
+  \centering
+  \begin{tikzpicture}[node distance=8mm and 10mm]
+    \node[block] (therm) {Thermistor};
+    \node[block, right=of therm, minimum width=2.6cm] (cond) {Signal\\Conditioning\\Circuit};
+    \node[block, right=of cond] (adc) {ADC};
+    \node[block, right=of adc, minimum width=2.4cm] (rpi) {Raspberry\\Pi};
+    \node[block, below=of rpi, minimum width=2.4cm] (ctrl) {Control\\Circuit};
+    \node[block, right=of ctrl, minimum width=2.4cm] (heater) {Heater};
+    \node[block, left=of ctrl, minimum width=2.2cm] (buf) {Buffer};
+
+    \draw[arr] (therm) -- (cond);
+    \draw[arr] (cond) -- (adc);
+    \draw[arr] (adc) -- (rpi);
+    \draw[arr] (rpi) -- (ctrl);
+    \draw[arr] (ctrl) -- (heater);
+  \end{tikzpicture}
+  \captionof{figure}{Block diagram of the temperature control system.}
+  \label{fig:exp8rpi-blockdiagram}
+\end{boxedfigure}
+
+\begin{labsection}{Component Notes}
+  \textbf{Thermistor:} the thermistor is a type of resistor whose resistance varies with temperature. Its function is to convert the temperature to a certain value of resistance. From the given thermistor datasheet, you should be able to calculate the resistance as a function of temperature, and vice versa.
+  \vspace*{1.5em}
+
+  \textbf{Signal conditioning element:} used to convert the output of the thermistor into a form suitable for further processing --- usually a DC voltage or current. A Wheatstone bridge and a potential divider are two examples of popular signal-conditioning circuits.
+  \vspace*{1.5em}
+
+  \textbf{Voltage follower (buffer):} the purpose of the buffer is to eliminate loading effects. Design your circuit based on the LM741 op-amp. You can also use the LM741 for your inverter and summing amplifier designs.
+  \vspace*{1.5em}
+
+  \textbf{Analog-to-digital converter (ADC):} an ADC is needed to translate the analogue input signal into a digital number so the Raspberry Pi can read it. The ADC0804 has a resolution of 8 bits. Refer to its datasheet for operating information.
+\end{labsection}
+
+\begin{procedure}
+  \begin{enumerate}
+    \item Configure and construct the ADC in free-running mode, with the input connected to a potentiometer and the outputs to LEDs. Test your ADC.
+    \item Design and construct the signal-conditioning circuit. Test to verify its operation.
+    \item Configure the sensor trainer for thermistor ON/OFF control, using a BJT/relay driver stage between the Raspberry Pi's GPIO output and the heater terminal (Figure~\ref{fig:exp8rpi-relay}).
+    \item Switch on and start your experiment.
+    \item Set the controlled temperature, for example to $20^\circ$C, and record the observed thermostat temperature for 35 minutes using a 1-minute time interval (Table~\ref{tab:exp8rpi-results}). Plot the temperature against time.
+    \item Repeat step 5 for $23^\circ$C and $25^\circ$C. Plot your results.
+    \item Discuss your findings.
+  \end{enumerate}
+
+  \begin{boxedfigure}
+    \centering
+    \begin{minipage}[b]{0.42\linewidth}
+      \centering
+      \includegraphics[width=0.85\linewidth]{figures/Exp8_Figure_1.png}\\[2pt]
+      {\small (a) Heater terminal}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.52\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{figures/Exp8_Figure_2.png}\\[2pt]
+      {\small (b) connection diagram}
+    \end{minipage}
+    \captionof{figure}{ON/OFF control; (a) Heater terminal, (b) connection diagram.}
+    \label{fig:exp8rpi-relay}
+  \end{boxedfigure}
+
+  \needspace{4cm}
+  \begin{boxedtable}
+    \captionof{table}{Controlled vs.\ measured temperature log.}
+    \label{tab:exp8rpi-results}
+    \centering
+    \begin{tabular}{cccc}
+      \toprule
+      Controlled temp. & Time (minutes) & Measured temp.\ ($^\circ$C) & Heater (ON/OFF) \\
+      \midrule
+      $20^\circ$C      & 1               &                              &                  \\
+      $20^\circ$C      & 2               &                              &                  \\
+      $20^\circ$C      & \ldots          &                              &                  \\
+      $20^\circ$C      & 35              &                              &                  \\
+      \bottomrule
+    \end{tabular}
+  \end{boxedtable}
+\end{procedure}
+
+\begin{labsection}{Deliverables}
+  \begin{enumerate}
+    \item \textbf{Code:} a programming script that accurately measures and displays the temperature based on sensor inputs, and controls the heater accordingly.
+    \item \textbf{System setup diagram:} a diagram showing the placement and wiring of sensors to the Raspberry Pi.
+    \item \textbf{Documentation:} a report that explains the setup, the temperature control process, sample readings, discussion, and any challenges encountered --- including your justification for omitting the DAC0800 (see Experimental Equipment).
+    \item \textbf{Demo:} a short presentation demonstrating the working system and the collected data.
+  \end{enumerate}
+\end{labsection}
+
+\begin{labsection}{Evaluation Criteria}
+  \textbf{(a) Performance of temperature control:}
+  \begin{itemize}
+    \item \textit{Accuracy of temperature control:} evaluate the system's ability to maintain the desired temperature setpoint within an acceptable margin of error (e.g.\ $\pm 1^\circ$C).
+    \item \textit{Response time:} measure how quickly the system adjusts the heater to reach and stabilise at the target temperature after a disturbance or change in setpoint.
+    \item \textit{Stability:} assess whether the temperature remains stable without significant oscillations or overshoots during operation.
+    \item \textit{Range of operation:} verify the system's ability to control temperature over the required range (e.g.\ $0^\circ$C to $100^\circ$C).
+  \end{itemize}
+  \textbf{(b) Code functionality:} proper functioning of the program without errors.
+  \vspace*{0.5em}
+
+  \textbf{(c) Creativity in design:} unique solutions for circuit design, HMI, control algorithm, code optimisation, or data handling.
+  \vspace*{0.5em}
+
+  \textbf{(d) Clarity of documentation:} clear and thorough explanation of the approach, results, and challenges.
+\end{labsection}

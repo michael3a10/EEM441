@@ -1,0 +1,116 @@
+% ============================================================
+%  Experiment 10 --- Dashboard Visualization and Analysis (IoT)
+%  Sourced from the department's i-Factory IIoT Training Manual,
+%  Module 4: Dashboard Viewing and Analysis.
+% ============================================================
+\experimentheader{10}{Experiment 10}{Dashboard Visualization and Analysis (IoT)}{Instrumentation Lab}
+
+\begin{objectives}
+  \begin{enumerate}
+    \item To create a dashboard and populate it with multiple panel types.
+    \item To connect a dashboard panel to a database (ODBC) data source.
+    \item To configure an alert with a notification channel on a dashboard panel.
+    \item To bundle multiple dashboards into a shareable SRP-Frame.
+  \end{enumerate}
+\end{objectives}
+
+\begin{equipment}
+  \begin{itemize}
+    \item PC/laptop with access to the WebAccess/SCADA project created in Experiment 9
+    \item WISE-PaaS/Dashboard (or the integrated Dashboard module within WebAccess/SCADA)
+    \item A configured SCADA project with at least one live IO Tag and one Internal Tag (from Experiment 9)
+    \item PostgreSQL (or another supported ODBC-compatible database), if historical/database-backed panels are required
+  \end{itemize}
+\end{equipment}
+
+\begin{introduction}
+  Once a SCADA project is collecting live data, that data still needs to be presented in a way people can act on quickly --- an operator glancing at a screen, or a manager reviewing performance at the end of a shift, needs a different view than the raw tag list. This is the role of the \textbf{dashboard}: an HTML5-based, browser-accessible visualisation layer that turns tag data into graphs, single-value indicators, tables, and alerts.
+  \vspace*{1.5em}
+
+  In WebAccess/SCADA, dashboards are built from \textbf{panels}, each connected to one or more tags via a query. Commonly used panel types include:
+  \begin{itemize}
+    \item \textbf{Singlestat} --- displays a single current value (e.g.\ current temperature, current speed), often with colour-coded thresholds.
+    \item \textbf{Graph} --- plots one or more tags over time, useful for trends.
+    \item \textbf{Advance Datatable} --- displays tabular data, useful for logging multiple related values together.
+    \item \textbf{PictureIt} --- overlays live tag values on top of an uploaded image (e.g.\ a process diagram or equipment photo), useful for giving values spatial context.
+  \end{itemize}
+  \vspace*{1.5em}
+
+  Dashboards can also connect directly to a database via \textbf{ODBC} (ready-made drivers exist for PostgreSQL, MySQL, SQL Server, and others), which allows a panel to query historical/logged data rather than only live tag values --- useful for reports and trend analysis that go back further than the SCADA node's live buffer.
+  \vspace*{1.5em}
+
+  A dashboard on its own shows one view; when several dashboards need to be presented together as a single branded, navigable product --- for an operator's shift-start screen, or a manager's overview --- they can be bundled into an \textbf{SRP-Frame}: a wrapper that adds a title, logo, colour scheme, and a menu linking to each dashboard page, and can be shared as a single URL.
+\end{introduction}
+
+\begin{procedure}
+
+  \textbf{Activity 1 --- Create a dashboard and add panels}\vspace{2pt}
+
+  \textit{Objective: create a new dashboard and populate it with at least two different panel types, connected to live tags.}
+
+  \begin{enumerate}
+    \item Log in to the Dashboard module (type \texttt{127.0.0.1} in the browser address bar, then select \textbf{Dashboard} from the WebAccess landing page; the default account is \texttt{admin} with no password).
+    \item From the \textbf{+} button on the left, create a new Dashboard page.
+    \item Add a \textbf{Singlestat} panel: select the panel type, choose the query and tag you want to display (use one of your IO Tags or the Calculation Tag from Experiment 9), then configure how the value is displayed (units, thresholds, colour).
+    \item Add a \textbf{Graph} panel: select the panel type, then select the query and tag(s) to plot over time.
+    \item Add at least one further panel of your choice (Advance Datatable or PictureIt), and configure it similarly.
+    \item Save the dashboard and confirm each panel updates as the underlying tag values change.
+  \end{enumerate}
+  \vspace*{1.5em}
+
+  \textbf{Activity 2 --- Connect a panel to a database (ODBC)}\vspace{2pt}
+
+  \textit{Objective: add a database as a data source and build a panel that queries it.}
+
+  \begin{enumerate}
+    \item From the Configuration menu, select \textbf{Data Sources}, then click \textbf{Add data source}.
+    \item Select the appropriate database type (e.g.\ PostgreSQL) and enter the connection details (host, port, database name, credentials), then click \textbf{Save \& Test} and confirm the connection succeeds.
+    \item Create a new panel that queries this data source directly (rather than a live SCADA tag), and configure it to display the queried data.
+  \end{enumerate}
+  \vspace*{1.5em}
+
+  \textbf{Activity 3 --- Configure an alert and notification channel}\vspace{2pt}
+
+  \textit{Objective: trigger a notification when a panel's value crosses a threshold.}
+
+  \begin{enumerate}
+    \item On one of your panels, click the bell icon to open its Alert configuration.
+    \item Name the alert, and set the evaluation frequency and the \textbf{For} duration (how long the condition must persist before the alert fires).
+    \item Choose the evaluation expression appropriate to your signal (\texttt{Last()} for the latest value, \texttt{Avg()}/\texttt{Sum()}/\texttt{Max()}/\texttt{Min()}/\texttt{Count()} for aggregated values over the query window) and set the threshold condition.
+    \item Under the bell icon, open \textbf{Notification Channels} and click \textbf{Add channel}. Choose a notification type (e.g.\ Email), and configure whether it sends on all alerts, includes an image, and whether reminders are sent (and at what interval).
+    \item If using Email, configure the SMTP server settings under \textbf{Server Admin} $\to$ Settings.
+    \item Trigger your alert condition and confirm the notification is received.
+  \end{enumerate}
+  \vspace*{1.5em}
+
+  \textbf{Activity 4 --- Build an SRP-Frame}\vspace{2pt}
+
+  \textit{Objective: bundle at least three dashboards into a single branded, navigable SRP-Frame.}
+
+  \begin{enumerate}
+    \item Create at least two further dashboards (so you have a minimum of three in total), each on a different topic or view of your process.
+    \item From the SRP-Frame tab, click \textbf{Manage}, then \textbf{+SRP-Frame}, and enter a project name to create the frame.
+    \item In the \textbf{General} tab, set the title/description, upload a logo, and adjust the title, background, and menu colours.
+    \item In the \textbf{Menu List} tab, add a menu entry for each of your three (or more) dashboards, linking each entry to the correct dashboard page.
+    \item Save your changes, then preview the SRP-Frame via the \textbf{Main} button. Confirm you can navigate between all linked dashboards, and note the shareable URL.
+  \end{enumerate}
+
+\end{procedure}
+
+\begin{reportq}
+  \begin{enumerate}
+    \item List the panels on your dashboard, their type, and which tag or data source each is connected to.
+    \item Present your ODBC data source configuration and describe what the database-connected panel displays.
+    \item Describe your alert configuration (evaluation expression, threshold, duration) and your notification channel setup, and confirm (with evidence) that the notification fired correctly.
+    \item Present your SRP-Frame: its menu structure, and a brief description of what each of your three (or more) dashboards shows.
+    \item Discuss one situation where an SRP-Frame (multiple linked dashboards) would be more useful to an operator than a single dashboard, and why.
+    \item Reflecting on Experiments 9 and 10 together, describe the full data path from a physical PLC input to a value displayed on your dashboard.
+  \end{enumerate}
+\end{reportq}
+
+\begin{labsection}{References}{}
+\begin{itemize}
+  \item MTA SkillLab Sdn Bhd, \textit{i-Factory Training Manual --- IIoT System Development Level 1}, Module 4: Dashboard Viewing and Analysis.
+  \item Advantech WISE-PaaS/Dashboard product documentation.
+\end{itemize}
+\end{labsection}

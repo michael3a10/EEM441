@@ -1,0 +1,169 @@
+% ============================================================
+%  Experiment 9 --- Project Creation in SCADA (IoT)
+%  Sourced from the department's i-Factory IIoT Training Manual,
+%  Module 3: Project Creation in SCADA.
+% ============================================================
+\experimentheader{9}{Experiment 9}{Project Creation in SCADA (IoT)}{IoT Lab}
+
+\begin{objectives}
+  \begin{enumerate}
+    \item To understand the role and capabilities of SCADA software in an industrial IoT system.
+    \item To create a working SCADA project, including a Project Node and a SCADA Node.
+    \item To configure a communication link (Comport) between the SCADA node and an automation device.
+    \item To create and configure IO Tags and Internal Tags for real-time data acquisition.
+    \item To configure basic alarms on analog and discrete tags.
+  \end{enumerate}
+\end{objectives}
+
+\begin{equipment}
+  \begin{itemize}
+    \item PC/laptop with Advantech WebAccess/SCADA installed (Project Node and SCADA Node)
+    \item Siemens S7-1200 PLC (or equivalent), with an existing ladder-logic program and known I/O/DB addressing
+    \item Ethernet cable and a configured local network connection between the PC and the PLC
+    \item TIA Portal (or equivalent Siemens engineering software) for reference to the PLC's tag addresses
+  \end{itemize}
+\end{equipment}
+
+\begin{introduction}
+  Supervisory Control and Data Acquisition (SCADA) software sits between the plant floor and the people (or systems) that need to monitor and control it. It collects real-time data from automation devices --- PLCs, controllers, direct digital control (DDC) systems, and distributed control systems (DCS) --- and presents that data through live displays, trends, alarms, and reports.
+  \vspace*{1.5em}
+
+  Advantech WebAccess/SCADA, used in this experiment, is a 100\% web-based SCADA package: projects are developed and accessed through a standard web browser, rather than a dedicated desktop client. This lowers the barrier to remote monitoring and multi-site deployment, and it integrates directly with IoT dashboards and cloud platforms via MQTT.
+  \vspace*{1.5em}
+
+  A WebAccess/SCADA system is built from three components:
+  \begin{itemize}
+    \item \textbf{Project Node} --- the development platform and web server. All project configuration, graphics, and database files are stored here, and every client connects to it first.
+    \item \textbf{SCADA Node} --- runs the real-time Kernel (\texttt{datacore.exe}), which uses communication drivers to talk to automation hardware (PLCs, I/O modules, controllers) and supplies live data to clients.
+    \item \textbf{ViewDAQ Client} --- the browser-based interface used to monitor and control the SCADA node: viewing live graphics, historical trends, and alarms, and adjusting set points.
+  \end{itemize}
+  In a small setup (as in this lab), the Project Node and SCADA Node commonly run on the same machine.
+  \vspace*{1.5em}
+
+  Data inside WebAccess/SCADA is represented as \textbf{Tags}. There are two broad categories:
+  \begin{itemize}
+    \item \textbf{IO Tags} --- real-time measurements and outputs read from, or written to, an automation device. IO Tags can be Analog (floating-point), Discrete (an integer 0--7, commonly used as a 0/1 digital value), or Text (an ASCII string up to 72 characters).
+    \item \textbf{Internal Tags} --- values that exist inside the SCADA software itself rather than being read from a device: \textbf{Constant} tags (a user-defined fixed or operator-editable value), \textbf{Calculation} tags (a mathematical/logical expression over up to 20 other tags), and \textbf{Accumulation} tags (an integration/totaliser over another tag, e.g.\ totalising flow into volume).
+  \end{itemize}
+  Both tag categories share the same alarm, security, logging, and reporting features once created.
+\end{introduction}
+
+\needspace{6cm}
+\begin{boxedtable}
+  \captionof{table}{Example Siemens S7-1200 address mapping to WebAccess tag addressing.}
+  \label{tab:exp9scada-addrmap}
+  {\renewcommand{\arraystretch}{1.5}
+    \centering
+    \begin{tabular}{llcl}
+      \toprule
+      Siemens S7-1200 address & Data type & Length (bits) & WebAccess address    \\
+      \midrule
+      \%I0.4                  & Bool      & 1             & IX000 (start bit 4)  \\
+      \%Q0.3                  & Bool      & 1             & QX000 (start bit 3)  \\
+      \%M0.4                  & Bool      & 1             & MX000 (start bit 4)  \\
+      \%MW0                   & UInt      & 16            & MW000 (start bit 0)  \\
+      \%IW6.4                 & UInt      & 16            & IW006 (start bit 4)  \\
+      \%DB1.DBX2.0            & Bool      & 1             & DBX1.2 (start bit 0) \\
+      \%DB3.DBW10             & UInt      & 16            & DBW3,10              \\
+      \%DB3.DBD14             & Real      & 64            & DBD3,14              \\
+      \bottomrule
+    \end{tabular}
+  }
+  \vspace{4pt}
+
+  \small\textit{Note: for tags addressed inside a Data Block (DB), the offset must be enabled in the block's properties in TIA Portal, since WebAccess addresses DB tags by block number plus offset.}
+\end{boxedtable}
+\newpage
+
+\begin{procedure}
+
+  \textbf{Activity 1 --- Create a new SCADA project}\vspace{2pt}
+
+  \textit{Objective: create a Project Node and SCADA Node in WebAccess/SCADA.}
+
+  \begin{enumerate}
+    \item Open a web browser and navigate to \texttt{127.0.0.1} (or \texttt{localhost}) to reach the WebAccess/SCADA landing page.
+
+          \begin{boxedfigure}
+            \centering
+            \includegraphics[width=\linewidth]{figures/Exp9_Figure_1.png}
+            \captionof{figure}{DAC0800 test circuit with op-amp output stage.}
+            \label{fig:exp9-webaccess}
+          \end{boxedfigure}
+
+    \item Create a new project: enter a \textbf{Project Name} and \textbf{Project Description}, and set the \textbf{Project Node IP Address} (use \texttt{127.0.0.1} for a local machine, or the PC's hostname).
+    \item Leave the \textbf{Primary TCP Port} (default \texttt{4592}) and \textbf{HTTP Port} (default \texttt{80}) at their defaults unless your network/firewall requires otherwise, then click \textbf{Submit}.
+    \item Select the Project Node in the tree structure, click \textbf{+}, and choose \textbf{New Node} to create the SCADA Node. Fill in the Primary Node Name, Primary/Secondary TCP Port, Node Timeout, and SCADA Node IP Address.
+    \item Start the Kernel on the SCADA Node (\textbf{Start Kernel} from the SCADA Node menu) and confirm it is running by hovering over the WebAccess/SCADA icon, which should report the running project and node name.
+  \end{enumerate}
+  \vspace*{1.5em}
+
+  \textbf{Activity 2 --- Configure a communication port and add a device}\vspace{2pt}
+
+  \textit{Objective: create the physical/virtual link (Comport) between the SCADA node and the PLC, and add the PLC as a device on that port.}
+
+  \begin{enumerate}
+    \item Under the SCADA Node, add a new \textbf{Comport}. Select the interface type appropriate to your connection:
+          \begin{itemize}
+            \item \textbf{Serial} --- an RS232/RS422/RS485 port (COM1, COM2, \ldots) on the SCADA node PC.
+            \item \textbf{TCP/IP} --- the most common choice for PLCs and IoT devices; WebAccess/SCADA searches all TCP/IP network cards regardless of the assigned Comport number.
+            \item \textbf{OPC} --- via an OPC Server, for virtual/software-based links.
+          \end{itemize}
+    \item Configure the port: Port Number, Scan Time (e.g.\ \texttt{1000\,ms}), and Auto-recover Time.
+    \item Under the configured Comport, add a new \textbf{Device}, selecting the correct Device Type/Driver for your hardware (e.g.\ Siemens S7-1200, Modbus TCP, Allen-Bradley).
+    \item Enter the device's communication parameters (IP address, station ID, or baud rate for serial links) and save.
+  \end{enumerate}
+  \vspace*{1.5em}
+
+  \textbf{Activity 3 --- Create IO Tags}\vspace{2pt}
+
+  \textit{Objective: create IO Tags that map to real signals in the PLC program.}
+
+  \begin{enumerate}
+    \item Identify at least four signals in your PLC program to bring into SCADA --- for example, a Start pushbutton, a Stop pushbutton, an Emergency-stop input, and one analog or word-type value (e.g.\ a counter or measured value).
+    \item For each signal, determine its native PLC address and convert it to the equivalent WebAccess address using Table~\ref{tab:exp9scada-addrmap} as a reference (e.g.\ \texttt{\%DB1.DBX0.1} for a Start pushbutton, \texttt{\%DB1.DBX0.3} for Stop, \texttt{\%DB1.DBX0.0} for E-stop).
+    \item Under the Device, click the tag icon and \textbf{Insert} a new tag for each signal. Fill in the Tag Type, Tag Name, Address, Start Bit, Conversion Code, and Length fields to match your PLC addressing.
+    \item Save your tags, then verify each one updates correctly by forcing the corresponding input/output in the PLC and observing the tag's live value in WebAccess.
+  \end{enumerate}
+  \vspace*{1.5em}
+
+  \textbf{Activity 4 --- Create Internal Tags}\vspace{2pt}
+
+  \textit{Objective: create at least one Constant Tag and one Calculation Tag.}
+
+  \begin{enumerate}
+    \item Under \textbf{Const Point} on the SCADA Node, insert a new Constant Tag (analog type, \texttt{ConAna}, or discrete type, \texttt{ConDis}) --- for example, a user-adjustable setpoint value.
+    \item Under \textbf{Calc Point} on the SCADA Node, insert a new Calculation Tag. Choose an analog or discrete result type, then write a mathematical/logical expression referencing one or more of your IO Tags (tags are referenced in the formula by their single-letter designations; the expression is limited to 80 characters).
+    \item Save and verify that the Calculation Tag's value updates correctly as its input tag(s) change.
+  \end{enumerate}
+  \vspace*{1.5em}
+
+  \textbf{Activity 5 --- Configure a basic alarm}\vspace{2pt}
+
+  \textit{Objective: enable alarming on at least one analog tag and one discrete tag.}
+
+  \begin{enumerate}
+    \item Open the configuration for one of your Analog IO Tags and enable a non-zero alarm priority. Analog tags support High-High, High, Low, Low-Low, Deviation, and Rate-of-Change alarms --- choose whichever is appropriate to the signal you selected.
+    \item Open the configuration for one of your Discrete IO Tags and enable state alarming (e.g.\ alarm when the E-stop input becomes active).
+    \item Trigger each alarm condition on the PLC side and confirm that the alarm appears correctly in WebAccess.
+  \end{enumerate}
+
+\end{procedure}
+
+\begin{reportq}
+  \begin{enumerate}
+    \item List the Project Node and SCADA Node settings you used (IP address, ports, node names), and explain the role each plays in the system.
+    \item Present your Comport and Device configuration, including which interface type (Serial/TCP-IP/OPC) you selected and why it was appropriate for your hardware.
+    \item Tabulate the IO Tags you created: PLC address, WebAccess address, tag type, and a description of what each represents.
+    \item Present your Constant Tag and Calculation Tag configurations, including the expression used for the Calculation Tag and what it computes.
+    \item Describe the alarm(s) you configured and demonstrate (with a screenshot or description of your test) that each triggers correctly.
+    \item Discuss one advantage of WebAccess/SCADA's 100\% web-based architecture compared to a traditional desktop-client SCADA system.
+  \end{enumerate}
+\end{reportq}
+
+\begin{labsection}{References}{}
+  \begin{itemize}
+    \item MTA SkillLab Sdn Bhd, \textit{i-Factory Training Manual --- IIoT System Development Level 1}, Module 3: Project Creation in SCADA.
+    \item Advantech WebAccess/SCADA product documentation: \url{https://www.advantech.com/en/support/details/installation?id=1-MS9MJV}
+  \end{itemize}
+\end{labsection}

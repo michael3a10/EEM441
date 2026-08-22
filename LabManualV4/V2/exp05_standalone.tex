@@ -1,0 +1,22 @@
+% !TEX program = lualatex
+% !TeX program = lualatex
+% !TEX TS-program = lualatex
+% ============================================================
+%  EEM 441 -- Experiment 5 (standalone / V2)
+%  Self-contained single-experiment build: fillable lab report
+%  cover page + this experiment's full content. Compile 3x with
+%  lualatex from inside this V2/ folder (no -shell-escape needed).
+% ============================================================
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+
+\begin{document}
+
+\pagestyle{fancy}
+\setcounter{page}{1}
+
+\labcoverpage{5}{INTERFACING FPGA TO AN ANALOG-TO-DIGITAL CONVERTER}
+
+\input{../experiments/exp05_adc.tex}
+
+\end{document}

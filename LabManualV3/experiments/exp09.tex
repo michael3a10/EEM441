@@ -82,18 +82,33 @@
   \textit{Objective: create a Project Node and SCADA Node in WebAccess/SCADA.}
 
   \begin{enumerate}
-    \item Open a web browser and navigate to \texttt{127.0.0.1} (or \texttt{localhost}) to reach the WebAccess/SCADA landing page.
+    \item Open a web browser and navigate to \texttt{127.0.0.1} (or \texttt{localhost}) to reach the WebAccess/SCADA landing page as in Figure~\ref{fig:exp9-webaccess}. \\[5pt]
+          Default Account: admin\\[3pt]
+          Default Password: (blank)
 
           \begin{boxedfigure}
             \centering
-            \includegraphics[width=\linewidth]{figures/Exp9_Figure_1.png}
-            \captionof{figure}{DAC0800 test circuit with op-amp output stage.}
+            \includegraphics[width=0.8\linewidth]{figures/Exp9_Figure_1.png}
+            \captionof{figure}{WebAccess landing page}
             \label{fig:exp9-webaccess}
           \end{boxedfigure}
 
-    \item Create a new project: enter a \textbf{Project Name} and \textbf{Project Description}, and set the \textbf{Project Node IP Address} (use \texttt{127.0.0.1} for a local machine, or the PC's hostname).
+    \item Create a new project: enter a \textbf{Project Name} and \textbf{Project Description}, and set the \textbf{Project Node IP Address} (use \texttt{127.0.0.1} for a local machine, or the PC's hostname) as in Figure~\ref{fig:exp9-projectcreate}.
+          \begin{boxedfigure}
+            \centering
+            \includegraphics[width=0.8\linewidth]{figures/Exp9_Figure_2.png}
+            \captionof{figure}{New project creation.}
+            \label{fig:exp9-projectcreate}
+          \end{boxedfigure}
+
     \item Leave the \textbf{Primary TCP Port} (default \texttt{4592}) and \textbf{HTTP Port} (default \texttt{80}) at their defaults unless your network/firewall requires otherwise, then click \textbf{Submit}.
-    \item Select the Project Node in the tree structure, click \textbf{+}, and choose \textbf{New Node} to create the SCADA Node. Fill in the Primary Node Name, Primary/Secondary TCP Port, Node Timeout, and SCADA Node IP Address.
+    \item Select the Project Node in the tree structure, click \textbf{+}, and choose \textbf{New Node} to create the SCADA Node. Fill in the Primary Node Name, Primary/Secondary TCP Port, Node Timeout, and SCADA Node IP Address. Refer to Figure~\ref{fig:exp9-scadanode}.
+          \begin{boxedfigure}
+            \centering
+            \includegraphics[width=0.8\linewidth]{figures/Exp9_Figure_3.png}
+            \captionof{figure}{New project creation.}
+            \label{fig:exp9-scadanode}
+          \end{boxedfigure}
     \item Start the Kernel on the SCADA Node (\textbf{Start Kernel} from the SCADA Node menu) and confirm it is running by hovering over the WebAccess/SCADA icon, which should report the running project and node name.
   \end{enumerate}
   \vspace*{1.5em}
@@ -106,12 +121,24 @@
     \item Under the SCADA Node, add a new \textbf{Comport}. Select the interface type appropriate to your connection:
           \begin{itemize}
             \item \textbf{Serial} --- an RS232/RS422/RS485 port (COM1, COM2, \ldots) on the SCADA node PC.
-            \item \textbf{TCP/IP} --- the most common choice for PLCs and IoT devices; WebAccess/SCADA searches all TCP/IP network cards regardless of the assigned Comport number.
+            \item \textbf{TCP/IP} --- the most common choice for PLCs and IoT devices; WebAccess/SCADA searches all TCP/IP network cards regardless of the assigned Comport number (Figure~\ref{fig:exp9-comport}).
+                  \begin{boxedfigure}
+                    \centering
+                    \includegraphics[width=0.8\linewidth]{figures/Exp9_Figure_4.png}
+                    \captionof{figure}{COMPort selection.}
+                    \label{fig:exp9-comport}
+                  \end{boxedfigure}
             \item \textbf{OPC} --- via an OPC Server, for virtual/software-based links.
           \end{itemize}
     \item Configure the port: Port Number, Scan Time (e.g.\ \texttt{1000\,ms}), and Auto-recover Time.
-    \item Under the configured Comport, add a new \textbf{Device}, selecting the correct Device Type/Driver for your hardware (e.g.\ Siemens S7-1200, Modbus TCP, Allen-Bradley).
+    \item Under the configured Comport, add a new \textbf{Device}, selecting the correct Device Type/Driver for your hardware (e.g.\ Siemens S7-1200, Modbus TCP, Allen-Bradley) as in Figure~\ref{fig:exp9-S71200Config}.
     \item Enter the device's communication parameters (IP address, station ID, or baud rate for serial links) and save.
+          \begin{boxedfigure}
+            \centering
+            \includegraphics[width=0.8\linewidth]{figures/Exp9_Figure_5.png}
+            \captionof{figure}{s7s-1200 device configuration.}
+            \label{fig:exp9-S71200Config}
+          \end{boxedfigure}
   \end{enumerate}
   \vspace*{1.5em}
 

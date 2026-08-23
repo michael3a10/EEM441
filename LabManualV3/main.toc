@@ -8,5 +8,5 @@
 \contentsline {section}{Experiment 7: DC Motor Speed Measurement System}{51}{section*.7}%
 \contentsline {section}{Experiment 8: Temperature Control System}{58}{section*.8}%
 \contentsline {section}{Experiment 9: Project Creation in SCADA (IoT)}{63}{section*.9}%
-\contentsline {section}{Experiment 10: Dashboard Visualization and Analysis (IoT)}{69}{section*.10}%
+\contentsline {section}{Experiment 10: Dashboard Visualization and Analysis (IoT)}{70}{section*.10}%
 \contentsfinish 

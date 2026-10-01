@@ -5,8 +5,8 @@
 \contentsline {section}{Experiment 4: LCD Interfacing to Altera DE2 Board, and Stepper Motor Control with FPGA}{25}{section*.4}%
 \contentsline {section}{Experiment 5: Interfacing FPGA to Analog-to-Digital Converter}{42}{section*.5}%
 \contentsline {section}{Experiment 6: Interfacing FPGA to Digital-to-Analog Converter}{47}{section*.6}%
-\contentsline {section}{Experiment 7: DC Motor Speed Measurement System}{51}{section*.7}%
-\contentsline {section}{Experiment 8: Temperature Control System}{58}{section*.8}%
+\contentsline {section}{Experiment 7: Computer-Based Motor Speed Measurement}{51}{section*.7}%
+\contentsline {section}{Experiment 8: Temperature Control Using Raspberry Pi}{58}{section*.8}%
 \contentsline {section}{Experiment 9: Project Creation in SCADA (IoT)}{63}{section*.9}%
-\contentsline {section}{Experiment 10: Dashboard Visualization and Analysis (IoT)}{70}{section*.10}%
+\contentsline {section}{Experiment 10: Dashboard Visualization and Analysis (IoT)}{75}{section*.10}%
 \contentsfinish 

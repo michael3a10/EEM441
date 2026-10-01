@@ -29,6 +29,16 @@
   In most measurement processes it is often necessary to acquire data automatically, without a human operator. A computer-based instrument has several advantages over conventional measuring instruments: it can acquire measurements quickly and accurately, sustain real-time control, and operate for extended periods with consistent precision.\vspace*{10pt}
 
   A computer-based measurement system typically contains the following elements (Figure~\ref{fig:exp7-daq-overview}): a transducer, a signal-conditioning stage, data-acquisition hardware, and software running on the host PC.\newpage
+
+  \textbf{Signal conditioning} means manipulating an analogue signal so that it meets the requirements of the next processing stage --- most commonly, so that it is suitable for a digital input. Signal conditioning can include amplification, filtering, range matching, and isolation.\vspace*{10pt}
+
+  \textbf{Filtering} is the most common signal-conditioning function: frequencies that do not carry valid data are attenuated. In this experiment the encoder produces a pulse train whose useful frequency content is bounded, and any filter used ahead of the DAQ card should be designed --- not assumed --- around that bound.\vspace*{10pt}
+
+  \textbf{Amplification} increases the resolution of the input signal and improves its signal-to-noise ratio.\vspace*{10pt}
+
+  \textbf{Isolation} allows a signal to pass from its source to the measurement device without a direct physical (galvanic) connection, protecting sensitive equipment from the signal source and vice versa. The PCI-1750 already provides 2500\,VDC onboard isolation, but an additional opto-isolation stage ahead of it (e.g.\ a PC817/4N25 optocoupler) further protects the card from ground loops and inductive kickback originating at the sensor trainer.\vspace*{10pt}
+
+  \textbf{The Sallen--Key topology} is a widely used active-filter structure, valued for its simplicity: it realises a two-pole (12\,dB/octave) low-pass, high-pass, or band-pass response using a single op-amp configured as a near-unity-gain voltage-controlled voltage source (VCVS), together with two resistors and two capacitors that set the cutoff frequency and $Q$.
 \end{introduction}
 \vspace*{1.5em}
 
@@ -56,6 +66,7 @@
     \item \textbf{Maximum voltage tolerance (0--5\,V TTL limit).} The PCI-1750's digital input channels require standard 0--5\,V TTL logic levels. Never connect a raw sensor signal exceeding 5\,V directly to the DAQ card input. Measure the raw pulse voltage amplitude with the DSO \emph{before} making any DAQ card connection.
   \end{enumerate}
 \end{safetybox}
+\newpage
 
 \begin{procedure}
 
@@ -71,7 +82,6 @@
     \item Design the necessary filter based on the cutoff frequency determined above. Justify your design choices.
     \item Design the signal-conditioning circuit needed to present the filtered encoder pulses to the PCI-1750's digital input with valid 0--5\,V TTL logic levels. Justify your design choices.
   \end{enumerate}
-  \newpage
 
   \textbf{Activity 2 --- Interfacing to the DAQ hardware}\vspace{2pt}
 
@@ -101,6 +111,7 @@
     \captionof{figure}{Signal path from the DC motor trainer to the host PC.}
     \label{fig:exp7-signalpath}
   \end{boxedfigure}
+  \newpage
 
   \textbf{Activity 3 --- Speed measurement software}\vspace{2pt}
 
@@ -115,7 +126,7 @@
     \text{RPM} = 60f, \qquad
     \omega = 2\pi f \ \left[\text{rad/s}\right]
   \]
-  where $P$ is the encoder's pulse resolution (pulses per revolution).
+  where $P$ is the encoder's pulse resolution (pulses per revolution). This method gives better resolution at high speed (many pulses arrive quickly, so $T_N$ is measured over a longer, more precise interval) but responds more slowly at low speed, since a full count of $N$ pulses can take a long time.
   \vspace*{1.5em}
 
   \textbf{Method 2 --- Fixed-Count (by period, $1\leq T \leq 9$\,s):} the user specifies a measurement window $T$ seconds; the software counts the number of pulses $N_T$ that occur within that window, then computes
@@ -124,7 +135,6 @@
     \text{RPM} = 60f, \qquad
     \omega = 2\pi f \ \left[\text{rad/s}\right]
   \]
-  \newpage
 
   In both methods, $t_{\text{start}}$ and $t_{\text{stop}}$ (marking the beginning and end of the measurement) are obtained from the PCI-1750's counter/timer using
   \[
@@ -132,14 +142,44 @@
   \]
   where $\text{CLK\_TCK}$ is the counter's clock tick rate.
 
+  \begin{boxedfigure}
+    \centering
+    \begin{tikzpicture}[node distance=7mm and 10mm]
+      \node[startstop] (start) {Start};
+      \node[block, below=of start] (init) {Initialise PCI-1750};
+      \node[block, below=of init] (select) {User selects method:\\Fixed-Time ($N$) or Fixed-Count ($T$)};
+      \node[decision, below=of select, minimum width=2.6cm] (mode) {Method?};
+      \node[block, below left=10mm and -4mm of mode] (bycounts) {Measure elapsed\\time $T_N$ for $N$ pulses};
+      \node[block, below right=10mm and -4mm of mode] (bytime) {Count pulses $N_T$\\within window $T$};
+      \node[block, below=26mm of mode] (calc) {Compute $f$, RPM, $\omega$};
+      \node[block, below=of calc] (disp) {Display / log result};
+      \node[decision, below=of disp, minimum width=2.6cm] (dec) {End of\\measurement?};
+      \node[startstop, below=of dec] (end) {End};
+
+      \draw[arr] (start) -- (init);
+      \draw[arr] (init) -- (select);
+      \draw[arr] (select) -- (mode);
+      \draw[arr] (mode.west) -| (bycounts) node[pos=0.25, above, font=\small,xshift=-10pt] {Fixed-Time};
+      \draw[arr] (mode.east) -| (bytime) node[pos=0.25, above, font=\small, xshift=10pt] {Fixed-Count};
+      \draw[arr] (bycounts) |- (calc.west);
+      \draw[arr] (bytime) |- (calc.east);
+      \draw[arr] (calc) -- (disp);
+      \draw[arr] (disp) -- (dec);
+      \draw[arr] (dec) -- (end) node[midway, right, font=\small] {Yes};
+      \draw[arr] (dec.east) -- ++(2.6,0) |- (select.east) node[pos=0.25, above, font=\small, xshift=10pt] {No};
+    \end{tikzpicture}
+    \captionof{figure}{Measurement loop for the speed-acquisition software.}
+    \label{fig:exp7-flowchart}
+  \end{boxedfigure}
+
   \begin{enumerate}
     \item In C, write a program that:
           \begin{itemize}
-            \item initialises the PCI-1750 via the vendor driver/SDK (counter and digital-input registers).
-            \item lets the user select the measurement method (Fixed-Time, $1 \leq N \leq 99$; or Fixed-Count, $1 \leq T \leq 9$\,s) and enter the corresponding parameter.
-            \item for the \emph{Fixed-Time} method: times how long it takes for $N$ encoder pulses to occur.
-            \item for the \emph{Fixed-Count} method: counts how many encoder pulses occur within the window $T$.
-            \item computes the frequency, RPM, and angular speed $\omega$ using the relations above, updating at least every 500\,ms.
+            \item initialises the PCI-1750 via the vendor driver/SDK (counter and digital-input registers),
+            \item lets the user select the measurement method (Fixed-Time, $1 \leq N \leq 99$; or Fixed-Count, $1 \leq T \leq 9$\,s) and enter the corresponding parameter, \newpage
+            \item for the \emph{Fixed-Time} method: times how long it takes for $N$ encoder pulses to occur,
+            \item for the \emph{Fixed-Count} method: counts how many encoder pulses occur within the window $T$,
+            \item computes the frequency, RPM, and angular speed $\omega$ using the relations above, updating at least every 500\,ms, and
             \item displays the running value (frequency and RPM, with the active method indicated) in a simple HMI, updating in real time, with out-of-range error detection.
           \end{itemize}
     \item Interface your filter/conditioning circuit and the PCI-1750 together and perform measurements across the motor's input voltage range (e.g.\ 3.0\,V to 12.0\,V in 1.5\,V increments), using both methods at each operating point. Compare your computed speed against a direct oscilloscope measurement of the encoder period at the same operating point.
@@ -169,8 +209,8 @@
       \end{tabular}
     }
   \end{boxedtable}
-  \newpage
 
+  \needspace{6cm}
   \begin{boxedtable}
     \captionof{table}{By-counts method --- RPM comparison table.}
     \label{tab:exp7-bycounts-rpm}
@@ -191,8 +231,8 @@
       \end{tabular}
     }
   \end{boxedtable}
-  \vspace*{10mm}
 
+  \needspace{6cm}
   \begin{boxedtable}
     \captionof{table}{By-period method: frequency comparison table.}
     \label{tab:exp7-bytime-freq}
@@ -213,8 +253,8 @@
       \end{tabular}
     }
   \end{boxedtable}
-  \vspace*{10mm}
 
+  \needspace{6cm}
   \begin{boxedtable}
     \captionof{table}{By-period method: RPM comparison table.}
     \label{tab:exp7-bytime-rpm}

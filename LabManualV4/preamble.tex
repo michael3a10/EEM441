@@ -114,6 +114,34 @@
   \par\medskip
 }
 
+% ---------- "Verified by / Date" sign-off box ----------
+% A small black-outlined, unfilled box placed beside a data table that
+% students fill in, for the instructor/demonstrator to initial and
+% date once readings are checked. \tablewithverify{<width>}{<table
+% content>} lays the table at the given width on the left and the
+% sign-off box on the right, matching the layout used on the paper lab
+% sheets.
+\newcommand{\verifiedbox}{%
+  \fcolorbox{black}{white}{%
+    \begin{minipage}[c][2.6cm][c]{3.1cm}
+      \small
+      Verified by\\[1.4em]
+      Date:
+    \end{minipage}%
+  }%
+}
+\newcommand{\tablewithverify}[2]{%
+  \noindent
+  \begin{minipage}[c]{#1}
+    #2
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{\dimexpr\linewidth-#1-1em\relax}
+    \centering
+    \verifiedbox
+  \end{minipage}%
+}
+
 % ---------- Hyperlinks ----------
 \usepackage[colorlinks=true, linkcolor=accentblue, urlcolor=accentblue, citecolor=accentblue]{hyperref}
 % xurl must load after hyperref: it makes \url break far more
@@ -415,24 +443,6 @@
   {\color{warnrule}\hrule height 0.6pt}%
   \vspace{0.3em}%
 }{%
-  \par\vspace{0.3em}%
-}
-
-% ---------- Safety / hardware-protection callout ----------
-\newenvironment{safetybox}{%
-  \par\vspace{0.6em}%
-  \begin{tcolorbox}[
-    enhanced, breakable,
-    colback=warnbg, colframe=warnrule,
-    boxrule=0.6pt, arc=2pt,
-    left=8pt, right=8pt, top=6pt, bottom=6pt,
-    title={\small\plexmedium\color{warnrule!50!black} Safety \& Hardware Protection},
-    fonttitle=\small, coltitle=warnrule!50!black,
-    colbacktitle=warnbg, boxsep=2pt,
-  ]%
-  \small
-}{%
-  \end{tcolorbox}%
   \par\vspace{0.3em}%
 }
 

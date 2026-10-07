@@ -71,9 +71,9 @@
 \end{boxedfigure}
 
 \begin{labsection}{Sensor Assignment}{}
-  Each lab group is assigned one primary sensor/parameter to monitor for this experiment. Working with a distinct analog or discrete signal per group ensures each team independently validates its own signal path (PLC addressing, tag configuration, alarm thresholds, and dashboard binding) rather than inheriting settings tuned for a different sensor type.
+  Each lab group is assigned one primary sensor/parameter to monitor for this experiment. Working with a distinct signal (or signal combination) per group ensures each team independently validates its own signal path (PLC addressing, tag configuration, alarm thresholds, and dashboard binding) rather than inheriting settings tuned for a different sensor type.
 
-  Refer to Table~\ref{tab:exp9-groups} for your group's assigned sensor, its PLC DB address, and the suggested tag prefix to use in WebAccess/SCADA.
+  Refer to Table~\ref{tab:exp9-groups} for your group's assigned sensor(s), PLC DB address(es), and the suggested tag prefix to use in WebAccess/SCADA.
   \newpage
 
   \begin{boxedtable}
@@ -81,20 +81,28 @@
     \label{tab:exp9-groups}
     \centering
     {\renewcommand{\arraystretch}{1.3}
-      \begin{tabular}{clll}
+      \begin{tabular}{p{1.3cm}p{5.4cm}p{3.6cm}p{2.6cm}}
         \toprule
-        Group & Sensor / Parameter             & PLC DB address & Suggested tag prefix \\
+        Group & Sensor / Parameter                               & PLC DB address            & Suggested tag prefix     \\
         \midrule
-        G1    & Temperature                    & DB3, DBD92     & \texttt{G1\_Temp}    \\
-        G2    & Relative humidity              & DB3, DBD88     & \texttt{G2\_Humid}   \\
-        G3    & Vibration --- Z-axis RMS       & DB3, DBD76     & \texttt{G3\_VibZ}    \\
-        G4    & Vibration --- X-axis RMS       & DB3, DBD72     & \texttt{G4\_VibX}    \\
-        G5    & Vibration sensor temperature   & DB3, DBD80     & \texttt{G5\_VibT}    \\
-        G6    & Laser distance (analog)        & DB3, DBD84     & \texttt{G6\_Dist}    \\
-        G7    & Good part count                & DB3, DBD12     & \texttt{G7\_GoodP}   \\
-        G8    & Defect part count              & DB3, DBD16     & \texttt{G8\_DefP}    \\
-        G9    & Machine OEE availability index & DB3, DBD24     & \texttt{G9\_Avail}   \\
-        G10   & Conveyor motor speed           & DB3, DBD32     & \texttt{G10\_MtrSpd} \\
+        G1    & Temperature                                      & DB3, DBD92                & \texttt{G1\_Temp}        \\
+        G2    & Relative humidity                                & DB3, DBD88                & \texttt{G2\_Humid}       \\
+        G3    & Vibration --- Z-axis RMS                         & DB3, DBD76                & \texttt{G3\_VibZ}        \\
+        G4    & Vibration --- X-axis RMS                         & DB3, DBD72                & \texttt{G4\_VibX}        \\
+        G5    & Vibration sensor temperature                     & DB3, DBD80                & \texttt{G5\_VibT}        \\
+        G6    & Laser distance (analog)                          & DB3, DBD84                & \texttt{G6\_Dist}        \\
+        G7    & Good part count                                  & DB3, DBD12                & \texttt{G7\_GoodP}       \\
+        G8    & Defect part count                                & DB3, DBD16                & \texttt{G8\_DefP}        \\
+        G9    & Machine OEE availability index                   & DB3, DBD24                & \texttt{G9\_Avail}       \\
+        G10   & Conveyor motor speed                             & DB3, DBD32                & \texttt{G10\_MtrSpd}     \\
+        G11   & Temperature + Emergency Stop state               & DB3, DBD92 \& DB1, DBX0.0 & \texttt{G11\_TempEstp}   \\
+        G12   & Relative humidity + Auto/Manual mode             & DB3, DBD88 \& DB1, DBX0.2 & \texttt{G12\_HumidMode}  \\
+        G13   & Vibration Z-axis + Motor-run indicator           & DB3, DBD76 \& DB1, DBX1.0 & \texttt{G13\_VibZRun}    \\
+        G14   & Laser distance + Proximity sensor                & DB3, DBD84 \& DB2, DBX0.1 & \texttt{G14\_DistProx}   \\
+        G15   & Good part count + Solenoid valve state           & DB3, DBD12 \& DB1, DBX2.1 & \texttt{G15\_GoodPValve} \\
+        G16   & Defect part count + Alarm beacon state           & DB3, DBD16 \& DB1, DBX2.3 & \texttt{G16\_DefPBcn}    \\
+        G17   & Vibration sensor temperature + Cooling fan state & DB3, DBD80 \& DB1, DBX2.5 & \texttt{G17\_VibTFan}    \\
+        G18   & Machine OEE availability index + Station reset   & DB3, DBD24 \& DB1, DBX0.5 & \texttt{G18\_OeeReset}   \\
         \bottomrule
       \end{tabular}
     }
@@ -102,8 +110,8 @@
 
   Every group also shares two common digital signals, regardless of assigned sensor: \textbf{Start} (DB1, DBX0.1), \textbf{Stop} (DB1, DBX0.3), and \textbf{Emergency Stop} (DB1, DBX0.0).
 
-  Include at least one of these as a discrete tag alongside your assigned analog sensor, so your dashboard has both a trend and a status indicator to display.
-\end{labsection}
+  Include at least one of these as a discrete tag alongside your assigned analog sensor, so your dashboard has both a trend and a status indicator to display. Groups 11--18 already have a second, group-specific discrete point assigned above and do not need to add another.
+\end{labsection}\newpage
 
 \begin{procedure}
 
@@ -115,7 +123,7 @@
     \item Open a web browser and navigate to \texttt{127.0.0.1} (or \texttt{localhost}) to reach the WebAccess/SCADA landing page. Select \textbf{Project Management} from the \textbf{Platform} drop-down and log in (default account \texttt{admin}, no password).
           \begin{boxedfigure}
             \centering
-            \includegraphics[width=0.75\linewidth]{figures/WebAccess_login_project_management.png}
+            \includegraphics[width=0.8\linewidth]{figures/WebAccess_login_project_management.png}
             \captionof{figure}{WebAccess/SCADA sign-in, with Project Management selected.}
             \label{fig:exp9-login}
           \end{boxedfigure}
@@ -129,7 +137,7 @@
     \item Create a \textbf{SCADA Node}: select your Project Node, click \textbf{+}, choose \textbf{New Node}, and fill in the Primary Node Name, TCP Ports, Node Timeout, and SCADA Node IP Address.
           \begin{boxedfigure}
             \centering
-            \includegraphics[width=\linewidth]{figures/WebAccess_insert_SCADA_node.png}
+            \includegraphics[width=0.8\linewidth]{figures/WebAccess_insert_SCADA_node.png}
             \captionof{figure}{Create New SCADA Node form.}
             \label{fig:exp9-newnode}
           \end{boxedfigure}
@@ -143,7 +151,7 @@
     \item Add a \textbf{Device} on that Comport: set Device Type to \texttt{SiemS7}, enter the PLC's IP address and port (\texttt{102}), and set the TSAP in hex for an S7-1200 (\texttt{01.01}).
           \begin{boxedfigure}
             \centering
-            \includegraphics[width=0.55\linewidth]{figures/WebAccess_insert_device_settings_1.png}
+            \includegraphics[width=0.5\linewidth]{figures/WebAccess_insert_device_settings_1.png}
             \captionof{figure}{Add Device form (S7-1200).}
             \label{fig:exp9-adddevice}
           \end{boxedfigure}
@@ -162,7 +170,7 @@
             \label{fig:exp9-viewdaq}
           \end{boxedfigure}
   \end{enumerate}
-  \vspace*{1.5em}
+  \newpage
 
   \textbf{Activity 2 --- Configure an alarm}\vspace{2pt}
 
@@ -185,7 +193,7 @@
             \label{fig:exp9-alarmtrend}
           \end{boxedfigure}
   \end{enumerate}
-  \vspace*{1.5em}
+  \newpage
 
   \textbf{Activity 3 --- Bridge SCADA to PostgreSQL via ODBC}\vspace{2pt}
 
@@ -199,7 +207,7 @@
             \includegraphics[width=0.8\linewidth]{figures/pgAdmin_addServer.png}
             \captionof{figure}{pgAdmin: registering the PostgreSQL server.}
             \label{fig:exp9-pgadminserver}
-          \end{boxedfigure}\newpage
+          \end{boxedfigure}
     \item Open \textbf{ODBC Data Source Administrator (32-bit)}, switch to the \textbf{System DSN} tab, click \textbf{Add}, and select \textbf{PostgreSQL Unicode}. Fill in the Data Source name, Database, Server, Port, Username, and Password to match the database you just created.
           \begin{boxedfigure}
             \centering
@@ -221,15 +229,15 @@
             \captionof{figure}{SCADA Node Edit Node: Data Log tab.}
             \label{fig:exp9-nodedatalog}
           \end{boxedfigure}
+          \newpage
     \item Download the project to the SCADA Node, then confirm in pgAdmin that rows are appearing in the corresponding log table (e.g.\ \texttt{bwanalogtable} for analog tags).
           \begin{boxedfigure}
             \centering
-            \includegraphics[width=\linewidth]{figures/pgAdmin_Table_query_result.png}
+            \includegraphics[width=0.8\linewidth]{figures/pgAdmin_Table_query_result.png}
             \captionof{figure}{pgAdmin: logged rows in the analog log table.}
             \label{fig:exp9-pgadminresult}
           \end{boxedfigure}
   \end{enumerate}
-  \newpage
 
   \textbf{Activity 4 --- Build a dashboard}\vspace{2pt}
 
@@ -240,7 +248,7 @@
     \item In the Dashboard app, open \textbf{Configuration} $\to$ \textbf{Data Sources} $\to$ \textbf{Add data source}, choose \textbf{PostgreSQL}, and enter the same connection details used for the ODBC bridge in Activity 3. Click \textbf{Save \& Test} and confirm a successful connection.
           \begin{boxedfigure}
             \centering
-            \includegraphics[width=\linewidth]{figures/WIISE_PAAS_add_data_source_postgresql.png}
+            \includegraphics[width=0.8\linewidth]{figures/WIISE_PAAS_add_data_source_postgresql.png}
             \captionof{figure}{Dashboard: Add PostgreSQL data source.}
             \label{fig:exp9-dashdatasource}
           \end{boxedfigure}
@@ -251,7 +259,7 @@
           \end{itemize}
           \begin{boxedfigure}
             \centering
-            \includegraphics[width=\linewidth]{figures/WIISE_PAAS_create_dashboard.png}
+            \includegraphics[width=0.8\linewidth]{figures/WIISE_PAAS_create_dashboard.png}
             \captionof{figure}{Dashboard panel query binding.}
             \label{fig:exp9-panelquery}
           \end{boxedfigure}
@@ -266,15 +274,15 @@
           \end{boxedfigure}
   \end{enumerate}
 
-\end{procedure}
+\end{procedure}\newpage
 
 \begin{reportq}
   \begin{enumerate}
     \item Draw the complete data pipeline for your system (PLC $\to$ SCADA $\to$ database $\to$ dashboard), labelling the protocol used at each stage.
-    \item State your assigned sensor, its PLC DB address, and the WebAccess tag configuration you used to bring it into SCADA.
+    \item State your assigned sensor(s), their PLC DB address(es), and the WebAccess tag configuration you used to bring them into SCADA.
     \item Describe the alarm you configured, including its threshold and priority, and show evidence (e.g.\ a screenshot of the Alarm Summary) that it triggers correctly.
     \item Describe your ODBC bridge configuration (DSN name, database, and the WebAccess ODBC data record source settings), and explain what would go wrong if \textbf{Log Data} were left disabled on your tag.
-    \item Present a screenshot of your finished dashboard, and explain why you chose the panel types you used for your sensor and alarm.\newpage
+    \item Present a screenshot of your finished dashboard, and explain why you chose the panel types you used for your sensor and alarm.
     \item Describe one problem you encountered in this experiment (in any layer of the pipeline) and how you diagnosed and resolved it.
   \end{enumerate}
 \end{reportq}
@@ -293,14 +301,48 @@
     \item Advantech WebAccess/SCADA product documentation.
     \item PostgreSQL ODBC driver (\texttt{psqlodbc}): \url{https://www.postgresql.org/ftp/odbc/versions/msi/}
   \end{itemize}
-\end{labsection}
+\end{labsection}\newpage
 
 \begin{labsection}{Appendix: Troubleshooting}{}
-  This experiment's pipeline has four layers (Table~\ref{tab:exp9-protocols}), and almost every symptom traces back to exactly one of them. Work backward from where the data visibly stops:
-  \begin{enumerate}
-    \item If the dashboard panel is blank, check whether the database has rows; if not, check whether SCADA shows a live value; if not, check the PLC connection.
-    \item If the database has no rows, check whether SCADA is configured to log data; if not, check whether the SCADA Node is running; if not, check the ODBC connection.
-    \item If SCADA shows no live value, check whether the tag is configured correctly; if not, check whether the Comport and Device are configured correctly; if not, check the PLC connection.
-  \end{enumerate}
+  This experiment's pipeline has four layers (Table~\ref{tab:exp9-protocols}), and almost every symptom traces back to exactly one of them. Work backward from where the data visibly stops --- if the dashboard panel is blank, check whether the database has rows; if not, check whether SCADA shows a live value; if not, check the PLC connection.
+
+  \begin{boxedtable}
+    \captionof{table}{Common symptoms and their likely cause.}
+    \label{tab:exp9-troubleshooting}
+    \centering
+    {\renewcommand{\arraystretch}{1.3}
+      \begin{tabular}{p{4.2cm}p{4.2cm}p{5.5cm}}
+        \toprule
+        Symptom                                                         & Likely layer                     & What to check                                                                                                                  \\
+        \midrule
+        Tag shows no value, or a constant 0, in ViewDAQ                 & PLC $\leftrightarrow$ SCADA      & PLC powered and reachable (ping); Comport/Device IP, port, and TSAP correct; PLC CPU in RUN mode, not STOP                     \\
+        Tag updates in ViewDAQ but PostgreSQL table is empty            & SCADA $\leftrightarrow$ Database & \textbf{Log Data} enabled on the tag; \textbf{Data Log to ODBC} enabled on the SCADA Node; Data Log Interval set to \texttt{0} \\
+        ODBC \textbf{Save \& Test} fails (SCADA or Dashboard side)      & Database connection              & PostgreSQL service running; DSN name, Server, Port (\texttt{5436}), Username, and Password all match exactly                   \\
+        Dashboard panel shows ``No data'' despite a working data source & Dashboard query                  & Correct table/tag selected in the panel's Query settings; time range not excluding all logged rows                             \\
+        Alarm never appears in the Alarm Summary                        & SCADA alarm configuration        & Alarm priority is non-zero; threshold value is actually crossed by the live signal, not just approached                        \\
+        \bottomrule
+      \end{tabular}
+    }
+  \end{boxedtable}
+
+  \begin{boxedfigure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/WebAccess_kernel_viewdaq.png}
+    \captionof{figure}{Kernel/ViewDAQ status --- confirm the Kernel is actually running before suspecting anything further down the pipeline.}
+    \label{fig:exp9-kernelicon}
+  \end{boxedfigure}
+
+  \begin{boxedfigure}
+    \centering
+    \includegraphics[width=\linewidth]{figures/WebAccess_ODBC_TestConnection.png}
+    \captionof{figure}{ODBC connection test.}
+    \label{fig:exp9-odbctest}
+  \end{boxedfigure}
+
+  \begin{boxedfigure}
+    \centering
+    \includegraphics[width=0.65\linewidth]{figures/pgAdmin_view_edit_data.png}
+    \captionof{figure}{Viewing/editing log table data in pgAdmin --- an empty result here points back to the SCADA-to-database layer.}
+    \label{fig:exp9-emptylog}
+  \end{boxedfigure}
 \end{labsection}
-%

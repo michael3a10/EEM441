@@ -14,7 +14,7 @@
 \begin{equipment}
   \begin{itemize}
     \item Raspberry Pi 4B
-    \item NTC NTC thermistor (or other temperature sensor) and trainer board with indicator LED
+    \item NTC thermistor (or other temperature sensor) and trainer board with indicator LED
     \item Analog-to-digital converter, \textbf{ADC0804}
     \item Operational amplifier, LM741
     \item Relay
@@ -23,13 +23,14 @@
     \item LEDs
     \item Power supply and connecting wires
   \end{itemize}
+  \vspace*{0.5em}
 \end{equipment}
 
 \begin{introduction}
-  In most industrial processes, there are possibilities when the temperature needs to be regulated automatically. For example, the temperature of fluid inside a reactor has to be controlled within a certain range in order to get a stable operation. In logic control, the temperature is controlled by switching the LED on or off when a certain critical value is reached, whereas fuzzy control needs a true definition of ``hot'' before the control operation.
+  In most industrial processes, there are possibilities when the temperature needs to be regulated automatically. For example, the temperature of fluid inside a reactor has to be controlled within a certain range in order to get a stable operation. In logic control, the temperature is controlled by switching the heater on or off when a certain critical value is reached, whereas fuzzy control needs a true definition of ``hot'' before the control operation.
   \vspace*{1.5em}
 
-  In this open-ended lab, students will design and implement a system to perform temperature control using a Raspberry Pi.The goal is to create a complete system that captures the temperature sensor reading, processes the information, displays the temperature, and turning a LED on or off based on the temperature.\newpage
+  In this open-ended lab, students will design and implement a system to perform temperature control using a Raspberry Pi. The goal is to create a complete system that captures the temperature sensor reading, processes the information, displays the temperature, and turns an LED on or off based on the temperature.\newpage
   An overall block diagram for the measurement system is shown in Figure~\ref{fig:exp8-blockdiagram}.
   \vspace*{1.5em}
 \end{introduction}
@@ -37,7 +38,7 @@
 \begin{boxedfigure}
   \centering
   \begin{tikzpicture}[node distance=10mm and 12mm]
-    \node[block] (therm) {NTC thermistor};
+    \node[block] (therm) {Thermistor};
     \node[block, right=of therm, minimum width=2.6cm] (cond) {Signal\\Conditioning\\Circuit};
     \node[block, right=of cond] (adc) {ADC};
     \node[block, right=of adc, minimum width=2.6cm] (rpi) {Raspberry\\Pi};
@@ -58,11 +59,11 @@
 
   \textbf{Activity 1 --- Signal-conditioning circuit design}\vspace{2pt}
 
-  \textit{Objective: design and build a circuit that converts the NTC thermistor's resistance to a voltage suitable for the ADC0804 input.}
+  \textit{Objective: design and build a circuit that converts the thermistor's resistance to a voltage suitable for the ADC0804 input.}
 
   \begin{enumerate}
-    \item Obtain the resistance--temperature characteristic for the NTC NTC thermistor from its datasheet, and determine the resistance range corresponding to the temperature range you intend to measure and control.
-    \item Design a signal-conditioning circuit that converts the NTC thermistor's resistance to a voltage. Calculate your component values and justify your design choices, including the expected output voltage range over your chosen temperature range.
+    \item Obtain the resistance--temperature characteristic for the NTC thermistor from its datasheet, and determine the resistance range corresponding to the temperature range you intend to measure and control.
+    \item Design a signal-conditioning circuit that converts the thermistor's resistance to a voltage. Calculate your component values and justify your design choices, including the expected output voltage range over your chosen temperature range.
     \item Include a voltage-follower (buffer) stage, based on the LM741, to eliminate loading effects between the conditioning circuit and the ADC0804 input.
     \item Build the circuit and verify its output voltage against a reference temperature measurement at two or more points, and check linearity/consistency with your design calculations.
   \end{enumerate}
@@ -70,57 +71,127 @@
 
   \textbf{Activity 2 --- Configure and test the ADC}\vspace{2pt}
 
-  \textit{Objective: build and verify the ADC0804 circuit in isolation, before integrating them with the Raspberry Pi.}
+  \textit{Objective: build and verify the ADC0804 circuit in isolation, before integrating it with the Raspberry Pi.}
 
   \begin{enumerate}
     \item Configure and construct the ADC0804 in free-running mode, with its input connected to a potentiometer and its outputs connected to LEDs. Test that the LED pattern changes correctly as the potentiometer is adjusted.
+    \item Configure and construct the relay/BJT driver stage that will switch the heater (or indicator LED) on and off from a single digital output level. Test the stage directly (e.g.\ with a switch or a logic-level source) before connecting it to the Raspberry Pi, confirming the ON/OFF output you intend to use.
   \end{enumerate}
   \newpage
 
   \textbf{Activity 3 --- Interfacing to the Raspberry Pi}\vspace{2pt}
 
-  \textit{Objective: connect the ADC0804 to the Raspberry Pi via a bidirectional level shifter, and connect the output to the LED control circuit.}
+  \textit{Objective: connect the ADC0804 to the Raspberry Pi via a bidirectional level shifter, and connect a GPIO output to the heater control circuit.}
 
   \begin{enumerate}
     \item Connect the output of your signal-conditioning circuit (Activity 1) to the $V_{in}$ input of the ADC0804.
     \item Wire the ADC0804's 5\,V-side signals (D0--D7, $\overline{\text{INTR}}$, $\overline{\text{CS}}$, $\overline{\text{RD}}$, $\overline{\text{WR}}$) to the high-voltage (HV) side of a bidirectional level-shifter module, and the corresponding Raspberry Pi GPIO pins to the low-voltage (LV) side.
-    \item Connect the output to your LED control circuit (relay driven via the NPN 2N3904 transistor), which in turn drives the trainer's LED.
-    \item Verify both the input and output wiring with a simple test script before writing the full control program: confirm a static ADC reading is read back correctly, and confirm the LED can be toggled on and off.
+    \item Connect a Raspberry Pi GPIO output pin to your heater control circuit (relay driven via the NPN 2N3904 transistor), which in turn drives the trainer's heater/indicator LED.
+    \item Verify both the input and output wiring with a simple test script before writing the full control program: confirm a static ADC reading is read back correctly, and confirm the heater/LED can be toggled on and off by setting the GPIO output pin.
   \end{enumerate}
 
-  \textbf{Activity 4 --- Temperature monitoring and LED control algorithm}\vspace{2pt}
+  \textbf{Activity 4 --- Temperature monitoring and heater control software}\vspace{2pt}
 
-  \textit{Objective: implement algorithm that displays the measured temperature and controls the LED state according to a threshold.}
+  \textit{Objective: implement software that displays the measured temperature and controls the heater according to a threshold.}
 
   \begin{enumerate}
     \item In Python or C/C++, write a program that:
           \begin{itemize}
-            \item periodically triggers an ADC0804 conversion and reads back the digitised NTC thermistor voltage,
+            \item periodically triggers an ADC0804 conversion and reads back the digitised thermistor voltage,
             \item converts the reading to a temperature using your circuit's calibration from Activity 1,
             \item displays the current temperature in a simple terminal or GUI display, updating in real time, and
-            \item compares the measured temperature against the threshold and writes the corresponding ON/OFF level to control the LED.
+            \item compares the measured temperature against the threshold and sets the GPIO output level to control the heater.
           \end{itemize}
     \item Report and justify your design choice for the signal-conditioning circuit.
     \item Set the controlled (threshold) temperature to, for example, $20\,^{\circ}\text{C}$, and record the observed thermostat temperature for 35 minutes using a 1-minute time interval (Table~\ref{tab:exp8-results}). Plot temperature against time.
     \item Repeat for $23\,^{\circ}\text{C}$ and $25\,^{\circ}\text{C}$. Plot your results.
-    \item Discuss your findings, including the responsiveness of the LED control and the accuracy of your temperature conversion.
+    \item Discuss your findings, including the responsiveness of the heater control and the accuracy of your temperature conversion.
   \end{enumerate}
   \newpage
-
   \begin{boxedtable}
-    \captionof{table}{Temperature and LED-state log.}
-    \label{tab:exp8-results}
-    \centering
-    \begin{tabular}{cccc}
-      \toprule
-      Threshold temp. & Time (min) & Measured temp. & LED state \\
-      \midrule
-                      & 1          &                &           \\
-                      & 2          &                &           \\
-                      & \ldots     &                &           \\
-                      & 35         &                &           \\
-      \bottomrule
-    \end{tabular}
+    \tablewithverify{0.76\linewidth}{%
+      \centering
+      \captionof{table}{Temperature and heater-state log.}
+      \label{tab:exp8-results}
+      \footnotesize
+      {\renewcommand{\arraystretch}{1.15}
+        \begin{tabular}{|c|c|c|c|}
+          \hline
+          Threshold temp. & Time (min) & Measured temp. & Heater state \\
+          \hline
+                          & 1          &                &              \\
+          \hline
+                          & 2          &                &              \\
+          \hline
+                          & 3          &                &              \\
+          \hline
+                          & 4          &                &              \\
+          \hline
+                          & 5          &                &              \\
+          \hline
+                          & 6          &                &              \\
+          \hline
+                          & 7          &                &              \\
+          \hline
+                          & 8          &                &              \\
+          \hline
+                          & 9          &                &              \\
+          \hline
+                          & 10         &                &              \\
+          \hline
+                          & 11         &                &              \\
+          \hline
+                          & 12         &                &              \\
+          \hline
+                          & 13         &                &              \\
+          \hline
+                          & 14         &                &              \\
+          \hline
+                          & 15         &                &              \\
+          \hline
+                          & 16         &                &              \\
+          \hline
+                          & 17         &                &              \\
+          \hline
+                          & 18         &                &              \\
+          \hline
+                          & 19         &                &              \\
+          \hline
+                          & 20         &                &              \\
+          \hline
+                          & 21         &                &              \\
+          \hline
+                          & 22         &                &              \\
+          \hline
+                          & 23         &                &              \\
+          \hline
+                          & 24         &                &              \\
+          \hline
+                          & 25         &                &              \\
+          \hline
+                          & 26         &                &              \\
+          \hline
+                          & 27         &                &              \\
+          \hline
+                          & 28         &                &              \\
+          \hline
+                          & 29         &                &              \\
+          \hline
+                          & 30         &                &              \\
+          \hline
+                          & 31         &                &              \\
+          \hline
+                          & 32         &                &              \\
+          \hline
+                          & 33         &                &              \\
+          \hline
+                          & 34         &                &              \\
+          \hline
+                          & 35         &                &              \\
+          \hline
+        \end{tabular}
+      }%
+    }
   \end{boxedtable}
 
 \end{procedure}
@@ -128,19 +199,19 @@
 \begin{reportq}
   \begin{enumerate}
     \item Present your signal-conditioning circuit design (topology, calculations, component values) and its calibration against a reference temperature measurement.
-    \item Describe your ADC0804 interfacing to the Raspberry Pi, including your level-shifting solution and why a unidirectional buffer would not be sufficient here.
-    \item State and justify your chosen LED ON/OFF logic.
+    \item Describe your ADC0804 interfacing to the Raspberry Pi, including your level-shifting solution and why it is needed between the ADC0804's 5\,V logic and the Raspberry Pi's 3.3\,V GPIO.
+    \item State and justify your chosen heater ON/OFF logic.
     \item Present and discuss your temperature-vs-time plots for each threshold tested ($20\,^{\circ}\text{C}$, $23\,^{\circ}\text{C}$, $25\,^{\circ}\text{C}$).
     \item Assess the system's accuracy (e.g.\ $\pm 1\,^{\circ}\text{C}$ margin), response time after a setpoint change, and stability (absence of oscillation/overshoot).
-    \item What sources of error or lag affect the accuracy and responsiveness of this system (NTC thermistor thermal mass, signal-conditioning bandwidth, ADC conversion time, software polling rate, etc.)?
+    \item What sources of error or lag affect the accuracy and responsiveness of this system (thermistor thermal mass, signal-conditioning bandwidth, ADC conversion time, software polling rate, etc.)?
   \end{enumerate}
 \end{reportq}
 
 \begin{labsection}{Deliverables}{}
   \begin{enumerate}
-    \item \textbf{Code:} a programming script that accurately measures and displays the temperature based on sensor inputs, and controls the LED accordingly.
+    \item \textbf{Code:} a programming script that accurately measures and displays the temperature based on sensor inputs, and controls the heater accordingly.
     \item \textbf{System setup diagram:} a diagram showing the placement and wiring of sensors to the Raspberry Pi.
-    \item \textbf{Documentation:} a report that explains the setup, the temperature control process, sample readings, discussion, and any challenges encountered.
+    \item \textbf{Documentation:} a report that explains the setup, the temperature control process, sample readings, discussion, and any challenges encountered --- including your justification for omitting the DAC0800 (see Experimental Equipment).
     \item \textbf{Demo:} a short presentation or video demonstrating the working system and the collected data.
   \end{enumerate}
 \end{labsection}

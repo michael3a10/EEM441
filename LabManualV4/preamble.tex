@@ -418,6 +418,24 @@
   \par\vspace{0.3em}%
 }
 
+% ---------- Safety / hardware-protection callout ----------
+\newenvironment{safetybox}{%
+  \par\vspace{0.6em}%
+  \begin{tcolorbox}[
+    enhanced, breakable,
+    colback=warnbg, colframe=warnrule,
+    boxrule=0.6pt, arc=2pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    title={\small\plexmedium\color{warnrule!50!black} Safety \& Hardware Protection},
+    fonttitle=\small, coltitle=warnrule!50!black,
+    colbacktitle=warnbg, boxsep=2pt,
+  ]%
+  \small
+}{%
+  \end{tcolorbox}%
+  \par\vspace{0.3em}%
+}
+
 % ---------- Per-experiment numbering for figures/tables/listings ----------
 % expnum tracks "which experiment are we in"; figure/table/listing are
 % chained to it so they read as N.1, N.2, ... and reset at each new

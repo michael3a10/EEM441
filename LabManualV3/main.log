@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.10.1)  1 OCT 2026 16:35
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.10.7)  7 OCT 2026 14:44
  restricted system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/micha/Documents/GitHub/EEM441/LabManualV3/main
@@ -1772,7 +1772,80 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (./main.aux)
+ (./main.aux
+
+LaTeX Warning: Label `tab:exp9-protocols' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-pipeline' multiply defined.
+
+
+LaTeX Warning: Label `tab:exp9-groups' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-login' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-newproject' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-newnode' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-comport' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-adddevice' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-inserttag' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-viewdaq' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-alarmconfig' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-alarmtrend' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-pgadminserver' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-odbcadmin' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-odbcrecordsource' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-nodedatalog' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-pgadminresult' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-dashdatasource' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-panelquery' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-finisheddashboard' multiply defined.
+
+
+LaTeX Warning: Label `tab:exp9-troubleshooting' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-kernelicon' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-odbctest' multiply defined.
+
+
+LaTeX Warning: Label `fig:exp9-emptylog' multiply defined.
+
+)
 \openout1 = main.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -1870,7 +1943,7 @@ Package hyperref Info: Link coloring ON on input line 15.
 \openout4 = main.out
 \c@lstlisting=\count392
 Package babel Info: Main language set to 'english'.
-<figures/usm-logo.png, id=78, 1377.145pt x 843.15pt>
+<figures/usm-logo.png, id=82, 1377.145pt x 843.15pt>
 File: figures/usm-logo.png Graphic file (type png)
 <use figures/usm-logo.png>
 Package luatex.def Info: figures/usm-logo.png  used on input line 22.
@@ -1884,7 +1957,7 @@ logo.png>] (./main.toc)
 \openout5 = main.toc
 
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
-<figures/seee-emblem-watermark.png, id=104, 2341.74875pt x 803.0pt>
+<figures/seee-emblem-watermark.png, id=110, 2341.74875pt x 803.0pt>
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
@@ -1906,7 +1979,7 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 
 
 ] (./experiments/exp01.tex
-<figures/exp1-2-trainer.jpg, id=117, 2352.79pt x 1875.005pt>
+<figures/exp1-2-trainer.jpg, id=123, 2352.79pt x 1875.005pt>
 File: figures/exp1-2-trainer.jpg Graphic file (type jpg)
 <use figures/exp1-2-trainer.jpg>
 Package luatex.def Info: figures/exp1-2-trainer.jpg  used on input line 41.
@@ -1937,7 +2010,7 @@ Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line
 77.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
 [3<./figures/exp1-2-trainer.jpg>]
-<figures/exp1-2-controller.jpg, id=143, 1875.005pt x 2768.3425pt>
+<figures/exp1-2-controller.jpg, id=149, 1875.005pt x 2768.3425pt>
 File: figures/exp1-2-controller.jpg Graphic file (type jpg)
 <use figures/exp1-2-controller.jpg>
 Package luatex.def Info: figures/exp1-2-controller.jpg  used on input line 81.
@@ -2063,7 +2136,7 @@ Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line
 
 
 ]
-<figures/Exp3_Figure_1.png, id=292, 757.6305pt x 501.072pt>
+<figures/Exp3_Figure_1.png, id=298, 757.6305pt x 501.072pt>
 File: figures/Exp3_Figure_1.png Graphic file (type png)
 <use figures/Exp3_Figure_1.png>
 Package luatex.def Info: figures/Exp3_Figure_1.png  used on input line 60.
@@ -2098,7 +2171,7 @@ LaTeX Font Info:    Font shape `TU/JetBrainsMono(0)/m/n' will be
 (Font)              scaled to size 10.27296pt on input line 102.
 LaTeX Font Info:    Font shape `TU/JetBrainsMono(0)/b/n' will be
 (Font)              scaled to size 10.27296pt on input line 103.
-<figures/Exp3_Figure_2.png, id=312, 459.51675pt x 286.06876pt>
+<figures/Exp3_Figure_2.png, id=318, 459.51675pt x 286.06876pt>
 File: figures/Exp3_Figure_2.png Graphic file (type png)
 <use figures/Exp3_Figure_2.png>
 Package luatex.def Info: figures/Exp3_Figure_2.png  used on input line 127.
@@ -2121,7 +2194,7 @@ Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line
 146.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
  [18<./figures/Exp3_Figure_2.png>]
-<figures/Exp3_Figure_3.png, id=369, 257.16075pt x 235.47975pt>
+<figures/Exp3_Figure_3.png, id=375, 257.16075pt x 235.47975pt>
 File: figures/Exp3_Figure_3.png Graphic file (type png)
 <use figures/Exp3_Figure_3.png>
 Package luatex.def Info: figures/Exp3_Figure_3.png  used on input line 174.
@@ -2132,7 +2205,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 175.
 See the caption package documentation for explanation.
 
-<figures/Exp3_Figure_4.png, id=370, 752.8125pt x 221.02576pt>
+<figures/Exp3_Figure_4.png, id=376, 752.8125pt x 221.02576pt>
 File: figures/Exp3_Figure_4.png Graphic file (type png)
 <use figures/Exp3_Figure_4.png>
 Package luatex.def Info: figures/Exp3_Figure_4.png  used on input line 182.
@@ -2154,7 +2227,7 @@ Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line
 222.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
  [20<./figures/Exp3_Figure_4.png>]
-<figures/Exp3_Figure_6.png, id=427, 751.30687pt x 95.6072pt>
+<figures/Exp3_Figure_6.png, id=433, 751.30687pt x 95.6072pt>
 File: figures/Exp3_Figure_6.png Graphic file (type png)
 <use figures/Exp3_Figure_6.png>
 Package luatex.def Info: figures/Exp3_Figure_6.png  used on input line 226.
@@ -2187,7 +2260,7 @@ Overfull \hbox (3.0463pt too wide) in paragraph at lines 286--287
 0)/m/n/12 ), which
  []
 
-<figures/Exp3_Figure_7.png, id=455, 754.31813pt x 301.125pt>
+<figures/Exp3_Figure_7.png, id=461, 754.31813pt x 301.125pt>
 File: figures/Exp3_Figure_7.png Graphic file (type png)
 <use figures/Exp3_Figure_7.png>
 Package luatex.def Info: figures/Exp3_Figure_7.png  used on input line 333.
@@ -2235,7 +2308,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 52.
 See the caption package documentation for explanation.
 
-<figures/Exp4_Figure_1.png, id=532, 578.91281pt x 367.3725pt>
+<figures/Exp4_Figure_1.png, id=538, 578.91281pt x 367.3725pt>
 File: figures/Exp4_Figure_1.png Graphic file (type png)
 <use figures/Exp4_Figure_1.png>
 Package luatex.def Info: figures/Exp4_Figure_1.png  used on input line 86.
@@ -2276,7 +2349,7 @@ Overfull \hbox (19.18198pt too wide) in paragraph at lines 134--135
 12 )
  []
 
-<figures/Exp4_Figure_2.png, id=547, 755.82375pt x 268.75406pt>
+<figures/Exp4_Figure_2.png, id=553, 755.82375pt x 268.75406pt>
 File: figures/Exp4_Figure_2.png Graphic file (type png)
 <use figures/Exp4_Figure_2.png>
 Package luatex.def Info: figures/Exp4_Figure_2.png  used on input line 145.
@@ -2340,7 +2413,7 @@ Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line
 421.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
 [33]
-<figures/Exp4_Figure_3.png, id=774, 621.07031pt x 155.83218pt>
+<figures/Exp4_Figure_3.png, id=780, 621.07031pt x 155.83218pt>
 File: figures/Exp4_Figure_3.png Graphic file (type png)
 <use figures/Exp4_Figure_3.png>
 Package luatex.def Info: figures/Exp4_Figure_3.png  used on input line 427.
@@ -2374,7 +2447,7 @@ Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line
 588.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
  [36]
-<figures/Exp4_Motor.png, id=893, 202.50656pt x 176.15813pt>
+<figures/Exp4_Motor.png, id=899, 202.50656pt x 176.15813pt>
 File: figures/Exp4_Motor.png Graphic file (type png)
 <use figures/Exp4_Motor.png>
 Package luatex.def Info: figures/Exp4_Motor.png  used on input line 609.
@@ -2457,7 +2530,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 56.
 See the caption package documentation for explanation.
 
-<figures/Exp5_Figure_1.png, id=969, 624.08156pt x 239.39438pt>
+<figures/Exp5_Figure_1.png, id=975, 624.08156pt x 239.39438pt>
 File: figures/Exp5_Figure_1.png Graphic file (type png)
 <use figures/Exp5_Figure_1.png>
 Package luatex.def Info: figures/Exp5_Figure_1.png  used on input line 77.
@@ -2473,7 +2546,7 @@ Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line
 93.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
 [43<./figures/Exp5_Figure_1.png>]
-<figures/Exp5_Figure_2.png, id=985, 459.96844pt x 282.30469pt>
+<figures/Exp5_Figure_2.png, id=991, 459.96844pt x 282.30469pt>
 File: figures/Exp5_Figure_2.png Graphic file (type png)
 <use figures/Exp5_Figure_2.png>
 Package luatex.def Info: figures/Exp5_Figure_2.png  used on input line 99.
@@ -2531,7 +2604,7 @@ Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line
 
 
 ]
-<figures/Exp6_Figure_1.png, id=1037, 490.08093pt x 276.28218pt>
+<figures/Exp6_Figure_1.png, id=1043, 490.08093pt x 276.28218pt>
 File: figures/Exp6_Figure_1.png Graphic file (type png)
 <use figures/Exp6_Figure_1.png>
 Package luatex.def Info: figures/Exp6_Figure_1.png  used on input line 53.
@@ -2727,7 +2800,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--70
 [62
 
 ] (./experiments/exp09.tex
-Overfull \hbox (11.72717pt too wide) in paragraph at lines 23--24
+Overfull \hbox (11.72717pt too wide) in paragraph at lines 22--23
 []\TU/IBMPlexSans(0)/m/n/12 PC/lap-top with Ad-van-tech We-bAc-cess/SCADA V9.x 
 in-stalled (Project Node and SCADA
  []
@@ -2735,7 +2808,7 @@ in-stalled (Project Node and SCADA
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
-29.
+28.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
 [63
 
@@ -2743,50 +2816,298 @@ Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line
 ]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 42.
+(caption)                particular \caption on input line 41.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (12.49615pt too wide) in paragraph at lines 45--55
+Overfull \hbox (12.49615pt too wide) in paragraph at lines 44--54
  [][] 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 70.
+(caption)                particular \caption on input line 69.
 See the caption package documentation for explanation.
 
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
-78.
+77.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
 [64]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 81.
+(caption)                particular \caption on input line 80.
+See the caption package documentation for explanation.
+
+<figures/WebAccess_login_project_management.png, id=1224, 746.79pt x 502.12593p
+t>
+File: figures/WebAccess_login_project_management.png Graphic file (type png)
+<use figures/WebAccess_login_project_management.png>
+Package luatex.def Info: figures/WebAccess_login_project_management.png  used o
+n input line 118.
+(luatex.def)             Requested size: 331.73695pt x 223.05075pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 119.
 See the caption package documentation for explanation.
 
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
-123.
+122.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
-[65]
+[65<./figures/WebAccess_login_project_management.png>]
+<figures/WebAccess_add_new_project.png, id=1232, 1434.86063pt x 526.96875pt>
+File: figures/WebAccess_add_new_project.png Graphic file (type png)
+<use figures/WebAccess_add_new_project.png>
+Package luatex.def Info: figures/WebAccess_add_new_project.png  used on input l
+ine 125.
+(luatex.def)             Requested size: 442.31595pt x 162.44196pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 126.
+See the caption package documentation for explanation.
+
+<figures/WebAccess_insert_SCADA_node.png, id=1233, 653.44125pt x 182.18062pt>
+File: figures/WebAccess_insert_SCADA_node.png Graphic file (type png)
+<use figures/WebAccess_insert_SCADA_node.png>
+Package luatex.def Info: figures/WebAccess_insert_SCADA_node.png  used on input
+ line 132.
+(luatex.def)             Requested size: 442.31595pt x 123.31686pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 133.
+See the caption package documentation for explanation.
+
+<figures/WebAccess_SCADA_node_COMPORT_Settings.png, id=1234, 479.54156pt x 502.
+87875pt>
+File: figures/WebAccess_SCADA_node_COMPORT_Settings.png Graphic file (type png)
+
+<use figures/WebAccess_SCADA_node_COMPORT_Settings.png>
+Package luatex.def Info: figures/WebAccess_SCADA_node_COMPORT_Settings.png  use
+d on input line 139.
+(luatex.def)             Requested size: 221.15797pt x 231.91788pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 140.
+See the caption package documentation for explanation.
+
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
-149.
+143.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
- [66]
-Overfull \hbox (3.21913pt too wide) in paragraph at lines 157--158
+[66<./figures/WebAccess_add_new_project.png><./figures/WebAccess_insert_SCADA_no
+de.png><./figures/WebAccess_SCADA_node_COMPORT_Settings.png>]
+<figures/WebAccess_insert_device_settings_1.png, id=1248, 481.8pt x 498.36188pt
+>
+File: figures/WebAccess_insert_device_settings_1.png Graphic file (type png)
+<use figures/WebAccess_insert_device_settings_1.png>
+Package luatex.def Info: figures/WebAccess_insert_device_settings_1.png  used o
+n input line 146.
+(luatex.def)             Requested size: 243.27512pt x 251.63654pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 147.
+See the caption package documentation for explanation.
+
+<figures/WebAccess_insert_analog_tag_temp_sensor.png, id=1250, 635.37375pt x 49
+6.85625pt>
+File: figures/WebAccess_insert_analog_tag_temp_sensor.png Graphic file (type pn
+g)
+<use figures/WebAccess_insert_analog_tag_temp_sensor.png>
+Package luatex.def Info: figures/WebAccess_insert_analog_tag_temp_sensor.png  u
+sed on input line 153.
+(luatex.def)             Requested size: 353.8541pt x 276.72131pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 154.
+See the caption package documentation for explanation.
+
+<figures/WebAccess_kernel_viewdaq.png, id=1251, 328.97906pt x 208.52907pt>
+File: figures/WebAccess_kernel_viewdaq.png Graphic file (type png)
+<use figures/WebAccess_kernel_viewdaq.png>
+Package luatex.def Info: figures/WebAccess_kernel_viewdaq.png  used on input li
+ne 160.
+(luatex.def)             Requested size: 353.8541pt x 224.3012pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 161.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+161.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[67<./figures/WebAccess_insert_device_settings_1.png><./figures/WebAccess_insert
+_analog_tag_temp_sensor.png>]
+<figures/WebAccess_SCADA_TempEdit_alarm_settings.png, id=1264, 640.64343pt x 50
+4.38437pt>
+File: figures/WebAccess_SCADA_TempEdit_alarm_settings.png Graphic file (type pn
+g)
+<use figures/WebAccess_SCADA_TempEdit_alarm_settings.png>
+Package luatex.def Info: figures/WebAccess_SCADA_TempEdit_alarm_settings.png  u
+sed on input line 175.
+(luatex.def)             Requested size: 353.8541pt x 278.59749pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 176.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+182.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[68<./figures/WebAccess_kernel_viewdaq.png><./figures/WebAccess_SCADA_TempEdit_a
+larm_settings.png>]
+<figures/WebAccess_SCADA_TempEdit_real-time_trend.png, id=1275, 1290.32062pt x 
+726.46407pt>
+File: figures/WebAccess_SCADA_TempEdit_real-time_trend.png Graphic file (type p
+ng)
+<use figures/WebAccess_SCADA_TempEdit_real-time_trend.png>
+Package luatex.def Info: figures/WebAccess_SCADA_TempEdit_real-time_trend.png  
+used on input line 183.
+(luatex.def)             Requested size: 353.8541pt x 199.21844pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 184.
+See the caption package documentation for explanation.
+
+<figures/pgAdmin_addServer.png, id=1276, 1443.14156pt x 759.58781pt>
+File: figures/pgAdmin_addServer.png Graphic file (type png)
+<use figures/pgAdmin_addServer.png>
+Package luatex.def Info: figures/pgAdmin_addServer.png  used on input line 199.
+
+(luatex.def)             Requested size: 353.8541pt x 186.24551pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 200.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+206.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[69<./figures/WebAccess_SCADA_TempEdit_real-time_trend.png><./figures/pgAdmin_ad
+dServer.png>]
+<figures/ODBC_DSN_PostgreSQL.png, id=1290, 342.5297pt x 249.18094pt>
+File: figures/ODBC_DSN_PostgreSQL.png Graphic file (type png)
+<use figures/ODBC_DSN_PostgreSQL.png>
+Package luatex.def Info: figures/ODBC_DSN_PostgreSQL.png  used on input line 20
+6.
+(luatex.def)             Requested size: 353.8541pt x 257.43866pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 207.
+See the caption package documentation for explanation.
+
+<figures/ODBC_DSN_PostgreSQL_Settings.png, id=1291, 338.76563pt x 188.95593pt>
+File: figures/ODBC_DSN_PostgreSQL_Settings.png Graphic file (type png)
+<use figures/ODBC_DSN_PostgreSQL_Settings.png>
+Package luatex.def Info: figures/ODBC_DSN_PostgreSQL_Settings.png  used on inpu
+t line 213.
+(luatex.def)             Requested size: 353.8541pt x 197.38025pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 214.
+See the caption package documentation for explanation.
+
+<figures/WebAccess_ODBC_DataLog.png, id=1292, 1042.64531pt x 604.50844pt>
+File: figures/WebAccess_ODBC_DataLog.png Graphic file (type png)
+<use figures/WebAccess_ODBC_DataLog.png>
+Package luatex.def Info: figures/WebAccess_ODBC_DataLog.png  used on input line
+ 220.
+(luatex.def)             Requested size: 353.8541pt x 205.16118pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 221.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+221.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[70<./figures/ODBC_DSN_PostgreSQL.png><./figures/ODBC_DSN_PostgreSQL_Settings.pn
+g>]
+<figures/pgAdmin_Table_query_result.png, id=1303, 1435.61343pt x 769.37437pt>
+File: figures/pgAdmin_Table_query_result.png Graphic file (type png)
+<use figures/pgAdmin_Table_query_result.png>
+Package luatex.def Info: figures/pgAdmin_Table_query_result.png  used on input 
+line 227.
+(luatex.def)             Requested size: 353.8541pt x 189.63124pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 228.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+232.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[71<./figures/WebAccess_ODBC_DataLog.png><./figures/pgAdmin_Table_query_result.p
+ng>]
+Overfull \hbox (3.21913pt too wide) in paragraph at lines 240--242
 \TU/IBMPlexSans(0)/m/n/12 choose \TU/IBMPlexSans(0)/b/n/12 Post-greSQL\TU/IBMPl
 exSans(0)/m/n/12 , and en-ter the same con-nec-tion de-tails used for the ODBC 
 bridge
  []
 
+<figures/WIISE_PAAS_add_data_source_postgresql.png, id=1313, 737.00343pt x 328.
+22626pt>
+File: figures/WIISE_PAAS_add_data_source_postgresql.png Graphic file (type png)
 
-Overfull \hbox (9.0561pt too wide) in paragraph at lines 177--178
+<use figures/WIISE_PAAS_add_data_source_postgresql.png>
+Package luatex.def Info: figures/WIISE_PAAS_add_data_source_postgresql.png  use
+d on input line 243.
+(luatex.def)             Requested size: 353.8541pt x 157.58687pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 244.
+See the caption package documentation for explanation.
+
+<figures/WIISE_PAAS_create_dashboard.png, id=1314, 636.87938pt x 322.95656pt>
+File: figures/WIISE_PAAS_create_dashboard.png Graphic file (type png)
+<use figures/WIISE_PAAS_create_dashboard.png>
+Package luatex.def Info: figures/WIISE_PAAS_create_dashboard.png  used on input
+ line 254.
+(luatex.def)             Requested size: 353.8541pt x 179.4352pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 255.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+263.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[72<./figures/WIISE_PAAS_add_data_source_postgresql.png><./figures/WIISE_PAAS_cr
+eate_dashboard.png>]
+<figures/WIISE_PAAS_alert.png, id=1329, 743.02594pt x 658.71094pt>
+File: figures/WIISE_PAAS_alert.png Graphic file (type png)
+<use figures/WIISE_PAAS_alert.png>
+Package luatex.def Info: figures/WIISE_PAAS_alert.png  used on input line 263.
+(luatex.def)             Requested size: 353.8541pt x 313.70508pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 264.
+See the caption package documentation for explanation.
+
+
+Overfull \hbox (9.0561pt too wide) in paragraph at lines 278--279
 []\TU/IBMPlexSans(0)/m/n/12 De-scribe one prob-lem you en-coun-tered in this ex-
 per-i-ment (in any layer of the pipeline)
  []
@@ -2794,15 +3115,584 @@ per-i-ment (in any layer of the pipeline)
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
-185.
+286.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
-[67])
+[73<./figures/WIISE_PAAS_alert.png>]
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+306.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+ [74]
+Overfull \hbox (11.72717pt too wide) in paragraph at lines 321--322
+[]\TU/IBMPlexSans(0)/m/n/12 PC/lap-top with Ad-van-tech We-bAc-cess/SCADA V9.x 
+in-stalled (Project Node and SCADA
+ []
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+327.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[75
+
+]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 340.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'table.9.1'
+
+
+Overfull \hbox (12.49615pt too wide) in paragraph at lines 343--353
+ [][] 
+ []
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 368.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.1
+'
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+376.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[76]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 379.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'table.9.2'
+
+File: figures/WebAccess_login_project_management.png Graphic file (type png)
+<use figures/WebAccess_login_project_management.png>
+Package luatex.def Info: figures/WebAccess_login_project_management.png  used o
+n input line 417.
+(luatex.def)             Requested size: 331.73695pt x 223.05075pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 418.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.2
+'
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+421.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[77]
+File: figures/WebAccess_add_new_project.png Graphic file (type png)
+<use figures/WebAccess_add_new_project.png>
+Package luatex.def Info: figures/WebAccess_add_new_project.png  used on input l
+ine 424.
+(luatex.def)             Requested size: 442.31595pt x 162.44196pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 425.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.3
+'
+File: figures/WebAccess_insert_SCADA_node.png Graphic file (type png)
+<use figures/WebAccess_insert_SCADA_node.png>
+Package luatex.def Info: figures/WebAccess_insert_SCADA_node.png  used on input
+ line 431.
+(luatex.def)             Requested size: 353.8541pt x 98.65404pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 432.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.4
+'
+File: figures/WebAccess_SCADA_node_COMPORT_Settings.png Graphic file (type png)
+
+<use figures/WebAccess_SCADA_node_COMPORT_Settings.png>
+Package luatex.def Info: figures/WebAccess_SCADA_node_COMPORT_Settings.png  use
+d on input line 438.
+(luatex.def)             Requested size: 243.27512pt x 255.11426pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 439.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.5
+'
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+442.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[78]
+File: figures/WebAccess_insert_device_settings_1.png Graphic file (type png)
+<use figures/WebAccess_insert_device_settings_1.png>
+Package luatex.def Info: figures/WebAccess_insert_device_settings_1.png  used o
+n input line 445.
+(luatex.def)             Requested size: 243.27512pt x 251.63654pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 446.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.6
+'
+File: figures/WebAccess_insert_analog_tag_temp_sensor.png Graphic file (type pn
+g)
+<use figures/WebAccess_insert_analog_tag_temp_sensor.png>
+Package luatex.def Info: figures/WebAccess_insert_analog_tag_temp_sensor.png  u
+sed on input line 452.
+(luatex.def)             Requested size: 353.8541pt x 276.72131pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 453.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.7
+'
+File: figures/WebAccess_kernel_viewdaq.png Graphic file (type png)
+<use figures/WebAccess_kernel_viewdaq.png>
+Package luatex.def Info: figures/WebAccess_kernel_viewdaq.png  used on input li
+ne 459.
+(luatex.def)             Requested size: 353.8541pt x 224.3012pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 460.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+460.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[79]
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.8
+'
+File: figures/WebAccess_SCADA_TempEdit_alarm_settings.png Graphic file (type pn
+g)
+<use figures/WebAccess_SCADA_TempEdit_alarm_settings.png>
+Package luatex.def Info: figures/WebAccess_SCADA_TempEdit_alarm_settings.png  u
+sed on input line 474.
+(luatex.def)             Requested size: 353.8541pt x 278.59749pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 475.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.9
+'
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+481.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[80]
+File: figures/WebAccess_SCADA_TempEdit_real-time_trend.png Graphic file (type p
+ng)
+<use figures/WebAccess_SCADA_TempEdit_real-time_trend.png>
+Package luatex.def Info: figures/WebAccess_SCADA_TempEdit_real-time_trend.png  
+used on input line 482.
+(luatex.def)             Requested size: 353.8541pt x 199.21844pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 483.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.1
+0'
+File: figures/pgAdmin_addServer.png Graphic file (type png)
+<use figures/pgAdmin_addServer.png>
+Package luatex.def Info: figures/pgAdmin_addServer.png  used on input line 498.
+
+(luatex.def)             Requested size: 442.31595pt x 232.804pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 499.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.1
+1'
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+502.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[81]
+File: figures/ODBC_DSN_PostgreSQL.png Graphic file (type png)
+<use figures/ODBC_DSN_PostgreSQL.png>
+Package luatex.def Info: figures/ODBC_DSN_PostgreSQL.png  used on input line 50
+5.
+(luatex.def)             Requested size: 353.8541pt x 257.43866pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 506.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.1
+2'
+File: figures/ODBC_DSN_PostgreSQL_Settings.png Graphic file (type png)
+<use figures/ODBC_DSN_PostgreSQL_Settings.png>
+Package luatex.def Info: figures/ODBC_DSN_PostgreSQL_Settings.png  used on inpu
+t line 512.
+(luatex.def)             Requested size: 353.8541pt x 197.38025pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 513.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.1
+3'
+File: figures/WebAccess_ODBC_DataLog.png Graphic file (type png)
+<use figures/WebAccess_ODBC_DataLog.png>
+Package luatex.def Info: figures/WebAccess_ODBC_DataLog.png  used on input line
+ 519.
+(luatex.def)             Requested size: 442.31595pt x 256.44687pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 520.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+520.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[82]
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.1
+4'
+File: figures/pgAdmin_Table_query_result.png Graphic file (type png)
+<use figures/pgAdmin_Table_query_result.png>
+Package luatex.def Info: figures/pgAdmin_Table_query_result.png  used on input 
+line 526.
+(luatex.def)             Requested size: 442.31595pt x 237.04787pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 527.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.1
+5'
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+531.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[83]
+Overfull \hbox (3.21913pt too wide) in paragraph at lines 539--541
+\TU/IBMPlexSans(0)/m/n/12 choose \TU/IBMPlexSans(0)/b/n/12 Post-greSQL\TU/IBMPl
+exSans(0)/m/n/12 , and en-ter the same con-nec-tion de-tails used for the ODBC 
+bridge
+ []
+
+File: figures/WIISE_PAAS_add_data_source_postgresql.png Graphic file (type png)
+
+<use figures/WIISE_PAAS_add_data_source_postgresql.png>
+Package luatex.def Info: figures/WIISE_PAAS_add_data_source_postgresql.png  use
+d on input line 542.
+(luatex.def)             Requested size: 353.8541pt x 157.58687pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 543.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.1
+6'
+File: figures/WIISE_PAAS_create_dashboard.png Graphic file (type png)
+<use figures/WIISE_PAAS_create_dashboard.png>
+Package luatex.def Info: figures/WIISE_PAAS_create_dashboard.png  used on input
+ line 553.
+(luatex.def)             Requested size: 353.8541pt x 179.4352pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 554.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.1
+7'
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+558.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[84]
+File: figures/WIISE_PAAS_alert.png Graphic file (type png)
+<use figures/WIISE_PAAS_alert.png>
+Package luatex.def Info: figures/WIISE_PAAS_alert.png  used on input line 562.
+(luatex.def)             Requested size: 353.8541pt x 313.70508pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 563.
+See the caption package documentation for explanation.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.9.1
+8'
+
+Overfull \hbox (9.0561pt too wide) in paragraph at lines 577--578
+[]\TU/IBMPlexSans(0)/m/n/12 De-scribe one prob-lem you en-coun-tered in this ex-
+per-i-ment (in any layer of the pipeline)
+ []
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+580.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[85]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 604.
+See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
+\TU/IBMPlexSans(0)/m/n/12 (ping); Com-port/De-vice IP,
+ []
+
+
+Underfull \hbox (badness 4013) in paragraph at lines 613--613
+\TU/IBMPlexSans(0)/m/n/12 DAQ but Post-greSQL
+ []
+
+
+Underfull \hbox (badness 1038) in paragraph at lines 613--614
+\TU/IBMPlexSans(0)/b/n/12 Data Log to ODBC \TU/IBMPlexSans(0)/m/n/12 en-abled
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 614--614
+[]|\TU/IBMPlexSans(0)/m/n/12 ODBC \TU/IBMPlexSans(0)/b/n/12 Save & Test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 614--615
+\TU/IBMPlexSans(0)/m/n/12 DSN name, Server, Port
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 615--615
+[]|\TU/IBMPlexSans(0)/m/n/12 Dash-board panel
+ []
+
+
+Underfull \hbox (badness 1874) in paragraph at lines 615--615
+\TU/IBMPlexSans(0)/m/n/12 spite a work-ing data
+ []
+
+
+Underfull \hbox (badness 3049) in paragraph at lines 615--616
+\TU/IBMPlexSans(0)/m/n/12 the panel’s Query set-tings;
+ []
+
+
+Underfull \hbox (badness 2173) in paragraph at lines 616--616
+[]|\TU/IBMPlexSans(0)/m/n/12 Alarm never ap-pears
+ []
+
+
+Underfull \hbox (badness 6016) in paragraph at lines 616--617
+[]|\TU/IBMPlexSans(0)/m/n/12 Alarm pri-or-ity is non-zero;
+ []
+
+
+Underfull \hbox (badness 5847) in paragraph at lines 616--617
+\TU/IBMPlexSans(0)/m/n/12 thresh-old value is ac-tu-ally
+ []
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+621.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[86]
+File: figures/WebAccess_kernel_viewdaq.png Graphic file (type png)
+<use figures/WebAccess_kernel_viewdaq.png>
+Package luatex.def Info: figures/WebAccess_kernel_viewdaq.png  used on input li
+ne 624.
+(luatex.def)             Requested size: 283.39244pt x 179.63695pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 625.
+See the caption package documentation for explanation.
+
+<figures/WebAccess_ODBC_TestConnection.png, id=1448, 1413.02907pt x 215.30438pt
+>
+File: figures/WebAccess_ODBC_TestConnection.png Graphic file (type png)
+<use figures/WebAccess_ODBC_TestConnection.png>
+Package luatex.def Info: figures/WebAccess_ODBC_TestConnection.png  used on inp
+ut line 631.
+(luatex.def)             Requested size: 377.85419pt x 57.57445pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 632.
+See the caption package documentation for explanation.
+
+<figures/pgAdmin_view_edit_data.png, id=1449, 423.83344pt x 776.9025pt>
+File: figures/pgAdmin_view_edit_data.png Graphic file (type png)
+<use figures/pgAdmin_view_edit_data.png>
+Package luatex.def Info: figures/pgAdmin_view_edit_data.png  used on input line
+ 638.
+(luatex.def)             Requested size: 377.85419pt x 692.6502pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 639.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+639.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[87<./figures/WebAccess_ODBC_TestConnection.png>]
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+639.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+ [88<./figures/pgAdmin_view_edit_data.png>]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 645.
+See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 653--654
+\TU/IBMPlexSans(0)/m/n/12 (ping); Com-port/De-vice IP,
+ []
+
+
+Underfull \hbox (badness 4013) in paragraph at lines 654--654
+\TU/IBMPlexSans(0)/m/n/12 DAQ but Post-greSQL
+ []
+
+
+Underfull \hbox (badness 1038) in paragraph at lines 654--655
+\TU/IBMPlexSans(0)/b/n/12 Data Log to ODBC \TU/IBMPlexSans(0)/m/n/12 en-abled
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--655
+[]|\TU/IBMPlexSans(0)/m/n/12 ODBC \TU/IBMPlexSans(0)/b/n/12 Save & Test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--656
+\TU/IBMPlexSans(0)/m/n/12 DSN name, Server, Port
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 656--656
+[]|\TU/IBMPlexSans(0)/m/n/12 Dash-board panel
+ []
+
+
+Underfull \hbox (badness 1874) in paragraph at lines 656--656
+\TU/IBMPlexSans(0)/m/n/12 spite a work-ing data
+ []
+
+
+Underfull \hbox (badness 3049) in paragraph at lines 656--657
+\TU/IBMPlexSans(0)/m/n/12 the panel’s Query set-tings;
+ []
+
+
+Underfull \hbox (badness 2173) in paragraph at lines 657--657
+[]|\TU/IBMPlexSans(0)/m/n/12 Alarm never ap-pears
+ []
+
+
+Underfull \hbox (badness 6016) in paragraph at lines 657--658
+[]|\TU/IBMPlexSans(0)/m/n/12 Alarm pri-or-ity is non-zero;
+ []
+
+
+Underfull \hbox (badness 5847) in paragraph at lines 657--658
+\TU/IBMPlexSans(0)/m/n/12 thresh-old value is ac-tu-ally
+ []
+
+File: figures/WebAccess_kernel_viewdaq.png Graphic file (type png)
+<use figures/WebAccess_kernel_viewdaq.png>
+Package luatex.def Info: figures/WebAccess_kernel_viewdaq.png  used on input li
+ne 665.
+(luatex.def)             Requested size: 283.39244pt x 179.63695pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 666.
+See the caption package documentation for explanation.
+
+File: figures/WebAccess_ODBC_TestConnection.png Graphic file (type png)
+<use figures/WebAccess_ODBC_TestConnection.png>
+Package luatex.def Info: figures/WebAccess_ODBC_TestConnection.png  used on inp
+ut line 672.
+(luatex.def)             Requested size: 377.85419pt x 57.57445pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 673.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+676.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[89]
+File: figures/pgAdmin_view_edit_data.png Graphic file (type png)
+<use figures/pgAdmin_view_edit_data.png>
+Package luatex.def Info: figures/pgAdmin_view_edit_data.png  used on input line
+ 679.
+(luatex.def)             Requested size: 377.85419pt x 692.6502pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 680.
+See the caption package documentation for explanation.
+
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+680.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+[90]
+File: figures/seee-emblem-watermark.png Graphic file (type png)
+<use figures/seee-emblem-watermark.png>
+Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
+680.
+(luatex.def)             Requested size: 256.0748pt x 87.8034pt.
+ [91])
 File: figures/seee-emblem-watermark.png Graphic file (type png)
 <use figures/seee-emblem-watermark.png>
 Package luatex.def Info: figures/seee-emblem-watermark.png  used on input line 
 74.
 (luatex.def)             Requested size: 256.0748pt x 87.8034pt.
- [68] (./main.aux)
+ [92] (./main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-09-09>
@@ -2811,20 +3701,23 @@ L3 programming layer <2026-09-09>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B4120AEAA5ADE03F70BBA65F18DE8DEF;3604.
+(rerunfilecheck)             Checksum: C785A505A78C1D42E0B46864BAA29AFC;4083.
 )
 
 Here is how much of LuaTeX's memory you used:
- 42527 strings out of 475604
+ 42960 strings out of 475604
  745239,1977958 words of node,token memory allocated
- 1536 words of node memory still in use:
-   31 hlist, 2 vlist, 14 rule, 1 disc, 3 glue, 5 kern, 14 glyph, 102 attribute, 
-64 glue_spec, 88 attribute_list, 2 write, 24 pdf_literal, 3 pdf_action, 24 pdf_c
+ 1548 words of node memory still in use:
+   31 hlist, 2 vlist, 14 rule, 1 disc, 3 glue, 5 kern, 14 glyph, 104 attribute, 
+64 glue_spec, 89 attribute_list, 2 write, 24 pdf_literal, 4 pdf_action, 24 pdf_c
 olorstack nodes
-   avail lists: 1:4,2:20209,3:1484,4:15172,5:13979,6:146,7:19420,8:49,9:41829,10
+   avail lists: 1:4,2:20206,3:1484,4:15172,5:13989,6:145,7:19420,8:49,9:41829,10
 :41,11:2190
- 63412 multiletter control sequences out of 65536+600000
+ 63567 multiletter control sequences out of 65536+600000
  108 fonts using 36448235 bytes
  97i,14n,117p,715b,1274s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <./fonts/PlexSans/IBMPlexSans-Regular.ttf><./fonts/JetBrainsMono/JetBrainsMono-I
@@ -2833,9 +3726,9 @@ etBrainsMono-Regular.ttf><./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/STIX2/S
 TIXTwoMath-Regular.ttf><./fonts/PlexSans/IBMPlexSans-Italic.ttf><./fonts/PlexSan
 s/IBMPlexSans-SemiBold.ttf><./fonts/PlexSans/IBMPlexSans-Regular.ttf><./fonts/Pl
 exSans/IBMPlexSans-Medium.ttf><./fonts/PlexSans/IBMPlexSans-Light.ttf>
-Output written on main.pdf (70 pages, 4407944 bytes).
+Output written on main.pdf (94 pages, 5250640 bytes).
 
-PDF statistics: 1368 PDF objects out of 1440 (max. 8388607)
- 833 named destinations out of 1000 (max. 1048576)
- 328 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1585 PDF objects out of 1728 (max. 8388607)
+ 919 named destinations out of 1000 (max. 1048576)
+ 336 words of extra memory for PDF output out of 10000 (max. 100000000)
 

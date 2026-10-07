@@ -8,4 +8,5 @@
 \contentsline {section}{Experiment 7: Computer-Based Motor Speed Measurement}{51}{section*.7}%
 \contentsline {section}{Experiment 8: Temperature Control Using Raspberry Pi}{58}{section*.8}%
 \contentsline {section}{Experiment 9: IIoT Monitoring \& Alarm Visualization for a PLC-Controlled Machine}{63}{section*.9}%
+\contentsline {section}{Experiment 9: IIoT Monitoring \& Alarm Visualization for a PLC-Controlled Machine}{75}{section*.10}%
 \contentsfinish 

@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.10.6)  7 OCT 2026 19:45
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.10.6)  8 OCT 2026 06:46
  restricted system commands enabled.
  file:line:error style messages enabled.
 **g:/Github/EEM441/LabManualV4/V2/exp07_standalone
@@ -2126,7 +2126,7 @@ Here is how much of LuaTeX's memory you used:
    avail lists: 1:2,2:1828,3:563,4:132,5:969,6:60,7:5442,8:42,9:1350,10:12,11:44
 4
  62609 multiletter control sequences out of 65536+600000
- 81 fonts using 23603559 bytes
+ 81 fonts using 23603519 bytes
  97i,14n,117p,630b,834s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/PlexSans/IBMPlexSans-Italic.ttf>
 <./fonts/STIX2/STIXTwoMath-Regular.ttf><./fonts/PlexSans/IBMPlexSans-SemiBold.tt

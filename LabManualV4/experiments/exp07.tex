@@ -19,7 +19,7 @@
     \item Digital storage oscilloscope (DSO)
     \item Components for the student-designed filter and signal-conditioning circuit (op-amps, resistors, capacitors)
     \item ADAM-3968 wiring terminal board
-    \item PCIE-1816 multifunction DAQ card, installed in the host PC
+    \item PCIE-1750U isolated digital I/O card, installed in the host PC
     \item PC with a C/C++ or Python development environment
   \end{itemize}
 \end{equipment}
@@ -72,13 +72,13 @@
     \item At a representative operating speed, measure the pulse period and estimate the corresponding fundamental frequency from the oscilloscope trace.
     \item From this measurement, determine a suitable cutoff frequency for noise-rejection filter.\newpage
     \item Design the necessary filter based on the cutoff frequency determined prior.Justify your design choices.
-    \item Design the signal-conditioning circuit needed to present the filtered encoder pulses to the PCIE-1816's digital input with valid logic levels. Justify your design choices.
+    \item Design the signal-conditioning circuit needed to present the filtered encoder pulses to the PCIE-1750U's digital input with valid logic levels. Justify your design choices.
   \end{enumerate}
   \vspace*{1.5em}
 
   \textbf{Activity 2 --- Interfacing to the DAQ hardware}\vspace{2pt}
 
-  \textit{Objective: connect the conditioned encoder signal to the PC via the ADAM-3968 and PCIE-1816.}
+  \textit{Objective: connect the conditioned encoder signal to the PC via the ADAM-3968 and PCIE-1750U.}
 
   \begin{enumerate}
     \item Connect the output of your signal-conditioning circuit to a digital input terminal on the ADAM-3968 terminal board.
@@ -92,7 +92,7 @@
         \node[block, minimum width=2.6cm] (trainer) {DC Motor\\Trainer};
         \node[block, right=of trainer, minimum width=2.8cm] (filt) {Filter \&\\Signal Cond.\\ Circuit};
         \node[block, right=of filt, minimum width=2.4cm] (adam) {ADAM-3968};
-        \node[block, right=of adam, minimum width=2.6cm] (pcie) {PCIE-1816};
+        \node[block, right=of adam, minimum width=2.6cm] (pcie) {PCIE-1750U};
         \node[block, right=of pcie, minimum width=2.4cm] (pc) {PC\\\scriptsize C/C++/Python GUI};
 
         \draw[arr] (trainer) -- (filt);
@@ -136,24 +136,53 @@
   \]
   where $\text{CLK\_TCK}$ is the counter's clock tick rate.
 
+  \begin{boxedfigure}
+    \centering
+    \begin{tikzpicture}[node distance=7mm and 10mm]
+      \node[startstop] (start) {Start};
+      \node[block, below=of start] (init) {Initialise DAQ card};
+      \node[block, below=of init] (select) {User selects method:\\by counts ($N$) or by time ($T$)};
+      \node[decision, below=of select, minimum width=2.6cm] (mode) {Method?};
+      \node[block, below left=10mm and -4mm of mode] (bycounts) {Measure elapsed\\time $T_N$ for $N$ pulses};
+      \node[block, below right=10mm and -4mm of mode] (bytime) {Count pulses $N_T$\\within window $T$};
+      \node[block, below=26mm of mode] (calc) {Compute $f$, RPM, $\omega$};
+      \node[block, below=of calc] (disp) {Display / log result};
+      \node[decision, below=of disp, minimum width=2.6cm] (dec) {End of\\measurement?};
+      \node[startstop, below=of dec] (end) {End};
+
+      \draw[arr] (start) -- (init);
+      \draw[arr] (init) -- (select);
+      \draw[arr] (select) -- (mode);
+      \draw[arr] (mode.west) -| (bycounts) node[pos=0.25, above, font=\small,xshift=-10pt] {by counts};
+      \draw[arr] (mode.east) -| (bytime) node[pos=0.25, above, font=\small, xshift=10pt] {by period};
+      \draw[arr] (bycounts) |- (calc.west);
+      \draw[arr] (bytime) |- (calc.east);
+      \draw[arr] (calc) -- (disp);
+      \draw[arr] (disp) -- (dec);
+      \draw[arr] (dec) -- (end) node[midway, right, font=\small] {Yes};
+      \draw[arr] (dec.east) -- ++(2.6,0) |- (select.east) node[pos=0.25, above, font=\small, xshift=10pt] {No};
+    \end{tikzpicture}
+    \captionof{figure}{Measurement loop for the speed-acquisition software}
+    \label{fig:exp7-flowchart}
+  \end{boxedfigure}
 
   \begin{enumerate}
-    \item In C, write a program that:
+    \item In C, C++, or Python, write a program that:
           \begin{itemize}
-            \item initialises the PCIE-1750 (via the vendor driver / SDK, or the DAQ card's counter API),
+            \item initialises the PCIE-1750U (via the vendor driver / SDK, or the DAQ card's counter API),
             \item lets the user select the measurement method (by counts, $1 \leq N \leq 99$; or by time, $1 \leq T \leq 9$\,s) and enter the corresponding parameter,
             \item for the \emph{by counts} method: times how long it takes for $N$ encoder pulses to occur,
             \item for the \emph{by time} method: counts how many encoder pulses occur within the window $T$,
             \item computes the frequency, RPM, and angular speed $\omega$ using the relations above, and
             \item displays the running value (frequency and RPM, with the active method indicated) in a simple GUI, updating in real time.
           \end{itemize}
-    \item Interface your filter/conditioning circuit, the ADAM-3968, and the PCIE-1750 together and perform measurements across a range of motor input voltages, using both methods at each operating point. Compare your computed speed against a direct oscilloscope measurement of the encoder period at the same operating point.
+    \item Interface your filter/conditioning circuit, the ADAM-3968, and the PCIE-1750U together and perform measurements across a range of motor input voltages, using both methods at each operating point. Compare your computed speed against a direct oscilloscope measurement of the encoder period at the same operating point.
     \item Tabulate your results (Tables~\ref{tab:exp7-bycounts-freq}--\ref{tab:exp7-bytime-rpm}).
     \item Plot computed speed (from both software methods) against the oscilloscope-measured speed.
     \item Discuss and comment on your results, including any discrepancy between the two software methods and the oscilloscope reference, and how each method's resolution changes with motor speed (see the trade-off noted above).
   \end{enumerate}
 
-  \needspace{6cm}
+  \vspace*{2.5em}
   \begin{boxedtable}
     \tablewithverify{0.76\linewidth}{%
       \centering
@@ -186,15 +215,15 @@
       {\renewcommand{\arraystretch}{1.4}
         \begin{tabular}{|c|c|c|c|c|c|c|}
           \hline
-          \multirow{2}{*}{$N$} & \multicolumn{5}{c|}{$\omega$ (MeasuredRPM)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(calculated RPM)}}                     \\
+          \multirow{2}{*}{$N$} & \multicolumn{5}{c|}{$\omega$ (Measured RPM)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(calculated RPM)}}                     \\
           \cline{2-6}
-                               & \#1                                         & \#2                                                          & \#3 & \#4 & \#5 & \\
+                               & \#1                                          & \#2                                                          & \#3 & \#4 & \#5 & \\
           \hline
-                               &                                             &                                                              &     &     &     & \\
+                               &                                              &                                                              &     &     &     & \\
           \hline
-                               &                                             &                                                              &     &     &     & \\
+                               &                                              &                                                              &     &     &     & \\
           \hline
-                               &                                             &                                                              &     &     &     & \\
+                               &                                              &                                                              &     &     &     & \\
           \hline
         \end{tabular}
       }%
@@ -234,15 +263,15 @@
       {\renewcommand{\arraystretch}{1.4}
         \begin{tabular}{|c|c|c|c|c|c|c|}
           \hline
-          \multirow{2}{*}{$T$ (s)} & \multicolumn{5}{c|}{$\omega$ (Measureed RPM)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(calculated RPM)}}                     \\
+          \multirow{2}{*}{$T$ (s)} & \multicolumn{5}{c|}{$\omega$ (Measured RPM)} & \multirow{2}{*}{\shortstack{Oscilloscope\\(calculated RPM)}}                     \\
           \cline{2-6}
-                                   & \#1                                           & \#2                                                          & \#3 & \#4 & \#5 & \\
+                                   & \#1                                          & \#2                                                          & \#3 & \#4 & \#5 & \\
           \hline
-                                   &                                               &                                                              &     &     &     & \\
+                                   &                                              &                                                              &     &     &     & \\
           \hline
-                                   &                                               &                                                              &     &     &     & \\
+                                   &                                              &                                                              &     &     &     & \\
           \hline
-                                   &                                               &                                                              &     &     &     & \\
+                                   &                                              &                                                              &     &     &     & \\
           \hline
         \end{tabular}
       }%
@@ -253,12 +282,22 @@
 \begin{reportq}
   \begin{enumerate}
     \item Present your oscilloscope measurements of the encoder pulse and your resulting filter design (topology, calculations, and component values), together with the measured response of the built filter.
-    \item Present your design of the signal-conditioning stage between the filter and the PCIE-1816 digital input, with justification.
+    \item Present your design of the signal-conditioning stage between the filter and the PCIE-1750U digital input, with justification.
     \item Compare your software-computed speed (both by-counts and by-time methods) with the oscilloscope-measured speed across your tested operating points, and discuss the sources of any discrepancy.
     \item Compare the by-counts and by-time methods directly: at what motor speeds does each method give better resolution or a more stable reading, and why? Which would you recommend for a low-speed application, and which for a high-speed one?
     \item What is the theoretical maximum measurable speed of this system, given the encoder resolution (12 slots/revolution) and your software's timing resolution?
   \end{enumerate}
 \end{reportq}
+
+\begin{labsection}{Deliverables}{}
+  \begin{enumerate}
+    \item \textbf{Code:} a programming script that accurately measures and displays the temperature based on sensor inputs, and controls the heater accordingly.
+    \item \textbf{System setup diagram:} a schematic diagram of your circuitry and wiring diagram of the system.
+    \item \textbf{Documentation:} a report that explains the setup, the temperature control process, sample readings, discussion, and any challenges encountered --- including your justification for omitting the DAC0800 (see Experimental Equipment).
+    \item \textbf{Demo:} a short presentation or video demonstrating the working system and the collected data.
+    \item \textbf{Video:} a video of your work, showing the encoder signal, your filter and signal-conditioning stage, and your software displaying the measured motor speed as the speed is varied.
+  \end{enumerate}
+\end{labsection}
 
 \newpage
 \begin{labsection}{Appendix: PCI-1750/PCI-1750SO Reference}{}

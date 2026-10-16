@@ -80,43 +80,43 @@
     \captionof{table}{Sensor assignment by group (two parameters each).}
     \label{tab:exp9-groups}
     \centering
-    \vspace{4pt}
-    {\renewcommand{\arraystretch}{1.5}
-      \begin{tabular}{p{1.1cm}p{7.0cm}p{7.5cm}}
+    \vspace{-4pt}
+    {\renewcommand{\arraystretch}{1.3}
+      \begin{tabular}{p{1.1cm}p{5.2cm}p{7.6cm}}
         \toprule
-        Group & Group focus                     & Parameters                           \\
+        Grp & Group focus                     & Parameters                           \\
         \midrule
-        G1    & Environmental Climate Pair      & Temperature \& Humidity              \\
-        G2    & Dual-Axis Vibration Pair        & Z-axis Vibration \& X-axis Vibration \\
-        G3    & Bearing Thermal-Vibration Pair  & Z-axis Vibration \& Vibration Temp   \\
-        G4    & Quality Defect Comparison       & Good Part \& Defect Part             \\
-        G5    & Good Yield Ratio Pair           & Good Part \& Total Output            \\
-        G6    & Scrap Rate Pair                 & Defect Part \& Total Output          \\
-        G7    & Operator Control Console        & Start Button \& Stop Button          \\
-        G8    & Critical Safety Interlock       & Stop Button \& Emergency Stop        \\
-        G9    & Start Safety Interlock          & Start Button \& Emergency Stop       \\
-        G10   & Thermal Gradient Pair           & Environmental Temp \& Vibration Temp \\
-        G11   & Production Rate \& Uptime       & Availability \& Total Output         \\
-        G12   & Uptime \& Quality Yield         & Availability \& Good Part            \\
-        G13   & Downtime \& Scrap Correlation   & Availability \& Defect Part          \\
-        G14   & Position \& Motion Sensing      & Z-axis Vibration \& Distance Sensor  \\
-        G15   & Part Sensing \& Run Command     & Distance Sensor \& Start Button      \\
-        G16   & Humidity \& Structural Dynamics & Humidity \& X-axis Vibration         \\
-        G17   & Overheat Emergency Interlock    & Vibration Temp \& Emergency Stop     \\
-        G18   & Part Sensing \& Tally Counter   & Distance Sensor \& Total Output      \\
+        G1  & Environmental Climate Pair      & Temperature \& Humidity              \\
+        G2  & Dual-Axis Vibration Pair        & Z-axis Vibration \& X-axis Vibration \\
+        G3  & Bearing Thermal-Vibration Pair  & Z-axis Vibration \& Vibration Temp   \\
+        G4  & Quality Defect Comparison       & Good Part \& Defect Part             \\
+        G5  & Good Yield Ratio Pair           & Good Part \& Total Output            \\
+        G6  & Scrap Rate Pair                 & Defect Part \& Total Output          \\
+        G7  & Operator Control Console        & Start Button \& Stop Button          \\
+        G8  & Critical Safety Interlock       & Stop Button \& Emergency Stop        \\
+        G9  & Start Safety Interlock          & Start Button \& Emergency Stop       \\
+        G10 & Thermal Gradient Pair           & Environmental Temp \& Vibration Temp \\
+        G11 & Production Rate \& Uptime       & Availability \& Total Output         \\
+        G12 & Uptime \& Quality Yield         & Availability \& Good Part            \\
+        G13 & Downtime \& Scrap Correlation   & Availability \& Defect Part          \\
+        G14 & Position \& Motion Sensing      & Z-axis Vibration \& Distance Sensor  \\
+        G15 & Part Sensing \& Run Command     & Distance Sensor \& Start Button      \\
+        G16 & Humidity \& Structural Dynamics & Humidity \& X-axis Vibration         \\
+        G17 & Overheat Emergency Interlock    & Vibration Temp \& Emergency Stop     \\
+        G18 & Part Sensing \& Tally Counter   & Distance Sensor \& Total Output      \\
         \bottomrule
       \end{tabular}
     }
   \end{boxedtable}
 
-  The 13 underlying parameters, their PLC memory addresses, and engineering notes are summarised in Table~\ref{tab:exp9-paraminventory}.\newpage
+  The 13 underlying parameters, their PLC memory addresses, and engineering notes are summarised in Table~\ref{tab:exp9-paraminventory}.
 
   \begin{boxedtable}
     \captionof{table}{S7-1200 OEE monitoring system --- parameter inventory.}
     \label{tab:exp9-paraminventory}
     \centering
-    {\renewcommand{\arraystretch}{1.6}
-      \begin{tabular}{p{1.0cm}p{4.3cm}p{2.6cm}p{1.6cm}p{4.0cm}}
+    {\renewcommand{\arraystretch}{1.3}
+      \begin{tabular}{p{0.9cm}p{4.3cm}p{2.6cm}p{1.6cm}p{4.0cm}}
         \toprule
         \# & Parameter description           & PLC memory address & Signal type & Engineering notes                   \\
         \midrule
@@ -198,7 +198,7 @@
             \label{fig:exp9-viewdaq}
           \end{boxedfigure}
   \end{enumerate}
-  \vspace*{1.5em}
+  \newpage
 
   \textbf{Activity 2 --- Configure an alarm}\vspace{2pt}
 
@@ -208,7 +208,7 @@
     \item For each \textbf{analog} tag in your pair (Signal type ``Analog'', ``Metric/OEE'', or ``Counter'' in Table~\ref{tab:exp9-paraminventory}), open its configuration and enable a non-zero alarm priority (High, High-High, Low, or Low-Low, as appropriate to that parameter).
           \begin{boxedfigure}
             \centering
-            \includegraphics[width=0.8\linewidth]{figures/WebAccess_SCADA_TempEdit_alarm_settings.png}
+            \includegraphics[width=0.7\linewidth]{figures/WebAccess_SCADA_TempEdit_alarm_settings.png}
             \captionof{figure}{Alarm priority configuration.}
             \label{fig:exp9-alarmconfig}
           \end{boxedfigure}
@@ -221,7 +221,7 @@
             \label{fig:exp9-alarmtrend}
           \end{boxedfigure}
   \end{enumerate}
-  \vspace*{1.5em}
+  \newpage
 
   \textbf{Activity 3 --- Bridge SCADA to PostgreSQL via ODBC}\vspace{2pt}
 
@@ -246,21 +246,21 @@
     \item Back in WebAccess, open the project's \textbf{Setting} menu $\to$ \textbf{ODBC data record source}, and insert a new ODBC entry: a numeric Log Data Source ID, the DSN name from the previous step, and matching login credentials. Test the connection.
           \begin{boxedfigure}
             \centering
-            \includegraphics[width=\linewidth]{figures/ODBC_DSN_PostgreSQL_Settings.png}
+            \includegraphics[width=0.8\linewidth]{figures/ODBC_DSN_PostgreSQL_Settings.png}
             \captionof{figure}{WebAccess ODBC data record source.}
             \label{fig:exp9-odbcrecordsource}
           \end{boxedfigure}
     \item On your SCADA Node, enable \textbf{Data Log to ODBC} (\textbf{Edit Node} $\to$ \textbf{Data Log}). Then, on each tag you want logged, enable \textbf{Log Data} and set the \textbf{Data Log Interval} to \texttt{0} (record by deadband) to avoid missed samples.
           \begin{boxedfigure}
             \centering
-            \includegraphics[width=\linewidth]{figures/WebAccess_ODBC_DataLog.png}
+            \includegraphics[width=0.8\linewidth]{figures/WebAccess_ODBC_DataLog.png}
             \captionof{figure}{SCADA Node Edit Node: Data Log tab.}
             \label{fig:exp9-nodedatalog}
           \end{boxedfigure}
     \item Download the project to the SCADA Node, then confirm in pgAdmin that rows are appearing in the corresponding log table (e.g.\ \texttt{bwanalogtable} for analog tags).
           \begin{boxedfigure}
             \centering
-            \includegraphics[width=\linewidth]{figures/pgAdmin_Table_query_result.png}
+            \includegraphics[width=0.8\linewidth]{figures/pgAdmin_Table_query_result.png}
             \captionof{figure}{pgAdmin: logged rows in the analog log table.}
             \label{fig:exp9-pgadminresult}
           \end{boxedfigure}
@@ -320,6 +320,7 @@
     \item \textbf{System configuration summary:} your PLC, SCADA, and ODBC settings, including the pipeline diagram and tag mapping from the Report questions.
     \item \textbf{Dashboard screenshot(s):} your finished dashboard, clearly labelled with your group number.
     \item \textbf{Short demonstration:} a live walkthrough (or short video) showing your dashboard updating in response to the physical sensor, and the alarm triggering correctly.
+    \item \textbf{Video:} a video of your work, showing your assigned parameters updating live on the dashboard and your alarm(s) triggering and clearing.
   \end{enumerate}
 \end{labsection}
 

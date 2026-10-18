@@ -20,7 +20,7 @@
     \item Components for the student-designed filter and signal-conditioning circuit (op-amps, resistors, capacitors)
     \item ADAM-3968 wiring terminal board
     \item PCIE-1750U isolated digital I/O card, installed in the host PC
-    \item PC with a C/C++ or Python development environment
+    \item PC with a C
   \end{itemize}
 \end{equipment}
 
@@ -93,7 +93,7 @@
         \node[block, right=of trainer, minimum width=2.8cm] (filt) {Filter \&\\Signal Cond.\\ Circuit};
         \node[block, right=of filt, minimum width=2.4cm] (adam) {ADAM-3968};
         \node[block, right=of adam, minimum width=2.6cm] (pcie) {PCIE-1750U};
-        \node[block, right=of pcie, minimum width=2.4cm] (pc) {PC\\\scriptsize C/C++/Python GUI};
+        \node[block, right=of pcie, minimum width=2.4cm] (pc) {PC\\\scriptsize C GUI};
 
         \draw[arr] (trainer) -- (filt);
         \draw[arr] (filt) -- (adam);
@@ -119,8 +119,6 @@
     \text{RPM} = 60f, \qquad
     \omega = 2\pi f \ \left[\text{rad/s}\right]
   \]
-  This method gives better resolution at high speed (many pulses arrive quickly, so $T_N$ is measured over a longer, more precise interval) but responds more slowly at low speed, since a full count of $N$ pulses can take a long time.
-  \vspace*{1.5em}
 
   \textbf{Method 2 --- by period (fixed period window, 1--9\,s):} the user specifies a measurement window $T$ seconds ($1 \leq T \leq 9$); the software counts the number of pulses $N_T$ that occur within that window, then computes
   \[
@@ -136,38 +134,8 @@
   \]
   where $\text{CLK\_TCK}$ is the counter's clock tick rate.
 
-  \begin{boxedfigure}
-    \centering
-    \begin{tikzpicture}[node distance=7mm and 10mm]
-      \node[startstop] (start) {Start};
-      \node[block, below=of start] (init) {Initialise DAQ card};
-      \node[block, below=of init] (select) {User selects method:\\by counts ($N$) or by time ($T$)};
-      \node[decision, below=of select, minimum width=2.6cm] (mode) {Method?};
-      \node[block, below left=10mm and -4mm of mode] (bycounts) {Measure elapsed\\time $T_N$ for $N$ pulses};
-      \node[block, below right=10mm and -4mm of mode] (bytime) {Count pulses $N_T$\\within window $T$};
-      \node[block, below=26mm of mode] (calc) {Compute $f$, RPM, $\omega$};
-      \node[block, below=of calc] (disp) {Display / log result};
-      \node[decision, below=of disp, minimum width=2.6cm] (dec) {End of\\measurement?};
-      \node[startstop, below=of dec] (end) {End};
-
-      \draw[arr] (start) -- (init);
-      \draw[arr] (init) -- (select);
-      \draw[arr] (select) -- (mode);
-      \draw[arr] (mode.west) -| (bycounts) node[pos=0.25, above, font=\small,xshift=-10pt] {by counts};
-      \draw[arr] (mode.east) -| (bytime) node[pos=0.25, above, font=\small, xshift=10pt] {by period};
-      \draw[arr] (bycounts) |- (calc.west);
-      \draw[arr] (bytime) |- (calc.east);
-      \draw[arr] (calc) -- (disp);
-      \draw[arr] (disp) -- (dec);
-      \draw[arr] (dec) -- (end) node[midway, right, font=\small] {Yes};
-      \draw[arr] (dec.east) -- ++(2.6,0) |- (select.east) node[pos=0.25, above, font=\small, xshift=10pt] {No};
-    \end{tikzpicture}
-    \captionof{figure}{Measurement loop for the speed-acquisition software}
-    \label{fig:exp7-flowchart}
-  \end{boxedfigure}
-
   \begin{enumerate}
-    \item In C, C++, or Python, write a program that:
+    \item In C, write a program that:
           \begin{itemize}
             \item initialises the PCIE-1750U (via the vendor driver / SDK, or the DAQ card's counter API),
             \item lets the user select the measurement method (by counts, $1 \leq N \leq 99$; or by time, $1 \leq T \leq 9$\,s) and enter the corresponding parameter,
